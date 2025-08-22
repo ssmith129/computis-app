@@ -9,7 +9,7 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 97%;
     --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
@@ -39,7 +39,7 @@
 
     --radius: 0.5rem;
 
-    /* Dashboard specific colors */
+    /* Dashboard specific colors - Dark sidebar */
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 0 0% 20%;

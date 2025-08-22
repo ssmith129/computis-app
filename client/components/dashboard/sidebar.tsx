@@ -96,8 +96,8 @@ const helpItems = [
 
 export function DashboardSidebar() {
   return (
-    <Sidebar className="bg-sidebar border-r border-sidebar-border">
-      <SidebarHeader className="p-4">
+    <Sidebar className="bg-sidebar border-r border-sidebar-border" style={{ width: "264px" }}>
+      <SidebarHeader className="p-4 bg-sidebar">
         <div className="flex items-center">
           <img 
             src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
@@ -107,7 +107,7 @@ export function DashboardSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-4">
+      <SidebarContent className="px-4 bg-sidebar text-sidebar-foreground">
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupContent>
@@ -116,10 +116,12 @@ export function DashboardSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     isActive={item.isActive}
-                    className={item.isActive ? "bg-sidebar-accent" : ""}
+                    className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                      item.isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                    }`}
                   >
                     <item.icon className="h-5 w-5" />
-                    <span>{item.title}</span>
+                    <span className="font-semibold text-sm">{item.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -131,7 +133,7 @@ export function DashboardSidebar() {
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-foreground hover:text-sidebar-accent-foreground font-semibold text-sm">
                 Reports
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -141,9 +143,9 @@ export function DashboardSidebar() {
                 <SidebarMenu>
                   {reportsItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton>
+                      <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <item.icon className="h-5 w-5" />
-                        <span>{item.title}</span>
+                        <span className="font-semibold text-sm">{item.title}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -157,7 +159,7 @@ export function DashboardSidebar() {
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-foreground hover:text-sidebar-accent-foreground font-semibold text-sm">
                 Settings
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -167,9 +169,9 @@ export function DashboardSidebar() {
                 <SidebarMenu>
                   {settingsItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton>
+                      <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <item.icon className="h-5 w-5" />
-                        <span>{item.title}</span>
+                        <span className="font-semibold text-sm">{item.title}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -183,7 +185,7 @@ export function DashboardSidebar() {
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-foreground hover:text-sidebar-accent-foreground font-semibold text-sm">
                 Help & Account
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -193,9 +195,9 @@ export function DashboardSidebar() {
                 <SidebarMenu>
                   {helpItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton>
+                      <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <item.icon className="h-5 w-5" />
-                        <span>{item.title}</span>
+                        <span className="font-semibold text-sm">{item.title}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}

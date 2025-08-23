@@ -33,19 +33,22 @@ const mainNavItems = [
   {
     title: "Dashboard",
     icon: BarChart3,
-    isActive: true,
+    href: "/",
   },
   {
-    title: "Transactions", 
+    title: "Transactions",
     icon: ArrowLeftRight,
+    href: "/transactions",
   },
   {
     title: "Wallets and Exchanges",
     icon: Wallet,
+    href: "/wallets",
   },
   {
     title: "Clients",
     icon: Users,
+    href: "/clients",
   },
 ];
 

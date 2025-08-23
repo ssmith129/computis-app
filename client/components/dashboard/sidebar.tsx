@@ -119,19 +119,25 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {mainNavItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton 
-                    isActive={item.isActive}
-                    className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
-                      item.isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
-                    }`}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    <span className="font-semibold text-sm">{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {mainNavItems.map((item) => {
+                const isActive = activeItem === item.title;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                        isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                      }`}
+                    >
+                      <a href={item.href}>
+                        <item.icon className="h-5 w-5" />
+                        <span className="font-semibold text-sm">{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

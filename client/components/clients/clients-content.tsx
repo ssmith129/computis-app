@@ -13,9 +13,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { 
-  Plus, 
-  Search, 
+import {
+  Plus,
+  Search,
   Filter,
   Building2,
   User,
@@ -27,7 +27,7 @@ import {
   ChevronRight,
   AlertTriangle,
   Building,
-  UserCheck
+  UserCheck,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -46,18 +46,18 @@ const mockClients = [
     status: "Active",
     lastActivity: "Today, 10:25 AM",
     icon: Building2,
-    color: "text-blue-600"
+    color: "text-blue-600",
   },
   {
-    id: "2", 
+    id: "2",
     name: "Crypto Tax Experts Inc.",
     type: "Firm",
     users: 8,
     taxEntities: 24,
-    status: "Active", 
+    status: "Active",
     lastActivity: "Yesterday, 3:45 PM",
     icon: Building2,
-    color: "text-purple-600"
+    color: "text-purple-600",
   },
   {
     id: "3",
@@ -68,30 +68,30 @@ const mockClients = [
     status: "Active",
     lastActivity: "Oct 25, 2023",
     icon: User,
-    color: "text-green-600"
+    color: "text-green-600",
   },
   {
     id: "4",
-    name: "Blockchain Capital Partners", 
+    name: "Blockchain Capital Partners",
     type: "Firm",
     users: 3,
     taxEntities: 7,
     status: "Pending",
     lastActivity: "Oct 22, 2023",
     icon: Building2,
-    color: "text-orange-600"
+    color: "text-orange-600",
   },
   {
     id: "5",
     name: "Michael Chen",
-    type: "Individual", 
+    type: "Individual",
     users: 1,
     taxEntities: 1,
     status: "Archived",
     lastActivity: "Oct 15, 2023",
     icon: User,
-    color: "text-red-600"
-  }
+    color: "text-red-600",
+  },
 ];
 
 const roles = [
@@ -103,23 +103,23 @@ const roles = [
       userManagement: true,
       taxEntityManagement: true,
       transactionClassification: true,
-      reportGeneration: true
+      reportGeneration: true,
     },
     users: 3,
-    color: "blue"
+    color: "blue",
   },
   {
-    name: "Tax Preparer", 
+    name: "Tax Preparer",
     description: "Full transaction access",
     permissions: {
       clientManagement: true,
       userManagement: false,
       taxEntityManagement: true,
       transactionClassification: true,
-      reportGeneration: true
+      reportGeneration: true,
     },
     users: 6,
-    color: "green"
+    color: "green",
   },
   {
     name: "Client User",
@@ -129,11 +129,11 @@ const roles = [
       userManagement: false,
       taxEntityManagement: false,
       transactionClassification: true,
-      reportGeneration: false
+      reportGeneration: false,
     },
     users: 21,
-    color: "purple"
-  }
+    color: "purple",
+  },
 ];
 
 const recentTaxEntities = [
@@ -143,36 +143,46 @@ const recentTaxEntities = [
     type: "LLC",
     taxYear: "2022",
     wallets: 8,
-    status: "Active"
+    status: "Active",
   },
   {
     name: "Sarah Johnson 2022",
-    client: "Sarah Johnson", 
+    client: "Sarah Johnson",
     type: "Individual",
     taxYear: "2022",
     wallets: 3,
-    status: "Active"
+    status: "Active",
   },
   {
     name: "Crypto Tax Experts 2022",
     client: "Crypto Tax Experts Inc.",
-    type: "Corporation", 
+    type: "Corporation",
     taxYear: "2022",
     wallets: 15,
-    status: "In Progress"
-  }
+    status: "In Progress",
+  },
 ];
 
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "Active":
-      return <Badge className="bg-green-100 text-green-700 border-0">{status}</Badge>;
+      return (
+        <Badge className="bg-green-100 text-green-700 border-0">{status}</Badge>
+      );
     case "Pending":
-      return <Badge className="bg-yellow-100 text-yellow-700 border-0">{status}</Badge>;
+      return (
+        <Badge className="bg-yellow-100 text-yellow-700 border-0">
+          {status}
+        </Badge>
+      );
     case "Archived":
-      return <Badge className="bg-gray-100 text-gray-700 border-0">{status}</Badge>;
+      return (
+        <Badge className="bg-gray-100 text-gray-700 border-0">{status}</Badge>
+      );
     case "In Progress":
-      return <Badge className="bg-blue-100 text-blue-700 border-0">{status}</Badge>;
+      return (
+        <Badge className="bg-blue-100 text-blue-700 border-0">{status}</Badge>
+      );
     default:
       return <Badge variant="outline">{status}</Badge>;
   }
@@ -195,20 +205,24 @@ export function ClientsContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedClients, setSelectedClients] = useState<string[]>([]);
 
-  const filteredClients = mockClients.filter(client =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredClients = mockClients.filter((client) =>
+    client.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleSelectClient = (clientId: string) => {
-    setSelectedClients(prev => 
-      prev.includes(clientId) 
-        ? prev.filter(id => id !== clientId)
-        : [...prev, clientId]
+    setSelectedClients((prev) =>
+      prev.includes(clientId)
+        ? prev.filter((id) => id !== clientId)
+        : [...prev, clientId],
     );
   };
 
   const handleSelectAll = () => {
-    setSelectedClients(selectedClients.length === filteredClients.length ? [] : filteredClients.map(c => c.id));
+    setSelectedClients(
+      selectedClients.length === filteredClients.length
+        ? []
+        : filteredClients.map((c) => c.id),
+    );
   };
 
   return (
@@ -217,8 +231,12 @@ export function ClientsContent() {
       <div className="border-b border-border bg-background sticky top-0 z-10">
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-foreground">Client Management</h1>
-            <p className="text-muted-foreground">Manage firms, client users, and tax entities</p>
+            <h1 className="text-2xl font-bold text-foreground">
+              Client Management
+            </h1>
+            <p className="text-muted-foreground">
+              Manage firms, client users, and tax entities
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
@@ -263,14 +281,32 @@ export function ClientsContent() {
             {/* Filter Bar */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-sm text-muted-foreground">View:</span>
-              <Button variant="default" size="sm" className="h-8 text-xs">All Clients</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Firms</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Individuals</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Status:</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Active</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Pending</Button>
-              <Button variant="ghost" size="sm" className="h-8 text-xs">Archived</Button>
-              <Button variant="link" size="sm" className="h-8 text-xs text-blue-600 hover:text-blue-700 p-0 ml-auto">
+              <Button variant="default" size="sm" className="h-8 text-xs">
+                All Clients
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Firms
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Individuals
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Status:
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Active
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Pending
+              </Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">
+                Archived
+              </Button>
+              <Button
+                variant="link"
+                size="sm"
+                className="h-8 text-xs text-blue-600 hover:text-blue-700 p-0 ml-auto"
+              >
                 View Activity Log
               </Button>
             </div>
@@ -283,7 +319,9 @@ export function ClientsContent() {
                     <TableRow>
                       <TableHead className="w-12">
                         <Checkbox
-                          checked={selectedClients.length === filteredClients.length}
+                          checked={
+                            selectedClients.length === filteredClients.length
+                          }
                           onCheckedChange={handleSelectAll}
                         />
                       </TableHead>
@@ -304,30 +342,49 @@ export function ClientsContent() {
                           <TableCell>
                             <Checkbox
                               checked={selectedClients.includes(client.id)}
-                              onCheckedChange={() => handleSelectClient(client.id)}
+                              onCheckedChange={() =>
+                                handleSelectClient(client.id)
+                              }
                             />
                           </TableCell>
                           <TableCell>
                             <div className="flex items-center gap-3">
-                              <div className={`p-2 rounded-lg ${client.type === 'Firm' ? 'bg-blue-100' : 'bg-green-100'}`}>
-                                <IconComponent className={`h-4 w-4 ${client.color}`} />
+                              <div
+                                className={`p-2 rounded-lg ${client.type === "Firm" ? "bg-blue-100" : "bg-green-100"}`}
+                              >
+                                <IconComponent
+                                  className={`h-4 w-4 ${client.color}`}
+                                />
                               </div>
                               <span className="font-medium">{client.name}</span>
                             </div>
                           </TableCell>
                           <TableCell>
-                            <Badge variant="secondary" className={client.type === 'Firm' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}>
+                            <Badge
+                              variant="secondary"
+                              className={
+                                client.type === "Firm"
+                                  ? "bg-blue-100 text-blue-700"
+                                  : "bg-green-100 text-green-700"
+                              }
+                            >
                               {client.type}
                             </Badge>
                           </TableCell>
                           <TableCell>{client.users}</TableCell>
                           <TableCell>{client.taxEntities}</TableCell>
                           <TableCell>{getStatusBadge(client.status)}</TableCell>
-                          <TableCell className="text-muted-foreground">{client.lastActivity}</TableCell>
+                          <TableCell className="text-muted-foreground">
+                            {client.lastActivity}
+                          </TableCell>
                           <TableCell>
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-8 w-8 p-0"
+                                >
                                   <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
@@ -363,11 +420,35 @@ export function ClientsContent() {
                       Previous
                     </Button>
                     <div className="flex gap-1">
-                      <Button variant="default" size="sm" className="h-8 w-8 p-0">1</Button>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">2</Button>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">3</Button>
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        1
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        2
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        3
+                      </Button>
                       <span className="flex items-center px-2">...</span>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">7</Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        7
+                      </Button>
                     </div>
                     <Button variant="outline" size="sm">
                       Next
@@ -382,7 +463,9 @@ export function ClientsContent() {
           <TabsContent value="users" className="space-y-6">
             <Card>
               <CardContent className="p-6">
-                <p className="text-muted-foreground">User management interface would be implemented here.</p>
+                <p className="text-muted-foreground">
+                  User management interface would be implemented here.
+                </p>
               </CardContent>
             </Card>
           </TabsContent>
@@ -390,7 +473,9 @@ export function ClientsContent() {
           <TabsContent value="tax-entities" className="space-y-6">
             <Card>
               <CardContent className="p-6">
-                <p className="text-muted-foreground">Tax entities management interface would be implemented here.</p>
+                <p className="text-muted-foreground">
+                  Tax entities management interface would be implemented here.
+                </p>
               </CardContent>
             </Card>
           </TabsContent>
@@ -398,7 +483,9 @@ export function ClientsContent() {
           <TabsContent value="permissions" className="space-y-6">
             <Card>
               <CardContent className="p-6">
-                <p className="text-muted-foreground">Permissions management interface would be implemented here.</p>
+                <p className="text-muted-foreground">
+                  Permissions management interface would be implemented here.
+                </p>
               </CardContent>
             </Card>
           </TabsContent>
@@ -420,18 +507,30 @@ export function ClientsContent() {
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${
-                        role.color === 'blue' ? 'bg-blue-100' :
-                        role.color === 'green' ? 'bg-green-100' : 'bg-purple-100'
-                      }`}>
-                        <UserCheck className={`h-5 w-5 ${
-                          role.color === 'blue' ? 'text-blue-600' :
-                          role.color === 'green' ? 'text-green-600' : 'text-purple-600'
-                        }`} />
+                      <div
+                        className={`p-2 rounded-lg ${
+                          role.color === "blue"
+                            ? "bg-blue-100"
+                            : role.color === "green"
+                              ? "bg-green-100"
+                              : "bg-purple-100"
+                        }`}
+                      >
+                        <UserCheck
+                          className={`h-5 w-5 ${
+                            role.color === "blue"
+                              ? "text-blue-600"
+                              : role.color === "green"
+                                ? "text-green-600"
+                                : "text-purple-600"
+                          }`}
+                        />
                       </div>
                       <div>
                         <h3 className="font-semibold">{role.name}</h3>
-                        <p className="text-sm text-muted-foreground">{role.description}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {role.description}
+                        </p>
                       </div>
                     </div>
                     <Button variant="ghost" size="sm">
@@ -454,8 +553,12 @@ export function ClientsContent() {
                       {getPermissionIcon(role.permissions.taxEntityManagement)}
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm">Transaction Classification</span>
-                      {getPermissionIcon(role.permissions.transactionClassification)}
+                      <span className="text-sm">
+                        Transaction Classification
+                      </span>
+                      {getPermissionIcon(
+                        role.permissions.transactionClassification,
+                      )}
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Report Generation</span>
@@ -463,7 +566,9 @@ export function ClientsContent() {
                     </div>
                   </div>
                   <div className="pt-3 border-t">
-                    <p className="text-sm text-muted-foreground">{role.users} users with this role</p>
+                    <p className="text-sm text-muted-foreground">
+                      {role.users} users with this role
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -505,7 +610,10 @@ export function ClientsContent() {
                     </TableCell>
                     <TableCell>{entity.client}</TableCell>
                     <TableCell>
-                      <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-0">
+                      <Badge
+                        variant="secondary"
+                        className="bg-blue-100 text-blue-700 border-0"
+                      >
                         {entity.type}
                       </Badge>
                     </TableCell>

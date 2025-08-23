@@ -26,9 +26,9 @@ export function TransactionsContent() {
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Confidence:</span>
+          <div className="space-y-3 lg:space-y-0 lg:flex lg:flex-wrap lg:gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm text-muted-foreground whitespace-nowrap">Confidence:</span>
               {confidenceFilters.map((filter) => (
                 <Button
                   key={filter}
@@ -41,9 +41,9 @@ export function TransactionsContent() {
                 </Button>
               ))}
             </div>
-            
-            <div className="flex items-center gap-2 ml-4">
-              <span className="text-sm text-muted-foreground">Status:</span>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm text-muted-foreground whitespace-nowrap">Status:</span>
               {statusFilters.map((filter) => (
                 <Button
                   key={filter}
@@ -57,18 +57,18 @@ export function TransactionsContent() {
               ))}
             </div>
 
-            <div className="flex items-center gap-2 ml-4">
+            <div className="flex flex-wrap items-center gap-2">
               <Button variant="outline" size="sm" className="h-8">
                 <Filter className="h-4 w-4 mr-1" />
-                Filters
+                <span className="hidden sm:inline">Filters</span>
               </Button>
               <Button variant="outline" size="sm" className="h-8">
                 <Tag className="h-4 w-4 mr-1" />
-                Bulk Tag
+                <span className="hidden sm:inline">Bulk Tag</span>
               </Button>
               <Button variant="outline" size="sm" className="h-8">
                 <AlertTriangle className="h-4 w-4 mr-1" />
-                AI Classify
+                <span className="hidden sm:inline">AI Classify</span>
               </Button>
             </div>
           </div>

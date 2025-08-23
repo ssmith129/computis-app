@@ -84,11 +84,6 @@ export function DataValidation() {
                 </div>
                 <div className="relative">
                   <Progress value={item.value} className="h-2" />
-                  <style jsx>{`
-                    .progress-fill {
-                      background-color: ${item.bgColor.replace('bg-', '')};
-                    }
-                  `}</style>
                 </div>
               </div>
             </div>

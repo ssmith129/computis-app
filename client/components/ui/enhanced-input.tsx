@@ -45,7 +45,7 @@ const EnhancedInput = React.forwardRef<HTMLInputElement, EnhancedInputProps>(
   ({ 
     className, 
     variant, 
-    size: inputSize,
+    size: inputSize = size,
     type = "text",
     label,
     description,
@@ -190,8 +190,13 @@ export function FormField({ children, className }: { children: React.ReactNode; 
 
 // Enhanced Textarea with similar features
 export interface EnhancedTextareaProps
-  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
-    Omit<EnhancedInputProps, 'showPasswordToggle' | 'leftIcon' | 'rightIcon' | 'size'> {
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'autoComplete'> {
+  label?: string;
+  description?: string;
+  error?: string;
+  success?: string;
+  warning?: string;
+  required?: boolean;
   resize?: boolean;
   maxLength?: number;
   showCharCount?: boolean;

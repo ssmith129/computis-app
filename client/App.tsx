@@ -12,6 +12,7 @@ import Wallets from "./pages/Wallets";
 import Clients from "./pages/Clients";
 import RuleEngine from "./pages/RuleEngine";
 import Exports from "./pages/Exports";
+import WalletIngestion from "./pages/WalletIngestion";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

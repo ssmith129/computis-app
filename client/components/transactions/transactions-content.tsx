@@ -5,6 +5,7 @@ import { TransactionsTable } from "./transactions-table";
 import { ClassificationInsights } from "./classification-insights";
 import { TransactionAnomalyFlags } from "./transaction-anomaly-flags";
 import { Filter, Tag, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function TransactionsContent() {
   const [activeFilters, setActiveFilters] = useState({

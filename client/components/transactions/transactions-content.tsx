@@ -16,7 +16,7 @@ export function TransactionsContent() {
   const statusFilters = ["All", "Confirmed", "Suggested", "Flagged"];
 
   return (
-    <div className="flex-1 p-6 bg-background overflow-auto">
+    <div className="flex-1 h-0 p-6 bg-background overflow-auto">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="space-y-4">

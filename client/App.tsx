@@ -25,6 +25,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/wallets" element={<Wallets />} />
+          <Route path="/clients" element={<Clients />} />
           <Route path="/rule-engine" element={<RuleEngine />} />
           <Route path="/exports" element={<Exports />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

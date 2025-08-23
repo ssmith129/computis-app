@@ -1,0 +1,96 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RuleEngineTable } from "./rule-engine-table";
+import { CreateRuleModal } from "./create-rule-modal";
+import { RuleConflicts } from "./rule-conflicts";
+import { Plus, FileText } from "lucide-react";
+
+export function RuleEngineContent() {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("All");
+
+  const ruleTabs = ["All", "Merge", "Income", "Expense", "Split"];
+
+  return (
+    <div className="flex-1 p-6 bg-background overflow-auto">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="space-y-4">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">Rule Engine</h1>
+            <p className="text-muted-foreground">Configure and manage rules to classify and merge transactions</p>
+          </div>
+
+          {/* Top Actions */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            {/* Rule Type Tabs */}
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
+              <TabsList className="grid w-full grid-cols-5">
+                {ruleTabs.map((tab) => (
+                  <TabsTrigger 
+                    key={tab} 
+                    value={tab}
+                    className="text-sm"
+                  >
+                    {tab}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+
+            {/* Action Buttons */}
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm">
+                <FileText className="h-4 w-4 mr-2" />
+                View Audit Log
+              </Button>
+              <Button 
+                size="sm"
+                onClick={() => setIsCreateModalOpen(true)}
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                New Rule
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="space-y-6">
+          {/* Active Rules Table */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Active Rules</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <RuleEngineTable activeTab={activeTab} />
+            </CardContent>
+          </Card>
+
+          {/* Rule Conflicts */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                Rule Conflicts
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  View All
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <RuleConflicts />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Create Rule Modal */}
+        <CreateRuleModal 
+          open={isCreateModalOpen}
+          onOpenChange={setIsCreateModalOpen}
+        />
+      </div>
+    </div>
+  );
+}

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle, TrendingUp, Users, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const anomalyFlags = [
   {

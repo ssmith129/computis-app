@@ -71,14 +71,17 @@ const settingsItems = [
   {
     title: "General Settings",
     icon: Settings,
+    href: "/settings",
   },
   {
     title: "Preferences",
     icon: User,
+    href: "/preferences",
   },
   {
     title: "Rule Engine",
     icon: Settings,
+    href: "/rule-engine",
   },
 ];
 

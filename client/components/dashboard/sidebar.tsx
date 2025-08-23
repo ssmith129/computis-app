@@ -160,14 +160,25 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
             <CollapsibleContent>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {reportsItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
-                        <item.icon className="h-5 w-5" />
-                        <span className="font-semibold text-sm">{item.title}</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
+                  {reportsItems.map((item) => {
+                    const isActive = activeItem === item.title;
+                    return (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={isActive}
+                          className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                            isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                          }`}
+                        >
+                          <a href={item.href}>
+                            <item.icon className="h-5 w-5" />
+                            <span className="font-semibold text-sm">{item.title}</span>
+                          </a>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    );
+                  })}
                 </SidebarMenu>
               </SidebarGroupContent>
             </CollapsibleContent>

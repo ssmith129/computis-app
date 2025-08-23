@@ -56,14 +56,17 @@ const reportsItems = [
   {
     title: "IRS 8949",
     icon: FileText,
+    href: "/irs-8949",
   },
   {
-    title: "Gain/Loss", 
+    title: "Gain/Loss",
     icon: TrendingUp,
+    href: "/gain-loss",
   },
   {
-    title: "CSV Exports",
+    title: "Exports",
     icon: Download,
+    href: "/exports",
   },
 ];
 

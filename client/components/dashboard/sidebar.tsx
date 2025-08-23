@@ -137,10 +137,10 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                         isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                       }`}
                     >
-                      <a to={item.href}>
+                      <Link to={item.href}>
                         <item.icon className="h-5 w-5" />
                         <span className="font-semibold text-sm">{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
@@ -172,10 +172,10 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                             isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                           }`}
                         >
-                          <a to={item.href}>
+                          <Link to={item.href}>
                             <item.icon className="h-5 w-5" />
                             <span className="font-semibold text-sm">{item.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     );
@@ -209,10 +209,10 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                             isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                           }`}
                         >
-                          <a to={item.href}>
+                          <Link to={item.href}>
                             <item.icon className="h-5 w-5" />
                             <span className="font-semibold text-sm">{item.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     );

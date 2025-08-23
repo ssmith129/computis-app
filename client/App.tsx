@@ -27,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/data-anomaly-detection" element={<DataAnomalyDetection />} />
           <Route path="/wallets" element={<Wallets />} />
           <Route path="/wallet-ingestion" element={<WalletIngestion />} />
           <Route path="/clients" element={<Clients />} />

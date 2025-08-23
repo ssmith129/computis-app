@@ -137,7 +137,7 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                         isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                       }`}
                     >
-                      <a href={item.href}>
+                      <a to={item.href}>
                         <item.icon className="h-5 w-5" />
                         <span className="font-semibold text-sm">{item.title}</span>
                       </a>
@@ -172,7 +172,7 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                             isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                           }`}
                         >
-                          <a href={item.href}>
+                          <a to={item.href}>
                             <item.icon className="h-5 w-5" />
                             <span className="font-semibold text-sm">{item.title}</span>
                           </a>
@@ -209,7 +209,7 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                             isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
                           }`}
                         >
-                          <a href={item.href}>
+                          <a to={item.href}>
                             <item.icon className="h-5 w-5" />
                             <span className="font-semibold text-sm">{item.title}</span>
                           </a>

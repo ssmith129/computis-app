@@ -3,11 +3,15 @@ import { DashboardSidebar } from "./sidebar";
 import { DashboardHeader } from "./header";
 import { DashboardContent } from "./dashboard-content";
 
-export function DashboardLayout() {
+interface DashboardLayoutProps {
+  activeItem?: string;
+}
+
+export function DashboardLayout({ activeItem = "Dashboard" }: DashboardLayoutProps) {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full">
-        <DashboardSidebar />
+        <DashboardSidebar activeItem={activeItem} />
         <SidebarInset className="flex flex-col">
           <DashboardHeader />
           <DashboardContent />

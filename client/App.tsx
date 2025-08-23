@@ -14,6 +14,10 @@ import RuleEngine from "./pages/RuleEngine";
 import Exports from "./pages/Exports";
 import WalletIngestion from "./pages/WalletIngestion";
 import DataAnomalyDetection from "./pages/DataAnomalyDetection";
+import Irs8949 from "./pages/Irs8949";
+import GainLoss from "./pages/GainLoss";
+import Settings from "./pages/Settings";
+import Preferences from "./pages/Preferences";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

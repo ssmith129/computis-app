@@ -45,7 +45,7 @@ const EnhancedInput = React.forwardRef<HTMLInputElement, EnhancedInputProps>(
   ({ 
     className, 
     variant, 
-    size: inputSize = size,
+    size,
     type = "text",
     label,
     description,

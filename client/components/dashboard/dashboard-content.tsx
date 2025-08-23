@@ -6,7 +6,7 @@ import { AnomalyFlags } from "./anomaly-flags";
 
 export function DashboardContent() {
   return (
-    <div className="flex-1 bg-gray-50 overflow-auto">
+    <div className="flex-1 h-0 bg-gray-50 overflow-auto">
       {/* Page Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-6">
         <div className="max-w-7xl mx-auto">

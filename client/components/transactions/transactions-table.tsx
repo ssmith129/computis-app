@@ -189,7 +189,8 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
   return (
     <div className="space-y-4">
       {/* Table */}
-      <Table>
+      <div className="overflow-x-auto">
+        <Table className="min-w-full">
         <TableHeader>
           <TableRow>
             <TableHead className="w-12">
@@ -281,7 +282,8 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
+        </Table>
+      </div>
 
       {/* Table Footer */}
       <div className="flex items-center justify-between px-4 py-2 border-t">

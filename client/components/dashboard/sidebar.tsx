@@ -1,17 +1,18 @@
-import { 
-  BarChart3, 
-  ArrowLeftRight, 
-  Wallet, 
-  Users, 
-  FileText, 
-  Settings, 
-  HelpCircle, 
-  User, 
+import {
+  BarChart3,
+  ArrowLeftRight,
+  Wallet,
+  Users,
+  FileText,
+  Settings,
+  HelpCircle,
+  User,
   Keyboard,
   ChevronDown,
   TrendingUp,
   Download
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,

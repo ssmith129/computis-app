@@ -97,7 +97,11 @@ const helpItems = [
   },
 ];
 
-export function DashboardSidebar() {
+interface DashboardSidebarProps {
+  activeItem?: string;
+}
+
+export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarProps) {
   return (
     <Sidebar className="bg-sidebar border-r border-sidebar-border" style={{ width: "264px" }}>
       <SidebarHeader className="p-4 bg-sidebar">

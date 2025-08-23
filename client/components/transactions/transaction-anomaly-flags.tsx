@@ -82,13 +82,15 @@ export function TransactionAnomalyFlags() {
                   {flag.details}
                 </p>
                 <div className="flex gap-2 pt-1">
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="h-7 text-xs"
-                  >
-                    {flag.actionLabel}
-                  </Button>
+                  <Link to="/data-anomaly-detection">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-7 text-xs"
+                    >
+                      {flag.actionLabel}
+                    </Button>
+                  </Link>
                   <Button 
                     size="sm" 
                     variant="ghost"

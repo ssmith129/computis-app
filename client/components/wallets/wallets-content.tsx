@@ -187,8 +187,10 @@ export function WalletsContent() {
               <p className="text-sm text-muted-foreground mb-4">
                 Connect a wallet or exchange to import transactions
               </p>
-              <Button variant="outline" size="sm">
-                Get Started
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/wallet-ingestion">
+                  Get Started
+                </Link>
               </Button>
             </CardContent>
           </Card>

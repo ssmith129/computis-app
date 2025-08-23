@@ -27,7 +27,7 @@ const inputVariants = cva(
 );
 
 export interface EnhancedInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
     VariantProps<typeof inputVariants> {
   label?: string;
   description?: string;
@@ -45,7 +45,7 @@ const EnhancedInput = React.forwardRef<HTMLInputElement, EnhancedInputProps>(
   ({ 
     className, 
     variant, 
-    size,
+    size: inputSize,
     type = "text",
     label,
     description,
@@ -190,8 +190,8 @@ export function FormField({ children, className }: { children: React.ReactNode; 
 
 // Enhanced Textarea with similar features
 export interface EnhancedTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-    Omit<EnhancedInputProps, 'showPasswordToggle' | 'leftIcon' | 'rightIcon'> {
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
+    Omit<EnhancedInputProps, 'showPasswordToggle' | 'leftIcon' | 'rightIcon' | 'size'> {
   resize?: boolean;
   maxLength?: number;
   showCharCount?: boolean;

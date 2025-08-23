@@ -286,13 +286,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
       </div>
 
       {/* Table Footer */}
-      <div className="flex items-center justify-between px-4 py-2 border-t">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 px-4 py-2 border-t">
         <div className="text-sm text-muted-foreground">
           Showing {startIndex + 1} of {filteredTransactions.length} transactions
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Bulk Actions:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm text-muted-foreground whitespace-nowrap">Bulk Actions:</span>
           <Button variant="outline" size="sm" disabled={selectedTransactions.length === 0}>
             Accept All
           </Button>

@@ -106,9 +106,11 @@ export function TransactionsContent() {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-lg font-semibold">
                   Anomaly Flags
-                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                    View All
-                  </Button>
+                  <Link to="/data-anomaly-detection">
+                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                      View All
+                    </Button>
+                  </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>

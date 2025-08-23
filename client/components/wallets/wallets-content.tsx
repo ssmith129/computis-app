@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Wallet, ArrowRight, CheckCircle, AlertCircle, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const mockWallets = [
   {

@@ -35,8 +35,12 @@ const App = () => (
           <Route path="/wallets" element={<Wallets />} />
           <Route path="/wallet-ingestion" element={<WalletIngestion />} />
           <Route path="/clients" element={<Clients />} />
-          <Route path="/rule-engine" element={<RuleEngine />} />
+          <Route path="/irs-8949" element={<Irs8949 />} />
+          <Route path="/gain-loss" element={<GainLoss />} />
           <Route path="/exports" element={<Exports />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/preferences" element={<Preferences />} />
+          <Route path="/rule-engine" element={<RuleEngine />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

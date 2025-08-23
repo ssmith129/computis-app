@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -11,18 +12,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Checkbox } from "@/components/ui/checkbox";
 import { 
   Plus, 
   Search, 
-  Users, 
-  MoreHorizontal, 
-  Mail, 
-  Phone,
-  Calendar,
-  FileText,
-  CheckCircle,
-  Clock,
-  AlertCircle
+  Filter,
+  Building2,
+  User,
+  Users,
+  MoreHorizontal,
+  Edit2,
+  Check,
+  X,
+  ChevronRight,
+  AlertTriangle,
+  Building,
+  UserCheck
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -34,276 +39,488 @@ import {
 const mockClients = [
   {
     id: "1",
-    name: "John Smith",
-    email: "john.smith@email.com",
-    phone: "+1 (555) 123-4567",
+    name: "Blockchain Advisors LLC",
+    type: "Firm",
+    users: 5,
+    taxEntities: 12,
     status: "Active",
-    taxYear: "2023",
-    transactions: 156,
-    lastActivity: "2 days ago",
-    progress: "Ready for Review"
+    lastActivity: "Today, 10:25 AM",
+    icon: Building2,
+    color: "text-blue-600"
   },
   {
-    id: "2",
-    name: "Sarah Johnson", 
-    email: "sarah.j@email.com",
-    phone: "+1 (555) 234-5678",
-    status: "Active",
-    taxYear: "2023", 
-    transactions: 89,
-    lastActivity: "1 week ago",
-    progress: "In Progress"
+    id: "2", 
+    name: "Crypto Tax Experts Inc.",
+    type: "Firm",
+    users: 8,
+    taxEntities: 24,
+    status: "Active", 
+    lastActivity: "Yesterday, 3:45 PM",
+    icon: Building2,
+    color: "text-purple-600"
   },
   {
     id: "3",
-    name: "Michael Brown",
-    email: "m.brown@email.com", 
-    phone: "+1 (555) 345-6789",
-    status: "Pending",
-    taxYear: "2023",
-    transactions: 234,
-    lastActivity: "3 days ago",
-    progress: "Awaiting Data"
+    name: "Sarah Johnson",
+    type: "Individual",
+    users: 1,
+    taxEntities: 2,
+    status: "Active",
+    lastActivity: "Oct 25, 2023",
+    icon: User,
+    color: "text-green-600"
   },
   {
     id: "4",
-    name: "Lisa Davis",
-    email: "lisa.davis@email.com",
-    phone: "+1 (555) 456-7890", 
-    status: "Completed",
-    taxYear: "2023",
-    transactions: 67,
-    lastActivity: "1 month ago",
-    progress: "Filed"
+    name: "Blockchain Capital Partners", 
+    type: "Firm",
+    users: 3,
+    taxEntities: 7,
+    status: "Pending",
+    lastActivity: "Oct 22, 2023",
+    icon: Building2,
+    color: "text-orange-600"
+  },
+  {
+    id: "5",
+    name: "Michael Chen",
+    type: "Individual", 
+    users: 1,
+    taxEntities: 1,
+    status: "Archived",
+    lastActivity: "Oct 15, 2023",
+    icon: User,
+    color: "text-red-600"
+  }
+];
+
+const roles = [
+  {
+    name: "Administrator",
+    description: "Full system access",
+    permissions: {
+      clientManagement: true,
+      userManagement: true,
+      taxEntityManagement: true,
+      transactionClassification: true,
+      reportGeneration: true
+    },
+    users: 3,
+    color: "blue"
+  },
+  {
+    name: "Tax Preparer", 
+    description: "Full transaction access",
+    permissions: {
+      clientManagement: true,
+      userManagement: false,
+      taxEntityManagement: true,
+      transactionClassification: true,
+      reportGeneration: true
+    },
+    users: 6,
+    color: "green"
+  },
+  {
+    name: "Client User",
+    description: "Limited access",
+    permissions: {
+      clientManagement: true,
+      userManagement: false,
+      taxEntityManagement: false,
+      transactionClassification: true,
+      reportGeneration: false
+    },
+    users: 21,
+    color: "purple"
+  }
+];
+
+const recentTaxEntities = [
+  {
+    name: "Blockchain Advisors 2022",
+    client: "Blockchain Advisors LLC",
+    type: "LLC",
+    taxYear: "2022",
+    wallets: 8,
+    status: "Active"
+  },
+  {
+    name: "Sarah Johnson 2022",
+    client: "Sarah Johnson", 
+    type: "Individual",
+    taxYear: "2022",
+    wallets: 3,
+    status: "Active"
+  },
+  {
+    name: "Crypto Tax Experts 2022",
+    client: "Crypto Tax Experts Inc.",
+    type: "Corporation", 
+    taxYear: "2022",
+    wallets: 15,
+    status: "In Progress"
   }
 ];
 
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "Active":
-      return <Badge className="bg-green-100 text-green-800">{status}</Badge>;
+      return <Badge className="bg-green-100 text-green-700 border-0">{status}</Badge>;
     case "Pending":
-      return <Badge className="bg-yellow-100 text-yellow-800">{status}</Badge>;
-    case "Completed":
-      return <Badge className="bg-blue-100 text-blue-800">{status}</Badge>;
+      return <Badge className="bg-yellow-100 text-yellow-700 border-0">{status}</Badge>;
+    case "Archived":
+      return <Badge className="bg-gray-100 text-gray-700 border-0">{status}</Badge>;
+    case "In Progress":
+      return <Badge className="bg-blue-100 text-blue-700 border-0">{status}</Badge>;
     default:
       return <Badge variant="outline">{status}</Badge>;
   }
 };
 
-const getProgressIcon = (progress: string) => {
-  switch (progress) {
-    case "Ready for Review":
-      return <CheckCircle className="h-4 w-4 text-green-500" />;
-    case "In Progress":
-      return <Clock className="h-4 w-4 text-blue-500" />;
-    case "Awaiting Data":
-      return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-    case "Filed":
-      return <CheckCircle className="h-4 w-4 text-green-500" />;
-    default:
-      return <Clock className="h-4 w-4 text-gray-500" />;
-  }
+const getPermissionIcon = (allowed: boolean) => {
+  return allowed ? (
+    <Check className="h-4 w-4 text-green-500" />
+  ) : (
+    <X className="h-4 w-4 text-red-500" />
+  );
+};
+
+const getPermissionColor = (allowed: boolean) => {
+  return allowed ? "text-green-500" : "text-red-400";
 };
 
 export function ClientsContent() {
+  const [activeTab, setActiveTab] = useState("clients");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedClients, setSelectedClients] = useState<string[]>([]);
 
   const filteredClients = mockClients.filter(client =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    client.email.toLowerCase().includes(searchTerm.toLowerCase())
+    client.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleSelectClient = (clientId: string) => {
+    setSelectedClients(prev => 
+      prev.includes(clientId) 
+        ? prev.filter(id => id !== clientId)
+        : [...prev, clientId]
+    );
+  };
+
+  const handleSelectAll = () => {
+    setSelectedClients(selectedClients.length === filteredClients.length ? [] : filteredClients.map(c => c.id));
+  };
+
   return (
-    <div className="flex-1 h-0 p-6 bg-background overflow-auto">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="space-y-4">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Clients</h1>
-            <p className="text-muted-foreground">Manage your crypto tax preparation clients</p>
+    <div className="flex-1 h-0 bg-background overflow-auto">
+      {/* Header */}
+      <div className="border-b border-border bg-background sticky top-0 z-10">
+        <div className="flex items-center justify-between p-6">
+          <div className="space-y-1">
+            <h1 className="text-2xl font-bold text-foreground">Client Management</h1>
+            <p className="text-muted-foreground">Manage firms, client users, and tax entities</p>
           </div>
-
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search clients..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-
-            <Button>
+          <div className="flex items-center gap-3">
+            <Button variant="outline" size="sm">
+              <Filter className="h-4 w-4 mr-2" />
+              Filters
+            </Button>
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
               <Plus className="h-4 w-4 mr-2" />
               Add Client
             </Button>
           </div>
         </div>
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
-            <CardContent className="p-4">
-              <div className="text-2xl font-bold">24</div>
-              <p className="text-sm text-muted-foreground">Total Clients</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="text-2xl font-bold">18</div>
-              <p className="text-sm text-muted-foreground">Active</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="text-2xl font-bold">4</div>
-              <p className="text-sm text-muted-foreground">Ready for Review</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="text-2xl font-bold">2</div>
-              <p className="text-sm text-muted-foreground">Filed</p>
-            </CardContent>
-          </Card>
+        {/* Tabs */}
+        <div className="px-6">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
+            <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:grid-cols-4">
+              <TabsTrigger value="clients">Clients</TabsTrigger>
+              <TabsTrigger value="users">Users</TabsTrigger>
+              <TabsTrigger value="tax-entities">Tax Entities</TabsTrigger>
+              <TabsTrigger value="permissions">Permissions</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsContent value="clients" className="space-y-6">
+            {/* Search Bar */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 max-w-md"
+              />
+            </div>
+
+            {/* Filter Bar */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm text-muted-foreground">View:</span>
+              <Button variant="default" size="sm" className="h-8 text-xs">All Clients</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Firms</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Individuals</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Status:</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Active</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Pending</Button>
+              <Button variant="ghost" size="sm" className="h-8 text-xs">Archived</Button>
+              <Button variant="link" size="sm" className="h-8 text-xs text-blue-600 hover:text-blue-700 p-0 ml-auto">
+                View Activity Log
+              </Button>
+            </div>
+
+            {/* Clients Table */}
+            <Card>
+              <CardContent className="p-0">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-12">
+                        <Checkbox
+                          checked={selectedClients.length === filteredClients.length}
+                          onCheckedChange={handleSelectAll}
+                        />
+                      </TableHead>
+                      <TableHead>Client Name</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Users</TableHead>
+                      <TableHead>Tax Entities</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Last Activity</TableHead>
+                      <TableHead>Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredClients.map((client) => {
+                      const IconComponent = client.icon;
+                      return (
+                        <TableRow key={client.id}>
+                          <TableCell>
+                            <Checkbox
+                              checked={selectedClients.includes(client.id)}
+                              onCheckedChange={() => handleSelectClient(client.id)}
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-lg ${client.type === 'Firm' ? 'bg-blue-100' : 'bg-green-100'}`}>
+                                <IconComponent className={`h-4 w-4 ${client.color}`} />
+                              </div>
+                              <span className="font-medium">{client.name}</span>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="secondary" className={client.type === 'Firm' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}>
+                              {client.type}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>{client.users}</TableCell>
+                          <TableCell>{client.taxEntities}</TableCell>
+                          <TableCell>{getStatusBadge(client.status)}</TableCell>
+                          <TableCell className="text-muted-foreground">{client.lastActivity}</TableCell>
+                          <TableCell>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuItem>
+                                  <Edit2 className="mr-2 h-4 w-4" />
+                                  Edit Client
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                  <Users className="mr-2 h-4 w-4" />
+                                  Manage Users
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                  <Building className="mr-2 h-4 w-4" />
+                                  Tax Entities
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </Table>
+
+                {/* Pagination */}
+                <div className="flex items-center justify-between p-4 border-t">
+                  <div className="text-sm text-muted-foreground">
+                    Showing 5 of 12 clients
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm" disabled>
+                      Previous
+                    </Button>
+                    <div className="flex gap-1">
+                      <Button variant="default" size="sm" className="h-8 w-8 p-0">1</Button>
+                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">2</Button>
+                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">3</Button>
+                      <span className="flex items-center px-2">...</span>
+                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">7</Button>
+                    </div>
+                    <Button variant="outline" size="sm">
+                      Next
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Other tabs would be implemented similarly */}
+          <TabsContent value="users" className="space-y-6">
+            <Card>
+              <CardContent className="p-6">
+                <p className="text-muted-foreground">User management interface would be implemented here.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="tax-entities" className="space-y-6">
+            <Card>
+              <CardContent className="p-6">
+                <p className="text-muted-foreground">Tax entities management interface would be implemented here.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="permissions" className="space-y-6">
+            <Card>
+              <CardContent className="p-6">
+                <p className="text-muted-foreground">Permissions management interface would be implemented here.</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* Roles & Permissions Section */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Roles & Permissions</h2>
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
+              <Plus className="h-4 w-4 mr-2" />
+              Create Role
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {roles.map((role, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${
+                        role.color === 'blue' ? 'bg-blue-100' :
+                        role.color === 'green' ? 'bg-green-100' : 'bg-purple-100'
+                      }`}>
+                        <UserCheck className={`h-5 w-5 ${
+                          role.color === 'blue' ? 'text-blue-600' :
+                          role.color === 'green' ? 'text-green-600' : 'text-purple-600'
+                        }`} />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold">{role.name}</h3>
+                        <p className="text-sm text-muted-foreground">{role.description}</p>
+                      </div>
+                    </div>
+                    <Button variant="ghost" size="sm">
+                      <Edit2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Client Management</span>
+                      {getPermissionIcon(role.permissions.clientManagement)}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">User Management</span>
+                      {getPermissionIcon(role.permissions.userManagement)}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Tax Entity Management</span>
+                      {getPermissionIcon(role.permissions.taxEntityManagement)}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Transaction Classification</span>
+                      {getPermissionIcon(role.permissions.transactionClassification)}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Report Generation</span>
+                      {getPermissionIcon(role.permissions.reportGeneration)}
+                    </div>
+                  </div>
+                  <div className="pt-3 border-t">
+                    <p className="text-sm text-muted-foreground">{role.users} users with this role</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
-        {/* Clients Table */}
+        {/* Recent Tax Entities */}
         <Card>
           <CardHeader>
-            <CardTitle>Client Management</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle>Recent Tax Entities</CardTitle>
+              <Button variant="outline" size="sm">
+                View All
+              </Button>
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Client</TableHead>
-                    <TableHead>Contact</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Tax Year</TableHead>
-                    <TableHead>Transactions</TableHead>
-                    <TableHead>Progress</TableHead>
-                    <TableHead>Last Activity</TableHead>
-                    <TableHead>Actions</TableHead>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Entity Name</TableHead>
+                  <TableHead>Client</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Tax Year</TableHead>
+                  <TableHead>Wallets</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {recentTaxEntities.map((entity, index) => (
+                  <TableRow key={index}>
+                    <TableCell>
+                      <div className="flex items-center gap-3">
+                        <Building className="h-4 w-4 text-blue-600" />
+                        <span className="font-medium">{entity.name}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>{entity.client}</TableCell>
+                    <TableCell>
+                      <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-0">
+                        {entity.type}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>{entity.taxYear}</TableCell>
+                    <TableCell>{entity.wallets}</TableCell>
+                    <TableCell>{getStatusBadge(entity.status)}</TableCell>
+                    <TableCell>
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredClients.map((client) => (
-                    <TableRow key={client.id}>
-                      <TableCell>
-                        <div className="flex items-center gap-3">
-                          <div className="bg-primary/10 rounded-full p-2">
-                            <Users className="h-4 w-4 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-medium">{client.name}</p>
-                            <p className="text-sm text-muted-foreground">ID: {client.id}</p>
-                          </div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2 text-sm">
-                            <Mail className="h-3 w-3 text-muted-foreground" />
-                            <span>{client.email}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <Phone className="h-3 w-3 text-muted-foreground" />
-                            <span>{client.phone}</span>
-                          </div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        {getStatusBadge(client.status)}
-                      </TableCell>
-                      <TableCell className="font-medium">
-                        {client.taxYear}
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">
-                        {client.transactions}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          {getProgressIcon(client.progress)}
-                          <span className="text-sm">{client.progress}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">
-                        {client.lastActivity}
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                              <MoreHorizontal className="h-4 w-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem>
-                              <FileText className="mr-2 h-4 w-4" />
-                              View Details
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                              <Mail className="mr-2 h-4 w-4" />
-                              Send Message
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                              <Calendar className="mr-2 h-4 w-4" />
-                              Schedule Meeting
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Recent Activity */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Client Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between py-2 border-b border-muted">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <div>
-                    <p className="font-medium">John Smith submitted new transactions</p>
-                    <p className="text-sm text-muted-foreground">15 new crypto transactions from Coinbase</p>
-                  </div>
-                </div>
-                <span className="text-sm text-muted-foreground">2 days ago</span>
-              </div>
-              <div className="flex items-center justify-between py-2 border-b border-muted">
-                <div className="flex items-center gap-3">
-                  <Clock className="h-4 w-4 text-blue-500" />
-                  <div>
-                    <p className="font-medium">Sarah Johnson - Review requested</p>
-                    <p className="text-sm text-muted-foreground">Client ready for tax return review</p>
-                  </div>
-                </div>
-                <span className="text-sm text-muted-foreground">3 days ago</span>
-              </div>
-              <div className="flex items-center justify-between py-2">
-                <div className="flex items-center gap-3">
-                  <AlertCircle className="h-4 w-4 text-yellow-500" />
-                  <div>
-                    <p className="font-medium">Michael Brown - Missing data</p>
-                    <p className="text-sm text-muted-foreground">Awaiting wallet connection for complete records</p>
-                  </div>
-                </div>
-                <span className="text-sm text-muted-foreground">1 week ago</span>
-              </div>
-            </div>
+                ))}
+              </TableBody>
+            </Table>
           </CardContent>
         </Card>
       </div>

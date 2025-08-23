@@ -112,9 +112,11 @@ export function TransactionAnomalyFlags() {
 
       {/* Summary */}
       <div className="pt-2 text-center">
-        <Button variant="outline" size="sm" className="text-xs">
-          View All Anomalies
-        </Button>
+        <Link to="/data-anomaly-detection">
+          <Button variant="outline" size="sm" className="text-xs">
+            View All Anomalies
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -81,15 +81,10 @@ export function ClassificationInsights() {
                   {item.description}
                 </p>
                 <div className="relative">
-                  <Progress 
-                    value={item.percentage} 
+                  <Progress
+                    value={item.percentage}
                     className="h-2"
                   />
-                  <style jsx>{`
-                    .progress-indicator {
-                      background-color: ${item.progressColor.replace('bg-', '')};
-                    }
-                  `}</style>
                 </div>
               </div>
               

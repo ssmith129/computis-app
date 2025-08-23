@@ -178,22 +178,22 @@ export function WalletsContent() {
           ))}
 
           {/* Add New Card */}
-          <Card className="border-dashed border-2 hover:shadow-md transition-shadow cursor-pointer">
-            <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="bg-muted rounded-full p-4 mb-4">
-                <Plus className="h-6 w-6 text-muted-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Add New Connection</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Connect a wallet or exchange to import transactions
-              </p>
-              <Button variant="outline" size="sm" asChild>
-                <Link to="/wallet-ingestion">
+          <Link to="/wallet-ingestion">
+            <Card className="border-dashed border-2 hover:shadow-md transition-shadow cursor-pointer">
+              <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+                <div className="bg-muted rounded-full p-4 mb-4">
+                  <Plus className="h-6 w-6 text-muted-foreground" />
+                </div>
+                <h3 className="font-semibold mb-2">Add New Connection</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Connect a wallet or exchange to import transactions
+                </p>
+                <Button variant="outline" size="sm">
                   Get Started
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
 
         {/* Recent Activity */}

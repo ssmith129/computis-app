@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DashboardCards } from "./dashboard-cards";
+import { EnhancedDashboardCards } from "./enhanced-dashboard-cards";
 import { RecentUploads } from "./recent-uploads";
-import { PieChartSections } from "./pie-chart-sections";
+import { EnhancedPieChartSections } from "./enhanced-pie-charts";
 import { AnomalyFlags } from "./anomaly-flags";
 
 export function DashboardContent() {

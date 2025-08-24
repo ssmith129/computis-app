@@ -68,6 +68,15 @@
     --chart-cyan: 188 86% 53%;
     --chart-red: 0 84% 60%;
 
+    /* Color values for animated components */
+    --blue-500: #3b82f6;
+    --green-500: #10b981;
+    --orange-500: #f97316;
+    --yellow-500: #eab308;
+    --cyan-500: #06b6d4;
+    --red-500: #ef4444;
+    --purple-500: #8b5cf6;
+
     /* Gray scale */
     --gray-50: 210 40% 98%;
     --gray-100: 210 40% 96%;

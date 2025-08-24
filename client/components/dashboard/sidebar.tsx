@@ -10,7 +10,7 @@ import {
   Keyboard,
   ChevronDown,
   TrendingUp,
-  Download
+  Download,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -28,7 +28,11 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const mainNavItems = [
   {
@@ -108,14 +112,16 @@ interface DashboardSidebarProps {
   activeItem?: string;
 }
 
-export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarProps) {
+export function DashboardSidebar({
+  activeItem = "Dashboard",
+}: DashboardSidebarProps) {
   return (
     <Sidebar className="bg-sidebar border-r border-sidebar-border">
       <SidebarHeader className="p-4 bg-sidebar">
         <div className="flex items-center">
-          <img 
+          <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
-            alt="Computis Logo" 
+            alt="Computis Logo"
             className="h-10 w-auto"
           />
         </div>
@@ -134,12 +140,16 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                       asChild
                       isActive={isActive}
                       className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
-                        isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                        isActive
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                          : ""
                       }`}
                     >
                       <Link to={item.href}>
                         <item.icon className="h-5 w-5" />
-                        <span className="font-semibold text-sm">{item.title}</span>
+                        <span className="font-semibold text-sm">
+                          {item.title}
+                        </span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -169,12 +179,16 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                           asChild
                           isActive={isActive}
                           className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
-                            isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                            isActive
+                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                              : ""
                           }`}
                         >
                           <Link to={item.href}>
                             <item.icon className="h-5 w-5" />
-                            <span className="font-semibold text-sm">{item.title}</span>
+                            <span className="font-semibold text-sm">
+                              {item.title}
+                            </span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -206,12 +220,16 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                           asChild
                           isActive={isActive}
                           className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
-                            isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                            isActive
+                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                              : ""
                           }`}
                         >
                           <Link to={item.href}>
                             <item.icon className="h-5 w-5" />
-                            <span className="font-semibold text-sm">{item.title}</span>
+                            <span className="font-semibold text-sm">
+                              {item.title}
+                            </span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -239,7 +257,9 @@ export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarP
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <item.icon className="h-5 w-5" />
-                        <span className="font-semibold text-sm">{item.title}</span>
+                        <span className="font-semibold text-sm">
+                          {item.title}
+                        </span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}

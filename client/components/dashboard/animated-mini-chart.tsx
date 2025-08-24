@@ -13,44 +13,50 @@ const colorMap = {
   blue: {
     bg: "bg-blue-500",
     glow: "shadow-blue-500/50",
-    hover: "bg-blue-600"
+    hover: "bg-blue-600",
   },
   green: {
-    bg: "bg-green-500", 
+    bg: "bg-green-500",
     glow: "shadow-green-500/50",
-    hover: "bg-green-600"
+    hover: "bg-green-600",
   },
   orange: {
     bg: "bg-orange-500",
-    glow: "shadow-orange-500/50", 
-    hover: "bg-orange-600"
+    glow: "shadow-orange-500/50",
+    hover: "bg-orange-600",
   },
   yellow: {
     bg: "bg-yellow-500",
     glow: "shadow-yellow-500/50",
-    hover: "bg-yellow-600"
+    hover: "bg-yellow-600",
   },
   cyan: {
     bg: "bg-cyan-500",
     glow: "shadow-cyan-500/50",
-    hover: "bg-cyan-600"
+    hover: "bg-cyan-600",
   },
   red: {
     bg: "bg-red-500",
     glow: "shadow-red-500/50",
-    hover: "bg-red-600"
+    hover: "bg-red-600",
   },
   purple: {
     bg: "bg-purple-500",
     glow: "shadow-purple-500/50",
-    hover: "bg-purple-600"
-  }
+    hover: "bg-purple-600",
+  },
 };
 
-export function AnimatedChartBar({ height, color, delay, animate, isActive }: AnimatedChartBarProps) {
+export function AnimatedChartBar({
+  height,
+  color,
+  delay,
+  animate,
+  isActive,
+}: AnimatedChartBarProps) {
   const [currentHeight, setCurrentHeight] = useState(2);
   const [isHovered, setIsHovered] = useState(false);
-  
+
   useEffect(() => {
     if (animate) {
       const timer = setTimeout(() => {
@@ -63,7 +69,7 @@ export function AnimatedChartBar({ height, color, delay, animate, isActive }: An
   }, [height, delay, animate]);
 
   const colors = colorMap[color];
-  
+
   return (
     <div
       className={cn(
@@ -71,22 +77,22 @@ export function AnimatedChartBar({ height, color, delay, animate, isActive }: An
         colors.bg,
         isHovered && colors.hover,
         isActive && `shadow-lg ${colors.glow}`,
-        animate && "hover:scale-110"
+        animate && "hover:scale-110",
       )}
-      style={{ 
+      style={{
         height: `${Math.max(2, currentHeight)}px`,
-        transitionDelay: `${delay}ms`
+        transitionDelay: `${delay}ms`,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Animated glow effect */}
       {isActive && (
-        <div 
+        <div
           className={cn(
             "absolute inset-0 rounded-full animate-pulse",
             colors.bg,
-            "opacity-75"
+            "opacity-75",
           )}
         />
       )}
@@ -102,27 +108,27 @@ interface AnimatedMiniChartProps {
   showTooltip?: boolean;
 }
 
-export function AnimatedMiniChart({ 
-  data, 
-  color, 
-  className, 
+export function AnimatedMiniChart({
+  data,
+  color,
+  className,
   animate = false,
-  showTooltip = true 
+  showTooltip = true,
 }: AnimatedMiniChartProps) {
   const [activeBar, setActiveBar] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const maxValue = Math.max(...data);
   const maxHeight = 48; // 48px max height
-  
+
   const processedData = data.map((value, index) => ({
     value,
     height: Math.max(4, (value / maxValue) * maxHeight),
-    delay: index * 50 // Staggered animation
+    delay: index * 50, // Staggered animation
   }));
 
   return (
@@ -142,7 +148,7 @@ export function AnimatedMiniChart({
               animate={mounted && animate}
               isActive={activeBar === index}
             />
-            
+
             {/* Tooltip */}
             {showTooltip && activeBar === index && (
               <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 animate-in fade-in-0 zoom-in-95 duration-200">
@@ -155,12 +161,14 @@ export function AnimatedMiniChart({
           </div>
         ))}
       </div>
-      
+
       {/* Animated baseline */}
-      <div className={cn(
-        "h-[1px] bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50 transition-opacity duration-300",
-        animate && "opacity-100"
-      )} />
+      <div
+        className={cn(
+          "h-[1px] bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50 transition-opacity duration-300",
+          animate && "opacity-100",
+        )}
+      />
     </div>
   );
 }
@@ -180,29 +188,29 @@ export function InteractiveLineChart({
   width = 120,
   height = 40,
   className,
-  animate = false
+  animate = false,
 }: InteractiveLineChartProps) {
   const [pathLength, setPathLength] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const maxValue = Math.max(...data);
   const minValue = Math.min(...data);
   const range = maxValue - minValue || 1;
-  
+
   const points = data.map((value, index) => {
     const x = (index / (data.length - 1)) * width;
     const y = height - ((value - minValue) / range) * height;
     return { x, y, value };
   });
-  
+
   const pathData = points.reduce((path, point, index) => {
-    return index === 0 
+    return index === 0
       ? `M ${point.x} ${point.y}`
       : `${path} L ${point.x} ${point.y}`;
-  }, '');
-  
+  }, "");
+
   const colors = colorMap[color];
-  
+
   useEffect(() => {
     if (animate) {
       const timer = setTimeout(() => {
@@ -211,36 +219,46 @@ export function InteractiveLineChart({
       return () => clearTimeout(timer);
     }
   }, [animate]);
-  
+
   return (
-    <div 
+    <div
       className={cn("relative", className)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <svg 
-        width={width} 
-        height={height} 
-        className="overflow-visible"
-      >
+      <svg width={width} height={height} className="overflow-visible">
         {/* Background gradient */}
         <defs>
-          <linearGradient id={`gradient-${color}`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor={`var(--${color}-500)`} stopOpacity="0.3" />
-            <stop offset="100%" stopColor={`var(--${color}-500)`} stopOpacity="0.1" />
+          <linearGradient
+            id={`gradient-${color}`}
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop
+              offset="0%"
+              stopColor={`var(--${color}-500)`}
+              stopOpacity="0.3"
+            />
+            <stop
+              offset="100%"
+              stopColor={`var(--${color}-500)`}
+              stopOpacity="0.1"
+            />
           </linearGradient>
         </defs>
-        
+
         {/* Area fill */}
         <path
           d={`${pathData} L ${width} ${height} L 0 ${height} Z`}
           fill={`url(#gradient-${color})`}
           className={cn(
             "transition-opacity duration-300",
-            isHovered ? "opacity-100" : "opacity-50"
+            isHovered ? "opacity-100" : "opacity-50",
           )}
         />
-        
+
         {/* Main line */}
         <path
           d={pathData}
@@ -251,15 +269,15 @@ export function InteractiveLineChart({
           strokeLinejoin="round"
           className={cn(
             "transition-all duration-300",
-            isHovered && "drop-shadow-sm"
+            isHovered && "drop-shadow-sm",
           )}
           style={{
-            strokeDasharray: animate ? pathLength * 200 : 'none',
+            strokeDasharray: animate ? pathLength * 200 : "none",
             strokeDashoffset: animate ? (1 - pathLength) * 200 : 0,
-            transition: animate ? 'stroke-dashoffset 1s ease-out' : 'none'
+            transition: animate ? "stroke-dashoffset 1s ease-out" : "none",
           }}
         />
-        
+
         {/* Data points */}
         {points.map((point, index) => (
           <circle
@@ -270,10 +288,10 @@ export function InteractiveLineChart({
             fill={`var(--${color}-500)`}
             className={cn(
               "transition-all duration-200",
-              isHovered && `drop-shadow-sm ${colors.glow}`
+              isHovered && `drop-shadow-sm ${colors.glow}`,
             )}
             style={{
-              animationDelay: `${index * 100}ms`
+              animationDelay: `${index * 100}ms`,
             }}
           />
         ))}

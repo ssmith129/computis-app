@@ -46,12 +46,12 @@ export function DashboardContent() {
               </TabsList>
             </div>
 
-            <TabsContent value="overview" className="p-6 space-y-6 mt-0">
-              {/* Dashboard Cards */}
-              <DashboardCards />
+            <TabsContent value="overview" className="p-6 space-y-8 mt-0">
+              {/* Enhanced Dashboard Cards */}
+              <EnhancedDashboardCards />
 
-              {/* Charts Section */}
-              <PieChartSections />
+              {/* Enhanced Charts Section */}
+              <EnhancedPieChartSections />
 
               {/* Anomaly Flags */}
               <AnomalyFlags />

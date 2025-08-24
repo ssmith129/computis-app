@@ -110,7 +110,7 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ activeItem = "Dashboard" }: DashboardSidebarProps) {
   return (
-    <Sidebar className="bg-sidebar border-r border-sidebar-border" style={{ width: "264px" }}>
+    <Sidebar className="bg-sidebar border-r border-sidebar-border">
       <SidebarHeader className="p-4 bg-sidebar">
         <div className="flex items-center">
           <img 

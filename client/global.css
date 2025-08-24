@@ -49,6 +49,11 @@
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 218 91% 48%;
 
+    /* Sidebar dimensions */
+    --sidebar-width: 16rem;
+    --sidebar-width-mobile: 18rem;
+    --sidebar-width-icon: 3rem;
+
     /* Status colors */
     --status-success: 142 76% 36%;
     --status-warning: 32 95% 44%;

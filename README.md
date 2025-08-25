@@ -24,10 +24,12 @@ A modern crypto tax dashboard built with React, TypeScript, and Tailwind CSS, re
 ## 🛠️ Development
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - pnpm (recommended) or npm
 
 ### Local Development
+
 ```bash
 # Install dependencies
 pnpm install
@@ -49,7 +51,7 @@ pnpm build
 This project is optimized for Vercel deployment with zero configuration:
 
 1. **One-click deploy**: Use the deploy button above
-2. **Manual deploy**: 
+2. **Manual deploy**:
    ```bash
    npm i -g vercel
    vercel
@@ -59,6 +61,7 @@ This project is optimized for Vercel deployment with zero configuration:
 ### Environment Variables
 
 Set these in your Vercel dashboard:
+
 - `PING_MESSAGE` (optional) - Custom message for ping endpoint
 
 ## 📁 Key Features

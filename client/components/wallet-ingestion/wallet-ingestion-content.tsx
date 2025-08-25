@@ -14,7 +14,7 @@ interface UploadedFile {
   name: string;
   size: number;
   uploadDate: string;
-  status: 'uploaded' | 'validated' | 'mapped' | 'imported';
+  status: "uploaded" | "validated" | "mapped" | "imported";
 }
 
 export function WalletIngestionContent() {
@@ -23,12 +23,17 @@ export function WalletIngestionContent() {
 
   // Create placeholder file data when user clicks on validation tabs without uploading
   useEffect(() => {
-    if ((activeTab === "validate" || activeTab === "mapping" || activeTab === "review") && !uploadedFile) {
+    if (
+      (activeTab === "validate" ||
+        activeTab === "mapping" ||
+        activeTab === "review") &&
+      !uploadedFile
+    ) {
       setUploadedFile({
         name: "sample-transactions.csv",
         size: 87552, // ~85.4 KB
         uploadDate: new Date().toISOString(),
-        status: 'uploaded'
+        status: "uploaded",
       });
     }
   }, [activeTab, uploadedFile]);
@@ -39,14 +44,14 @@ export function WalletIngestionContent() {
 
   const handleValidationNext = () => {
     if (uploadedFile) {
-      setUploadedFile({ ...uploadedFile, status: 'validated' });
+      setUploadedFile({ ...uploadedFile, status: "validated" });
     }
     setActiveTab("mapping");
   };
 
   const handleMappingNext = () => {
     if (uploadedFile) {
-      setUploadedFile({ ...uploadedFile, status: 'mapped' });
+      setUploadedFile({ ...uploadedFile, status: "mapped" });
     }
     setActiveTab("review");
   };
@@ -61,7 +66,7 @@ export function WalletIngestionContent() {
 
   const handleImport = () => {
     if (uploadedFile) {
-      setUploadedFile({ ...uploadedFile, status: 'imported' });
+      setUploadedFile({ ...uploadedFile, status: "imported" });
     }
     // Could redirect to transactions page or show success message
     console.log("Import completed successfully!");
@@ -70,7 +75,7 @@ export function WalletIngestionContent() {
   const handleReprocess = () => {
     // Reset file status and regenerate validation
     if (uploadedFile) {
-      setUploadedFile({ ...uploadedFile, status: 'uploaded' });
+      setUploadedFile({ ...uploadedFile, status: "uploaded" });
     }
   };
 
@@ -87,8 +92,12 @@ export function WalletIngestionContent() {
               </Link>
             </Button>
             <div className="space-y-1">
-              <h1 className="text-2xl font-bold text-foreground">Wallet Ingestion</h1>
-              <p className="text-muted-foreground">Upload, validate, and map CSV data for seamless integration</p>
+              <h1 className="text-2xl font-bold text-foreground">
+                Wallet Ingestion
+              </h1>
+              <p className="text-muted-foreground">
+                Upload, validate, and map CSV data for seamless integration
+              </p>
             </div>
           </div>
           <Button variant="outline" size="sm">
@@ -99,7 +108,10 @@ export function WalletIngestionContent() {
 
         {/* Tabs */}
         <div className="px-6 pt-6">
-          <WalletIngestionTabs activeTab={activeTab} onTabChange={handleTabChange} />
+          <WalletIngestionTabs
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+          />
         </div>
       </div>
 

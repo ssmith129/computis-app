@@ -1,7 +1,13 @@
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, AlertTriangle, XCircle, FileText, RefreshCw } from "lucide-react";
+import {
+  CheckCircle,
+  AlertTriangle,
+  XCircle,
+  FileText,
+  RefreshCw,
+} from "lucide-react";
 
 interface ValidationStepProps {
   fileName: string;
@@ -17,25 +23,25 @@ const validationChecks = [
     value: 100,
     color: "text-green-600",
     icon: CheckCircle,
-    description: "CSV format is valid and readable"
+    description: "CSV format is valid and readable",
   },
   {
     id: "data-structure",
     title: "Data Structure Check",
-    status: "Warning", 
+    status: "Warning",
     value: 85,
     color: "text-yellow-600",
     icon: AlertTriangle,
-    description: "3 rows have formatting issues"
+    description: "3 rows have formatting issues",
   },
   {
     id: "required-fields",
     title: "Required Fields",
     status: "Passed",
     value: 100,
-    color: "text-green-600", 
+    color: "text-green-600",
     icon: CheckCircle,
-    description: "All required columns present"
+    description: "All required columns present",
   },
   {
     id: "data-quality",
@@ -44,8 +50,8 @@ const validationChecks = [
     value: 95,
     color: "text-green-600",
     icon: CheckCircle,
-    description: "High quality transaction data detected"
-  }
+    description: "High quality transaction data detected",
+  },
 ];
 
 const getStatusBadge = (status: string) => {
@@ -61,10 +67,16 @@ const getStatusBadge = (status: string) => {
   }
 };
 
-export function ValidationStep({ fileName, onNext, onReprocess }: ValidationStepProps) {
-  const hasWarnings = validationChecks.some(check => check.status === "Warning");
-  const hasFailed = validationChecks.some(check => check.status === "Failed");
-  
+export function ValidationStep({
+  fileName,
+  onNext,
+  onReprocess,
+}: ValidationStepProps) {
+  const hasWarnings = validationChecks.some(
+    (check) => check.status === "Warning",
+  );
+  const hasFailed = validationChecks.some((check) => check.status === "Failed");
+
   return (
     <div className="space-y-6">
       {/* File Info Header */}
@@ -73,7 +85,9 @@ export function ValidationStep({ fileName, onNext, onReprocess }: ValidationStep
           <FileText className="h-5 w-5 text-muted-foreground" />
           <div>
             <h3 className="font-medium">{fileName}</h3>
-            <p className="text-sm text-muted-foreground">1,247 transactions • 85.4 KB</p>
+            <p className="text-sm text-muted-foreground">
+              1,247 transactions • 85.4 KB
+            </p>
           </div>
         </div>
       </div>
@@ -83,13 +97,19 @@ export function ValidationStep({ fileName, onNext, onReprocess }: ValidationStep
         <div>
           <h3 className="text-lg font-semibold mb-1">Validation Results</h3>
           <div className="flex items-center gap-2">
-            {!hasFailed && !hasWarnings && <CheckCircle className="h-4 w-4 text-green-500" />}
-            {hasWarnings && !hasFailed && <AlertTriangle className="h-4 w-4 text-yellow-500" />}
+            {!hasFailed && !hasWarnings && (
+              <CheckCircle className="h-4 w-4 text-green-500" />
+            )}
+            {hasWarnings && !hasFailed && (
+              <AlertTriangle className="h-4 w-4 text-yellow-500" />
+            )}
             {hasFailed && <XCircle className="h-4 w-4 text-red-500" />}
             <p className="text-sm text-muted-foreground">
-              {hasFailed ? "Validation failed - please fix errors" :
-               hasWarnings ? "Validation passed with warnings" :
-               "All validation checks passed"}
+              {hasFailed
+                ? "Validation failed - please fix errors"
+                : hasWarnings
+                  ? "Validation passed with warnings"
+                  : "All validation checks passed"}
             </p>
           </div>
         </div>
@@ -115,7 +135,9 @@ export function ValidationStep({ fileName, onNext, onReprocess }: ValidationStep
 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">{check.description}</span>
+                  <span className="text-muted-foreground">
+                    {check.description}
+                  </span>
                   <span className="font-medium">{check.value}%</span>
                 </div>
                 <div className="relative">
@@ -134,18 +156,16 @@ export function ValidationStep({ fileName, onNext, onReprocess }: ValidationStep
           <div className="flex items-center gap-2">
             {!hasFailed && <CheckCircle className="h-4 w-4 text-green-500" />}
             {hasFailed && <XCircle className="h-4 w-4 text-red-500" />}
-            <span className={`font-medium ${hasFailed ? 'text-red-600' : 'text-green-600'}`}>
+            <span
+              className={`font-medium ${hasFailed ? "text-red-600" : "text-green-600"}`}
+            >
               {hasFailed ? "Validation Failed" : "Ready for Schema Mapping"}
             </span>
           </div>
         </div>
-        
+
         <div className="flex gap-3">
-          <Button 
-            onClick={onNext} 
-            disabled={hasFailed}
-            className="flex-1"
-          >
+          <Button onClick={onNext} disabled={hasFailed} className="flex-1">
             Continue to Schema Mapping
           </Button>
           {hasWarnings && (

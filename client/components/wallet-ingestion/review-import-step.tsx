@@ -5,7 +5,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { FileText, CheckCircle, AlertTriangle, Upload, Clock, Database } from "lucide-react";
+import {
+  FileText,
+  CheckCircle,
+  AlertTriangle,
+  Upload,
+  Clock,
+  Database,
+} from "lucide-react";
 
 interface ReviewImportStepProps {
   fileName: string;
@@ -21,16 +28,16 @@ const sampleTransactions = [
     amount: "0.05000000",
     price_usd: "$42,500.00",
     fee: "$12.50",
-    exchange: "Coinbase"
+    exchange: "Coinbase",
   },
   {
-    date: "2023-12-02", 
+    date: "2023-12-02",
     type: "Sell",
     asset: "ETH",
     amount: "2.50000000",
     price_usd: "$2,150.00",
     fee: "$8.75",
-    exchange: "Binance"
+    exchange: "Binance",
   },
   {
     date: "2023-12-03",
@@ -39,8 +46,8 @@ const sampleTransactions = [
     amount: "1,000.00000000",
     price_usd: "$1.00",
     fee: "$2.00",
-    exchange: "MetaMask"
-  }
+    exchange: "MetaMask",
+  },
 ];
 
 const importSettings = [
@@ -48,52 +55,59 @@ const importSettings = [
     id: "duplicate-detection",
     label: "Enable duplicate transaction detection",
     description: "Automatically identify and merge duplicate transactions",
-    checked: true
+    checked: true,
   },
   {
     id: "auto-classification",
     label: "Apply automatic classification rules",
     description: "Use AI to classify transactions based on existing rules",
-    checked: true
+    checked: true,
   },
   {
     id: "price-validation",
     label: "Validate pricing data",
     description: "Cross-reference prices with market data sources",
-    checked: true
+    checked: true,
   },
   {
     id: "notification",
     label: "Send completion notification",
     description: "Notify when import process is complete",
-    checked: false
-  }
+    checked: false,
+  },
 ];
 
-export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportStepProps) {
+export function ReviewImportStep({
+  fileName,
+  onBack,
+  onImport,
+}: ReviewImportStepProps) {
   const [isImporting, setIsImporting] = useState(false);
   const [importProgress, setImportProgress] = useState(0);
   const [settings, setSettings] = useState(
-    importSettings.reduce((acc, setting) => ({
-      ...acc,
-      [setting.id]: setting.checked
-    }), {})
+    importSettings.reduce(
+      (acc, setting) => ({
+        ...acc,
+        [setting.id]: setting.checked,
+      }),
+      {},
+    ),
   );
 
   const handleSettingChange = (settingId: string, checked: boolean) => {
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
-      [settingId]: checked
+      [settingId]: checked,
     }));
   };
 
   const handleImport = () => {
     setIsImporting(true);
     setImportProgress(0);
-    
+
     // Simulate import progress
     const interval = setInterval(() => {
-      setImportProgress(prev => {
+      setImportProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           setIsImporting(false);
@@ -113,7 +127,9 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
           <FileText className="h-5 w-5 text-muted-foreground" />
           <div>
             <h3 className="font-medium">{fileName}</h3>
-            <p className="text-sm text-muted-foreground">Ready for import • 1,247 transactions</p>
+            <p className="text-sm text-muted-foreground">
+              Ready for import • 1,247 transactions
+            </p>
           </div>
         </div>
       </div>
@@ -140,7 +156,9 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-3 bg-muted/50 rounded-lg">
               <div className="text-2xl font-bold text-green-600">1,247</div>
-              <div className="text-sm text-muted-foreground">Total Transactions</div>
+              <div className="text-sm text-muted-foreground">
+                Total Transactions
+              </div>
             </div>
             <div className="text-center p-3 bg-muted/50 rounded-lg">
               <div className="text-2xl font-bold text-blue-600">8</div>
@@ -177,7 +195,9 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
             {sampleTransactions.map((tx, index) => (
               <div key={index} className="grid grid-cols-7 gap-2 text-sm py-2">
                 <span>{tx.date}</span>
-                <Badge variant="outline" className="text-xs w-fit">{tx.type}</Badge>
+                <Badge variant="outline" className="text-xs w-fit">
+                  {tx.type}
+                </Badge>
                 <span className="font-medium">{tx.asset}</span>
                 <span>{tx.amount}</span>
                 <span>{tx.price_usd}</span>
@@ -201,7 +221,9 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
                 <Checkbox
                   id={setting.id}
                   checked={settings[setting.id] || false}
-                  onCheckedChange={(checked) => handleSettingChange(setting.id, !!checked)}
+                  onCheckedChange={(checked) =>
+                    handleSettingChange(setting.id, !!checked)
+                  }
                   className="mt-1"
                 />
                 <div className="space-y-1">
@@ -216,7 +238,9 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
                   </p>
                 </div>
               </div>
-              {index < importSettings.length - 1 && <Separator className="mt-4" />}
+              {index < importSettings.length - 1 && (
+                <Separator className="mt-4" />
+              )}
             </div>
           ))}
         </CardContent>
@@ -241,7 +265,10 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              <span>Estimated time remaining: {Math.max(0, Math.ceil((100 - importProgress) / 10))} seconds</span>
+              <span>
+                Estimated time remaining:{" "}
+                {Math.max(0, Math.ceil((100 - importProgress) / 10))} seconds
+              </span>
             </div>
           </CardContent>
         </Card>
@@ -252,8 +279,8 @@ export function ReviewImportStep({ fileName, onBack, onImport }: ReviewImportSte
         <Button variant="outline" onClick={onBack} disabled={isImporting}>
           Back to Mapping
         </Button>
-        <Button 
-          onClick={handleImport} 
+        <Button
+          onClick={handleImport}
           disabled={isImporting}
           className="flex-1"
         >

@@ -126,6 +126,15 @@ export function ReviewImportStep({
     }, 300);
   };
 
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* File Info Header */}

@@ -107,10 +107,13 @@ export function ReviewImportStep({
     setImportProgress(0);
 
     // Simulate import progress
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setImportProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(interval);
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
           setIsImporting(false);
           // Use setTimeout to avoid setState during render warning
           setTimeout(() => {

@@ -270,15 +270,6 @@ export function DashboardSidebar({
           </Collapsible>
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarFooter className="p-4 bg-sidebar border-sidebar space-y-2">
-        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-          All Clients
-        </Button>
-        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-          All Clients
-        </Button>
-      </SidebarFooter>
     </Sidebar>
   );
 }

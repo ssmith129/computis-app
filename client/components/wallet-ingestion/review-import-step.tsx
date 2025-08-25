@@ -111,7 +111,10 @@ export function ReviewImportStep({
         if (prev >= 100) {
           clearInterval(interval);
           setIsImporting(false);
-          onImport();
+          // Use setTimeout to avoid setState during render warning
+          setTimeout(() => {
+            onImport();
+          }, 0);
           return 100;
         }
         return prev + 10;

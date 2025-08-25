@@ -243,7 +243,7 @@ export function ClientsContent() {
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Client
             </Button>
@@ -495,7 +495,7 @@ export function ClientsContent() {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Roles & Permissions</h2>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               <Plus className="h-4 w-4 mr-2" />
               Create Role
             </Button>

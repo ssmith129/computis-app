@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export function TransactionsContent() {
   const [activeFilters, setActiveFilters] = useState({
     confidence: "All",
-    status: "All"
+    status: "All",
   });
 
   const confidenceFilters = ["All", "High", "Medium", "Low"];
@@ -23,19 +23,30 @@ export function TransactionsContent() {
         <div className="space-y-4">
           <div>
             <h1 className="text-2xl font-bold text-foreground">Transactions</h1>
-            <p className="text-muted-foreground">Review and manage classified crypto transactions</p>
+            <p className="text-muted-foreground">
+              Review and manage classified crypto transactions
+            </p>
           </div>
 
           {/* Filters */}
           <div className="space-y-3 lg:space-y-0 lg:flex lg:flex-wrap lg:gap-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-muted-foreground whitespace-nowrap">Confidence:</span>
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
+                Confidence:
+              </span>
               {confidenceFilters.map((filter) => (
                 <Button
                   key={filter}
-                  variant={activeFilters.confidence === filter ? "default" : "outline"}
+                  variant={
+                    activeFilters.confidence === filter ? "default" : "outline"
+                  }
                   size="sm"
-                  onClick={() => setActiveFilters(prev => ({ ...prev, confidence: filter }))}
+                  onClick={() =>
+                    setActiveFilters((prev) => ({
+                      ...prev,
+                      confidence: filter,
+                    }))
+                  }
                   className="h-8"
                 >
                   {filter}
@@ -44,13 +55,19 @@ export function TransactionsContent() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-muted-foreground whitespace-nowrap">Status:</span>
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
+                Status:
+              </span>
               {statusFilters.map((filter) => (
                 <Button
                   key={filter}
-                  variant={activeFilters.status === filter ? "default" : "outline"}
+                  variant={
+                    activeFilters.status === filter ? "default" : "outline"
+                  }
                   size="sm"
-                  onClick={() => setActiveFilters(prev => ({ ...prev, status: filter }))}
+                  onClick={() =>
+                    setActiveFilters((prev) => ({ ...prev, status: filter }))
+                  }
                   className="h-8"
                 >
                   {filter}
@@ -91,7 +108,11 @@ export function TransactionsContent() {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-lg font-semibold">
                   AI Classification Insights
-                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
                     Hide Legend
                   </Button>
                 </CardTitle>
@@ -107,7 +128,11 @@ export function TransactionsContent() {
                 <CardTitle className="flex items-center justify-between text-lg font-semibold">
                   Anomaly Flags
                   <Link to="/data-anomaly-detection">
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
                       View All
                     </Button>
                   </Link>

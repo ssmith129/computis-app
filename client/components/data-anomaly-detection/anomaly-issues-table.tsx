@@ -1,9 +1,23 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { TrendingUp, DollarSign, AlertTriangle, Copy, Eye, MoreHorizontal } from "lucide-react";
+import {
+  TrendingUp,
+  DollarSign,
+  AlertTriangle,
+  Copy,
+  Eye,
+  MoreHorizontal,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,10 +41,10 @@ const issues = [
     priority: "High",
     priorityColor: "bg-red-100 text-red-700",
     status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700"
+    statusColor: "bg-yellow-100 text-yellow-700",
   },
   {
-    id: "missing-fmv-1", 
+    id: "missing-fmv-1",
     type: "Missing FMV",
     icon: DollarSign,
     iconColor: "text-yellow-500",
@@ -38,39 +52,39 @@ const issues = [
     dateDetected: "Oct 24, 2023",
     affectedTransactions: 7,
     priority: "Medium",
-    priorityColor: "bg-yellow-100 text-yellow-700", 
+    priorityColor: "bg-yellow-100 text-yellow-700",
     status: "In Progress",
-    statusColor: "bg-blue-100 text-blue-700"
+    statusColor: "bg-blue-100 text-blue-700",
   },
   {
     id: "classification-conflict-1",
     type: "Classification Conflict",
-    icon: AlertTriangle, 
+    icon: AlertTriangle,
     iconColor: "text-blue-500",
     description: "Income vs. Transfer rule conflict for Coinbase transactions",
     dateDetected: "Oct 23, 2023",
     affectedTransactions: 3,
-    priority: "High", 
+    priority: "High",
     priorityColor: "bg-red-100 text-red-700",
     status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700"
+    statusColor: "bg-yellow-100 text-yellow-700",
   },
   {
     id: "potential-duplicate-1",
     type: "Potential Duplicate",
     icon: Copy,
-    iconColor: "text-purple-500", 
+    iconColor: "text-purple-500",
     description: "Same amount BTC transactions within 30 seconds",
     dateDetected: "Oct 22, 2023",
     affectedTransactions: 2,
     priority: "Medium",
     priorityColor: "bg-yellow-100 text-yellow-700",
-    status: "Resolved", 
-    statusColor: "bg-green-100 text-green-700"
+    status: "Resolved",
+    statusColor: "bg-green-100 text-green-700",
   },
   {
     id: "volume-spike-2",
-    type: "Volume Spike", 
+    type: "Volume Spike",
     icon: TrendingUp,
     iconColor: "text-red-500",
     description: "Unusual USDC transaction pattern on Oct 20, 2023",
@@ -79,23 +93,27 @@ const issues = [
     priority: "Low",
     priorityColor: "bg-blue-100 text-blue-700",
     status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700"
-  }
+    statusColor: "bg-yellow-100 text-yellow-700",
+  },
 ];
 
 export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
   const handleSelectRow = (issueId: string) => {
-    setSelectedRows(prev => 
-      prev.includes(issueId) 
-        ? prev.filter(id => id !== issueId)
-        : [...prev, issueId]
+    setSelectedRows((prev) =>
+      prev.includes(issueId)
+        ? prev.filter((id) => id !== issueId)
+        : [...prev, issueId],
     );
   };
 
   const handleSelectAll = () => {
-    setSelectedRows(selectedRows.length === issues.length ? [] : issues.map(issue => issue.id));
+    setSelectedRows(
+      selectedRows.length === issues.length
+        ? []
+        : issues.map((issue) => issue.id),
+    );
   };
 
   return (
@@ -105,7 +123,9 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Detected Issues</h3>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Search Issues...</span>
+            <span className="text-sm text-muted-foreground">
+              Search Issues...
+            </span>
           </div>
         </div>
       </div>
@@ -153,12 +173,18 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
                   <TableCell>{issue.dateDetected}</TableCell>
                   <TableCell>{issue.affectedTransactions}</TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={`${issue.priorityColor} border-0`}>
+                    <Badge
+                      variant="secondary"
+                      className={`${issue.priorityColor} border-0`}
+                    >
                       {issue.priority}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={`${issue.statusColor} border-0`}>
+                    <Badge
+                      variant="secondary"
+                      className={`${issue.statusColor} border-0`}
+                    >
                       {issue.status}
                     </Badge>
                   </TableCell>
@@ -174,12 +200,18 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
                       </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-8 w-8 p-0"
+                          >
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => onSelectIssue(issue.id)}>
+                          <DropdownMenuItem
+                            onClick={() => onSelectIssue(issue.id)}
+                          >
                             View Details
                           </DropdownMenuItem>
                           <DropdownMenuItem>Mark as Resolved</DropdownMenuItem>
@@ -205,11 +237,19 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
             Previous
           </Button>
           <div className="flex gap-1">
-            <Button variant="default" size="sm" className="h-8 w-8 p-0">1</Button>
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0">2</Button>
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0">3</Button>
+            <Button variant="default" size="sm" className="h-8 w-8 p-0">
+              1
+            </Button>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+              2
+            </Button>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+              3
+            </Button>
             <span className="flex items-center px-2">...</span>
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0">6</Button>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+              6
+            </Button>
           </div>
           <Button variant="outline" size="sm">
             Next

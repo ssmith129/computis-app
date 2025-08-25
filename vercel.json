@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm vercel-build",
+  "outputDirectory": "dist/spa",
+  "installCommand": "pnpm install",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

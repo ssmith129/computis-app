@@ -85,10 +85,9 @@ export function WalletIngestionContent() {
       <div className="border-b border-border bg-background">
         <div className="flex items-center justify-between p-6 pb-0">
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="icon" asChild>
               <Link to="/wallets">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Wallets
+                <ArrowLeft className="h-4 w-4" />
               </Link>
             </Button>
             <div className="space-y-1">

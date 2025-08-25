@@ -243,7 +243,7 @@ export function ClientsContent() {
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Client
             </Button>

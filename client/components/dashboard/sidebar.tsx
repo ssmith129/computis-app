@@ -139,10 +139,10 @@ export function DashboardSidebar({
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
-                      className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                      className={`${
                         isActive
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                          : ""
+                          ? "bg-sidebar-accent text-white"
+                          : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
                       }`}
                     >
                       <Link to={item.href}>
@@ -178,10 +178,10 @@ export function DashboardSidebar({
                         <SidebarMenuButton
                           asChild
                           isActive={isActive}
-                          className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                          className={`${
                             isActive
-                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                              : ""
+                              ? "bg-sidebar-accent text-white"
+                              : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
                           }`}
                         >
                           <Link to={item.href}>
@@ -219,10 +219,10 @@ export function DashboardSidebar({
                         <SidebarMenuButton
                           asChild
                           isActive={isActive}
-                          className={`text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${
+                          className={`${
                             isActive
-                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                              : ""
+                              ? "bg-sidebar-accent text-white"
+                              : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
                           }`}
                         >
                           <Link to={item.href}>
@@ -255,7 +255,7 @@ export function DashboardSidebar({
                 <SidebarMenu>
                   {helpItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+                      <SidebarMenuButton className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white">
                         <item.icon className="h-5 w-5" />
                         <span className="font-semibold text-sm">
                           {item.title}

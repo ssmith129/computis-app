@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { WalletIngestionTabs } from "./wallet-ingestion-tabs";
 import { UploadArea } from "./upload-area";
 import { SupportedExchanges } from "./supported-exchanges";
@@ -78,9 +79,17 @@ export function WalletIngestionContent() {
       {/* Header */}
       <div className="border-b border-border bg-background">
         <div className="flex items-center justify-between p-6 pb-0">
-          <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-foreground">Wallet Ingestion</h1>
-            <p className="text-muted-foreground">Upload, validate, and map CSV data for seamless integration</p>
+          <div className="flex items-center gap-4">
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/wallets">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Wallets
+              </Link>
+            </Button>
+            <div className="space-y-1">
+              <h1 className="text-2xl font-bold text-foreground">Wallet Ingestion</h1>
+              <p className="text-muted-foreground">Upload, validate, and map CSV data for seamless integration</p>
+            </div>
           </div>
           <Button variant="outline" size="sm">
             <HelpCircle className="h-4 w-4 mr-2" />

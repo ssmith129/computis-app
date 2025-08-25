@@ -1,6 +1,7 @@
 # Vercel Runtime Error Fix
 
 ## Problem
+
 Error: "Function Runtimes must have a valid version, for example `now-php@1.0.0`."
 
 ## Solution Applied
@@ -8,6 +9,7 @@ Error: "Function Runtimes must have a valid version, for example `now-php@1.0.0`
 ### 1. Fixed `vercel.json` Configuration
 
 **Before (Incorrect):**
+
 ```json
 {
   "functions": {
@@ -19,6 +21,7 @@ Error: "Function Runtimes must have a valid version, for example `now-php@1.0.0`
 ```
 
 **After (Fixed):**
+
 ```json
 {
   "functions": {
@@ -48,6 +51,7 @@ Error: "Function Runtimes must have a valid version, for example `now-php@1.0.0`
 If you still encounter issues, try these alternatives:
 
 **Option A: Node.js 20**
+
 ```json
 {
   "functions": {
@@ -59,6 +63,7 @@ If you still encounter issues, try these alternatives:
 ```
 
 **Option B: No explicit functions config**
+
 ```json
 {
   "version": 2,
@@ -66,7 +71,8 @@ If you still encounter issues, try these alternatives:
   "outputDirectory": "dist/spa"
 }
 ```
-*(Vercel will auto-detect TypeScript functions)*
+
+_(Vercel will auto-detect TypeScript functions)_
 
 ### 5. Deployment Commands
 
@@ -84,11 +90,13 @@ vercel --prod
 ### 6. Environment Setup
 
 Make sure these are set in Vercel dashboard:
+
 - `PING_MESSAGE` (optional)
 
 ## Verification
 
 After deployment, test these endpoints:
+
 - `https://your-app.vercel.app/api/ping`
 - `https://your-app.vercel.app/api/demo`
 - `https://your-app.vercel.app/` (main app)

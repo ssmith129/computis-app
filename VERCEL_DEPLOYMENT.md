@@ -45,6 +45,7 @@ Set these environment variables in your Vercel dashboard:
 ### Development
 
 For local development:
+
 ```bash
 npm run dev
 ```

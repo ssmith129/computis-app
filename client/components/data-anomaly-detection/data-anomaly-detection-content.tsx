@@ -37,7 +37,7 @@ export function DataAnomalyDetectionContent() {
               <Settings className="h-4 w-4 mr-2" />
               Alert Settings
             </Button>
-            <Button size="sm" className="bg-yellow-500 hover:bg-yellow-600 text-black">
+            <Button size="sm" className="bg-[#0B5DEA] hover:bg-[#0B5DEA]/90 text-white">
               <CheckCircle className="h-4 w-4 mr-2" />
               Resolve All
             </Button>

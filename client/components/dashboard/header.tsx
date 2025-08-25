@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-40 flex items-center justify-between p-3 bg-sidebar border-b border-gray-200 flex-shrink-0 h-auto">
+    <header className="sticky top-0 z-40 flex items-center justify-between p-3 bg-sidebar flex-shrink-0 h-auto">
       {/* Search Bar */}
       <div className="flex items-center bg-sidebar-accent rounded-lg px-3 w-full max-w-lg h-auto self-center">
         <Search className="h-5 w-5 text-white mr-3" />

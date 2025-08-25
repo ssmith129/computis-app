@@ -13,6 +13,7 @@ import {
   Download,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -116,8 +117,8 @@ export function DashboardSidebar({
   activeItem = "Dashboard",
 }: DashboardSidebarProps) {
   return (
-    <Sidebar className="bg-sidebar border-r border-sidebar-border">
-      <SidebarHeader className="p-4 bg-sidebar">
+    <Sidebar className="bg-sidebar border-r border-sidebar">
+      <SidebarHeader className="p-4 bg-sidebar border-sidebar">
         <div className="flex items-center">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
@@ -127,7 +128,7 @@ export function DashboardSidebar({
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-4 bg-sidebar text-sidebar-foreground">
+      <SidebarContent className="px-4 bg-sidebar text-sidebar-foreground border-sidebar">
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupContent>
@@ -269,6 +270,15 @@ export function DashboardSidebar({
           </Collapsible>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="p-4 bg-sidebar border-sidebar space-y-2">
+        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+          All Clients
+        </Button>
+        <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+          All Clients
+        </Button>
+      </SidebarFooter>
     </Sidebar>
   );
 }

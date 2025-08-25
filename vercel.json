@@ -1,13 +1,21 @@
 {
+<<<<<<< HEAD
   "buildCommand": "npm run build:client",
   "outputDirectory": "dist/spa",
   "devCommand": "npm run dev",
   "framework": "vite",
+=======
+  "version": 2,
+  "buildCommand": "pnpm vercel-build",
+  "outputDirectory": "dist/spa",
+  "installCommand": "pnpm install",
+>>>>>>> refs/remotes/origin/main
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node"
     }
   },
+<<<<<<< HEAD
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -38,3 +46,16 @@
     }
   ]
 }
+=======
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
+>>>>>>> refs/remotes/origin/main

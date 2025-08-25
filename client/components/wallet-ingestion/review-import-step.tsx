@@ -84,6 +84,7 @@ export function ReviewImportStep({
 }: ReviewImportStepProps) {
   const [isImporting, setIsImporting] = useState(false);
   const [importProgress, setImportProgress] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [settings, setSettings] = useState(
     importSettings.reduce(
       (acc, setting) => ({

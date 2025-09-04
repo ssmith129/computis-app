@@ -2,7 +2,12 @@ import { Search, Bell, ChevronDown, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { helpAccountMenuItems } from "@/components/dashboard/menu-config";
 
 export function DashboardHeader() {
@@ -36,7 +41,10 @@ export function DashboardHeader() {
         {/* User Profile */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button type="button" className="flex items-center gap-2 focus:outline-none">
+            <button
+              type="button"
+              className="flex items-center gap-2 focus:outline-none"
+            >
               <Avatar className="h-8 w-8 bg-gray-400">
                 <AvatarFallback className="bg-gray-400 text-white">
                   <User className="h-4 w-4" />

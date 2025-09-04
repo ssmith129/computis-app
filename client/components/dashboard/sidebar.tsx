@@ -91,7 +91,6 @@ const settingsItems = [
   },
 ];
 
-
 interface DashboardSidebarProps {
   activeItem?: string;
 }
@@ -224,7 +223,6 @@ export function DashboardSidebar({
             </CollapsibleContent>
           </Collapsible>
         </SidebarGroup>
-
       </SidebarContent>
     </Sidebar>
   );

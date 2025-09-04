@@ -2,6 +2,8 @@ import { Search, Bell, ChevronDown, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { helpAccountMenuItems } from "@/components/dashboard/menu-config";
 
 export function DashboardHeader() {
   return (
@@ -32,15 +34,27 @@ export function DashboardHeader() {
         </div>
 
         {/* User Profile */}
-        <div className="flex items-center gap-2">
-          <Avatar className="h-8 w-8 bg-gray-400">
-            <AvatarFallback className="bg-gray-400 text-white">
-              <User className="h-4 w-4" />
-            </AvatarFallback>
-          </Avatar>
-          <span className="text-white font-medium">John Smith</span>
-          <ChevronDown className="h-4 w-4 text-white" />
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button type="button" className="flex items-center gap-2 focus:outline-none">
+              <Avatar className="h-8 w-8 bg-gray-400">
+                <AvatarFallback className="bg-gray-400 text-white">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-white font-medium">John Smith</span>
+              <ChevronDown className="h-4 w-4 text-white" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            {helpAccountMenuItems.map((item) => (
+              <DropdownMenuItem key={item.title} className="cursor-pointer">
+                <item.icon className="mr-2 h-4 w-4" />
+                <span>{item.title}</span>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );

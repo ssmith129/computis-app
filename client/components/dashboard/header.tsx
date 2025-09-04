@@ -1,4 +1,4 @@
-import { Search, Bell, ChevronDown, User } from "lucide-react";
+import { Search, ChevronDown, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { NotificationsDropdown } from "@/components/dashboard/notifications-dropdown";

@@ -5,9 +5,7 @@ import {
   Users,
   FileText,
   Settings,
-  HelpCircle,
   User,
-  Keyboard,
   ChevronDown,
   TrendingUp,
   Download,
@@ -93,20 +91,6 @@ const settingsItems = [
   },
 ];
 
-const helpItems = [
-  {
-    title: "My Account",
-    icon: User,
-  },
-  {
-    title: "Help Page",
-    icon: HelpCircle,
-  },
-  {
-    title: "Keyboard Shortcuts",
-    icon: Keyboard,
-  },
-];
 
 interface DashboardSidebarProps {
   activeItem?: string;
@@ -241,33 +225,6 @@ export function DashboardSidebar({
           </Collapsible>
         </SidebarGroup>
 
-        {/* Help & Account Section */}
-        <SidebarGroup>
-          <Collapsible defaultOpen className="group/collapsible">
-            <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between text-[#a3a3a3] hover:text-white font-semibold text-sm">
-                Help & Account
-                <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-              </CollapsibleTrigger>
-            </SidebarGroupLabel>
-            <CollapsibleContent>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {helpItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white">
-                        <item.icon className="h-5 w-5" />
-                        <span className="font-semibold text-sm">
-                          {item.title}
-                        </span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </CollapsibleContent>
-          </Collapsible>
-        </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );

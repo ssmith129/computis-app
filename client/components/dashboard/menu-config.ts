@@ -1,3 +1,4 @@
+import type React from "react";
 import { HelpCircle, Keyboard, User } from "lucide-react";
 
 export interface HelpAccountMenuItem {

@@ -1,7 +1,7 @@
 import { Search, Bell, ChevronDown, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { NotificationsDropdown } from "@/components/dashboard/notifications-dropdown";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,18 +25,7 @@ export function DashboardHeader() {
       {/* Right side - Notifications and User */}
       <div className="flex items-center gap-6">
         {/* Notifications */}
-        <div className="relative">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-white hover:bg-sidebar-accent"
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
-          <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-            3
-          </div>
-        </div>
+        <NotificationsDropdown />
 
         {/* User Profile */}
         <DropdownMenu>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Plus, Wallet, ArrowRight, CheckCircle, AlertCircle, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -75,16 +76,10 @@ const getStatusBadge = (status: string) => {
 
 export function WalletsContent() {
   return (
-    <div className="flex-1 h-0 p-6 bg-background overflow-auto">
+    <div className="flex-1 h-0 bg-background overflow-auto pt-0 px-6 pb-6">
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="space-y-4">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Wallets and Exchanges</h1>
-            <p className="text-muted-foreground">Connect and manage your crypto wallets and exchange accounts</p>
-          </div>
-
-          <div className="flex gap-2">
+        {/* Page header moved to route-level */}
+        <div className="flex gap-2 mt-4 self-center w-auto max-w-[500px]">
             <Button className="gap-0" asChild>
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
@@ -97,7 +92,6 @@ export function WalletsContent() {
                 Add Exchange
               </Link>
             </Button>
-          </div>
         </div>
 
         {/* Stats Overview */}

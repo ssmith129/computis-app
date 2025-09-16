@@ -29,7 +29,7 @@ export function TransactionsContent() {
           </div>
 
           {/* Filters */}
-          <div className="space-y-3 lg:space-y-0 lg:flex lg:flex-wrap lg:gap-4">
+          <div className="flex flex-wrap gap-4 mt-5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-sm text-muted-foreground whitespace-nowrap">
                 Confidence:

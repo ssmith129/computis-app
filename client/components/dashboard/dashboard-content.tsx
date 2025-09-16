@@ -8,8 +8,8 @@ export function DashboardContent() {
   return (
     <div className="flex-1 h-0 bg-gray-50 overflow-auto">
       {/* Page Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-6">
-        <div className="max-w-7xl mx-auto">
+      <div className="bg-white border-b border-gray-200 px-6 py-6 text-left">
+        <div className="max-w-7xl mx-auto text-left">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-500 mt-1">
             View all your key metrics and data here

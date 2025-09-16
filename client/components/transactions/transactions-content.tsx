@@ -19,15 +19,8 @@ export function TransactionsContent() {
   return (
     <div className="flex-1 h-0 bg-background overflow-auto pt-5 px-6 pb-6">
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
+        {/* Header replaced by page-level header */}
         <div className="space-y-4">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Transactions</h1>
-            <p className="text-muted-foreground">
-              Review and manage classified crypto transactions
-            </p>
-          </div>
-
           {/* Filters */}
           <div className="flex flex-wrap gap-4 mt-5">
             <div className="flex flex-wrap items-center gap-2">

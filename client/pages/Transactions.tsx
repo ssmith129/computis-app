@@ -13,7 +13,9 @@ export default function Transactions() {
           <div className="bg-white border-b border-gray-200 px-6 py-6 text-left">
             <div className="max-w-7xl mx-auto text-left">
               <h1 className="text-2xl font-bold text-gray-900">Transactions</h1>
-              <p className="text-gray-500 mt-1">Review and manage classified crypto transactions</p>
+              <p className="text-gray-500 mt-1">
+                Review and manage classified crypto transactions
+              </p>
             </div>
           </div>
           <TransactionsContent />

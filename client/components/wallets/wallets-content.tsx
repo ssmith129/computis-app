@@ -2,7 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Plus, Wallet, ArrowRight, CheckCircle, AlertCircle, Clock } from "lucide-react";
+import {
+  Plus,
+  Wallet,
+  ArrowRight,
+  CheckCircle,
+  AlertCircle,
+  Clock,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const mockWallets = [
@@ -14,27 +21,27 @@ const mockWallets = [
     status: "Connected",
     transactions: 156,
     lastSync: "2 hours ago",
-    icon: "🦊"
+    icon: "🦊",
   },
   {
-    id: "2", 
+    id: "2",
     name: "Coinbase Pro",
     type: "Exchange",
     address: "coinbase-pro",
     status: "Connected",
     transactions: 89,
     lastSync: "1 hour ago",
-    icon: "🔷"
+    icon: "🔷",
   },
   {
     id: "3",
     name: "Binance",
-    type: "Exchange", 
+    type: "Exchange",
     address: "binance-main",
     status: "Syncing",
     transactions: 234,
     lastSync: "Syncing...",
-    icon: "🟡"
+    icon: "🟡",
   },
   {
     id: "4",
@@ -44,8 +51,8 @@ const mockWallets = [
     status: "Connected",
     transactions: 42,
     lastSync: "3 hours ago",
-    icon: "🔒"
-  }
+    icon: "🔒",
+  },
 ];
 
 const getStatusIcon = (status: string) => {
@@ -80,18 +87,18 @@ export function WalletsContent() {
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Page header moved to route-level */}
         <div className="flex gap-2 mt-4 self-center w-auto max-w-[500px]">
-            <Button className="gap-0" asChild>
-              <Link to="/wallet-ingestion">
-                <Plus className="h-4 w-4 mr-2" />
-                Add Wallet
-              </Link>
-            </Button>
-            <Button variant="outline" className="gap-0" asChild>
-              <Link to="/wallet-ingestion">
-                <Plus className="h-4 w-4 mr-2" />
-                Add Exchange
-              </Link>
-            </Button>
+          <Button className="gap-0" asChild>
+            <Link to="/wallet-ingestion">
+              <Plus className="h-4 w-4 mr-2" />
+              Add Wallet
+            </Link>
+          </Button>
+          <Button variant="outline" className="gap-0" asChild>
+            <Link to="/wallet-ingestion">
+              <Plus className="h-4 w-4 mr-2" />
+              Add Exchange
+            </Link>
+          </Button>
         </div>
 
         {/* Stats Overview */}
@@ -105,7 +112,9 @@ export function WalletsContent() {
           <Card>
             <CardContent className="p-4">
               <div className="text-2xl font-bold">521</div>
-              <p className="text-sm text-muted-foreground">Total Transactions</p>
+              <p className="text-sm text-muted-foreground">
+                Total Transactions
+              </p>
             </CardContent>
           </Card>
           <Card>
@@ -144,7 +153,9 @@ export function WalletsContent() {
               <CardContent className="space-y-4">
                 {/* Address */}
                 <div>
-                  <p className="text-sm text-muted-foreground">Address/Account</p>
+                  <p className="text-sm text-muted-foreground">
+                    Address/Account
+                  </p>
                   <p className="font-mono text-sm">{wallet.address}</p>
                 </div>
 
@@ -202,30 +213,42 @@ export function WalletsContent() {
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <div>
                     <p className="font-medium">Coinbase Pro sync completed</p>
-                    <p className="text-sm text-muted-foreground">15 new transactions imported</p>
+                    <p className="text-sm text-muted-foreground">
+                      15 new transactions imported
+                    </p>
                   </div>
                 </div>
-                <span className="text-sm text-muted-foreground">1 hour ago</span>
+                <span className="text-sm text-muted-foreground">
+                  1 hour ago
+                </span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-muted">
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-blue-500" />
                   <div>
                     <p className="font-medium">Binance sync in progress</p>
-                    <p className="text-sm text-muted-foreground">Fetching recent transactions...</p>
+                    <p className="text-sm text-muted-foreground">
+                      Fetching recent transactions...
+                    </p>
                   </div>
                 </div>
-                <span className="text-sm text-muted-foreground">2 hours ago</span>
+                <span className="text-sm text-muted-foreground">
+                  2 hours ago
+                </span>
               </div>
               <div className="flex items-center justify-between py-2">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <div>
                     <p className="font-medium">MetaMask wallet connected</p>
-                    <p className="text-sm text-muted-foreground">42 transactions imported</p>
+                    <p className="text-sm text-muted-foreground">
+                      42 transactions imported
+                    </p>
                   </div>
                 </div>
-                <span className="text-sm text-muted-foreground">3 hours ago</span>
+                <span className="text-sm text-muted-foreground">
+                  3 hours ago
+                </span>
               </div>
             </div>
           </CardContent>

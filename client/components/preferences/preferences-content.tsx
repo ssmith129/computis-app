@@ -4,14 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Save, 
-  Palette, 
-  Monitor, 
+import {
+  Save,
+  Palette,
+  Monitor,
   Smartphone,
   Layout,
   Bell,
@@ -24,7 +30,7 @@ import {
   Settings,
   RefreshCw,
   Volume2,
-  VolumeX
+  VolumeX,
 } from "lucide-react";
 
 export function PreferencesContent() {
@@ -38,43 +44,43 @@ export function PreferencesContent() {
     density: "comfortable",
     animations: true,
     reducedMotion: false,
-    
+
     // Layout
     sidebarPosition: "left",
     sidebarWidth: 264,
     tableSize: "medium",
     showGridLines: true,
     compactMode: false,
-    
+
     // Behavior
     autoSave: true,
     autoRefresh: true,
     refreshInterval: 30,
     confirmActions: true,
     soundEffects: false,
-    
+
     // Language & Region
     language: "en-US",
     dateFormat: "MM/DD/YYYY",
     timeFormat: "12h",
     numberFormat: "US",
-    
+
     // Accessibility
     screenReader: false,
     highContrast: false,
     focusIndicators: true,
-    keyboardNavigation: true
+    keyboardNavigation: true,
   });
 
   const handleSave = async (section: string) => {
     setIsLoading(true);
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
   };
 
   const updatePreference = (key: string, value: any) => {
-    setPreferences(prev => ({ ...prev, [key]: value }));
+    setPreferences((prev) => ({ ...prev, [key]: value }));
   };
 
   const colorSchemes = [
@@ -82,7 +88,7 @@ export function PreferencesContent() {
     { value: "green", label: "Green", color: "bg-green-500" },
     { value: "purple", label: "Purple", color: "bg-purple-500" },
     { value: "orange", label: "Orange", color: "bg-orange-500" },
-    { value: "red", label: "Red", color: "bg-red-500" }
+    { value: "red", label: "Red", color: "bg-red-500" },
   ];
 
   return (
@@ -92,14 +98,20 @@ export function PreferencesContent() {
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
             <h1 className="text-2xl font-bold text-foreground">Preferences</h1>
-            <p className="text-muted-foreground">Customize your application experience</p>
+            <p className="text-muted-foreground">
+              Customize your application experience
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
               <RefreshCw className="h-4 w-4 mr-2" />
               Reset to Defaults
             </Button>
-            <Button size="sm" onClick={() => handleSave("all")} disabled={isLoading}>
+            <Button
+              size="sm"
+              onClick={() => handleSave("all")}
+              disabled={isLoading}
+            >
               <Save className="h-4 w-4 mr-2" />
               {isLoading ? "Saving..." : "Save All"}
             </Button>
@@ -134,10 +146,16 @@ export function PreferencesContent() {
               <CardContent className="space-y-6">
                 <div className="space-y-3">
                   <Label>Theme</Label>
-                  <RadioGroup value={preferences.theme} onValueChange={(value) => updatePreference("theme", value)}>
+                  <RadioGroup
+                    value={preferences.theme}
+                    onValueChange={(value) => updatePreference("theme", value)}
+                  >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="light" id="light" />
-                      <Label htmlFor="light" className="flex items-center gap-2">
+                      <Label
+                        htmlFor="light"
+                        className="flex items-center gap-2"
+                      >
                         <Sun className="h-4 w-4" />
                         Light
                       </Label>
@@ -151,7 +169,10 @@ export function PreferencesContent() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="system" id="system" />
-                      <Label htmlFor="system" className="flex items-center gap-2">
+                      <Label
+                        htmlFor="system"
+                        className="flex items-center gap-2"
+                      >
                         <Monitor className="h-4 w-4" />
                         System
                       </Label>
@@ -165,15 +186,21 @@ export function PreferencesContent() {
                     {colorSchemes.map((scheme) => (
                       <button
                         key={scheme.value}
-                        onClick={() => updatePreference("colorScheme", scheme.value)}
+                        onClick={() =>
+                          updatePreference("colorScheme", scheme.value)
+                        }
                         className={`flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-colors ${
-                          preferences.colorScheme === scheme.value 
-                            ? "border-primary bg-primary/5" 
+                          preferences.colorScheme === scheme.value
+                            ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/50"
                         }`}
                       >
-                        <div className={`w-6 h-6 rounded-full ${scheme.color}`} />
-                        <span className="text-sm font-medium">{scheme.label}</span>
+                        <div
+                          className={`w-6 h-6 rounded-full ${scheme.color}`}
+                        />
+                        <span className="text-sm font-medium">
+                          {scheme.label}
+                        </span>
                       </button>
                     ))}
                   </div>
@@ -183,7 +210,9 @@ export function PreferencesContent() {
                   <Label>Font Size: {preferences.fontSize}px</Label>
                   <Slider
                     value={[preferences.fontSize]}
-                    onValueChange={(value) => updatePreference("fontSize", value[0])}
+                    onValueChange={(value) =>
+                      updatePreference("fontSize", value[0])
+                    }
                     min={12}
                     max={20}
                     step={1}
@@ -193,7 +222,12 @@ export function PreferencesContent() {
 
                 <div className="space-y-3">
                   <Label>Interface Density</Label>
-                  <Select value={preferences.density} onValueChange={(value) => updatePreference("density", value)}>
+                  <Select
+                    value={preferences.density}
+                    onValueChange={(value) =>
+                      updatePreference("density", value)
+                    }
+                  >
                     <SelectTrigger className="w-48">
                       <SelectValue />
                     </SelectTrigger>
@@ -209,26 +243,37 @@ export function PreferencesContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Animations</Label>
-                      <p className="text-sm text-muted-foreground">Enable smooth transitions and animations</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable smooth transitions and animations
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.animations}
-                      onCheckedChange={(checked) => updatePreference("animations", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("animations", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Reduced Motion</Label>
-                      <p className="text-sm text-muted-foreground">Minimize motion for accessibility</p>
+                      <p className="text-sm text-muted-foreground">
+                        Minimize motion for accessibility
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.reducedMotion}
-                      onCheckedChange={(checked) => updatePreference("reducedMotion", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("reducedMotion", checked)
+                      }
                     />
                   </div>
                 </div>
 
-                <Button onClick={() => handleSave("appearance")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("appearance")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Appearance
                 </Button>
@@ -248,7 +293,12 @@ export function PreferencesContent() {
               <CardContent className="space-y-6">
                 <div className="space-y-3">
                   <Label>Sidebar Position</Label>
-                  <RadioGroup value={preferences.sidebarPosition} onValueChange={(value) => updatePreference("sidebarPosition", value)}>
+                  <RadioGroup
+                    value={preferences.sidebarPosition}
+                    onValueChange={(value) =>
+                      updatePreference("sidebarPosition", value)
+                    }
+                  >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="left" id="left" />
                       <Label htmlFor="left">Left</Label>
@@ -264,7 +314,9 @@ export function PreferencesContent() {
                   <Label>Sidebar Width: {preferences.sidebarWidth}px</Label>
                   <Slider
                     value={[preferences.sidebarWidth]}
-                    onValueChange={(value) => updatePreference("sidebarWidth", value[0])}
+                    onValueChange={(value) =>
+                      updatePreference("sidebarWidth", value[0])
+                    }
                     min={200}
                     max={400}
                     step={8}
@@ -274,7 +326,12 @@ export function PreferencesContent() {
 
                 <div className="space-y-3">
                   <Label>Table Size</Label>
-                  <Select value={preferences.tableSize} onValueChange={(value) => updatePreference("tableSize", value)}>
+                  <Select
+                    value={preferences.tableSize}
+                    onValueChange={(value) =>
+                      updatePreference("tableSize", value)
+                    }
+                  >
                     <SelectTrigger className="w-48">
                       <SelectValue />
                     </SelectTrigger>
@@ -290,26 +347,37 @@ export function PreferencesContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Show Grid Lines</Label>
-                      <p className="text-sm text-muted-foreground">Display grid lines in tables</p>
+                      <p className="text-sm text-muted-foreground">
+                        Display grid lines in tables
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.showGridLines}
-                      onCheckedChange={(checked) => updatePreference("showGridLines", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("showGridLines", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Compact Mode</Label>
-                      <p className="text-sm text-muted-foreground">Use compact spacing throughout the app</p>
+                      <p className="text-sm text-muted-foreground">
+                        Use compact spacing throughout the app
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.compactMode}
-                      onCheckedChange={(checked) => updatePreference("compactMode", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("compactMode", checked)
+                      }
                     />
                   </div>
                 </div>
 
-                <Button onClick={() => handleSave("layout")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("layout")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Layout
                 </Button>
@@ -331,53 +399,77 @@ export function PreferencesContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Auto Save</Label>
-                      <p className="text-sm text-muted-foreground">Automatically save changes</p>
+                      <p className="text-sm text-muted-foreground">
+                        Automatically save changes
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.autoSave}
-                      onCheckedChange={(checked) => updatePreference("autoSave", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("autoSave", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Auto Refresh</Label>
-                      <p className="text-sm text-muted-foreground">Automatically refresh data</p>
+                      <p className="text-sm text-muted-foreground">
+                        Automatically refresh data
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.autoRefresh}
-                      onCheckedChange={(checked) => updatePreference("autoRefresh", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("autoRefresh", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Confirm Actions</Label>
-                      <p className="text-sm text-muted-foreground">Show confirmation dialogs for destructive actions</p>
+                      <p className="text-sm text-muted-foreground">
+                        Show confirmation dialogs for destructive actions
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.confirmActions}
-                      onCheckedChange={(checked) => updatePreference("confirmActions", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("confirmActions", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Sound Effects</Label>
-                      <p className="text-sm text-muted-foreground">Play sounds for notifications and actions</p>
+                      <p className="text-sm text-muted-foreground">
+                        Play sounds for notifications and actions
+                      </p>
                     </div>
                     <div className="flex items-center gap-2">
-                      {preferences.soundEffects ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-                      <Switch 
+                      {preferences.soundEffects ? (
+                        <Volume2 className="h-4 w-4" />
+                      ) : (
+                        <VolumeX className="h-4 w-4" />
+                      )}
+                      <Switch
                         checked={preferences.soundEffects}
-                        onCheckedChange={(checked) => updatePreference("soundEffects", checked)}
+                        onCheckedChange={(checked) =>
+                          updatePreference("soundEffects", checked)
+                        }
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Label>Auto Refresh Interval: {preferences.refreshInterval} seconds</Label>
+                  <Label>
+                    Auto Refresh Interval: {preferences.refreshInterval} seconds
+                  </Label>
                   <Slider
                     value={[preferences.refreshInterval]}
-                    onValueChange={(value) => updatePreference("refreshInterval", value[0])}
+                    onValueChange={(value) =>
+                      updatePreference("refreshInterval", value[0])
+                    }
                     min={10}
                     max={300}
                     step={10}
@@ -391,7 +483,12 @@ export function PreferencesContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="language">Language</Label>
-                      <Select value={preferences.language} onValueChange={(value) => updatePreference("language", value)}>
+                      <Select
+                        value={preferences.language}
+                        onValueChange={(value) =>
+                          updatePreference("language", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
@@ -406,7 +503,12 @@ export function PreferencesContent() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="dateFormat">Date Format</Label>
-                      <Select value={preferences.dateFormat} onValueChange={(value) => updatePreference("dateFormat", value)}>
+                      <Select
+                        value={preferences.dateFormat}
+                        onValueChange={(value) =>
+                          updatePreference("dateFormat", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
@@ -414,14 +516,19 @@ export function PreferencesContent() {
                           <SelectItem value="MM/DD/YYYY">MM/DD/YYYY</SelectItem>
                           <SelectItem value="DD/MM/YYYY">DD/MM/YYYY</SelectItem>
                           <SelectItem value="YYYY-MM-DD">YYYY-MM-DD</SelectItem>
-                          <SelectItem value="DD MMM YYYY">DD MMM YYYY</SelectItem>
+                          <SelectItem value="DD MMM YYYY">
+                            DD MMM YYYY
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
                 </div>
 
-                <Button onClick={() => handleSave("behavior")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("behavior")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Behavior
                 </Button>
@@ -443,67 +550,94 @@ export function PreferencesContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Screen Reader Support</Label>
-                      <p className="text-sm text-muted-foreground">Enable screen reader optimizations</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable screen reader optimizations
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.screenReader}
-                      onCheckedChange={(checked) => updatePreference("screenReader", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("screenReader", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>High Contrast Mode</Label>
-                      <p className="text-sm text-muted-foreground">Increase contrast for better visibility</p>
+                      <p className="text-sm text-muted-foreground">
+                        Increase contrast for better visibility
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.highContrast}
-                      onCheckedChange={(checked) => updatePreference("highContrast", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("highContrast", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Focus Indicators</Label>
-                      <p className="text-sm text-muted-foreground">Show visible focus indicators</p>
+                      <p className="text-sm text-muted-foreground">
+                        Show visible focus indicators
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={preferences.focusIndicators}
-                      onCheckedChange={(checked) => updatePreference("focusIndicators", checked)}
+                      onCheckedChange={(checked) =>
+                        updatePreference("focusIndicators", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Keyboard Navigation</Label>
-                      <p className="text-sm text-muted-foreground">Enable full keyboard navigation</p>
+                      <p className="text-sm text-muted-foreground">
+                        Enable full keyboard navigation
+                      </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Keyboard className="h-4 w-4" />
-                      <Switch 
+                      <Switch
                         checked={preferences.keyboardNavigation}
-                        onCheckedChange={(checked) => updatePreference("keyboardNavigation", checked)}
+                        onCheckedChange={(checked) =>
+                          updatePreference("keyboardNavigation", checked)
+                        }
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <h4 className="font-medium text-blue-900 mb-2">Keyboard Shortcuts</h4>
+                  <h4 className="font-medium text-blue-900 mb-2">
+                    Keyboard Shortcuts
+                  </h4>
                   <div className="space-y-2 text-sm text-blue-800">
                     <div className="flex justify-between">
                       <span>Open search</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">Ctrl + K</kbd>
+                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                        Ctrl + K
+                      </kbd>
                     </div>
                     <div className="flex justify-between">
                       <span>Navigate tabs</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">Ctrl + 1-9</kbd>
+                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                        Ctrl + 1-9
+                      </kbd>
                     </div>
                     <div className="flex justify-between">
                       <span>Save</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">Ctrl + S</kbd>
+                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                        Ctrl + S
+                      </kbd>
                     </div>
                   </div>
                 </div>
 
-                <Button onClick={() => handleSave("accessibility")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("accessibility")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Accessibility
                 </Button>

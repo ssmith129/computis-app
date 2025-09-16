@@ -20,20 +20,22 @@ export function RuleEngineContent() {
         <div className="space-y-4">
           <div>
             <h1 className="text-2xl font-bold text-foreground">Rule Engine</h1>
-            <p className="text-muted-foreground">Configure and manage rules to classify and merge transactions</p>
+            <p className="text-muted-foreground">
+              Configure and manage rules to classify and merge transactions
+            </p>
           </div>
 
           {/* Top Actions */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             {/* Rule Type Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-auto"
+            >
               <TabsList className="grid w-full grid-cols-5">
                 {ruleTabs.map((tab) => (
-                  <TabsTrigger 
-                    key={tab} 
-                    value={tab}
-                    className="text-sm"
-                  >
+                  <TabsTrigger key={tab} value={tab} className="text-sm">
                     {tab}
                   </TabsTrigger>
                 ))}
@@ -46,10 +48,7 @@ export function RuleEngineContent() {
                 <FileText className="h-4 w-4 mr-2" />
                 View Audit Log
               </Button>
-              <Button 
-                size="sm"
-                onClick={() => setIsCreateModalOpen(true)}
-              >
+              <Button size="sm" onClick={() => setIsCreateModalOpen(true)}>
                 <Plus className="h-4 w-4 mr-2" />
                 New Rule
               </Button>
@@ -74,7 +73,11 @@ export function RuleEngineContent() {
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 Rule Conflicts
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   View All
                 </Button>
               </CardTitle>
@@ -86,7 +89,7 @@ export function RuleEngineContent() {
         </div>
 
         {/* Create Rule Modal */}
-        <CreateRuleModal 
+        <CreateRuleModal
           open={isCreateModalOpen}
           onOpenChange={setIsCreateModalOpen}
         />

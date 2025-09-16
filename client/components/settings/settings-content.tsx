@@ -4,16 +4,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Save, 
-  User, 
-  Building, 
-  Globe, 
-  Shield, 
+import {
+  Save,
+  User,
+  Building,
+  Globe,
+  Shield,
   Bell,
   CreditCard,
   Database,
@@ -24,7 +30,7 @@ import {
   RefreshCw,
   AlertTriangle,
   CheckCircle,
-  Info
+  Info,
 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -34,45 +40,45 @@ export function SettingsContent() {
   const [settings, setSettings] = useState({
     // Account settings
     firstName: "John",
-    lastName: "Smith", 
+    lastName: "Smith",
     email: "john.smith@company.com",
     company: "Crypto Advisors LLC",
     phone: "+1 (555) 123-4567",
     timezone: "America/New_York",
-    
+
     // Preferences
     defaultCurrency: "USD",
     costBasisMethod: "FIFO",
     roundingPrecision: "2",
     taxYear: "2023",
-    
+
     // Notifications
     emailNotifications: true,
     pushNotifications: false,
     weeklyReports: true,
     monthlyReports: true,
     anomalyAlerts: true,
-    
+
     // Security
     twoFactorAuth: true,
     apiAccess: false,
     sessionTimeout: "60",
-    
+
     // Data Management
     autoBackup: true,
     dataRetention: "7",
-    exportFormat: "CSV"
+    exportFormat: "CSV",
   });
 
   const handleSave = async (section: string) => {
     setIsLoading(true);
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
   };
 
   const updateSetting = (key: string, value: any) => {
-    setSettings(prev => ({ ...prev, [key]: value }));
+    setSettings((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -81,15 +87,23 @@ export function SettingsContent() {
       <div className="border-b border-border bg-background sticky top-0 z-10">
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-foreground">General Settings</h1>
-            <p className="text-muted-foreground">Manage your account and application preferences</p>
+            <h1 className="text-2xl font-bold text-foreground">
+              General Settings
+            </h1>
+            <p className="text-muted-foreground">
+              Manage your account and application preferences
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
               <RefreshCw className="h-4 w-4 mr-2" />
               Reset to Defaults
             </Button>
-            <Button size="sm" onClick={() => handleSave("all")} disabled={isLoading}>
+            <Button
+              size="sm"
+              onClick={() => handleSave("all")}
+              disabled={isLoading}
+            >
               <Save className="h-4 w-4 mr-2" />
               {isLoading ? "Saving..." : "Save All"}
             </Button>
@@ -126,23 +140,27 @@ export function SettingsContent() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input 
+                    <Input
                       id="firstName"
                       value={settings.firstName}
-                      onChange={(e) => updateSetting("firstName", e.target.value)}
+                      onChange={(e) =>
+                        updateSetting("firstName", e.target.value)
+                      }
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input 
+                    <Input
                       id="lastName"
                       value={settings.lastName}
-                      onChange={(e) => updateSetting("lastName", e.target.value)}
+                      onChange={(e) =>
+                        updateSetting("lastName", e.target.value)
+                      }
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
-                    <Input 
+                    <Input
                       id="email"
                       type="email"
                       value={settings.email}
@@ -151,14 +169,17 @@ export function SettingsContent() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
-                    <Input 
+                    <Input
                       id="phone"
                       value={settings.phone}
                       onChange={(e) => updateSetting("phone", e.target.value)}
                     />
                   </div>
                 </div>
-                <Button onClick={() => handleSave("personal")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("personal")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Personal Info
                 </Button>
@@ -176,7 +197,7 @@ export function SettingsContent() {
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="company">Company Name</Label>
-                  <Input 
+                  <Input
                     id="company"
                     value={settings.company}
                     onChange={(e) => updateSetting("company", e.target.value)}
@@ -184,20 +205,34 @@ export function SettingsContent() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="timezone">Timezone</Label>
-                  <Select value={settings.timezone} onValueChange={(value) => updateSetting("timezone", value)}>
+                  <Select
+                    value={settings.timezone}
+                    onValueChange={(value) => updateSetting("timezone", value)}
+                  >
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="America/New_York">Eastern Time (ET)</SelectItem>
-                      <SelectItem value="America/Chicago">Central Time (CT)</SelectItem>
-                      <SelectItem value="America/Denver">Mountain Time (MT)</SelectItem>
-                      <SelectItem value="America/Los_Angeles">Pacific Time (PT)</SelectItem>
+                      <SelectItem value="America/New_York">
+                        Eastern Time (ET)
+                      </SelectItem>
+                      <SelectItem value="America/Chicago">
+                        Central Time (CT)
+                      </SelectItem>
+                      <SelectItem value="America/Denver">
+                        Mountain Time (MT)
+                      </SelectItem>
+                      <SelectItem value="America/Los_Angeles">
+                        Pacific Time (PT)
+                      </SelectItem>
                       <SelectItem value="UTC">UTC</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <Button onClick={() => handleSave("organization")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("organization")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Organization Info
                 </Button>
@@ -218,7 +253,12 @@ export function SettingsContent() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="defaultCurrency">Default Currency</Label>
-                    <Select value={settings.defaultCurrency} onValueChange={(value) => updateSetting("defaultCurrency", value)}>
+                    <Select
+                      value={settings.defaultCurrency}
+                      onValueChange={(value) =>
+                        updateSetting("defaultCurrency", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -226,27 +266,49 @@ export function SettingsContent() {
                         <SelectItem value="USD">USD - US Dollar</SelectItem>
                         <SelectItem value="EUR">EUR - Euro</SelectItem>
                         <SelectItem value="GBP">GBP - British Pound</SelectItem>
-                        <SelectItem value="CAD">CAD - Canadian Dollar</SelectItem>
+                        <SelectItem value="CAD">
+                          CAD - Canadian Dollar
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="costBasisMethod">Cost Basis Method</Label>
-                    <Select value={settings.costBasisMethod} onValueChange={(value) => updateSetting("costBasisMethod", value)}>
+                    <Select
+                      value={settings.costBasisMethod}
+                      onValueChange={(value) =>
+                        updateSetting("costBasisMethod", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="FIFO">FIFO (First In, First Out)</SelectItem>
-                        <SelectItem value="LIFO">LIFO (Last In, First Out)</SelectItem>
-                        <SelectItem value="HIFO">HIFO (Highest In, First Out)</SelectItem>
-                        <SelectItem value="Specific">Specific Identification</SelectItem>
+                        <SelectItem value="FIFO">
+                          FIFO (First In, First Out)
+                        </SelectItem>
+                        <SelectItem value="LIFO">
+                          LIFO (Last In, First Out)
+                        </SelectItem>
+                        <SelectItem value="HIFO">
+                          HIFO (Highest In, First Out)
+                        </SelectItem>
+                        <SelectItem value="Specific">
+                          Specific Identification
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="roundingPrecision">Rounding Precision</Label>
-                    <Select value={settings.roundingPrecision} onValueChange={(value) => updateSetting("roundingPrecision", value)}>
+                    <Label htmlFor="roundingPrecision">
+                      Rounding Precision
+                    </Label>
+                    <Select
+                      value={settings.roundingPrecision}
+                      onValueChange={(value) =>
+                        updateSetting("roundingPrecision", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -260,7 +322,10 @@ export function SettingsContent() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="taxYear">Default Tax Year</Label>
-                    <Select value={settings.taxYear} onValueChange={(value) => updateSetting("taxYear", value)}>
+                    <Select
+                      value={settings.taxYear}
+                      onValueChange={(value) => updateSetting("taxYear", value)}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -272,7 +337,10 @@ export function SettingsContent() {
                     </Select>
                   </div>
                 </div>
-                <Button onClick={() => handleSave("preferences")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("preferences")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Preferences
                 </Button>
@@ -293,55 +361,78 @@ export function SettingsContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Email Notifications</Label>
-                      <p className="text-sm text-muted-foreground">Receive notifications via email</p>
+                      <p className="text-sm text-muted-foreground">
+                        Receive notifications via email
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.emailNotifications}
-                      onCheckedChange={(checked) => updateSetting("emailNotifications", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("emailNotifications", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Push Notifications</Label>
-                      <p className="text-sm text-muted-foreground">Receive push notifications in browser</p>
+                      <p className="text-sm text-muted-foreground">
+                        Receive push notifications in browser
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.pushNotifications}
-                      onCheckedChange={(checked) => updateSetting("pushNotifications", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("pushNotifications", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Weekly Reports</Label>
-                      <p className="text-sm text-muted-foreground">Receive weekly summary reports</p>
+                      <p className="text-sm text-muted-foreground">
+                        Receive weekly summary reports
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.weeklyReports}
-                      onCheckedChange={(checked) => updateSetting("weeklyReports", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("weeklyReports", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Monthly Reports</Label>
-                      <p className="text-sm text-muted-foreground">Receive monthly summary reports</p>
+                      <p className="text-sm text-muted-foreground">
+                        Receive monthly summary reports
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.monthlyReports}
-                      onCheckedChange={(checked) => updateSetting("monthlyReports", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("monthlyReports", checked)
+                      }
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Anomaly Alerts</Label>
-                      <p className="text-sm text-muted-foreground">Get notified about data anomalies</p>
+                      <p className="text-sm text-muted-foreground">
+                        Get notified about data anomalies
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.anomalyAlerts}
-                      onCheckedChange={(checked) => updateSetting("anomalyAlerts", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("anomalyAlerts", checked)
+                      }
                     />
                   </div>
                 </div>
-                <Button onClick={() => handleSave("notifications")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("notifications")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Notification Settings
                 </Button>
@@ -362,31 +453,50 @@ export function SettingsContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Two-Factor Authentication</Label>
-                      <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
+                      <p className="text-sm text-muted-foreground">
+                        Add an extra layer of security
+                      </p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Badge variant={settings.twoFactorAuth ? "default" : "secondary"}>
+                      <Badge
+                        variant={
+                          settings.twoFactorAuth ? "default" : "secondary"
+                        }
+                      >
                         {settings.twoFactorAuth ? "Enabled" : "Disabled"}
                       </Badge>
-                      <Switch 
+                      <Switch
                         checked={settings.twoFactorAuth}
-                        onCheckedChange={(checked) => updateSetting("twoFactorAuth", checked)}
+                        onCheckedChange={(checked) =>
+                          updateSetting("twoFactorAuth", checked)
+                        }
                       />
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>API Access</Label>
-                      <p className="text-sm text-muted-foreground">Allow API access to your account</p>
+                      <p className="text-sm text-muted-foreground">
+                        Allow API access to your account
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.apiAccess}
-                      onCheckedChange={(checked) => updateSetting("apiAccess", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("apiAccess", checked)
+                      }
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="sessionTimeout">Session Timeout (minutes)</Label>
-                    <Select value={settings.sessionTimeout} onValueChange={(value) => updateSetting("sessionTimeout", value)}>
+                    <Label htmlFor="sessionTimeout">
+                      Session Timeout (minutes)
+                    </Label>
+                    <Select
+                      value={settings.sessionTimeout}
+                      onValueChange={(value) =>
+                        updateSetting("sessionTimeout", value)
+                      }
+                    >
                       <SelectTrigger className="w-48">
                         <SelectValue />
                       </SelectTrigger>
@@ -415,7 +525,10 @@ export function SettingsContent() {
                   </div>
                 </div>
 
-                <Button onClick={() => handleSave("security")} disabled={isLoading}>
+                <Button
+                  onClick={() => handleSave("security")}
+                  disabled={isLoading}
+                >
                   <Save className="h-4 w-4 mr-2" />
                   Save Security Settings
                 </Button>
@@ -436,16 +549,27 @@ export function SettingsContent() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Automatic Backups</Label>
-                      <p className="text-sm text-muted-foreground">Automatically backup your data daily</p>
+                      <p className="text-sm text-muted-foreground">
+                        Automatically backup your data daily
+                      </p>
                     </div>
-                    <Switch 
+                    <Switch
                       checked={settings.autoBackup}
-                      onCheckedChange={(checked) => updateSetting("autoBackup", checked)}
+                      onCheckedChange={(checked) =>
+                        updateSetting("autoBackup", checked)
+                      }
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="dataRetention">Data Retention (years)</Label>
-                    <Select value={settings.dataRetention} onValueChange={(value) => updateSetting("dataRetention", value)}>
+                    <Label htmlFor="dataRetention">
+                      Data Retention (years)
+                    </Label>
+                    <Select
+                      value={settings.dataRetention}
+                      onValueChange={(value) =>
+                        updateSetting("dataRetention", value)
+                      }
+                    >
                       <SelectTrigger className="w-48">
                         <SelectValue />
                       </SelectTrigger>
@@ -460,7 +584,12 @@ export function SettingsContent() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="exportFormat">Default Export Format</Label>
-                    <Select value={settings.exportFormat} onValueChange={(value) => updateSetting("exportFormat", value)}>
+                    <Select
+                      value={settings.exportFormat}
+                      onValueChange={(value) =>
+                        updateSetting("exportFormat", value)
+                      }
+                    >
                       <SelectTrigger className="w-48">
                         <SelectValue />
                       </SelectTrigger>
@@ -485,7 +614,10 @@ export function SettingsContent() {
                       <Upload className="h-4 w-4 mr-2" />
                       Import Data
                     </Button>
-                    <Button variant="outline" className="text-red-600 hover:text-red-700">
+                    <Button
+                      variant="outline"
+                      className="text-red-600 hover:text-red-700"
+                    >
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Delete All Data
                     </Button>
@@ -495,7 +627,8 @@ export function SettingsContent() {
                 <Alert>
                   <Info className="h-4 w-4" />
                   <AlertDescription>
-                    We recommend keeping data for at least 7 years for tax compliance purposes.
+                    We recommend keeping data for at least 7 years for tax
+                    compliance purposes.
                   </AlertDescription>
                 </Alert>
 

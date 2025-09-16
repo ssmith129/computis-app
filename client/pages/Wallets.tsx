@@ -12,8 +12,12 @@ export default function Wallets() {
           <DashboardHeader />
           <div className="bg-white border-b border-gray-200 px-6 py-6 text-left">
             <div className="max-w-7xl mx-auto text-left">
-              <h1 className="text-2xl font-bold text-gray-900">Wallets and Exchanges</h1>
-              <p className="text-gray-500 mt-1">Connect and manage your crypto wallets and exchange accounts</p>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Wallets and Exchanges
+              </h1>
+              <p className="text-gray-500 mt-1">
+                Connect and manage your crypto wallets and exchange accounts
+              </p>
             </div>
           </div>
           <WalletsContent />

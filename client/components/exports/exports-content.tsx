@@ -19,13 +19,17 @@ export function ExportsContent() {
         <div className="space-y-4">
           <div>
             <h1 className="text-2xl font-bold text-foreground">Export</h1>
-            <p className="text-muted-foreground">Generate IRS 8949, QBO, and CSV files with embedded audit logs</p>
+            <p className="text-muted-foreground">
+              Generate IRS 8949, QBO, and CSV files with embedded audit logs
+            </p>
           </div>
 
           {/* Tax Year Selection */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground">Tax Year:</span>
+              <span className="text-sm font-medium text-muted-foreground">
+                Tax Year:
+              </span>
               <div className="flex gap-1">
                 {taxYears.map((year) => (
                   <Button
@@ -39,7 +43,11 @@ export function ExportsContent() {
                   </Button>
                 ))}
               </div>
-              <Button variant="link" size="sm" className="text-blue-600 hover:text-blue-700 px-2">
+              <Button
+                variant="link"
+                size="sm"
+                className="text-blue-600 hover:text-blue-700 px-2"
+              >
                 View Audit Trail
               </Button>
             </div>
@@ -49,7 +57,10 @@ export function ExportsContent() {
                 <History className="h-4 w-4 mr-2" />
                 Export History
               </Button>
-              <Button size="sm" className="bg-yellow-500 hover:bg-yellow-600 text-white">
+              <Button
+                size="sm"
+                className="bg-yellow-500 hover:bg-yellow-600 text-white"
+              >
                 <FileText className="h-4 w-4 mr-2" />
                 Generate Now
               </Button>

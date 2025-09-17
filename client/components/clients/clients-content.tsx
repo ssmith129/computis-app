@@ -708,6 +708,85 @@ export function ClientsContent() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Add Client Dialog */}
+      <Dialog open={addOpen} onOpenChange={setAddOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Add Client</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div className="space-y-2">
+              <Label htmlFor="client-name">Name</Label>
+              <Input
+                id="client-name"
+                value={newClientName}
+                onChange={(e) => {
+                  setNewClientName(e.target.value);
+                  if (formError) setFormError(null);
+                }}
+                placeholder="Enter client name"
+              />
+              {formError && <p className="text-sm text-red-600">{formError}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label>Type</Label>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant={newClientType === "Firm" ? "default" : "outline"}
+                  onClick={() => setNewClientType("Firm")}
+                  className="h-9"
+                >
+                  Firm
+                </Button>
+                <Button
+                  type="button"
+                  variant={newClientType === "Individual" ? "default" : "outline"}
+                  onClick={() => setNewClientType("Individual")}
+                  className="h-9"
+                >
+                  Individual
+                </Button>
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setAddOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleCreateClient}>Create</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation */}
+      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete selected clients?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmDelete}>Delete</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Export Confirmation */}
+      <AlertDialog open={exportOpen} onOpenChange={setExportOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Export selected clients?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <p className="text-sm text-muted-foreground">A CSV will be generated for download.</p>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmExport}>Export</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

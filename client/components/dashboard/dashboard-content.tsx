@@ -8,8 +8,8 @@ export function DashboardContent() {
   return (
     <div className="flex-1 h-0 bg-gray-50 overflow-auto">
       {/* Page Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-6 text-left">
-        <div className="max-w-7xl mx-auto text-left">
+      <div className="border-b border-border bg-background sticky top-0 z-10">
+        <div className="flex items-center justify-between p-6 text-left">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-500 mt-1">
             View all your key metrics and data here
@@ -18,7 +18,7 @@ export function DashboardContent() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-6 space-y-6">
+      <div className="p-6 space-y-6">
         {/* Recent Uploads */}
         <RecentUploads />
 

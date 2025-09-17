@@ -18,7 +18,7 @@ export function TransactionsContent() {
 
   return (
     <div className="flex-1 h-0 bg-background overflow-auto pt-5 px-6 pb-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+      <div className="space-y-6">
         {/* Header replaced by page-level header */}
         <div className="space-y-4">
           {/* Filters */}

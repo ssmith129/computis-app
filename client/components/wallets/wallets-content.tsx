@@ -82,7 +82,7 @@ const getStatusBadge = (status: string) => {
 
 export function WalletsContent() {
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto pt-0 px-6 pb-6">
+    <div className="flex-1 h-0 bg-background overflow-auto p-7">
       <div className="space-y-6">
 
         {/* Stats Overview */}

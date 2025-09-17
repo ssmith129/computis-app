@@ -128,6 +128,16 @@ export function ExportsContent() {
           </CardContent>
         </Card>
       </div>
+      <Dialog open={historyOpen} onOpenChange={setHistoryOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Export History</DialogTitle>
+          </DialogHeader>
+          <div className="pt-2">
+            <RecentExports />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

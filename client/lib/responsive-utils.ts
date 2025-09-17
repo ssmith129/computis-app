@@ -58,6 +58,39 @@ export function useIsDesktop() {
   return ["lg", "xl", "2xl"].includes(breakpoint);
 }
 
+// Device-specific helpers (non-breaking additions)
+export const deviceBreakpoints = {
+  ipadPortrait: 834,
+  ipadLandscape: 1194,
+  desktop: 1920,
+} as const;
+
+export type ViewportKind =
+  | "mobile"
+  | "tablet-portrait"
+  | "tablet-landscape"
+  | "desktop"
+  | "desktop-2k";
+
+export function getViewportKind(width: number = typeof window !== 'undefined' ? window.innerWidth : deviceBreakpoints.desktop) : ViewportKind {
+  if (width >= 1920) return "desktop-2k";
+  if (width >= deviceBreakpoints.ipadLandscape) return "desktop";
+  if (width >= deviceBreakpoints.ipadPortrait) return "tablet-landscape";
+  if (width >= breakpoints.md) return "tablet-portrait";
+  return "mobile";
+}
+
+export function useViewportKind(): ViewportKind {
+  const [kind, setKind] = useState<ViewportKind>(getViewportKind());
+  useEffect(() => {
+    const onResize = () => setKind(getViewportKind());
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return kind;
+}
+
 // Responsive grid utilities
 export const responsiveGridClasses = {
   cards: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6",

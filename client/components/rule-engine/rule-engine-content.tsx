@@ -14,11 +14,11 @@ export function RuleEngineContent() {
   const ruleTabs = ["All", "Merge", "Income", "Expense", "Split"];
 
   return (
-    <div className="flex-1 h-0 p-7 bg-background overflow-auto">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="space-y-4">
-          <div>
+    <div className="flex-1 h-0 bg-background overflow-auto">
+      {/* Sticky page header */}
+      <div className="border-b border-border bg-background sticky top-0 z-10">
+        <div className="p-6">
+          <div className="space-y-1">
             <h1 className="text-2xl font-bold text-foreground">Rule Engine</h1>
             <p className="text-muted-foreground">
               Configure and manage rules to classify and merge transactions
@@ -26,13 +26,9 @@ export function RuleEngineContent() {
           </div>
 
           {/* Top Actions */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-4">
             {/* Rule Type Tabs */}
-            <Tabs
-              value={activeTab}
-              onValueChange={setActiveTab}
-              className="w-auto"
-            >
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
               <TabsList className="grid w-full grid-cols-5">
                 {ruleTabs.map((tab) => (
                   <TabsTrigger key={tab} value={tab} className="text-sm">
@@ -55,45 +51,42 @@ export function RuleEngineContent() {
             </div>
           </div>
         </div>
-
-        {/* Main Content */}
-        <div className="space-y-6">
-          {/* Active Rules Table */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Active Rules</CardTitle>
-            </CardHeader>
-            <CardContent className="p-0">
-              <RuleEngineTable activeTab={activeTab} />
-            </CardContent>
-          </Card>
-
-          {/* Rule Conflicts */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                Rule Conflicts
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  View All
-                </Button>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <RuleConflicts />
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Create Rule Modal */}
-        <CreateRuleModal
-          open={isCreateModalOpen}
-          onOpenChange={setIsCreateModalOpen}
-        />
       </div>
+
+      {/* Main Content */}
+      <div className="p-6 space-y-6">
+        {/* Active Rules Table */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Active Rules</CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <RuleEngineTable activeTab={activeTab} />
+          </CardContent>
+        </Card>
+
+        {/* Rule Conflicts */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center justify-between">
+              Rule Conflicts
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                View All
+              </Button>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <RuleConflicts />
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Create Rule Modal */}
+      <CreateRuleModal open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen} />
     </div>
   );
 }

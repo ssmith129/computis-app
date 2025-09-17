@@ -37,7 +37,7 @@ interface RuleEngineTableProps {
   activeTab: string;
 }
 
-const mockRules = [
+const initialRules = [
   {
     id: "1",
     name: "BTC Mining Income",

@@ -25,95 +25,59 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+export type AnomalyIssue = {
+  id: string;
+  type: string;
+  icon: any;
+  iconColor: string;
+  description: string;
+  dateDetected: string;
+  affectedTransactions: number;
+  priority: "High" | "Medium" | "Low";
+  priorityColor: string;
+  status: "Open" | "In Progress" | "Resolved";
+  statusColor: string;
+};
+
 interface AnomalyIssuesTableProps {
+  issues: AnomalyIssue[];
   onSelectIssue: (issueId: string) => void;
+  onUpdateIssue: (issueId: string, updates: Partial<AnomalyIssue>) => void;
 }
 
-const issues = [
-  {
-    id: "volume-spike-1",
-    type: "Volume Spike",
-    icon: TrendingUp,
-    iconColor: "text-red-500",
-    description: "450% increase in Bitcoin transactions on Aug 14, 2022",
-    dateDetected: "Oct 25, 2023",
-    affectedTransactions: 15,
-    priority: "High",
-    priorityColor: "bg-red-100 text-red-700",
-    status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700",
-  },
-  {
-    id: "missing-fmv-1",
-    type: "Missing FMV",
-    icon: DollarSign,
-    iconColor: "text-yellow-500",
-    description: "Multiple Ethereum transactions missing accurate price data",
-    dateDetected: "Oct 24, 2023",
-    affectedTransactions: 7,
-    priority: "Medium",
-    priorityColor: "bg-yellow-100 text-yellow-700",
-    status: "In Progress",
-    statusColor: "bg-blue-100 text-blue-700",
-  },
-  {
-    id: "classification-conflict-1",
-    type: "Classification Conflict",
-    icon: AlertTriangle,
-    iconColor: "text-blue-500",
-    description: "Income vs. Transfer rule conflict for Coinbase transactions",
-    dateDetected: "Oct 23, 2023",
-    affectedTransactions: 3,
-    priority: "High",
-    priorityColor: "bg-red-100 text-red-700",
-    status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700",
-  },
-  {
-    id: "potential-duplicate-1",
-    type: "Potential Duplicate",
-    icon: Copy,
-    iconColor: "text-purple-500",
-    description: "Same amount BTC transactions within 30 seconds",
-    dateDetected: "Oct 22, 2023",
-    affectedTransactions: 2,
-    priority: "Medium",
-    priorityColor: "bg-yellow-100 text-yellow-700",
-    status: "Resolved",
-    statusColor: "bg-green-100 text-green-700",
-  },
-  {
-    id: "volume-spike-2",
-    type: "Volume Spike",
-    icon: TrendingUp,
-    iconColor: "text-red-500",
-    description: "Unusual USDC transaction pattern on Oct 20, 2023",
-    dateDetected: "Oct 21, 2023",
-    affectedTransactions: 5,
-    priority: "Low",
-    priorityColor: "bg-blue-100 text-blue-700",
-    status: "Open",
-    statusColor: "bg-yellow-100 text-yellow-700",
-  },
-];
-
-export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
+export function AnomalyIssuesTable({
+  issues,
+  onSelectIssue,
+  onUpdateIssue,
+}: AnomalyIssuesTableProps) {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
   const handleSelectRow = (issueId: string) => {
     setSelectedRows((prev) =>
-      prev.includes(issueId)
-        ? prev.filter((id) => id !== issueId)
-        : [...prev, issueId],
+      prev.includes(issueId) ? prev.filter((id) => id !== issueId) : [...prev, issueId],
     );
   };
 
   const handleSelectAll = () => {
-    setSelectedRows(
-      selectedRows.length === issues.length
-        ? []
-        : issues.map((issue) => issue.id),
-    );
+    setSelectedRows(selectedRows.length === issues.length ? [] : issues.map((issue) => issue.id));
+  };
+
+  const handleRowClick = (issueId: string) => {
+    onSelectIssue(issueId);
+  };
+
+  const handleMarkResolved = (issueId: string) => {
+    onUpdateIssue(issueId, {
+      status: "Resolved",
+      statusColor: "bg-green-100 text-green-700",
+    });
+  };
+
+  const handleIgnore = (issueId: string) => {
+    onUpdateIssue(issueId, {
+      status: "Ignored" as any,
+      statusColor: "bg-muted text-muted-foreground",
+    });
   };
 
   return (
@@ -123,9 +87,7 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Detected Issues</h3>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">
-              Search Issues...
-            </span>
+            <span className="text-sm text-muted-foreground">Search Issues...</span>
           </div>
         </div>
       </div>
@@ -137,8 +99,9 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
             <TableRow>
               <TableHead className="w-12">
                 <Checkbox
-                  checked={selectedRows.length === issues.length}
+                  checked={issues.length > 0 && selectedRows.length === issues.length}
                   onCheckedChange={handleSelectAll}
+                  aria-label="Select all issues"
                 />
               </TableHead>
               <TableHead>Issue Type</TableHead>
@@ -152,13 +115,18 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
           </TableHeader>
           <TableBody>
             {issues.map((issue) => {
-              const IconComponent = issue.icon;
+              const IconComponent = issue.icon || TrendingUp;
               return (
-                <TableRow key={issue.id} className="hover:bg-muted/50">
-                  <TableCell>
+                <TableRow
+                  key={issue.id}
+                  className="hover:bg-muted/50 cursor-pointer"
+                  onClick={() => handleRowClick(issue.id)}
+                >
+                  <TableCell onClick={(e) => e.stopPropagation()}>
                     <Checkbox
                       checked={selectedRows.includes(issue.id)}
                       onCheckedChange={() => handleSelectRow(issue.id)}
+                      aria-label={`Select ${issue.type}`}
                     />
                   </TableCell>
                   <TableCell>
@@ -173,49 +141,42 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
                   <TableCell>{issue.dateDetected}</TableCell>
                   <TableCell>{issue.affectedTransactions}</TableCell>
                   <TableCell>
-                    <Badge
-                      variant="secondary"
-                      className={`${issue.priorityColor} border-0`}
-                    >
+                    <Badge variant="secondary" className={`${issue.priorityColor} border-0`}>
                       {issue.priority}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge
-                      variant="secondary"
-                      className={`${issue.statusColor} border-0`}
-                    >
+                    <Badge variant="secondary" className={`${issue.statusColor} border-0`}>
                       {issue.status}
                     </Badge>
                   </TableCell>
-                  <TableCell>
+                  <TableCell onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-center gap-2">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => onSelectIssue(issue.id)}
                         className="h-8 w-8 p-0"
+                        aria-label="View details"
                       >
                         <Eye className="h-4 w-4" />
                       </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="h-8 w-8 p-0"
-                          >
+                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0" aria-label="More actions">
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem
-                            onClick={() => onSelectIssue(issue.id)}
-                          >
+                          <DropdownMenuItem onClick={() => onSelectIssue(issue.id)}>
                             View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem>Mark as Resolved</DropdownMenuItem>
-                          <DropdownMenuItem>Ignore Issue</DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handleMarkResolved(issue.id)}>
+                            Mark as Resolved
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handleIgnore(issue.id)}>
+                            Ignore Issue
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
@@ -229,9 +190,7 @@ export function AnomalyIssuesTable({ onSelectIssue }: AnomalyIssuesTableProps) {
 
       {/* Pagination */}
       <div className="flex items-center justify-between px-6 pb-4">
-        <div className="text-sm text-muted-foreground">
-          Showing 1-5 of 25 issues
-        </div>
+        <div className="text-sm text-muted-foreground">Showing {issues.length > 0 ? `1-${Math.min(5, issues.length)}` : 0} of {issues.length} issues</div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" disabled>
             Previous

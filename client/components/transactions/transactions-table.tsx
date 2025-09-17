@@ -28,6 +28,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "@/hooks/use-toast";
 
 interface TransactionsTableProps {
   filters: {
@@ -308,19 +309,19 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast({ title: "Transaction confirmed" })}>
                         <Check className="mr-2 h-4 w-4" />
                         Confirm
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast({ title: "Showing details" })}>
                         <Eye className="mr-2 h-4 w-4" />
                         View Details
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => toast({ title: "Transaction flagged" })}>
                         <Flag className="mr-2 h-4 w-4" />
                         Flag
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="text-red-600">
+                      <DropdownMenuItem className="text-red-600" onClick={() => toast({ title: "Transaction rejected" })}>
                         <X className="mr-2 h-4 w-4" />
                         Reject
                       </DropdownMenuItem>
@@ -347,6 +348,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
             variant="outline"
             size="sm"
             disabled={selectedTransactions.length === 0}
+            onClick={() => toast({ title: "Accepted selected" })}
           >
             Accept All
           </Button>
@@ -354,6 +356,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
             variant="outline"
             size="sm"
             disabled={selectedTransactions.length === 0}
+            onClick={() => toast({ title: "Apply tags coming soon" })}
           >
             Tag
           </Button>
@@ -361,6 +364,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
             variant="outline"
             size="sm"
             disabled={selectedTransactions.length === 0}
+            onClick={() => toast({ title: "Export started" })}
           >
             Export
           </Button>

@@ -113,8 +113,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ['Noto Sans', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ["Noto Sans", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       screens: {
         ipad: "834px",

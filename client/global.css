@@ -169,36 +169,71 @@
     font-size: clamp(16px, 0.8vw + 12px, 18px);
   }
 
-  h1 { font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem); line-height: 1.2; }
-  h2 { font-size: clamp(1.5rem, 1.1rem + 0.9vw, 1.875rem); line-height: 1.25; }
-  h3 { font-size: clamp(1.25rem, 1.0rem + 0.6vw, 1.5rem); line-height: 1.3; }
-  h4 { font-size: clamp(1.125rem, 0.95rem + 0.4vw, 1.25rem); line-height: 1.35; }
+  h1 {
+    font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem);
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 1.1rem + 0.9vw, 1.875rem);
+    line-height: 1.25;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 1rem + 0.6vw, 1.5rem);
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: clamp(1.125rem, 0.95rem + 0.4vw, 1.25rem);
+    line-height: 1.35;
+  }
 
   body {
     touch-action: pan-x pan-y pinch-zoom;
   }
 
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  a, button {
+  a,
+  button {
     -webkit-tap-highlight-color: transparent;
   }
 }
 
 @layer utilities {
-  .touch-target { min-width: 44px; min-height: 44px; }
-  .touch-pan { touch-action: pan-x pan-y pinch-zoom; }
-  .media-fluid { width: 100%; height: auto; }
-  .interactive { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .touch-pan {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+  .media-fluid {
+    width: 100%;
+    height: auto;
+  }
+  .interactive {
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
 
   @media (hover: hover) {
-    .interactive:hover { filter: brightness(0.98); }
+    .interactive:hover {
+      filter: brightness(0.98);
+    }
   }
   @media (hover: none) {
-    .interactive:active { transform: scale(0.98); }
+    .interactive:active {
+      transform: scale(0.98);
+    }
   }
 }

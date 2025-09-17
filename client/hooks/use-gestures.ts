@@ -17,38 +17,44 @@ export function useSwipe(
   const startY = useRef(0);
   const active = useRef(false);
 
-  const onPointerDown = useCallback((e: PointerEvent) => {
-    if (!target.current) return;
-    active.current = true;
-    startX.current = e.clientX;
-    startY.current = e.clientY;
-    onSwipeStart?.(e);
-  }, [onSwipeStart, target]);
+  const onPointerDown = useCallback(
+    (e: PointerEvent) => {
+      if (!target.current) return;
+      active.current = true;
+      startX.current = e.clientX;
+      startY.current = e.clientY;
+      onSwipeStart?.(e);
+    },
+    [onSwipeStart, target],
+  );
 
-  const onPointerUp = useCallback((e: PointerEvent) => {
-    if (!active.current) return;
-    active.current = false;
-    const dx = e.clientX - startX.current;
-    const dy = e.clientY - startY.current;
+  const onPointerUp = useCallback(
+    (e: PointerEvent) => {
+      if (!active.current) return;
+      active.current = false;
+      const dx = e.clientX - startX.current;
+      const dy = e.clientY - startY.current;
 
-    const absX = Math.abs(dx);
-    const absY = Math.abs(dy);
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
 
-    if (absX < threshold && absY < threshold) {
+      if (absX < threshold && absY < threshold) {
+        onSwipeEnd?.(e);
+        return;
+      }
+
+      let dir: SwipeDirection;
+      if (absX > absY) {
+        dir = dx > 0 ? "right" : "left";
+      } else {
+        dir = dy > 0 ? "down" : "up";
+      }
+
+      onSwipe?.(dir, e);
       onSwipeEnd?.(e);
-      return;
-    }
-
-    let dir: SwipeDirection;
-    if (absX > absY) {
-      dir = dx > 0 ? "right" : "left";
-    } else {
-      dir = dy > 0 ? "down" : "up";
-    }
-
-    onSwipe?.(dir, e);
-    onSwipeEnd?.(e);
-  }, [onSwipe, onSwipeEnd, threshold]);
+    },
+    [onSwipe, onSwipeEnd, threshold],
+  );
 
   useEffect(() => {
     const el = target.current;
@@ -60,8 +66,12 @@ export function useSwipe(
     const down = (e: PointerEvent) => onPointerDown(e);
     const up = (e: PointerEvent) => onPointerUp(e);
 
-    el.addEventListener("pointerdown", down, { passive: true } as AddEventListenerOptions);
-    window.addEventListener("pointerup", up, { passive: true } as AddEventListenerOptions);
+    el.addEventListener("pointerdown", down, {
+      passive: true,
+    } as AddEventListenerOptions);
+    window.addEventListener("pointerup", up, {
+      passive: true,
+    } as AddEventListenerOptions);
 
     return () => {
       el.removeEventListener("pointerdown", down as any);
@@ -71,8 +81,16 @@ export function useSwipe(
 }
 
 export interface UsePinchOptions {
-  onPinchStart?: (scale: number, center: { x: number; y: number }, event: PointerEvent) => void;
-  onPinch?: (scale: number, center: { x: number; y: number }, event: PointerEvent) => void;
+  onPinchStart?: (
+    scale: number,
+    center: { x: number; y: number },
+    event: PointerEvent,
+  ) => void;
+  onPinch?: (
+    scale: number,
+    center: { x: number; y: number },
+    event: PointerEvent,
+  ) => void;
   onPinchEnd?: (event: PointerEvent) => void;
 }
 
@@ -83,13 +101,19 @@ export function usePinch(
   const pointers = useRef<Map<number, { x: number; y: number }>>(new Map());
   const initialDistance = useRef<number | null>(null);
 
-  const distance = (a: { x: number; y: number }, b: { x: number; y: number }) => {
+  const distance = (
+    a: { x: number; y: number },
+    b: { x: number; y: number },
+  ) => {
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     return Math.hypot(dx, dy);
-    };
+  };
 
-  const centerPoint = (a: { x: number; y: number }, b: { x: number; y: number }) => ({
+  const centerPoint = (
+    a: { x: number; y: number },
+    b: { x: number; y: number },
+  ) => ({
     x: (a.x + b.x) / 2,
     y: (a.y + b.y) / 2,
   });
@@ -133,10 +157,18 @@ export function usePinch(
       }
     };
 
-    el.addEventListener("pointerdown", onPointerDown, { passive: true } as AddEventListenerOptions);
-    window.addEventListener("pointermove", onPointerMove, { passive: true } as AddEventListenerOptions);
-    window.addEventListener("pointerup", onPointerUp, { passive: true } as AddEventListenerOptions);
-    window.addEventListener("pointercancel", onPointerUp, { passive: true } as AddEventListenerOptions);
+    el.addEventListener("pointerdown", onPointerDown, {
+      passive: true,
+    } as AddEventListenerOptions);
+    window.addEventListener("pointermove", onPointerMove, {
+      passive: true,
+    } as AddEventListenerOptions);
+    window.addEventListener("pointerup", onPointerUp, {
+      passive: true,
+    } as AddEventListenerOptions);
+    window.addEventListener("pointercancel", onPointerUp, {
+      passive: true,
+    } as AddEventListenerOptions);
 
     return () => {
       el.removeEventListener("pointerdown", onPointerDown as any);

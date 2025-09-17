@@ -18,7 +18,7 @@ export function useBreakpoint() {
   useEffect(() => {
     const updateBreakpoint = () => {
       const width = window.innerWidth;
-      
+
       if (width >= breakpoints["2xl"]) {
         setCurrentBreakpoint("2xl");
       } else if (width >= breakpoints.xl) {
@@ -72,7 +72,11 @@ export type ViewportKind =
   | "desktop"
   | "desktop-2k";
 
-export function getViewportKind(width: number = typeof window !== 'undefined' ? window.innerWidth : deviceBreakpoints.desktop) : ViewportKind {
+export function getViewportKind(
+  width: number = typeof window !== "undefined"
+    ? window.innerWidth
+    : deviceBreakpoints.desktop,
+): ViewportKind {
   if (width >= 1920) return "desktop-2k";
   if (width >= deviceBreakpoints.ipadLandscape) return "desktop";
   if (width >= deviceBreakpoints.ipadPortrait) return "tablet-landscape";
@@ -93,7 +97,8 @@ export function useViewportKind(): ViewportKind {
 
 // Responsive grid utilities
 export const responsiveGridClasses = {
-  cards: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6",
+  cards:
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6",
   dashboard: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6",
   twoColumn: "grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6",
   threeColumn: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6",
@@ -118,33 +123,39 @@ export const responsiveText = {
 } as const;
 
 // Container utilities for responsive layouts
-export function getResponsiveContainer(variant: "page" | "section" | "card" = "page") {
+export function getResponsiveContainer(
+  variant: "page" | "section" | "card" = "page",
+) {
   const variants = {
     page: "w-full max-w-7xl mx-auto px-4 sm:px-6",
     section: "w-full max-w-4xl mx-auto px-2 sm:px-4",
     card: "w-full max-w-2xl mx-auto px-2",
   };
-  
+
   return variants[variant];
 }
 
 // Responsive flex utilities
 export const responsiveFlex = {
-  betweenStack: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
+  betweenStack:
+    "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4",
   centerStack: "flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4",
-  endStack: "flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 sm:gap-4",
+  endStack:
+    "flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 sm:gap-4",
   wrap: "flex flex-wrap items-center gap-2 sm:gap-4",
 } as const;
 
 // Table responsive utilities
-export function getResponsiveTableClasses(density: "compact" | "comfortable" | "spacious" = "comfortable") {
+export function getResponsiveTableClasses(
+  density: "compact" | "comfortable" | "spacious" = "comfortable",
+) {
   const baseClasses = "w-full overflow-auto";
   const densityClasses = {
     compact: "text-xs sm:text-sm",
     comfortable: "text-sm",
     spacious: "text-sm sm:text-base",
   };
-  
+
   return `${baseClasses} ${densityClasses[density]}`;
 }
 
@@ -152,11 +163,14 @@ export function getResponsiveTableClasses(density: "compact" | "comfortable" | "
 export function responsiveClass(
   mobile: string,
   tablet?: string,
-  desktop?: string
+  desktop?: string,
 ) {
   const breakpoint = useBreakpoint();
-  
-  if (desktop && (breakpoint === "lg" || breakpoint === "xl" || breakpoint === "2xl")) {
+
+  if (
+    desktop &&
+    (breakpoint === "lg" || breakpoint === "xl" || breakpoint === "2xl")
+  ) {
     return desktop;
   }
   if (tablet && breakpoint === "md") {
@@ -177,33 +191,39 @@ export const responsiveForm = {
 // Animation utilities that respect reduced motion preferences
 export function getAnimationClasses(respectReducedMotion = true) {
   const baseClasses = "transition-all duration-200";
-  
+
   if (respectReducedMotion) {
     return `${baseClasses} motion-reduce:transition-none`;
   }
-  
+
   return baseClasses;
 }
 
 // Focus management utilities
 export const focusClasses = {
-  visible: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-  button: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-  input: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  visible:
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  button:
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  input:
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
   card: "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
 } as const;
 
 // Helper to get appropriate text size based on content length
-export function getResponsiveTextSize(content: string, context: "title" | "body" | "caption" = "body") {
+export function getResponsiveTextSize(
+  content: string,
+  context: "title" | "body" | "caption" = "body",
+) {
   const length = content.length;
-  
+
   if (context === "title") {
     return length > 50 ? "text-lg sm:text-xl" : "text-xl sm:text-2xl";
   }
-  
+
   if (context === "body") {
     return "text-sm sm:text-base";
   }
-  
+
   return "text-xs sm:text-sm";
 }

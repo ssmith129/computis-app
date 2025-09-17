@@ -3,12 +3,14 @@
 Test date: YYYY-MM-DD
 
 Devices/Viewports
+
 - iPad Pro 11" portrait: 834x1194
 - iPad Pro 11" landscape: 1194x834
 - Desktop (Full HD): 1920x1080
 - Desktop (HiDPI): 2560x1440
 
 Checks Performed
+
 1. Layout fluidity (CSS Grid/Flex)
    - Dashboard grids: wrap and reflow correctly
    - Side navigation: collapsible, usable across widths
@@ -27,8 +29,10 @@ Checks Performed
    - Focus rings visible; tab order predictable
 
 Findings
+
 - PASS: All above checks under listed viewports
 - NOTE: Very dense tables may require per-row compact styling; utilities available in client/lib/responsive-utils.ts#getResponsiveTableClasses
 
 Follow-ups
+
 - Extend component coverage of .interactive on any remaining icon-only triggers if discovered during future QA

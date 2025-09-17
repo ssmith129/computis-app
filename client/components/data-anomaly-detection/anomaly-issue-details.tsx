@@ -96,7 +96,7 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
               <p className="text-muted-foreground">Issue Information and Affected Transactions</p>
             </div>
           </div>
-          <Button variant="ghost" size="sm" className="text-muted-foreground">
+          <Button variant="ghost" size="sm" className="text-muted-foreground" onClick={onClose}>
             ✕ Close
           </Button>
         </div>

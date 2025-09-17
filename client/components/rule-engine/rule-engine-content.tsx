@@ -14,7 +14,7 @@ export function RuleEngineContent() {
   const ruleTabs = ["All", "Merge", "Income", "Expense", "Split"];
 
   return (
-    <div className="flex-1 h-0 p-6 bg-background overflow-auto">
+    <div className="flex-1 h-0 p-7 bg-background overflow-auto">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="space-y-4">

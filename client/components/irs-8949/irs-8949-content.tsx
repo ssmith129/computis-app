@@ -47,7 +47,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 
-const form8949Data = [
+const initialForm8949Data = [
   {
     id: "1",
     description: "Bitcoin Purchase - Coinbase",

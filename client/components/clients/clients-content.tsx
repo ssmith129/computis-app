@@ -301,11 +301,11 @@ export function ClientsContent() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => toast({ title: "Filters coming soon" })}>
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setAddOpen(true)}>
               <Plus className="h-4 w-4 mr-2" />
               Add Client
             </Button>

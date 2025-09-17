@@ -312,6 +312,40 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
           </Button>
         </div>
       </div>
+      {/* Edit Rule Dialog */}
+      <Dialog open={editOpen} onOpenChange={setEditOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Rule</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2 py-2">
+            <label htmlFor="rule-name" className="text-sm">Rule Name</label>
+            <Input
+              id="rule-name"
+              value={editingRule?.name || ""}
+              onChange={(e) => setEditingRule((prev) => (prev ? { ...prev, name: e.target.value } : prev))}
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditOpen(false)}>Cancel</Button>
+            <Button onClick={saveEdit}>Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation */}
+      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete rule?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={doDelete}>Delete</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

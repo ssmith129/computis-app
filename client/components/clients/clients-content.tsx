@@ -211,8 +211,14 @@ export function ClientsContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedClients, setSelectedClients] = useState<string[]>([]);
 
-  const filteredClients = mockClients.filter((client) =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  const [clients, setClients] = useState(mockClients);
+
+  const filteredClients = useMemo(
+    () =>
+      clients.filter((client) =>
+        client.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+    [clients, searchTerm],
   );
 
   const handleSelectClient = (clientId: string) => {

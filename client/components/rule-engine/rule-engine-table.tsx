@@ -12,15 +12,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { StatusBadge } from "@/components/dashboard/status-badge";
-import { 
-  MoreHorizontal, 
-  ArrowUpDown, 
-  ChevronLeft, 
+import {
+  MoreHorizontal,
+  ArrowUpDown,
+  ChevronLeft,
   ChevronRight,
   Play,
   Pause,
   Edit,
-  Trash2
+  Trash2,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -28,8 +28,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 
@@ -46,7 +60,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 23,
     status: "Active",
-    typeColor: "bg-green-100 text-green-800"
+    typeColor: "bg-green-100 text-green-800",
   },
   {
     id: "2",
@@ -56,7 +70,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 8,
     status: "Active",
-    typeColor: "bg-blue-100 text-blue-800"
+    typeColor: "bg-blue-100 text-blue-800",
   },
   {
     id: "3",
@@ -66,7 +80,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 42,
     status: "Active",
-    typeColor: "bg-purple-100 text-purple-800"
+    typeColor: "bg-purple-100 text-purple-800",
   },
   {
     id: "4",
@@ -76,7 +90,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 16,
     status: "Paused",
-    typeColor: "bg-red-100 text-red-800"
+    typeColor: "bg-red-100 text-red-800",
   },
   {
     id: "5",
@@ -86,16 +100,22 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 7,
     status: "Active",
-    typeColor: "bg-yellow-100 text-yellow-800"
-  }
+    typeColor: "bg-yellow-100 text-yellow-800",
+  },
 ];
 
-const getStatusVariant = (status: string): "success" | "warning" | "error" | "pending" => {
+const getStatusVariant = (
+  status: string,
+): "success" | "warning" | "error" | "pending" => {
   switch (status) {
-    case "Active": return "success";
-    case "Paused": return "warning";
-    case "Error": return "error";
-    default: return "pending";
+    case "Active":
+      return "success";
+    case "Paused":
+      return "warning";
+    case "Error":
+      return "error";
+    default:
+      return "pending";
   }
 };
 
@@ -107,21 +127,27 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
 
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const [editingRule, setEditingRule] = useState<{ id: string; name: string } | null>(null);
+  const [editingRule, setEditingRule] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
-  const filteredRules = rules.filter(rule => {
+  const filteredRules = rules.filter((rule) => {
     if (activeTab === "All") return true;
     return rule.type === activeTab;
   });
 
   const totalPages = Math.ceil(filteredRules.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const displayedRules = filteredRules.slice(startIndex, startIndex + itemsPerPage);
+  const displayedRules = filteredRules.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
-      setSelectedRules(displayedRules.map(r => r.id));
+      setSelectedRules(displayedRules.map((r) => r.id));
     } else {
       setSelectedRules([]);
     }
@@ -129,9 +155,9 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
 
   const handleSelectRule = (id: string, checked: boolean) => {
     if (checked) {
-      setSelectedRules(prev => [...prev, id]);
+      setSelectedRules((prev) => [...prev, id]);
     } else {
-      setSelectedRules(prev => prev.filter(r => r !== id));
+      setSelectedRules((prev) => prev.filter((r) => r !== id));
     }
   };
 
@@ -145,7 +171,11 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
 
   const saveEdit = () => {
     if (!editingRule) return;
-    setRules((prev) => prev.map((r) => (r.id === editingRule.id ? { ...r, name: editingRule.name } : r)));
+    setRules((prev) =>
+      prev.map((r) =>
+        r.id === editingRule.id ? { ...r, name: editingRule.name } : r,
+      ),
+    );
     setEditOpen(false);
     toast({ title: "Rule updated" });
   };
@@ -166,10 +196,13 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
   const toggleStatus = (id: string) => {
     setRules((prev) =>
       prev.map((r) =>
-        r.id === id ? { ...r, status: r.status === "Active" ? "Paused" : "Active" } : r,
+        r.id === id
+          ? { ...r, status: r.status === "Active" ? "Paused" : "Active" }
+          : r,
       ),
     );
-    const next = rules.find((r) => r.id === id)?.status === "Active" ? "Paused" : "Active";
+    const next =
+      rules.find((r) => r.id === id)?.status === "Active" ? "Paused" : "Active";
     toast({ title: `Rule ${next === "Active" ? "resumed" : "paused"}` });
   };
 
@@ -187,12 +220,19 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
             <TableRow>
               <TableHead className="w-12">
                 <Checkbox
-                  checked={selectedRules.length === displayedRules.length && displayedRules.length > 0}
+                  checked={
+                    selectedRules.length === displayedRules.length &&
+                    displayedRules.length > 0
+                  }
                   onCheckedChange={handleSelectAll}
                 />
               </TableHead>
               <TableHead>
-                <Button variant="ghost" size="sm" className="p-0 h-auto font-medium">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="p-0 h-auto font-medium"
+                >
                   Rule Name
                   <ArrowUpDown className="ml-1 h-3 w-3" />
                 </Button>
@@ -211,18 +251,24 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                 <TableCell>
                   <Checkbox
                     checked={selectedRules.includes(rule.id)}
-                    onCheckedChange={(checked) => handleSelectRule(rule.id, !!checked)}
+                    onCheckedChange={(checked) =>
+                      handleSelectRule(rule.id, !!checked)
+                    }
                   />
                 </TableCell>
                 <TableCell className="font-medium">{rule.name}</TableCell>
                 <TableCell>
-                  <Badge className={rule.typeColor}>
-                    {rule.type}
-                  </Badge>
+                  <Badge className={rule.typeColor}>{rule.type}</Badge>
                 </TableCell>
-                <TableCell className="text-muted-foreground">{rule.created}</TableCell>
-                <TableCell className="text-muted-foreground">{rule.lastRun}</TableCell>
-                <TableCell className="font-medium">{rule.affectedTransactions}</TableCell>
+                <TableCell className="text-muted-foreground">
+                  {rule.created}
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  {rule.lastRun}
+                </TableCell>
+                <TableCell className="font-medium">
+                  {rule.affectedTransactions}
+                </TableCell>
                 <TableCell>
                   <StatusBadge variant={getStatusVariant(rule.status)}>
                     {rule.status}
@@ -230,7 +276,13 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => toggleStatus(rule.id)} aria-label={rule.status === "Active" ? "Pause" : "Resume"}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 w-8 p-0"
+                      onClick={() => toggleStatus(rule.id)}
+                      aria-label={rule.status === "Active" ? "Pause" : "Resume"}
+                    >
                       {rule.status === "Active" ? (
                         <Pause className="h-4 w-4" />
                       ) : (
@@ -239,7 +291,11 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                     </Button>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -252,7 +308,10 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                           <Play className="mr-2 h-4 w-4" />
                           Run Now
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-600" onClick={() => confirmDelete(rule.id)}>
+                        <DropdownMenuItem
+                          className="text-red-600"
+                          onClick={() => confirmDelete(rule.id)}
+                        >
                           <Trash2 className="mr-2 h-4 w-4" />
                           Delete
                         </DropdownMenuItem>
@@ -269,7 +328,8 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
       {/* Table Footer */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 px-4 py-2 border-t">
         <div className="text-sm text-muted-foreground">
-          Showing {Math.min(displayedRules.length, itemsPerPage)} of {filteredRules.length} rules
+          Showing {Math.min(displayedRules.length, itemsPerPage)} of{" "}
+          {filteredRules.length} rules
         </div>
 
         {/* Pagination */}
@@ -277,12 +337,12 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+            onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          
+
           <div className="flex items-center gap-1">
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
               const page = i + 1;
@@ -298,14 +358,20 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                 </Button>
               );
             })}
-            {totalPages > 5 && <span className="text-muted-foreground">...</span>}
-            <span className="text-sm text-muted-foreground ml-2">{totalPages}</span>
+            {totalPages > 5 && (
+              <span className="text-muted-foreground">...</span>
+            )}
+            <span className="text-sm text-muted-foreground ml-2">
+              {totalPages}
+            </span>
           </div>
 
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+            }
             disabled={currentPage === totalPages}
           >
             <ChevronRight className="h-4 w-4" />
@@ -319,15 +385,23 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
             <DialogTitle>Edit Rule</DialogTitle>
           </DialogHeader>
           <div className="space-y-2 py-2">
-            <label htmlFor="rule-name" className="text-sm">Rule Name</label>
+            <label htmlFor="rule-name" className="text-sm">
+              Rule Name
+            </label>
             <Input
               id="rule-name"
               value={editingRule?.name || ""}
-              onChange={(e) => setEditingRule((prev) => (prev ? { ...prev, name: e.target.value } : prev))}
+              onChange={(e) =>
+                setEditingRule((prev) =>
+                  prev ? { ...prev, name: e.target.value } : prev,
+                )
+              }
             />
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setEditOpen(false)}>Cancel</Button>
+            <Button variant="outline" onClick={() => setEditOpen(false)}>
+              Cancel
+            </Button>
             <Button onClick={saveEdit}>Save</Button>
           </DialogFooter>
         </DialogContent>
@@ -339,7 +413,9 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete rule?</AlertDialogTitle>
           </AlertDialogHeader>
-          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <p className="text-sm text-muted-foreground">
+            This action cannot be undone.
+          </p>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction onClick={doDelete}>Delete</AlertDialogAction>

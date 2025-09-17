@@ -3,6 +3,7 @@
 This document defines complete action-response workflows for all interactive elements across the app. It follows the existing design system (colors, typography, spacing, components) and provides exact copy, transitions, and edge cases.
 
 Contents
+
 - Global interaction patterns
 - Header & Navigation
 - Dashboard
@@ -18,36 +19,42 @@ Contents
 - Tables, Cards, Forms
 
 ## Global Interaction Patterns
+
 - Focus/keyboard: All interactive elements use focus-visible ring. Keyboard navigation: Tab/Shift+Tab cycle focus; Enter/Space activate; Esc dismiss menus/modals.
 - Pointer/touch: Minimum touch target 44x44. Hover states on desktop, active feedback on touch. Animations 150–200ms ease-out; respect motion-reduce.
 - Notifications: Use toasts for success/error/neutral. Placement: top-right. Duration: 3.5s success/info, 6s error. ARIA live polite/assertive as needed.
 - Loading: Buttons show spinner on long operations (>300ms). Disable while loading. Copy changes to reflect action (e.g., "Generating…").
 
 ## Header & Navigation
+
 Components: client/components/dashboard/header.tsx, .../notifications-dropdown.tsx, .../ui/sidebar.tsx
 
-1) Search
+1. Search
+
 - Trigger: User types; Enter submits.
 - Response: Input reflects value; on Enter, show toast: "Search submitted: <query>".
 - Destination: (current) stays on page; future: route to results.
 - Content: Toast success: "Showing results for '<query>'".
 - Edge: Empty query → toast error: "Please enter a search term." No redirect.
 
-2) Notifications
+2. Notifications
+
 - Trigger: Click bell.
 - Response: Dropdown opens; unread badge visible; "Mark all read" available.
 - Destination: Dropdown; "View all" future route (/notifications).
 - Content: Mark all read button label: "Mark all read"; item titles and descriptions as provided.
 - Edge: No items → placeholder "You're all caught up."; Offline → toast error: "Unable to load notifications."
 
-3) User Menu
+3. User Menu
+
 - Trigger: Click avatar/name.
 - Response: Menu opens with Help & Account items from menu-config.
 - Destination: External/internal links per item.
 - Content: Item labels from configuration.
 - Edge: Link failure → toast error: "Couldn’t open link."
 
-4) Sidebar Navigation
+4. Sidebar Navigation
+
 - Trigger: Click item or use arrow keys/Enter when focused.
 - Response: Route changes; active state updates; tooltip on collapsed state.
 - Destination: Target route.
@@ -55,6 +62,7 @@ Components: client/components/dashboard/header.tsx, .../notifications-dropdown.t
 - Edge: Route not found → show NotFound page.
 
 ## Dashboard
+
 File: client/components/dashboard/dashboard-content.tsx
 
 - Page header
@@ -69,6 +77,7 @@ File: client/components/dashboard/dashboard-content.tsx
   - Edge: Keyboard nav via Left/Right; Home/End jump ends.
 
 ## Transactions
+
 Files: .../transactions/transactions-content.tsx
 
 - Filters (Confidence/Status)
@@ -96,6 +105,7 @@ Files: .../transactions/transactions-content.tsx
   - Response: Toggle legend visibility; navigate to Data Anomaly Detection (/data-anomaly-detection).
 
 ## Wallets & Exchanges
+
 Files: client/pages/Wallets.tsx, .../wallets/wallets-content.tsx
 
 - Add Wallet / Add Exchange
@@ -113,6 +123,7 @@ Files: client/pages/Wallets.tsx, .../wallets/wallets-content.tsx
   - Response: Navigate to /wallet-ingestion.
 
 ## Clients
+
 File: .../clients/clients-content.tsx
 
 - Header actions
@@ -136,6 +147,7 @@ File: .../clients/clients-content.tsx
   - Response: Table page changes.
 
 ## Exports
+
 File: .../exports/exports-content.tsx
 
 - Year selection
@@ -161,6 +173,7 @@ File: .../exports/exports-content.tsx
   - Response: Live validation; save button enables when changed.
 
 ## Rule Engine
+
 File: .../rule-engine/rule-engine-content.tsx
 
 - Tabs (All, Merge, Income, Expense, Split)
@@ -184,6 +197,7 @@ File: .../rule-engine/rule-engine-content.tsx
   - Confirm copy: Title "Delete rule?"; Body "This action cannot be undone."; Primary "Delete"; Secondary "Cancel".
 
 ## Data Anomaly Detection
+
 File: .../data-anomaly-detection-content.tsx
 
 - Header actions
@@ -200,6 +214,7 @@ File: .../data-anomaly-detection-content.tsx
   - Response: Open AnomalyIssueDetails view; Close returns to list.
 
 ## IRS Form 8949
+
 Files: .../irs-8949/irs-8949-content.tsx
 
 - Year select
@@ -219,6 +234,7 @@ Files: .../irs-8949/irs-8949-content.tsx
   - Response: View opens details drawer; Edit opens modal; Delete confirm dialog.
 
 ## Gain/Loss Report
+
 Files: .../gain-loss/gain-loss-content.tsx
 
 - Year select / Filters / Export Report
@@ -231,7 +247,8 @@ Files: .../gain-loss/gain-loss-content.tsx
   - Trigger: Click metric card → filter table below by that metric (optional enhancement).
 
 ## Wallet Ingestion
-Files: .../wallet-ingestion/*
+
+Files: .../wallet-ingestion/\*
 
 - Upload Area
   - Trigger: Drag & drop or click "Upload".
@@ -244,16 +261,19 @@ Files: .../wallet-ingestion/*
   - Success: Toast "Import completed"; navigate to Transactions.
 
 ## Tables, Cards, Forms
+
 - Table behaviors: Sortable columns (if enabled), sticky headers, responsive overflow with horizontal scroll on small screens.
 - Cards: Hover shadow increase; clickable regions use role=button and focus styles.
 - Forms: Required fields marked; real-time validation where possible; helper text below inputs; error text in red 600.
 
 ## Transitions & Timing
+
 - Dropdowns/Menus: 150ms fade/scale.
 - Modals/Drawers: 200ms slide/fade; focus trapped; Esc closes.
 - Navigation: Route change without page scroll reset for sticky headers.
 
 ## Accessibility
+
 - ARIA labels for icon-only buttons (e.g., notifications, row actions).
 - Live regions used for async operation status.
 - Color contrast adheres to AA (or AAA where feasible).

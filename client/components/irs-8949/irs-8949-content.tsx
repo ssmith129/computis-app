@@ -41,9 +41,28 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 
@@ -198,7 +217,11 @@ export function Irs8949Content() {
                 <SelectItem value="2021">2021</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setFiltersOpen(true)}
+            >
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
@@ -411,15 +434,22 @@ export function Irs8949Content() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem onClick={() => setViewTxn(transaction)}>
+                                <DropdownMenuItem
+                                  onClick={() => setViewTxn(transaction)}
+                                >
                                   <Eye className="mr-2 h-4 w-4" />
                                   View Details
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => setEditTxn(transaction)}>
+                                <DropdownMenuItem
+                                  onClick={() => setEditTxn(transaction)}
+                                >
                                   <Edit2 className="mr-2 h-4 w-4" />
                                   Edit Transaction
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-600" onClick={() => setDeleteId(transaction.id)}>
+                                <DropdownMenuItem
+                                  className="text-red-600"
+                                  onClick={() => setDeleteId(transaction.id)}
+                                >
                                   <Trash2 className="mr-2 h-4 w-4" />
                                   Remove
                                 </DropdownMenuItem>
@@ -518,15 +548,22 @@ export function Irs8949Content() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem onClick={() => setViewTxn(transaction)}>
+                                <DropdownMenuItem
+                                  onClick={() => setViewTxn(transaction)}
+                                >
                                   <Eye className="mr-2 h-4 w-4" />
                                   View Details
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => setEditTxn(transaction)}>
+                                <DropdownMenuItem
+                                  onClick={() => setEditTxn(transaction)}
+                                >
                                   <Edit2 className="mr-2 h-4 w-4" />
                                   Edit Transaction
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-600" onClick={() => setDeleteId(transaction.id)}>
+                                <DropdownMenuItem
+                                  className="text-red-600"
+                                  onClick={() => setDeleteId(transaction.id)}
+                                >
                                   <Trash2 className="mr-2 h-4 w-4" />
                                   Remove
                                 </DropdownMenuItem>
@@ -556,7 +593,10 @@ export function Irs8949Content() {
                 <Download className="h-4 w-4 mr-2" />
                 Download PDF
               </Button>
-              <Button variant="outline" onClick={() => toast({ title: "Form 8949 exported" })}>
+              <Button
+                variant="outline"
+                onClick={() => toast({ title: "Form 8949 exported" })}
+              >
                 <FileText className="h-4 w-4 mr-2" />
                 Download CSV
               </Button>
@@ -604,8 +644,17 @@ export function Irs8949Content() {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setFilterType("All")}>Reset</Button>
-              <Button onClick={() => { setFiltersOpen(false); toast({ title: "Filters applied" }); }}>Apply</Button>
+              <Button variant="outline" onClick={() => setFilterType("All")}>
+                Reset
+              </Button>
+              <Button
+                onClick={() => {
+                  setFiltersOpen(false);
+                  toast({ title: "Filters applied" });
+                }}
+              >
+                Apply
+              </Button>
             </div>
           </div>
         </SheetContent>
@@ -619,13 +668,34 @@ export function Irs8949Content() {
           </DialogHeader>
           {viewTxn && (
             <div className="space-y-2 text-sm">
-              <div><span className="text-muted-foreground">Date:</span> {viewTxn.date}</div>
-              <div><span className="text-muted-foreground">Asset:</span> {viewTxn.asset}</div>
-              <div><span className="text-muted-foreground">Type:</span> {viewTxn.type}</div>
-              <div><span className="text-muted-foreground">Proceeds:</span> ${viewTxn.proceeds.toLocaleString()}</div>
-              <div><span className="text-muted-foreground">Cost Basis:</span> ${viewTxn.costBasis.toLocaleString()}</div>
-              <div><span className="text-muted-foreground">Gain/Loss:</span> ${viewTxn.gainLoss.toLocaleString()}</div>
-              <div><span className="text-muted-foreground">Status:</span> {viewTxn.status}</div>
+              <div>
+                <span className="text-muted-foreground">Date:</span>{" "}
+                {viewTxn.date}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Asset:</span>{" "}
+                {viewTxn.asset}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Type:</span>{" "}
+                {viewTxn.type}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Proceeds:</span> $
+                {viewTxn.proceeds.toLocaleString()}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Cost Basis:</span> $
+                {viewTxn.costBasis.toLocaleString()}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Gain/Loss:</span> $
+                {viewTxn.gainLoss.toLocaleString()}
+              </div>
+              <div>
+                <span className="text-muted-foreground">Status:</span>{" "}
+                {viewTxn.status}
+              </div>
             </div>
           )}
           <DialogFooter>
@@ -644,31 +714,79 @@ export function Irs8949Content() {
             <div className="space-y-3">
               <div className="space-y-2">
                 <Label htmlFor="edit-asset">Asset</Label>
-                <Input id="edit-asset" value={editTxn.asset} onChange={(e) => setEditTxn({ ...editTxn, asset: e.target.value })} />
+                <Input
+                  id="edit-asset"
+                  value={editTxn.asset}
+                  onChange={(e) =>
+                    setEditTxn({ ...editTxn, asset: e.target.value })
+                  }
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="edit-type">Type</Label>
-                <Input id="edit-type" value={editTxn.type} onChange={(e) => setEditTxn({ ...editTxn, type: e.target.value })} />
+                <Input
+                  id="edit-type"
+                  value={editTxn.type}
+                  onChange={(e) =>
+                    setEditTxn({ ...editTxn, type: e.target.value })
+                  }
+                />
               </div>
             </div>
           )}
           <DialogFooter>
-            <Button variant="outline" onClick={() => setEditTxn(null)}>Cancel</Button>
-            <Button onClick={() => { if (editTxn) { setData((prev) => prev.map((t) => t.id === editTxn.id ? { ...t, asset: editTxn.asset, type: editTxn.type } : t)); toast({ title: "Transaction updated" }); setEditTxn(null); } }}>Save</Button>
+            <Button variant="outline" onClick={() => setEditTxn(null)}>
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                if (editTxn) {
+                  setData((prev) =>
+                    prev.map((t) =>
+                      t.id === editTxn.id
+                        ? { ...t, asset: editTxn.asset, type: editTxn.type }
+                        : t,
+                    ),
+                  );
+                  toast({ title: "Transaction updated" });
+                  setEditTxn(null);
+                }
+              }}
+            >
+              Save
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
       {/* Delete Confirmation */}
-      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(o) => !o && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Remove transaction?</AlertDialogTitle>
           </AlertDialogHeader>
-          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <p className="text-sm text-muted-foreground">
+            This action cannot be undone.
+          </p>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => { if (deleteId) { setData((prev) => prev.filter((t) => t.id !== deleteId)); setSelectedTransactions((prev) => prev.filter((id) => id !== deleteId)); setDeleteId(null); toast({ title: "Transaction removed" }); } }}>Remove</AlertDialogAction>
+            <AlertDialogAction
+              onClick={() => {
+                if (deleteId) {
+                  setData((prev) => prev.filter((t) => t.id !== deleteId));
+                  setSelectedTransactions((prev) =>
+                    prev.filter((id) => id !== deleteId),
+                  );
+                  setDeleteId(null);
+                  toast({ title: "Transaction removed" });
+                }
+              }}
+            >
+              Remove
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

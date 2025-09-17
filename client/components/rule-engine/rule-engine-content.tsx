@@ -46,7 +46,11 @@ export function RuleEngineContent() {
 
             {/* Action Buttons */}
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={() => toast({ title: "Audit log coming soon" })}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => toast({ title: "Audit log coming soon" })}
+              >
                 <FileText className="h-4 w-4 mr-2" />
                 View Audit Log
               </Button>

@@ -8,7 +8,12 @@ import { DataValidation } from "./data-validation";
 import { IssuesTable } from "./issues-table";
 import { RecentExports } from "./recent-exports";
 import { FileText, History } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { toast } from "@/hooks/use-toast";
 
 export function ExportsContent() {
@@ -74,7 +79,11 @@ export function ExportsContent() {
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={() => setHistoryOpen(true)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setHistoryOpen(true)}
+              >
                 <History className="h-4 w-4 mr-2" />
                 Export History
               </Button>

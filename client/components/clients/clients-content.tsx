@@ -4,8 +4,22 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
@@ -244,7 +258,9 @@ export function ClientsContent() {
 
   // Add client form state
   const [newClientName, setNewClientName] = useState("");
-  const [newClientType, setNewClientType] = useState<"Firm" | "Individual">("Firm");
+  const [newClientType, setNewClientType] = useState<"Firm" | "Individual">(
+    "Firm",
+  );
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleCreateClient = () => {
@@ -301,11 +317,18 @@ export function ClientsContent() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" onClick={() => toast({ title: "Filters coming soon" })}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toast({ title: "Filters coming soon" })}
+            >
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setAddOpen(true)}>
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+              onClick={() => setAddOpen(true)}
+            >
               <Plus className="h-4 w-4 mr-2" />
               Add Client
             </Button>
@@ -379,12 +402,22 @@ export function ClientsContent() {
               <CardContent className="p-0">
                 {selectedClients.length > 0 && (
                   <div className="flex items-center justify-between p-4 border-b bg-muted/30">
-                    <div className="text-sm">{selectedClients.length} selected</div>
+                    <div className="text-sm">
+                      {selectedClients.length} selected
+                    </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" onClick={() => setExportOpen(true)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setExportOpen(true)}
+                      >
                         Export
                       </Button>
-                      <Button variant="destructive" size="sm" onClick={() => setDeleteOpen(true)}>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => setDeleteOpen(true)}
+                      >
                         Delete
                       </Button>
                     </div>
@@ -742,7 +775,9 @@ export function ClientsContent() {
                 </Button>
                 <Button
                   type="button"
-                  variant={newClientType === "Individual" ? "default" : "outline"}
+                  variant={
+                    newClientType === "Individual" ? "default" : "outline"
+                  }
                   onClick={() => setNewClientType("Individual")}
                   className="h-9"
                 >
@@ -766,10 +801,14 @@ export function ClientsContent() {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete selected clients?</AlertDialogTitle>
           </AlertDialogHeader>
-          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <p className="text-sm text-muted-foreground">
+            This action cannot be undone.
+          </p>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmDelete}>Delete</AlertDialogAction>
+            <AlertDialogAction onClick={handleConfirmDelete}>
+              Delete
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -780,10 +819,14 @@ export function ClientsContent() {
           <AlertDialogHeader>
             <AlertDialogTitle>Export selected clients?</AlertDialogTitle>
           </AlertDialogHeader>
-          <p className="text-sm text-muted-foreground">A CSV will be generated for download.</p>
+          <p className="text-sm text-muted-foreground">
+            A CSV will be generated for download.
+          </p>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmExport}>Export</AlertDialogAction>
+            <AlertDialogAction onClick={handleConfirmExport}>
+              Export
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

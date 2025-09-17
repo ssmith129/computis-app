@@ -71,15 +71,36 @@ export function TransactionsContent() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" className="h-8" onClick={() => toast({ title: "Filters coming soon" })}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8"
+                onClick={() => toast({ title: "Filters coming soon" })}
+              >
                 <Filter className="h-4 w-4 mr-1" />
                 <span className="hidden sm:inline">Filters</span>
               </Button>
-              <Button variant="outline" size="sm" className="h-8" onClick={() => toast({ title: "Select transactions to tag." })}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8"
+                onClick={() => toast({ title: "Select transactions to tag." })}
+              >
                 <Tag className="h-4 w-4 mr-1" />
                 <span className="hidden sm:inline">Bulk Tag</span>
               </Button>
-              <Button variant="outline" size="sm" className="h-8" onClick={() => { toast({ title: "AI classification started" }); setTimeout(() => toast({ title: "AI classification complete" }), 1000); }}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8"
+                onClick={() => {
+                  toast({ title: "AI classification started" });
+                  setTimeout(
+                    () => toast({ title: "AI classification complete" }),
+                    1000,
+                  );
+                }}
+              >
                 <AlertTriangle className="h-4 w-4 mr-1" />
                 <span className="hidden sm:inline">AI Classify</span>
               </Button>

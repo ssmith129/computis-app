@@ -309,19 +309,30 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem onClick={() => toast({ title: "Transaction confirmed" })}>
+                      <DropdownMenuItem
+                        onClick={() =>
+                          toast({ title: "Transaction confirmed" })
+                        }
+                      >
                         <Check className="mr-2 h-4 w-4" />
                         Confirm
                       </DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => toast({ title: "Showing details" })}>
+                      <DropdownMenuItem
+                        onClick={() => toast({ title: "Showing details" })}
+                      >
                         <Eye className="mr-2 h-4 w-4" />
                         View Details
                       </DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => toast({ title: "Transaction flagged" })}>
+                      <DropdownMenuItem
+                        onClick={() => toast({ title: "Transaction flagged" })}
+                      >
                         <Flag className="mr-2 h-4 w-4" />
                         Flag
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="text-red-600" onClick={() => toast({ title: "Transaction rejected" })}>
+                      <DropdownMenuItem
+                        className="text-red-600"
+                        onClick={() => toast({ title: "Transaction rejected" })}
+                      >
                         <X className="mr-2 h-4 w-4" />
                         Reject
                       </DropdownMenuItem>

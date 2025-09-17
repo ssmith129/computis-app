@@ -54,12 +54,18 @@ export function AnomalyIssuesTable({
 
   const handleSelectRow = (issueId: string) => {
     setSelectedRows((prev) =>
-      prev.includes(issueId) ? prev.filter((id) => id !== issueId) : [...prev, issueId],
+      prev.includes(issueId)
+        ? prev.filter((id) => id !== issueId)
+        : [...prev, issueId],
     );
   };
 
   const handleSelectAll = () => {
-    setSelectedRows(selectedRows.length === issues.length ? [] : issues.map((issue) => issue.id));
+    setSelectedRows(
+      selectedRows.length === issues.length
+        ? []
+        : issues.map((issue) => issue.id),
+    );
   };
 
   const handleRowClick = (issueId: string) => {
@@ -87,7 +93,9 @@ export function AnomalyIssuesTable({
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Detected Issues</h3>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Search Issues...</span>
+            <span className="text-sm text-muted-foreground">
+              Search Issues...
+            </span>
           </div>
         </div>
       </div>
@@ -99,7 +107,9 @@ export function AnomalyIssuesTable({
             <TableRow>
               <TableHead className="w-12">
                 <Checkbox
-                  checked={issues.length > 0 && selectedRows.length === issues.length}
+                  checked={
+                    issues.length > 0 && selectedRows.length === issues.length
+                  }
                   onCheckedChange={handleSelectAll}
                   aria-label="Select all issues"
                 />
@@ -141,12 +151,18 @@ export function AnomalyIssuesTable({
                   <TableCell>{issue.dateDetected}</TableCell>
                   <TableCell>{issue.affectedTransactions}</TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={`${issue.priorityColor} border-0`}>
+                    <Badge
+                      variant="secondary"
+                      className={`${issue.priorityColor} border-0`}
+                    >
                       {issue.priority}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={`${issue.statusColor} border-0`}>
+                    <Badge
+                      variant="secondary"
+                      className={`${issue.statusColor} border-0`}
+                    >
                       {issue.status}
                     </Badge>
                   </TableCell>
@@ -163,18 +179,29 @@ export function AnomalyIssuesTable({
                       </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0" aria-label="More actions">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-8 w-8 p-0"
+                            aria-label="More actions"
+                          >
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => onSelectIssue(issue.id)}>
+                          <DropdownMenuItem
+                            onClick={() => onSelectIssue(issue.id)}
+                          >
                             View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleMarkResolved(issue.id)}>
+                          <DropdownMenuItem
+                            onClick={() => handleMarkResolved(issue.id)}
+                          >
                             Mark as Resolved
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleIgnore(issue.id)}>
+                          <DropdownMenuItem
+                            onClick={() => handleIgnore(issue.id)}
+                          >
                             Ignore Issue
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -190,7 +217,10 @@ export function AnomalyIssuesTable({
 
       {/* Pagination */}
       <div className="flex items-center justify-between px-6 pb-4">
-        <div className="text-sm text-muted-foreground">Showing {issues.length > 0 ? `1-${Math.min(5, issues.length)}` : 0} of {issues.length} issues</div>
+        <div className="text-sm text-muted-foreground">
+          Showing {issues.length > 0 ? `1-${Math.min(5, issues.length)}` : 0} of{" "}
+          {issues.length} issues
+        </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" disabled>
             Previous

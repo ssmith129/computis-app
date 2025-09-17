@@ -2,9 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import { TrendingUp, ArrowLeft, ExternalLink, Download, Plus, RotateCcw } from "lucide-react";
+import {
+  TrendingUp,
+  ArrowLeft,
+  ExternalLink,
+  Download,
+  Plus,
+  RotateCcw,
+} from "lucide-react";
 
 interface AnomalyIssueDetailsProps {
   issueId: string;
@@ -18,9 +32,10 @@ const issueData = {
   status: "Open",
   asset: "Bitcoin (BTC)",
   affected: "15 transactions",
-  description: "This appears to be a legitimate set of transactions based on historical patterns for this wallet.",
+  description:
+    "This appears to be a legitimate set of transactions based on historical patterns for this wallet.",
   suggestion: "Mark as resolved after confirming with client.",
-  confidence: "85%"
+  confidence: "85%",
 };
 
 const affectedTransactions = [
@@ -30,54 +45,57 @@ const affectedTransactions = [
     amount: "0.15 BTC",
     fmv: "$3,750.00",
     classification: "Income",
-    actions: true
+    actions: true,
   },
   {
-    date: "2022-08-14 09:22", 
+    date: "2022-08-14 09:22",
     type: "Receive",
     amount: "0.25 BTC",
     fmv: "$6,250.00",
-    classification: "Income", 
-    actions: true
+    classification: "Income",
+    actions: true,
   },
   {
     date: "2022-08-14 10:05",
-    type: "Receive", 
+    type: "Receive",
     amount: "0.10 BTC",
     fmv: "$2,500.00",
     classification: "Income",
-    actions: true
-  }
+    actions: true,
+  },
 ];
 
 const quickActions = [
   {
     title: "Bulk Classify",
-    description: "Apply classification to all transactions", 
+    description: "Apply classification to all transactions",
     icon: Plus,
-    color: "text-green-600"
+    color: "text-green-600",
   },
   {
     title: "Create Rule",
     description: "Make rules to avoid in the future",
     icon: Plus,
-    color: "text-blue-600"
+    color: "text-blue-600",
   },
   {
     title: "Update FMV",
     description: "Fix proposed w/ calculations",
     icon: RotateCcw,
-    color: "text-yellow-600"
+    color: "text-yellow-600",
   },
   {
     title: "Export",
     description: "Download as CSV or PDF",
     icon: Download,
-    color: "text-purple-600"
-  }
+    color: "text-purple-600",
+  },
 ];
 
-export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsProps) {
+export function AnomalyIssueDetails({
+  issueId,
+  onClose,
+}: AnomalyIssueDetailsProps) {
   return (
     <div className="flex-1 h-0 bg-background overflow-auto">
       {/* Header */}
@@ -93,10 +111,17 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                 <TrendingUp className="h-6 w-6 text-red-500" />
                 Volume Spike Details
               </h1>
-              <p className="text-muted-foreground">Issue Information and Affected Transactions</p>
+              <p className="text-muted-foreground">
+                Issue Information and Affected Transactions
+              </p>
             </div>
           </div>
-          <Button variant="ghost" size="sm" className="text-muted-foreground" onClick={onClose}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-muted-foreground"
+            onClick={onClose}
+          >
             ✕ Close
           </Button>
         </div>
@@ -124,14 +149,20 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                 <Separator />
                 <div>
                   <div className="text-sm text-muted-foreground">Priority</div>
-                  <Badge variant="secondary" className="bg-red-100 text-red-700 border-0">
+                  <Badge
+                    variant="secondary"
+                    className="bg-red-100 text-red-700 border-0"
+                  >
                     {issueData.priority}
                   </Badge>
                 </div>
                 <Separator />
                 <div>
                   <div className="text-sm text-muted-foreground">Status</div>
-                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-700 border-0">
+                  <Badge
+                    variant="secondary"
+                    className="bg-yellow-100 text-yellow-700 border-0"
+                  >
                     {issueData.status}
                   </Badge>
                 </div>
@@ -159,14 +190,21 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                   <p className="text-sm mt-1">{issueData.description}</p>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Suggested Action:</div>
+                  <div className="text-sm text-muted-foreground">
+                    Suggested Action:
+                  </div>
                   <p className="text-sm mt-1">{issueData.suggestion}</p>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Confidence:</div>
+                  <div className="text-sm text-muted-foreground">
+                    Confidence:
+                  </div>
                   <div className="font-medium">{issueData.confidence}</div>
                 </div>
-                <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button
+                  size="sm"
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                >
                   Apply AI Recommendation
                 </Button>
               </CardContent>
@@ -181,11 +219,18 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                 {quickActions.map((action, index) => {
                   const IconComponent = action.icon;
                   return (
-                    <div key={index} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 cursor-pointer">
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 cursor-pointer"
+                    >
                       <IconComponent className={`h-4 w-4 ${action.color}`} />
                       <div className="flex-1">
-                        <div className="text-sm font-medium">{action.title}</div>
-                        <div className="text-xs text-muted-foreground">{action.description}</div>
+                        <div className="text-sm font-medium">
+                          {action.title}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          {action.description}
+                        </div>
                       </div>
                     </div>
                   );
@@ -199,7 +244,9 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Affected Transactions</CardTitle>
+                  <CardTitle className="text-lg">
+                    Affected Transactions
+                  </CardTitle>
                   <Button variant="outline" size="sm">
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Export List
@@ -225,7 +272,10 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                           {transaction.date}
                         </TableCell>
                         <TableCell>
-                          <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-0">
+                          <Badge
+                            variant="secondary"
+                            className="bg-blue-100 text-blue-700 border-0"
+                          >
                             {transaction.type}
                           </Badge>
                         </TableCell>
@@ -233,18 +283,28 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                           {transaction.amount}
                         </TableCell>
                         <TableCell>
-                          <Badge variant="secondary" className="bg-green-100 text-green-700 border-0">
+                          <Badge
+                            variant="secondary"
+                            className="bg-green-100 text-green-700 border-0"
+                          >
                             {transaction.fmv}
                           </Badge>
                         </TableCell>
                         <TableCell>
-                          <Badge variant="secondary" className="bg-orange-100 text-orange-700 border-0">
+                          <Badge
+                            variant="secondary"
+                            className="bg-orange-100 text-orange-700 border-0"
+                          >
                             {transaction.classification}
                           </Badge>
                         </TableCell>
                         <TableCell>
                           <div className="flex gap-2">
-                            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 w-8 p-0"
+                            >
                               <ExternalLink className="h-4 w-4" />
                             </Button>
                           </div>
@@ -264,11 +324,35 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
                       Previous
                     </Button>
                     <div className="flex gap-1">
-                      <Button variant="default" size="sm" className="h-8 w-8 p-0">1</Button>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">2</Button>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">3</Button>
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        1
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        2
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        3
+                      </Button>
                       <span className="flex items-center px-2">...</span>
-                      <Button variant="outline" size="sm" className="h-8 w-8 p-0">5</Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                      >
+                        5
+                      </Button>
                     </div>
                     <Button variant="outline" size="sm">
                       Next
@@ -285,9 +369,7 @@ export function AnomalyIssueDetails({ issueId, onClose }: AnomalyIssueDetailsPro
           <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
             Mark as Resolved
           </Button>
-          <Button variant="outline">
-            Ignore Issue
-          </Button>
+          <Button variant="outline">Ignore Issue</Button>
         </div>
       </div>
     </div>

@@ -11,10 +11,37 @@ import {
 import { AnomalyOverviewCards } from "./anomaly-overview-cards";
 import { AnomalyIssuesTable, type AnomalyIssue } from "./anomaly-issues-table";
 import { AnomalyIssueDetails } from "./anomaly-issue-details";
-import { Filter, Settings, CheckCircle, TrendingUp, DollarSign, AlertTriangle, Copy } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import {
+  Filter,
+  Settings,
+  CheckCircle,
+  TrendingUp,
+  DollarSign,
+  AlertTriangle,
+  Copy,
+} from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -98,22 +125,33 @@ export function DataAnomalyDetectionContent() {
   const [confirmResolveOpen, setConfirmResolveOpen] = useState(false);
 
   // Quick filter chips
-  const [viewFilter, setViewFilter] = useState<"All Issues" | "High Priority" | "Resolved">(
-    "All Issues",
-  );
-  const [timePeriod, setTimePeriod] = useState<"This Week" | "This Month" | "All Time">(
-    "This Week",
-  );
+  const [viewFilter, setViewFilter] = useState<
+    "All Issues" | "High Priority" | "Resolved"
+  >("All Issues");
+  const [timePeriod, setTimePeriod] = useState<
+    "This Week" | "This Month" | "All Time"
+  >("This Week");
 
   // Advanced filters (Sheet)
-  const [priority, setPriority] = useState<"All" | "High" | "Medium" | "Low">("All");
-  const [status, setStatus] = useState<"All" | "Open" | "In Progress" | "Resolved">("All");
-  const [issueType, setIssueType] = useState<"All" | "Volume Spike" | "Missing FMV" | "Classification Conflict" | "Potential Duplicate">(
+  const [priority, setPriority] = useState<"All" | "High" | "Medium" | "Low">(
     "All",
   );
+  const [status, setStatus] = useState<
+    "All" | "Open" | "In Progress" | "Resolved"
+  >("All");
+  const [issueType, setIssueType] = useState<
+    | "All"
+    | "Volume Spike"
+    | "Missing FMV"
+    | "Classification Conflict"
+    | "Potential Duplicate"
+  >("All");
 
   const allIssueTypes = useMemo(
-    () => Array.from(new Set(issues.map((i) => i.type))) as Array<AnomalyIssue["type"]>,
+    () =>
+      Array.from(new Set(issues.map((i) => i.type))) as Array<
+        AnomalyIssue["type"]
+      >,
     [issues],
   );
 
@@ -128,19 +166,33 @@ export function DataAnomalyDetectionContent() {
     });
   }, [issues, viewFilter, priority, status, issueType]);
 
-  const handleUpdateIssue = (issueId: string, updates: Partial<AnomalyIssue>) => {
-    setIssues((prev) => prev.map((i) => (i.id === issueId ? { ...i, ...updates } : i)));
+  const handleUpdateIssue = (
+    issueId: string,
+    updates: Partial<AnomalyIssue>,
+  ) => {
+    setIssues((prev) =>
+      prev.map((i) => (i.id === issueId ? { ...i, ...updates } : i)),
+    );
   };
 
   const handleResolveAll = () => {
     setIssues((prev) =>
-      prev.map((i) => ({ ...i, status: "Resolved", statusColor: "bg-green-100 text-green-700" })),
+      prev.map((i) => ({
+        ...i,
+        status: "Resolved",
+        statusColor: "bg-green-100 text-green-700",
+      })),
     );
     toast({ title: "All issues resolved" });
   };
 
   if (selectedIssue) {
-    return <AnomalyIssueDetails issueId={selectedIssue} onClose={() => setSelectedIssue(null)} />;
+    return (
+      <AnomalyIssueDetails
+        issueId={selectedIssue}
+        onClose={() => setSelectedIssue(null)}
+      />
+    );
   }
 
   return (
@@ -149,15 +201,27 @@ export function DataAnomalyDetectionContent() {
       <div className="border-b border-border bg-background sticky top-0 z-10">
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-foreground">Data Anomaly Detection</h1>
-            <p className="text-muted-foreground">Insights on detected issues requiring your attention</p>
+            <h1 className="text-2xl font-bold text-foreground">
+              Data Anomaly Detection
+            </h1>
+            <p className="text-muted-foreground">
+              Insights on detected issues requiring your attention
+            </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setFiltersOpen(true)}
+            >
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button variant="outline" size="sm" onClick={() => setAlertsOpen(true)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setAlertsOpen(true)}
+            >
               <Settings className="h-4 w-4 mr-2" />
               Alert Settings
             </Button>
@@ -178,36 +242,42 @@ export function DataAnomalyDetectionContent() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">View:</span>
               <div className="flex gap-1">
-                {(["All Issues", "High Priority", "Resolved"] as const).map((filter) => (
-                  <Button
-                    key={filter}
-                    variant={viewFilter === filter ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewFilter(filter)}
-                    className="h-8 text-xs"
-                  >
-                    {filter}
-                  </Button>
-                ))}
+                {(["All Issues", "High Priority", "Resolved"] as const).map(
+                  (filter) => (
+                    <Button
+                      key={filter}
+                      variant={viewFilter === filter ? "default" : "ghost"}
+                      size="sm"
+                      onClick={() => setViewFilter(filter)}
+                      className="h-8 text-xs"
+                    >
+                      {filter}
+                    </Button>
+                  ),
+                )}
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Time Period:</span>
+              <span className="text-sm text-muted-foreground">
+                Time Period:
+              </span>
               <div className="flex gap-1">
-                {(["This Week", "This Month", "All Time"] as const).map((tp) => (
-                  <Button
-                    key={tp}
-                    variant={timePeriod === tp ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => {
-                      setTimePeriod(tp);
-                      toast({ title: `Filter applied: ${tp}` });
-                    }}
-                    className="h-8 text-xs"
-                  >
-                    {tp}
-                  </Button>
-                ))}
+                {(["This Week", "This Month", "All Time"] as const).map(
+                  (tp) => (
+                    <Button
+                      key={tp}
+                      variant={timePeriod === tp ? "default" : "ghost"}
+                      size="sm"
+                      onClick={() => {
+                        setTimePeriod(tp);
+                        toast({ title: `Filter applied: ${tp}` });
+                      }}
+                      className="h-8 text-xs"
+                    >
+                      {tp}
+                    </Button>
+                  ),
+                )}
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -250,7 +320,10 @@ export function DataAnomalyDetectionContent() {
           <div className="mt-4 space-y-6">
             <div className="space-y-2">
               <Label htmlFor="priority">Priority</Label>
-              <Select value={priority} onValueChange={(v: any) => setPriority(v)}>
+              <Select
+                value={priority}
+                onValueChange={(v: any) => setPriority(v)}
+              >
                 <SelectTrigger id="priority">
                   <SelectValue placeholder="Select priority" />
                 </SelectTrigger>
@@ -278,7 +351,10 @@ export function DataAnomalyDetectionContent() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="issueType">Issue Type</Label>
-              <Select value={issueType} onValueChange={(v: any) => setIssueType(v)}>
+              <Select
+                value={issueType}
+                onValueChange={(v: any) => setIssueType(v)}
+              >
                 <SelectTrigger id="issueType">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
@@ -327,14 +403,24 @@ export function DataAnomalyDetectionContent() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <Label htmlFor="email-alerts">Email Alerts</Label>
-                <p className="text-xs text-muted-foreground">Receive email notifications for new anomalies</p>
+                <p className="text-xs text-muted-foreground">
+                  Receive email notifications for new anomalies
+                </p>
               </div>
               <Switch id="email-alerts" defaultChecked />
             </div>
             <div className="space-y-2">
               <Label htmlFor="threshold">Threshold (%)</Label>
-              <Input id="threshold" type="number" min={0} max={100} defaultValue={50} />
-              <p className="text-xs text-muted-foreground">Minimum change required to trigger an alert</p>
+              <Input
+                id="threshold"
+                type="number"
+                min={0}
+                max={100}
+                defaultValue={50}
+              />
+              <p className="text-xs text-muted-foreground">
+                Minimum change required to trigger an alert
+              </p>
             </div>
           </div>
           <DialogFooter>
@@ -354,13 +440,17 @@ export function DataAnomalyDetectionContent() {
       </Dialog>
 
       {/* Resolve All Confirmation */}
-      <AlertDialog open={confirmResolveOpen} onOpenChange={setConfirmResolveOpen}>
+      <AlertDialog
+        open={confirmResolveOpen}
+        onOpenChange={setConfirmResolveOpen}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Resolve all issues?</AlertDialogTitle>
           </AlertDialogHeader>
           <p className="text-sm text-muted-foreground">
-            This will mark all detected issues as resolved. You can undo individually later.
+            This will mark all detected issues as resolved. You can undo
+            individually later.
           </p>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

@@ -86,7 +86,6 @@ export function WalletsContent() {
   return (
     <div className="flex-1 h-0 bg-background overflow-auto p-7">
       <div className="space-y-6">
-
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
@@ -160,7 +159,12 @@ export function WalletsContent() {
                 {/* Status */}
                 <div className="flex items-center justify-between">
                   {getStatusBadge(wallet.status)}
-                  <Button variant="ghost" size="sm" onClick={() => toast({ title: `Opening ${wallet.name}` })} aria-label={`Open ${wallet.name}`}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => toast({ title: `Opening ${wallet.name}` })}
+                    aria-label={`Open ${wallet.name}`}
+                  >
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>

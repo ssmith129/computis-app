@@ -116,6 +116,11 @@ export default {
         sans: ['Noto Sans', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
+      screens: {
+        ipad: "834px",
+        "ipad-landscape": "1194px",
+        desktop: "1920px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

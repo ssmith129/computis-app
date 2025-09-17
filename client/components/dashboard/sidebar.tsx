@@ -241,7 +241,9 @@ export function DashboardSidebar({
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white">
                         <item.icon className="h-5 w-5" />
-                        <span className="font-semibold text-sm">{item.title}</span>
+                        <span className="font-semibold text-sm">
+                          {item.title}
+                        </span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}

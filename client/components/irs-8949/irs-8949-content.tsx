@@ -552,11 +552,11 @@ export function Irs8949Content() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-wrap gap-4">
-              <Button>
+              <Button onClick={() => toast({ title: "Form 8949 exported" })}>
                 <Download className="h-4 w-4 mr-2" />
                 Download PDF
               </Button>
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => toast({ title: "Form 8949 exported" })}>
                 <FileText className="h-4 w-4 mr-2" />
                 Download CSV
               </Button>

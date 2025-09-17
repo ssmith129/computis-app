@@ -15,6 +15,23 @@ export function ExportsContent() {
   const [selectedYear, setSelectedYear] = useState("2023");
   const taxYears = ["2023", "2022", "2021"];
 
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [generating, setGenerating] = useState(false);
+
+  const handleGenerate = async () => {
+    if (generating) return;
+    setGenerating(true);
+    toast({ title: "Generating…" });
+    try {
+      await new Promise((r) => setTimeout(r, 1200));
+      toast({ title: "Export generated" });
+    } catch (e) {
+      toast({ title: "Export failed", description: String(e) });
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   return (
     <div className="flex-1 h-0 bg-background overflow-auto">
       {/* Sticky page header */}

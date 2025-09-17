@@ -582,6 +582,96 @@ export function Irs8949Content() {
           </CardContent>
         </Card>
       </div>
+      {/* Filters Sheet */}
+      <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Filters</SheetTitle>
+          </SheetHeader>
+          <div className="mt-4 space-y-4">
+            <div className="space-y-2">
+              <Label>Type</Label>
+              <div className="flex gap-2">
+                {(["All", "Short-term", "Long-term"] as const).map((t) => (
+                  <Button
+                    key={t}
+                    variant={filterType === t ? "default" : "outline"}
+                    onClick={() => setFilterType(t)}
+                  >
+                    {t}
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => setFilterType("All")}>Reset</Button>
+              <Button onClick={() => { setFiltersOpen(false); toast({ title: "Filters applied" }); }}>Apply</Button>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      {/* View Details Dialog */}
+      <Dialog open={!!viewTxn} onOpenChange={(o) => !o && setViewTxn(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Transaction Details</DialogTitle>
+          </DialogHeader>
+          {viewTxn && (
+            <div className="space-y-2 text-sm">
+              <div><span className="text-muted-foreground">Date:</span> {viewTxn.date}</div>
+              <div><span className="text-muted-foreground">Asset:</span> {viewTxn.asset}</div>
+              <div><span className="text-muted-foreground">Type:</span> {viewTxn.type}</div>
+              <div><span className="text-muted-foreground">Proceeds:</span> ${viewTxn.proceeds.toLocaleString()}</div>
+              <div><span className="text-muted-foreground">Cost Basis:</span> ${viewTxn.costBasis.toLocaleString()}</div>
+              <div><span className="text-muted-foreground">Gain/Loss:</span> ${viewTxn.gainLoss.toLocaleString()}</div>
+              <div><span className="text-muted-foreground">Status:</span> {viewTxn.status}</div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button onClick={() => setViewTxn(null)}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit Transaction Dialog */}
+      <Dialog open={!!editTxn} onOpenChange={(o) => !o && setEditTxn(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Transaction</DialogTitle>
+          </DialogHeader>
+          {editTxn && (
+            <div className="space-y-3">
+              <div className="space-y-2">
+                <Label htmlFor="edit-asset">Asset</Label>
+                <Input id="edit-asset" value={editTxn.asset} onChange={(e) => setEditTxn({ ...editTxn, asset: e.target.value })} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="edit-type">Type</Label>
+                <Input id="edit-type" value={editTxn.type} onChange={(e) => setEditTxn({ ...editTxn, type: e.target.value })} />
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditTxn(null)}>Cancel</Button>
+            <Button onClick={() => { if (editTxn) { setData((prev) => prev.map((t) => t.id === editTxn.id ? { ...t, asset: editTxn.asset, type: editTxn.type } : t)); toast({ title: "Transaction updated" }); setEditTxn(null); } }}>Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation */}
+      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Remove transaction?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => { if (deleteId) { setData((prev) => prev.filter((t) => t.id !== deleteId)); setSelectedTransactions((prev) => prev.filter((id) => id !== deleteId)); setDeleteId(null); toast({ title: "Transaction removed" }); } }}>Remove</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

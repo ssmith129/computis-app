@@ -7,6 +7,7 @@ import { RuleEngineTable } from "./rule-engine-table";
 import { CreateRuleModal } from "./create-rule-modal";
 import { RuleConflicts } from "./rule-conflicts";
 import { Plus, FileText } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 export function RuleEngineContent() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);

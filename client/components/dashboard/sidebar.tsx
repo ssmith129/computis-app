@@ -31,6 +31,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { helpAccountMenuItems } from "@/components/dashboard/menu-config";
 
 const mainNavItems = [
   {
@@ -218,6 +219,32 @@ export function DashboardSidebar({
                       </SidebarMenuItem>
                     );
                   })}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </CollapsibleContent>
+          </Collapsible>
+        </SidebarGroup>
+
+        {/* Help & Account Section */}
+        <SidebarGroup>
+          <Collapsible defaultOpen className="group/collapsible">
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-[#a3a3a3] hover:text-white font-semibold text-sm">
+                Help & Account
+                <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <CollapsibleContent>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {helpAccountMenuItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white">
+                        <item.icon className="h-5 w-5" />
+                        <span className="font-semibold text-sm">{item.title}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
                 </SidebarMenu>
               </SidebarGroupContent>
             </CollapsibleContent>

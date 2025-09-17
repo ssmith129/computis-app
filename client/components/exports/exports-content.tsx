@@ -74,16 +74,18 @@ export function ExportsContent() {
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={() => setHistoryOpen(true)}>
                 <History className="h-4 w-4 mr-2" />
                 Export History
               </Button>
               <Button
                 size="sm"
                 className="bg-yellow-500 hover:bg-yellow-600 text-white"
+                onClick={handleGenerate}
+                disabled={generating}
               >
                 <FileText className="h-4 w-4 mr-2" />
-                Generate Now
+                {generating ? "Generating…" : "Generate Now"}
               </Button>
             </div>
           </div>

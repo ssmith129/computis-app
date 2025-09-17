@@ -411,15 +411,15 @@ export function Irs8949Content() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setViewTxn(transaction)}>
                                   <Eye className="mr-2 h-4 w-4" />
                                   View Details
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setEditTxn(transaction)}>
                                   <Edit2 className="mr-2 h-4 w-4" />
                                   Edit Transaction
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-600">
+                                <DropdownMenuItem className="text-red-600" onClick={() => setDeleteId(transaction.id)}>
                                   <Trash2 className="mr-2 h-4 w-4" />
                                   Remove
                                 </DropdownMenuItem>
@@ -518,15 +518,15 @@ export function Irs8949Content() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setViewTxn(transaction)}>
                                   <Eye className="mr-2 h-4 w-4" />
                                   View Details
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setEditTxn(transaction)}>
                                   <Edit2 className="mr-2 h-4 w-4" />
                                   Edit Transaction
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-600">
+                                <DropdownMenuItem className="text-red-600" onClick={() => setDeleteId(transaction.id)}>
                                   <Trash2 className="mr-2 h-4 w-4" />
                                   Remove
                                 </DropdownMenuItem>

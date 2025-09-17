@@ -28,7 +28,11 @@ export function RuleEngineContent() {
           {/* Top Actions */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-4">
             {/* Rule Type Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-auto"
+            >
               <TabsList className="grid w-full grid-cols-5">
                 {ruleTabs.map((tab) => (
                   <TabsTrigger key={tab} value={tab} className="text-sm">
@@ -86,7 +90,10 @@ export function RuleEngineContent() {
       </div>
 
       {/* Create Rule Modal */}
-      <CreateRuleModal open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen} />
+      <CreateRuleModal
+        open={isCreateModalOpen}
+        onOpenChange={setIsCreateModalOpen}
+      />
     </div>
   );
 }

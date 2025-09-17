@@ -237,6 +237,56 @@ export function ClientsContent() {
     );
   };
 
+  // Dialog state
+  const [addOpen, setAddOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [exportOpen, setExportOpen] = useState(false);
+
+  // Add client form state
+  const [newClientName, setNewClientName] = useState("");
+  const [newClientType, setNewClientType] = useState<"Firm" | "Individual">("Firm");
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const handleCreateClient = () => {
+    if (!newClientName.trim()) {
+      setFormError("Client name is required.");
+      return;
+    }
+    const id = (clients.length + 1).toString();
+    setClients([
+      {
+        id,
+        name: newClientName.trim(),
+        type: newClientType,
+        users: newClientType === "Firm" ? 1 : 1,
+        taxEntities: 0,
+        status: "Active",
+        lastActivity: "Just now",
+        icon: newClientType === "Firm" ? Building2 : User,
+        color: newClientType === "Firm" ? "text-blue-600" : "text-green-600",
+      },
+      ...clients,
+    ]);
+    setAddOpen(false);
+    setNewClientName("");
+    setNewClientType("Firm");
+    setFormError(null);
+    toast({ title: "Client created" });
+  };
+
+  const handleConfirmDelete = () => {
+    setClients((prev) => prev.filter((c) => !selectedClients.includes(c.id)));
+    setSelectedClients([]);
+    setDeleteOpen(false);
+    toast({ title: "Deleted selected clients" });
+  };
+
+  const handleConfirmExport = () => {
+    setExportOpen(false);
+    toast({ title: "Export started" });
+    setTimeout(() => toast({ title: "Export complete" }), 800);
+  };
+
   return (
     <div className="flex-1 h-0 bg-background overflow-auto">
       {/* Header */}

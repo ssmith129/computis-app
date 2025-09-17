@@ -8,6 +8,8 @@ import { DataValidation } from "./data-validation";
 import { IssuesTable } from "./issues-table";
 import { RecentExports } from "./recent-exports";
 import { FileText, History } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "@/hooks/use-toast";
 
 export function ExportsContent() {
   const [selectedYear, setSelectedYear] = useState("2023");

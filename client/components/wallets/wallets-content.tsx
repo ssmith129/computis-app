@@ -160,7 +160,7 @@ export function WalletsContent() {
                 {/* Status */}
                 <div className="flex items-center justify-between">
                   {getStatusBadge(wallet.status)}
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" onClick={() => toast({ title: `Opening ${wallet.name}` })} aria-label={`Open ${wallet.name}`}>
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>

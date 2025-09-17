@@ -244,15 +244,15 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openEdit(rule.id)}>
                           <Edit className="mr-2 h-4 w-4" />
                           Edit Rule
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => runNow(rule.id)}>
                           <Play className="mr-2 h-4 w-4" />
                           Run Now
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-600">
+                        <DropdownMenuItem className="text-red-600" onClick={() => confirmDelete(rule.id)}>
                           <Trash2 className="mr-2 h-4 w-4" />
                           Delete
                         </DropdownMenuItem>

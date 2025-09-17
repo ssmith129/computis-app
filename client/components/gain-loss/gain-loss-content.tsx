@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
 import {
   Table,
   TableBody,
@@ -112,6 +116,7 @@ export function GainLossContent() {
   const [selectedYear, setSelectedYear] = useState("2023");
   const [activeTab, setActiveTab] = useState("summary");
   const [reportType, setReportType] = useState("All");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const totalGains = gainLossData.reduce(
     (sum, item) => sum + item.shortTermGain + item.longTermGain,
@@ -122,6 +127,12 @@ export function GainLossContent() {
     0,
   );
   const netGainLoss = totalGains + totalLosses;
+
+  const filteredAssets = useMemo(() => {
+    if (reportType === "All") return gainLossData;
+    if (reportType === "Gains") return gainLossData.filter((i) => i.totalGain > 0);
+    return gainLossData.filter((i) => i.totalGain <= 0);
+  }, [reportType]);
   const totalTransactions = gainLossData.reduce(
     (sum, item) => sum + item.transactions,
     0,
@@ -160,11 +171,11 @@ export function GainLossContent() {
                 <SelectItem value="2021">2021</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)}>
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button>
+            <Button onClick={() => toast({ title: "Report exported" })}>
               <Download className="h-4 w-4 mr-2" />
               Export Report
             </Button>
@@ -334,7 +345,7 @@ export function GainLossContent() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {gainLossData.map((item) => (
+                    {filteredAssets.map((item) => (
                       <TableRow key={item.symbol}>
                         <TableCell>
                           <div className="flex items-center gap-2">
@@ -482,15 +493,15 @@ export function GainLossContent() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button>
+              <Button onClick={() => toast({ title: "Report exported" })}>
                 <Download className="h-4 w-4 mr-2" />
                 Download Tax Summary
               </Button>
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => toast({ title: "Report exported" })}>
                 <FileText className="h-4 w-4 mr-2" />
                 Generate Schedule D
               </Button>
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => toast({ title: "Report exported" })}>
                 <Calendar className="h-4 w-4 mr-2" />
                 Tax Planning Report
               </Button>
@@ -498,6 +509,33 @@ export function GainLossContent() {
           </CardContent>
         </Card>
       </div>
+      <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Filters</SheetTitle>
+          </SheetHeader>
+          <div className="mt-4 space-y-4">
+            <div className="space-y-2">
+              <Label>Report Type</Label>
+              <div className="flex gap-2">
+                {(["All", "Gains", "Losses"] as const).map((t) => (
+                  <Button
+                    key={t}
+                    variant={reportType === t ? "default" : "outline"}
+                    onClick={() => setReportType(t)}
+                  >
+                    {t}
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => setReportType("All")}>Reset</Button>
+              <Button onClick={() => { setFiltersOpen(false); toast({ title: "Filters applied" }); }}>Apply</Button>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

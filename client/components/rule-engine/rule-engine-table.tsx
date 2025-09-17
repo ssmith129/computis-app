@@ -230,7 +230,7 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => toggleStatus(rule.id)} aria-label={rule.status === "Active" ? "Pause" : "Resume"}>
                       {rule.status === "Active" ? (
                         <Pause className="h-4 w-4" />
                       ) : (

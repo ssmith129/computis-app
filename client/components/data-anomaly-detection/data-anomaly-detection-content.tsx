@@ -12,7 +12,7 @@ import {
 import { AnomalyOverviewCards } from "./anomaly-overview-cards";
 import { AnomalyIssuesTable, type AnomalyIssue } from "./anomaly-issues-table";
 import { AnomalyIssueDetails } from "./anomaly-issue-details";
-import { Filter, Settings, CheckCircle } from "lucide-react";
+import { Filter, Settings, CheckCircle, TrendingUp, DollarSign, AlertTriangle, Copy } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";

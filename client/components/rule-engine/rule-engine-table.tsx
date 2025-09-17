@@ -135,6 +135,49 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
     }
   };
 
+  const openEdit = (id: string) => {
+    const rule = rules.find((r) => r.id === id);
+    if (rule) {
+      setEditingRule({ id: rule.id, name: rule.name });
+      setEditOpen(true);
+    }
+  };
+
+  const saveEdit = () => {
+    if (!editingRule) return;
+    setRules((prev) => prev.map((r) => (r.id === editingRule.id ? { ...r, name: editingRule.name } : r)));
+    setEditOpen(false);
+    toast({ title: "Rule updated" });
+  };
+
+  const confirmDelete = (id: string) => {
+    setDeleteId(id);
+    setDeleteOpen(true);
+  };
+
+  const doDelete = () => {
+    if (!deleteId) return;
+    setRules((prev) => prev.filter((r) => r.id !== deleteId));
+    setSelectedRules((prev) => prev.filter((id) => id !== deleteId));
+    setDeleteOpen(false);
+    toast({ title: "Rule deleted" });
+  };
+
+  const toggleStatus = (id: string) => {
+    setRules((prev) =>
+      prev.map((r) =>
+        r.id === id ? { ...r, status: r.status === "Active" ? "Paused" : "Active" } : r,
+      ),
+    );
+    const next = rules.find((r) => r.id === id)?.status === "Active" ? "Paused" : "Active";
+    toast({ title: `Rule ${next === "Active" ? "resumed" : "paused"}` });
+  };
+
+  const runNow = (id: string) => {
+    toast({ title: "Rule run started" });
+    setTimeout(() => toast({ title: "Rule run complete" }), 800);
+  };
+
   return (
     <div className="space-y-4">
       {/* Table */}

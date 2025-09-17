@@ -83,22 +83,7 @@ const getStatusBadge = (status: string) => {
 export function WalletsContent() {
   return (
     <div className="flex-1 h-0 bg-background overflow-auto pt-0 px-6 pb-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Page header moved to route-level */}
-        <div className="flex gap-2 mt-4 self-center w-auto max-w-[500px]">
-          <Button className="gap-0" asChild>
-            <Link to="/wallet-ingestion">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Wallet
-            </Link>
-          </Button>
-          <Button variant="outline" className="gap-0" asChild>
-            <Link to="/wallet-ingestion">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Exchange
-            </Link>
-          </Button>
-        </div>
+      <div className="space-y-6">
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

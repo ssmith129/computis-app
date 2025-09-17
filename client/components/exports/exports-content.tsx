@@ -13,19 +13,19 @@ export function ExportsContent() {
   const taxYears = ["2023", "2022", "2021"];
 
   return (
-    <div className="flex-1 h-0 p-7 bg-background overflow-auto">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="space-y-4">
-          <div>
+    <div className="flex-1 h-0 bg-background overflow-auto">
+      {/* Sticky page header */}
+      <div className="border-b border-border bg-background sticky top-0 z-10">
+        <div className="p-6">
+          <div className="space-y-1">
             <h1 className="text-2xl font-bold text-foreground">Export</h1>
             <p className="text-muted-foreground">
               Generate IRS 8949, QBO, and CSV files with embedded audit logs
             </p>
           </div>
 
-          {/* Tax Year Selection */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          {/* Tax Year Selection and actions */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-4">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-muted-foreground">
                 Tax Year:
@@ -67,43 +67,43 @@ export function ExportsContent() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Main Content */}
-        <div className="space-y-6">
-          {/* Export Cards */}
-          <ExportCards selectedYear={selectedYear} />
+      {/* Main content */}
+      <div className="p-6 space-y-6">
+        {/* Export Cards */}
+        <ExportCards selectedYear={selectedYear} />
 
-          {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Export Configuration */}
-            <Card>
-              <CardContent className="p-6">
-                <ExportConfiguration />
-              </CardContent>
-            </Card>
-
-            {/* Data Validation */}
-            <Card>
-              <CardContent className="p-6">
-                <DataValidation />
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Issues Requiring Attention */}
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Export Configuration */}
           <Card>
             <CardContent className="p-6">
-              <IssuesTable />
+              <ExportConfiguration />
             </CardContent>
           </Card>
 
-          {/* Recent Exports */}
+          {/* Data Validation */}
           <Card>
             <CardContent className="p-6">
-              <RecentExports />
+              <DataValidation />
             </CardContent>
           </Card>
         </div>
+
+        {/* Issues Requiring Attention */}
+        <Card>
+          <CardContent className="p-6">
+            <IssuesTable />
+          </CardContent>
+        </Card>
+
+        {/* Recent Exports */}
+        <Card>
+          <CardContent className="p-6">
+            <RecentExports />
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

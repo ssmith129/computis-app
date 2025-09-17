@@ -198,11 +198,11 @@ export function Irs8949Content() {
                 <SelectItem value="2021">2021</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => setFiltersOpen(true)}>
               <Filter className="h-4 w-4 mr-2" />
               Filters
             </Button>
-            <Button>
+            <Button onClick={() => toast({ title: "Form 8949 exported" })}>
               <Download className="h-4 w-4 mr-2" />
               Export Form
             </Button>

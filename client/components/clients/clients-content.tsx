@@ -368,6 +368,7 @@ export function ClientsContent() {
                 variant="link"
                 size="sm"
                 className="h-8 text-xs text-blue-600 hover:text-blue-700 p-0 ml-auto"
+                onClick={() => toast({ title: "Activity log coming soon" })}
               >
                 View Activity Log
               </Button>

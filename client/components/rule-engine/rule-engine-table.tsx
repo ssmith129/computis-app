@@ -100,11 +100,17 @@ const getStatusVariant = (status: string): "success" | "warning" | "error" | "pe
 };
 
 export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
+  const [rules, setRules] = useState(initialRules);
   const [selectedRules, setSelectedRules] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 25;
 
-  const filteredRules = mockRules.filter(rule => {
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [editingRule, setEditingRule] = useState<{ id: string; name: string } | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+
+  const filteredRules = rules.filter(rule => {
     if (activeTab === "All") return true;
     return rule.type === activeTab;
   });

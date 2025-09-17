@@ -38,7 +38,7 @@ const initialIssues: AnomalyIssue[] = [
   {
     id: "missing-fmv-1",
     type: "Missing FMV",
-    icon: Filter,
+    icon: DollarSign,
     iconColor: "text-yellow-500",
     description: "Multiple Ethereum transactions missing accurate price data",
     dateDetected: "Oct 24, 2023",
@@ -51,7 +51,7 @@ const initialIssues: AnomalyIssue[] = [
   {
     id: "classification-conflict-1",
     type: "Classification Conflict",
-    icon: Filter,
+    icon: AlertTriangle,
     iconColor: "text-blue-500",
     description: "Income vs. Transfer rule conflict for Coinbase transactions",
     dateDetected: "Oct 23, 2023",
@@ -64,7 +64,7 @@ const initialIssues: AnomalyIssue[] = [
   {
     id: "potential-duplicate-1",
     type: "Potential Duplicate",
-    icon: Filter,
+    icon: Copy,
     iconColor: "text-purple-500",
     description: "Same amount BTC transactions within 30 seconds",
     dateDetected: "Oct 22, 2023",
@@ -77,7 +77,7 @@ const initialIssues: AnomalyIssue[] = [
   {
     id: "volume-spike-2",
     type: "Volume Spike",
-    icon: Filter,
+    icon: TrendingUp,
     iconColor: "text-red-500",
     description: "Unusual USDC transaction pattern on Oct 20, 2023",
     dateDetected: "Oct 21, 2023",

@@ -50,6 +50,7 @@ export function ExportsContent() {
                 variant="link"
                 size="sm"
                 className="text-blue-600 hover:text-blue-700 px-2"
+                onClick={() => toast({ title: "Audit trail coming soon" })}
               >
                 View Audit Trail
               </Button>

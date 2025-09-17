@@ -135,7 +135,13 @@ export function Irs8949Content() {
   const [filterType, setFilterType] = useState("All");
   const [activeTab, setActiveTab] = useState("part-i");
 
-  const filteredData = form8949Data.filter(
+  const [data, setData] = useState(initialForm8949Data);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [viewTxn, setViewTxn] = useState<any | null>(null);
+  const [editTxn, setEditTxn] = useState<any | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+
+  const filteredData = data.filter(
     (item) => filterType === "All" || item.type === filterType,
   );
 

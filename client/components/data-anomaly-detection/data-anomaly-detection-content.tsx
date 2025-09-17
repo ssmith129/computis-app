@@ -25,7 +25,7 @@ const initialIssues: AnomalyIssue[] = [
   {
     id: "volume-spike-1",
     type: "Volume Spike",
-    icon: Filter, // replaced at row level when rendering
+    icon: TrendingUp,
     iconColor: "text-red-500",
     description: "450% increase in Bitcoin transactions on Aug 14, 2022",
     dateDetected: "Oct 25, 2023",

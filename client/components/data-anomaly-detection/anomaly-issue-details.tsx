@@ -98,7 +98,7 @@ export function AnomalyIssueDetails({
   return (
     <div className="flex-1 h-0 bg-background overflow-auto">
       {/* Header */}
-      <div className="border-b border-border bg-background sticky top-0 z-10">
+      <div className="page-titlebar">
         <div className="flex items-center justify-between p-6">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onClose}>

@@ -6,9 +6,9 @@ import { AnomalyFlags } from "./anomaly-flags";
 
 export function DashboardContent() {
   return (
-    <div className="flex-1 h-0 bg-gray-50 overflow-auto">
+    <div className="app-content bg-gray-50">
       {/* Page Header */}
-      <div className="border-b border-border bg-background sticky top-0 z-10">
+      <div className="page-titlebar">
         <div className="flex flex-col p-6 text-left">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-500 mt-1">

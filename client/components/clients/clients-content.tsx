@@ -324,7 +324,7 @@ export function ClientsContent() {
               Filters
             </Button>
             <Button
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-white btn-no-gap"
               onClick={() => setAddOpen(true)}
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -602,7 +602,7 @@ export function ClientsContent() {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Roles & Permissions</h2>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white btn-no-gap">
               <Plus className="h-4 w-4 mr-2" />
               Create Role
             </Button>

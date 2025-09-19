@@ -3,7 +3,13 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
 // Table Loading Skeleton
-export function TableLoadingSkeleton({ rows = 5, columns = 6 }: { rows?: number; columns?: number }) {
+export function TableLoadingSkeleton({
+  rows = 5,
+  columns = 6,
+}: {
+  rows?: number;
+  columns?: number;
+}) {
   return (
     <div className="space-y-3">
       {/* Header */}
@@ -63,11 +69,17 @@ export function DashboardCardsLoading() {
 }
 
 // Spinner Loading Component
-export function SpinnerLoading({ size = "sm", text }: { size?: "sm" | "md" | "lg"; text?: string }) {
+export function SpinnerLoading({
+  size = "sm",
+  text,
+}: {
+  size?: "sm" | "md" | "lg";
+  text?: string;
+}) {
   const sizeClasses = {
     sm: "h-4 w-4",
-    md: "h-8 w-8", 
-    lg: "h-12 w-12"
+    md: "h-8 w-8",
+    lg: "h-12 w-12",
   };
 
   return (
@@ -88,10 +100,10 @@ export function PageLoading() {
           <Skeleton className="h-8 w-64" />
           <Skeleton className="h-4 w-96" />
         </div>
-        
+
         {/* Cards Skeleton */}
         <DashboardCardsLoading />
-        
+
         {/* Table Skeleton */}
         <Card>
           <CardHeader>
@@ -107,15 +119,15 @@ export function PageLoading() {
 }
 
 // Empty State Component
-export function EmptyState({ 
-  icon: Icon, 
-  title, 
-  description, 
-  action 
-}: { 
-  icon: any; 
-  title: string; 
-  description: string; 
+export function EmptyState({
+  icon: Icon,
+  title,
+  description,
+  action,
+}: {
+  icon: any;
+  title: string;
+  description: string;
   action?: React.ReactNode;
 }) {
   return (
@@ -132,14 +144,14 @@ export function EmptyState({
   );
 }
 
-// Error State Component  
-export function ErrorState({ 
-  title = "Something went wrong", 
-  description = "We encountered an error while loading this content.", 
-  onRetry 
-}: { 
-  title?: string; 
-  description?: string; 
+// Error State Component
+export function ErrorState({
+  title = "Something went wrong",
+  description = "We encountered an error while loading this content.",
+  onRetry,
+}: {
+  title?: string;
+  description?: string;
   onRetry?: () => void;
 }) {
   return (

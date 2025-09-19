@@ -23,7 +23,9 @@ export function TransactionsContent() {
         <div className="p-6">
           <div className="space-y-1">
             <h1 className="text-2xl font-bold text-foreground">Transactions</h1>
-            <p className="text-muted-foreground">Review and manage classified crypto transactions</p>
+            <p className="text-muted-foreground">
+              Review and manage classified crypto transactions
+            </p>
           </div>
         </div>
       </div>

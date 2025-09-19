@@ -87,8 +87,12 @@ export function WalletsContent() {
       <div className="border-b border-border bg-background sticky top-0 z-10">
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-gray-900">Wallets and Exchanges</h1>
-            <p className="text-gray-500 mt-1">Connect and manage your crypto wallets and exchange accounts</p>
+            <h1 className="text-2xl font-bold text-gray-900">
+              Wallets and Exchanges
+            </h1>
+            <p className="text-gray-500 mt-1">
+              Connect and manage your crypto wallets and exchange accounts
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <Button className="gap-0" asChild>

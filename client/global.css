@@ -163,6 +163,20 @@
   }
 }
 
+@layer components {
+  .app-header {
+    @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
+  }
+  .page-titlebar {
+    @apply sticky top-0 z-10 bg-background border-b border-border;
+  }
+  .app-content {
+    @apply flex-1 h-0 overflow-auto bg-background;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}
+
 /* Responsive enhancements */
 @layer base {
   html {

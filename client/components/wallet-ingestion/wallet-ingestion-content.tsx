@@ -80,9 +80,9 @@ export function WalletIngestionContent() {
   };
 
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto">
+    <div className="app-content">
       {/* Header */}
-      <div className="border-b border-border bg-background">
+      <div className="page-titlebar">
         <div className="flex items-center justify-between p-6 pb-0">
           <div className="flex items-center gap-4">
             <Button variant="outline" size="icon" asChild>

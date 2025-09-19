@@ -37,7 +37,7 @@ export function ExportsContent() {
   };
 
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto">
+    <div className="app-content">
       {/* Sticky page header */}
       <div className="page-titlebar">
         <div className="p-6">

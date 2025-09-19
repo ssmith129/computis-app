@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TransactionsTable } from "./transactions-table";
@@ -19,9 +18,16 @@ export function TransactionsContent() {
   const statusFilters = ["All", "Confirmed", "Suggested", "Flagged"];
 
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto pt-5 px-6 pb-6">
-      <div className="space-y-6">
-        {/* Header replaced by page-level header */}
+    <div className="flex-1 h-0 bg-background overflow-auto">
+      <div className="border-b border-border bg-background sticky top-0 z-10">
+        <div className="p-6">
+          <div className="space-y-1">
+            <h1 className="text-2xl font-bold text-foreground">Transactions</h1>
+            <p className="text-muted-foreground">Review and manage classified crypto transactions</p>
+          </div>
+        </div>
+      </div>
+      <div className="p-6 space-y-6">
         <div className="space-y-4">
           {/* Filters */}
           <div className="flex flex-wrap gap-4 mt-5">

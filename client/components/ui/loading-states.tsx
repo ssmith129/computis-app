@@ -93,7 +93,7 @@ export function SpinnerLoading({
 // Page Loading Component
 export function PageLoading() {
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto">
+    <div className="app-content">
       <div className="p-6 space-y-6">
         {/* Header Skeleton */}
         <div className="space-y-2">

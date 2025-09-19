@@ -175,6 +175,13 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
+
+  .btn-no-gap {
+    gap: 0 !important;
+  }
+  .btn-no-gap svg {
+    margin-right: 0 !important;
+  }
 }
 
 /* Responsive enhancements */

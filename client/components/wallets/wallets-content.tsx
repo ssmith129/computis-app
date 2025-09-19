@@ -95,13 +95,13 @@ export function WalletsContent() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button className="gap-0" asChild>
+            <Button className="btn-no-gap" asChild>
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Wallet
               </Link>
             </Button>
-            <Button variant="outline" className="gap-0" asChild>
+            <Button variant="outline" className="btn-no-gap" asChild>
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Exchange

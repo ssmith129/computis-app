@@ -10,14 +10,6 @@ export default function Transactions() {
         <DashboardSidebar activeItem="Transactions" />
         <SidebarInset className="flex flex-col">
           <DashboardHeader />
-          <div className="border-b border-border bg-background px-6 py-6 text-left">
-            <div className="text-left">
-              <h1 className="text-2xl font-bold text-gray-900">Transactions</h1>
-              <p className="text-gray-500 mt-1">
-                Review and manage classified crypto transactions
-              </p>
-            </div>
-          </div>
           <TransactionsContent />
         </SidebarInset>
       </div>

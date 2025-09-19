@@ -92,7 +92,7 @@ export function PreferencesContent() {
   ];
 
   return (
-    <div className="flex-1 h-0 bg-background overflow-auto">
+    <div className="app-content">
       {/* Header */}
       <div className="page-titlebar">
         <div className="flex items-center justify-between p-6">

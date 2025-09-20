@@ -53,10 +53,7 @@ export function RuleEngineContent() {
                 <FileText className="h-4 w-4 mr-2" />
                 View Audit Log
               </Button>
-              <Button
-                size="sm"
-                onClick={() => setIsCreateModalOpen(true)}
-              >
+              <Button size="sm" onClick={() => setIsCreateModalOpen(true)}>
                 <Plus className="h-4 w-4 mr-2" />
                 New Rule
               </Button>

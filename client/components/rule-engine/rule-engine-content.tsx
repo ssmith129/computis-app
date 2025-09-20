@@ -55,7 +55,6 @@ export function RuleEngineContent() {
               </Button>
               <Button
                 size="sm"
-                className="btn-no-gap"
                 onClick={() => setIsCreateModalOpen(true)}
               >
                 <Plus className="h-4 w-4 mr-2" />

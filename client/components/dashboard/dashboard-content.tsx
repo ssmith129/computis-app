@@ -18,7 +18,7 @@ export function DashboardContent() {
       </div>
 
       {/* Main Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-6 space-y-6 no-h-scroll">
         {/* Recent Uploads */}
         <RecentUploads />
 
@@ -54,7 +54,7 @@ export function DashboardContent() {
               </TabsList>
             </div>
 
-            <TabsContent value="overview" className="p-6 space-y-8 mt-0">
+            <TabsContent value="overview" className="p-6 space-y-8 mt-0 no-h-scroll">
               {/* Enhanced Dashboard Cards */}
               <EnhancedDashboardCards />
 
@@ -65,7 +65,7 @@ export function DashboardContent() {
               <AnomalyFlags />
             </TabsContent>
 
-            <TabsContent value="reports" className="p-6 mt-0 space-y-6">
+            <TabsContent value="reports" className="p-6 mt-0 space-y-6 no-h-scroll">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                   <div className="flex items-center gap-3 mb-4">

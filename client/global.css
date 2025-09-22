@@ -168,7 +168,7 @@
     @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
   }
   .page-titlebar {
-    @apply sticky top-0 z-10 bg-background border-b border-border;
+    @apply sticky top-0 z-40 bg-background border-b border-border;
   }
   .app-content {
     @apply flex-1 h-0 bg-background overflow-y-auto overflow-x-hidden max-w-full box-border;
@@ -193,11 +193,11 @@
   }
 
   .fixed-header {
-    @apply fixed top-0 left-0 right-0 z-[1000] bg-sidebar border-b border-sidebar-border h-auto;
+    @apply fixed top-0 left-0 right-0 z-50 bg-sidebar border-b border-sidebar-border h-auto;
   }
 
   .fixed-navigation {
-    @apply fixed left-0 top-0 bottom-0 z-[900] w-[--sidebar-width] bg-sidebar border-r border-sidebar-border;
+    @apply fixed left-0 top-0 bottom-0 z-30 w-[--sidebar-width] bg-sidebar border-r border-sidebar-border;
     transition: transform 300ms ease-in-out;
   }
 

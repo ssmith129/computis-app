@@ -10,6 +10,8 @@ import {
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatusBadge } from "./status-badge";
+import { useLongPress } from "@/hooks/use-long-press";
+import { toast } from "@/hooks/use-toast";
 
 interface Upload {
   fileName: string;
@@ -48,6 +50,10 @@ const uploadsData: Upload[] = [
 ];
 
 export function RecentUploads() {
+  const previewLongPress = useLongPress({
+    delay: 500,
+    onLongPress: () => toast({ title: "Preview", description: "Long-press detected" }),
+  });
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-bold text-gray-900">Recent Uploads</h2>
@@ -89,7 +95,7 @@ export function RecentUploads() {
                 </TableCell>
                 <TableCell className="py-3">
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
+                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target" {...previewLongPress}>
                       <Eye className="h-4 w-4 text-gray-400" />
                     </Button>
                     <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">

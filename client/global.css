@@ -164,6 +164,21 @@
 }
 
 @layer components {
+  /*
+   * Z-Index Layering Strategy:
+   *
+   * z-0 to z-10: Base content, backgrounds
+   * z-20: Page overlays, floating elements
+   * z-30: Navigation sidebars, fixed navigation
+   * z-40: Page section headers, sticky content
+   * z-50: App header, main navigation, dropdowns, UI components
+   * z-60-90: Reserved for future use
+   * z-[100]: Toasts, notifications
+   * z-[200]+: Modals, dialogs, critical overlays
+   *
+   * Always use semantic classes instead of arbitrary z-index values
+   */
+
   .app-header {
     @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
   }

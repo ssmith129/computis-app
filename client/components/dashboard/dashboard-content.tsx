@@ -62,7 +62,9 @@ export function DashboardContent() {
               <EnhancedDashboardCards />
 
               {/* Enhanced Charts Section */}
-              <EnhancedPieChartSections />
+              <TouchZoomContainer className="rounded-lg">
+                <EnhancedPieChartSections />
+              </TouchZoomContainer>
 
               {/* Anomaly Flags */}
               <AnomalyFlags />

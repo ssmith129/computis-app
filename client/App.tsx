@@ -18,6 +18,9 @@ import Irs8949 from "./pages/Irs8949";
 import GainLoss from "./pages/GainLoss";
 import Settings from "./pages/Settings";
 import Preferences from "./pages/Preferences";
+import MyAccount from "./pages/MyAccount";
+import HelpPage from "./pages/HelpPage";
+import KeyboardShortcuts from "./pages/KeyboardShortcuts";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

@@ -89,13 +89,13 @@ export function RecentUploads() {
                 </TableCell>
                 <TableCell className="py-3">
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
                       <Eye className="h-4 w-4 text-gray-400" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
                       <Download className="h-4 w-4 text-gray-400" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
                       <MoreHorizontal className="h-4 w-4 text-gray-400" />
                     </Button>
                   </div>

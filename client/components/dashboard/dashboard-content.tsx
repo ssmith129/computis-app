@@ -3,6 +3,7 @@ import { EnhancedDashboardCards } from "./enhanced-dashboard-cards";
 import { RecentUploads } from "./recent-uploads";
 import { EnhancedPieChartSections } from "./enhanced-pie-charts";
 import { AnomalyFlags } from "./anomaly-flags";
+import { TouchZoomContainer } from "@/components/ui/touch-zoom-container";
 
 export function DashboardContent() {
   return (

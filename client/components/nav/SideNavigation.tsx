@@ -56,7 +56,7 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
 
       <aside
         className={cn(
-          "relative z-50 h-screen border-r border-sidebar bg-sidebar text-sidebar-foreground transition-[width] duration-300 ease-in-out md:sticky md:top-0",
+          "relative z-30 h-screen border-r border-sidebar bg-sidebar text-sidebar-foreground transition-[width] duration-300 ease-in-out md:sticky md:top-0",
           navWidth,
           className,
           mobileOpen ? "fixed left-0 top-0" : "",

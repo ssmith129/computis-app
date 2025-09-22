@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { helpAccountMenuItems } from "@/components/dashboard/menu-config";
+import { Link } from "react-router-dom";
 
 export function DashboardHeader() {
   return (

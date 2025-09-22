@@ -182,6 +182,10 @@
   .btn-no-gap svg {
     margin-right: 0 !important;
   }
+
+  .no-h-scroll {
+    @apply relative overflow-x-hidden max-w-full box-border;
+  }
 }
 
 /* Responsive enhancements */

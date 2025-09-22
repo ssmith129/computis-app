@@ -6,7 +6,11 @@ export interface UseLongPressOptions {
   onCancel?: () => void;
 }
 
-export function useLongPress({ delay = 500, onLongPress, onCancel }: UseLongPressOptions) {
+export function useLongPress({
+  delay = 500,
+  onLongPress,
+  onCancel,
+}: UseLongPressOptions) {
   const timer = useRef<number | null>(null);
   const targetRef = useRef<EventTarget | null>(null);
 
@@ -18,14 +22,17 @@ export function useLongPress({ delay = 500, onLongPress, onCancel }: UseLongPres
     onCancel?.();
   }, [onCancel]);
 
-  const start = useCallback((e: MouseEvent | TouchEvent) => {
-    targetRef.current = e.target as EventTarget;
-    clear();
-    timer.current = window.setTimeout(() => {
-      onLongPress?.(e);
-      timer.current = null;
-    }, delay);
-  }, [clear, delay, onLongPress]);
+  const start = useCallback(
+    (e: MouseEvent | TouchEvent) => {
+      targetRef.current = e.target as EventTarget;
+      clear();
+      timer.current = window.setTimeout(() => {
+        onLongPress?.(e);
+        timer.current = null;
+      }, delay);
+    },
+    [clear, delay, onLongPress],
+  );
 
   useEffect(() => () => clear(), [clear]);
 

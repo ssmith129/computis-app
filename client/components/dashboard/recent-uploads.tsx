@@ -25,7 +25,7 @@ interface Upload {
 const uploadsData: Upload[] = [
   {
     fileName: "coinbase_transactions_2022.csv",
-    exchange: "Coinbase", 
+    exchange: "Coinbase",
     uploaded: "2023-10-24",
     status: "success",
     statusText: "Imported",
@@ -34,7 +34,7 @@ const uploadsData: Upload[] = [
   {
     fileName: "binance_export_q3.csv",
     exchange: "Binance",
-    uploaded: "2023-10-15", 
+    uploaded: "2023-10-15",
     status: "warning",
     statusText: "Mapping Required",
     transactions: 87,
@@ -43,7 +43,7 @@ const uploadsData: Upload[] = [
     fileName: "kraken_history_2022.csv",
     exchange: "Kraken",
     uploaded: "2023-09-30",
-    status: "error", 
+    status: "error",
     statusText: "Validation Failed",
     transactions: 63,
   },
@@ -52,31 +52,49 @@ const uploadsData: Upload[] = [
 export function RecentUploads() {
   const previewLongPress = useLongPress({
     delay: 500,
-    onLongPress: () => toast({ title: "Preview", description: "Long-press detected" }),
+    onLongPress: () =>
+      toast({ title: "Preview", description: "Long-press detected" }),
   });
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-bold text-gray-900">Recent Uploads</h2>
-      
+
       <Card className="border border-gray-200 rounded-lg overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 border-b border-gray-200">
-              <TableHead className="text-gray-500 font-medium">File Name</TableHead>
-              <TableHead className="text-gray-500 font-medium">Exchange/Wallet</TableHead>
-              <TableHead className="text-gray-500 font-medium">Uploaded</TableHead>
-              <TableHead className="text-gray-500 font-medium">Status</TableHead>
-              <TableHead className="text-gray-500 font-medium">Transactions</TableHead>
-              <TableHead className="text-gray-500 font-medium">Actions</TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                File Name
+              </TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                Exchange/Wallet
+              </TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                Uploaded
+              </TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                Status
+              </TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                Transactions
+              </TableHead>
+              <TableHead className="text-gray-500 font-medium">
+                Actions
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {uploadsData.map((upload, index) => (
-              <TableRow key={index} className="border-b border-gray-100 hover:bg-gray-50">
+              <TableRow
+                key={index}
+                className="border-b border-gray-100 hover:bg-gray-50"
+              >
                 <TableCell className="py-3">
                   <div className="flex items-center gap-3">
                     <FileText className="h-4 w-4 text-gray-400" />
-                    <span className="font-medium text-gray-900">{upload.fileName}</span>
+                    <span className="font-medium text-gray-900">
+                      {upload.fileName}
+                    </span>
                   </div>
                 </TableCell>
                 <TableCell className="py-3">
@@ -95,13 +113,26 @@ export function RecentUploads() {
                 </TableCell>
                 <TableCell className="py-3">
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target" {...previewLongPress}>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-11 w-11 touch-target"
+                      {...previewLongPress}
+                    >
                       <Eye className="h-4 w-4 text-gray-400" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-11 w-11 touch-target"
+                    >
                       <Download className="h-4 w-4 text-gray-400" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-11 w-11 touch-target">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-11 w-11 touch-target"
+                    >
                       <MoreHorizontal className="h-4 w-4 text-gray-400" />
                     </Button>
                   </div>

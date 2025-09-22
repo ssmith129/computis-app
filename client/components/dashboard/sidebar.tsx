@@ -239,7 +239,10 @@ export function DashboardSidebar({
                 <SidebarMenu>
                   {helpAccountMenuItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white">
+                      <SidebarMenuButton
+                        asChild
+                        className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
+                      >
                         <Link to={item.href}>
                           <item.icon className="h-5 w-5" />
                           <span className="font-semibold text-sm">

@@ -7,18 +7,18 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Shield, 
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Shield,
   Bell,
   CreditCard,
   Download,
   Eye,
-  EyeOff
+  EyeOff,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -42,7 +42,6 @@ export default function MyAccount() {
 
         {/* Main Content */}
         <div className="p-6 space-y-6 no-h-scroll">
-          
           {/* Profile Overview */}
           <Card>
             <CardHeader>
@@ -59,20 +58,20 @@ export default function MyAccount() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900">John Smith</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    John Smith
+                  </h3>
                   <p className="text-gray-600">Premium User</p>
                   <div className="flex gap-2 mt-2">
                     <Badge variant="default">Verified</Badge>
                     <Badge variant="secondary">Pro Plan</Badge>
                   </div>
                 </div>
-                <Button variant="outline">
-                  Change Photo
-                </Button>
+                <Button variant="outline">Change Photo</Button>
               </div>
-              
+
               <Separator />
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
@@ -86,28 +85,47 @@ export default function MyAccount() {
                   <Label htmlFor="email">Email</Label>
                   <div className="flex">
                     <Mail className="h-4 w-4 text-gray-400 mt-3 mr-3" />
-                    <Input id="email" type="email" defaultValue="john.smith@example.com" className="flex-1" />
+                    <Input
+                      id="email"
+                      type="email"
+                      defaultValue="john.smith@example.com"
+                      className="flex-1"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone</Label>
                   <div className="flex">
                     <Phone className="h-4 w-4 text-gray-400 mt-3 mr-3" />
-                    <Input id="phone" type="tel" defaultValue="+1 (555) 123-4567" className="flex-1" />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      defaultValue="+1 (555) 123-4567"
+                      className="flex-1"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="location">Location</Label>
                   <div className="flex">
                     <MapPin className="h-4 w-4 text-gray-400 mt-3 mr-3" />
-                    <Input id="location" defaultValue="New York, NY" className="flex-1" />
+                    <Input
+                      id="location"
+                      defaultValue="New York, NY"
+                      className="flex-1"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="joined">Member Since</Label>
                   <div className="flex">
                     <Calendar className="h-4 w-4 text-gray-400 mt-3 mr-3" />
-                    <Input id="joined" defaultValue="January 2023" className="flex-1" disabled />
+                    <Input
+                      id="joined"
+                      defaultValue="January 2023"
+                      className="flex-1"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>
@@ -128,10 +146,10 @@ export default function MyAccount() {
                   <Label htmlFor="currentPassword">Current Password</Label>
                   <div className="flex gap-2">
                     <div className="relative flex-1">
-                      <Input 
-                        id="currentPassword" 
-                        type={showPassword ? "text" : "password"} 
-                        placeholder="Enter current password" 
+                      <Input
+                        id="currentPassword"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter current password"
                       />
                       <Button
                         type="button"
@@ -140,28 +158,44 @@ export default function MyAccount() {
                         className="absolute right-2 top-1/2 -translate-y-1/2 p-1 h-auto"
                         onClick={() => setShowPassword(!showPassword)}
                       >
-                        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        {showPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
                       </Button>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="newPassword">New Password</Label>
-                  <Input id="newPassword" type="password" placeholder="Enter new password" />
+                  <Input
+                    id="newPassword"
+                    type="password"
+                    placeholder="Enter new password"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="confirmPassword">Confirm New Password</Label>
-                  <Input id="confirmPassword" type="password" placeholder="Confirm new password" />
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="Confirm new password"
+                  />
                 </div>
               </div>
-              
+
               <Separator />
-              
+
               <div className="space-y-4">
-                <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
+                <h4 className="font-medium text-gray-900">
+                  Two-Factor Authentication
+                </h4>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600">Add an extra layer of security to your account</p>
+                    <p className="text-sm text-gray-600">
+                      Add an extra layer of security to your account
+                    </p>
                   </div>
                   <Button variant="outline" size="sm">
                     Setup 2FA
@@ -183,34 +217,42 @@ export default function MyAccount() {
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">Email Notifications</p>
-                  <p className="text-xs text-gray-500">Receive updates via email</p>
+                  <p className="text-xs text-gray-500">
+                    Receive updates via email
+                  </p>
                 </div>
-                <Switch 
-                  checked={emailNotifications} 
-                  onCheckedChange={setEmailNotifications} 
+                <Switch
+                  checked={emailNotifications}
+                  onCheckedChange={setEmailNotifications}
                 />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">Push Notifications</p>
-                  <p className="text-xs text-gray-500">Receive browser notifications</p>
+                  <p className="text-xs text-gray-500">
+                    Receive browser notifications
+                  </p>
                 </div>
-                <Switch 
-                  checked={pushNotifications} 
-                  onCheckedChange={setPushNotifications} 
+                <Switch
+                  checked={pushNotifications}
+                  onCheckedChange={setPushNotifications}
                 />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">Weekly Reports</p>
-                  <p className="text-xs text-gray-500">Get weekly summary emails</p>
+                  <p className="text-xs text-gray-500">
+                    Get weekly summary emails
+                  </p>
                 </div>
                 <Switch defaultChecked />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">Security Alerts</p>
-                  <p className="text-xs text-gray-500">Alerts for account security events</p>
+                  <p className="text-xs text-gray-500">
+                    Alerts for account security events
+                  </p>
                 </div>
                 <Switch defaultChecked />
               </div>
@@ -229,13 +271,13 @@ export default function MyAccount() {
               <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
                 <div>
                   <h4 className="font-medium text-blue-900">Pro Plan</h4>
-                  <p className="text-sm text-blue-700">$29.99/month • Next billing: Feb 15, 2024</p>
+                  <p className="text-sm text-blue-700">
+                    $29.99/month • Next billing: Feb 15, 2024
+                  </p>
                 </div>
-                <Button variant="outline">
-                  Manage Plan
-                </Button>
+                <Button variant="outline">Manage Plan</Button>
               </div>
-              
+
               <div className="space-y-2">
                 <h4 className="font-medium text-gray-900">Payment Method</h4>
                 <div className="flex items-center justify-between p-3 border rounded-lg">
@@ -250,7 +292,7 @@ export default function MyAccount() {
                   </Button>
                 </div>
               </div>
-              
+
               <div className="flex gap-2">
                 <Button variant="outline" className="flex-1">
                   <Download className="h-4 w-4 mr-2" />

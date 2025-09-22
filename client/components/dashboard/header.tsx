@@ -46,7 +46,11 @@ export function DashboardHeader() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             {helpAccountMenuItems.map((item) => (
-              <DropdownMenuItem key={item.title} className="cursor-pointer" asChild>
+              <DropdownMenuItem
+                key={item.title}
+                className="cursor-pointer"
+                asChild
+              >
                 <Link to={item.href} className="flex items-center">
                   <item.icon className="mr-2 h-4 w-4" />
                   <span>{item.title}</span>

@@ -3,17 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { 
-  Keyboard, 
-  Search, 
-  Command, 
+import {
+  Keyboard,
+  Search,
+  Command,
   Navigation,
   MousePointer,
   Eye,
   Download,
   Settings,
   HelpCircle,
-  Zap
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -26,97 +26,256 @@ export default function KeyboardShortcuts() {
       icon: Navigation,
       color: "blue",
       shortcuts: [
-        { keys: ["G", "D"], description: "Go to Dashboard", action: "Navigate to main dashboard" },
-        { keys: ["G", "T"], description: "Go to Transactions", action: "Navigate to transactions page" },
-        { keys: ["G", "W"], description: "Go to Wallets", action: "Navigate to wallets page" },
-        { keys: ["G", "R"], description: "Go to Reports", action: "Navigate to reports section" },
-        { keys: ["G", "S"], description: "Go to Settings", action: "Navigate to settings page" },
-        { keys: ["G", "H"], description: "Go to Help", action: "Open help center" },
-        { keys: ["Esc"], description: "Close Modal/Sidebar", action: "Close any open modal or sidebar" }
-      ]
+        {
+          keys: ["G", "D"],
+          description: "Go to Dashboard",
+          action: "Navigate to main dashboard",
+        },
+        {
+          keys: ["G", "T"],
+          description: "Go to Transactions",
+          action: "Navigate to transactions page",
+        },
+        {
+          keys: ["G", "W"],
+          description: "Go to Wallets",
+          action: "Navigate to wallets page",
+        },
+        {
+          keys: ["G", "R"],
+          description: "Go to Reports",
+          action: "Navigate to reports section",
+        },
+        {
+          keys: ["G", "S"],
+          description: "Go to Settings",
+          action: "Navigate to settings page",
+        },
+        {
+          keys: ["G", "H"],
+          description: "Go to Help",
+          action: "Open help center",
+        },
+        {
+          keys: ["Esc"],
+          description: "Close Modal/Sidebar",
+          action: "Close any open modal or sidebar",
+        },
+      ],
     },
     {
       title: "Search & Filter",
       icon: Search,
       color: "green",
       shortcuts: [
-        { keys: ["Ctrl", "K"], description: "Global Search", action: "Open global search modal" },
-        { keys: ["/"], description: "Quick Search", action: "Focus on search input" },
-        { keys: ["Ctrl", "F"], description: "Filter Current Page", action: "Open filter options" },
-        { keys: ["Alt", "C"], description: "Clear Filters", action: "Reset all active filters" },
-        { keys: ["Enter"], description: "Apply Search/Filter", action: "Execute search or apply filters" }
-      ]
+        {
+          keys: ["Ctrl", "K"],
+          description: "Global Search",
+          action: "Open global search modal",
+        },
+        {
+          keys: ["/"],
+          description: "Quick Search",
+          action: "Focus on search input",
+        },
+        {
+          keys: ["Ctrl", "F"],
+          description: "Filter Current Page",
+          action: "Open filter options",
+        },
+        {
+          keys: ["Alt", "C"],
+          description: "Clear Filters",
+          action: "Reset all active filters",
+        },
+        {
+          keys: ["Enter"],
+          description: "Apply Search/Filter",
+          action: "Execute search or apply filters",
+        },
+      ],
     },
     {
       title: "Actions",
       icon: Zap,
       color: "purple",
       shortcuts: [
-        { keys: ["Ctrl", "N"], description: "New Transaction", action: "Add new transaction manually" },
-        { keys: ["Ctrl", "I"], description: "Import Data", action: "Open import wizard" },
-        { keys: ["Ctrl", "E"], description: "Export Data", action: "Open export options" },
-        { keys: ["Ctrl", "S"], description: "Save Changes", action: "Save current form or changes" },
-        { keys: ["Ctrl", "Z"], description: "Undo", action: "Undo last action" },
-        { keys: ["Ctrl", "Shift", "Z"], description: "Redo", action: "Redo last undone action" },
-        { keys: ["Del"], description: "Delete Selected", action: "Delete selected items" }
-      ]
+        {
+          keys: ["Ctrl", "N"],
+          description: "New Transaction",
+          action: "Add new transaction manually",
+        },
+        {
+          keys: ["Ctrl", "I"],
+          description: "Import Data",
+          action: "Open import wizard",
+        },
+        {
+          keys: ["Ctrl", "E"],
+          description: "Export Data",
+          action: "Open export options",
+        },
+        {
+          keys: ["Ctrl", "S"],
+          description: "Save Changes",
+          action: "Save current form or changes",
+        },
+        {
+          keys: ["Ctrl", "Z"],
+          description: "Undo",
+          action: "Undo last action",
+        },
+        {
+          keys: ["Ctrl", "Shift", "Z"],
+          description: "Redo",
+          action: "Redo last undone action",
+        },
+        {
+          keys: ["Del"],
+          description: "Delete Selected",
+          action: "Delete selected items",
+        },
+      ],
     },
     {
       title: "View & Display",
       icon: Eye,
       color: "orange",
       shortcuts: [
-        { keys: ["Ctrl", "1"], description: "Card View", action: "Switch to card layout" },
-        { keys: ["Ctrl", "2"], description: "List View", action: "Switch to list layout" },
-        { keys: ["Ctrl", "3"], description: "Table View", action: "Switch to table layout" },
-        { keys: ["Ctrl", "+"], description: "Zoom In", action: "Increase content zoom" },
-        { keys: ["Ctrl", "-"], description: "Zoom Out", action: "Decrease content zoom" },
-        { keys: ["Ctrl", "0"], description: "Reset Zoom", action: "Reset zoom to default" },
-        { keys: ["F11"], description: "Fullscreen", action: "Toggle fullscreen mode" }
-      ]
+        {
+          keys: ["Ctrl", "1"],
+          description: "Card View",
+          action: "Switch to card layout",
+        },
+        {
+          keys: ["Ctrl", "2"],
+          description: "List View",
+          action: "Switch to list layout",
+        },
+        {
+          keys: ["Ctrl", "3"],
+          description: "Table View",
+          action: "Switch to table layout",
+        },
+        {
+          keys: ["Ctrl", "+"],
+          description: "Zoom In",
+          action: "Increase content zoom",
+        },
+        {
+          keys: ["Ctrl", "-"],
+          description: "Zoom Out",
+          action: "Decrease content zoom",
+        },
+        {
+          keys: ["Ctrl", "0"],
+          description: "Reset Zoom",
+          action: "Reset zoom to default",
+        },
+        {
+          keys: ["F11"],
+          description: "Fullscreen",
+          action: "Toggle fullscreen mode",
+        },
+      ],
     },
     {
       title: "Selection & Editing",
       icon: MousePointer,
       color: "red",
       shortcuts: [
-        { keys: ["Ctrl", "A"], description: "Select All", action: "Select all items on current page" },
-        { keys: ["Ctrl", "Click"], description: "Multi-select", action: "Add/remove item from selection" },
-        { keys: ["Shift", "Click"], description: "Range Select", action: "Select range of items" },
-        { keys: ["Tab"], description: "Next Field", action: "Move to next form field" },
-        { keys: ["Shift", "Tab"], description: "Previous Field", action: "Move to previous form field" },
-        { keys: ["Enter"], description: "Confirm Edit", action: "Save inline edit" },
-        { keys: ["Esc"], description: "Cancel Edit", action: "Cancel inline edit" }
-      ]
+        {
+          keys: ["Ctrl", "A"],
+          description: "Select All",
+          action: "Select all items on current page",
+        },
+        {
+          keys: ["Ctrl", "Click"],
+          description: "Multi-select",
+          action: "Add/remove item from selection",
+        },
+        {
+          keys: ["Shift", "Click"],
+          description: "Range Select",
+          action: "Select range of items",
+        },
+        {
+          keys: ["Tab"],
+          description: "Next Field",
+          action: "Move to next form field",
+        },
+        {
+          keys: ["Shift", "Tab"],
+          description: "Previous Field",
+          action: "Move to previous form field",
+        },
+        {
+          keys: ["Enter"],
+          description: "Confirm Edit",
+          action: "Save inline edit",
+        },
+        {
+          keys: ["Esc"],
+          description: "Cancel Edit",
+          action: "Cancel inline edit",
+        },
+      ],
     },
     {
       title: "General",
       icon: Command,
       color: "gray",
       shortcuts: [
-        { keys: ["Ctrl", "R"], description: "Refresh Page", action: "Reload current page data" },
-        { keys: ["?"], description: "Show Shortcuts", action: "Open this shortcuts guide" },
-        { keys: ["Ctrl", ","], description: "Open Preferences", action: "Open user preferences" },
-        { keys: ["Alt", "M"], description: "Toggle Sidebar", action: "Collapse/expand sidebar" },
-        { keys: ["Ctrl", "Shift", "D"], description: "Toggle Dark Mode", action: "Switch between light/dark theme" }
-      ]
-    }
+        {
+          keys: ["Ctrl", "R"],
+          description: "Refresh Page",
+          action: "Reload current page data",
+        },
+        {
+          keys: ["?"],
+          description: "Show Shortcuts",
+          action: "Open this shortcuts guide",
+        },
+        {
+          keys: ["Ctrl", ","],
+          description: "Open Preferences",
+          action: "Open user preferences",
+        },
+        {
+          keys: ["Alt", "M"],
+          description: "Toggle Sidebar",
+          action: "Collapse/expand sidebar",
+        },
+        {
+          keys: ["Ctrl", "Shift", "D"],
+          description: "Toggle Dark Mode",
+          action: "Switch between light/dark theme",
+        },
+      ],
+    },
   ];
 
   const platformShortcuts = [
     { platform: "Windows", modifier: "Ctrl" },
     { platform: "Mac", modifier: "⌘" },
-    { platform: "Linux", modifier: "Ctrl" }
+    { platform: "Linux", modifier: "Ctrl" },
   ];
 
-  const filteredCategories = shortcutCategories.map(category => ({
-    ...category,
-    shortcuts: category.shortcuts.filter(shortcut =>
-      shortcut.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      shortcut.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      shortcut.keys.some(key => key.toLowerCase().includes(searchQuery.toLowerCase()))
-    )
-  })).filter(category => category.shortcuts.length > 0);
+  const filteredCategories = shortcutCategories
+    .map((category) => ({
+      ...category,
+      shortcuts: category.shortcuts.filter(
+        (shortcut) =>
+          shortcut.description
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          shortcut.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          shortcut.keys.some((key) =>
+            key.toLowerCase().includes(searchQuery.toLowerCase()),
+          ),
+      ),
+    }))
+    .filter((category) => category.shortcuts.length > 0);
 
   const renderShortcutKeys = (keys: string[]) => (
     <div className="flex items-center gap-1">
@@ -125,7 +284,9 @@ export default function KeyboardShortcuts() {
           <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg shadow-sm">
             {key}
           </kbd>
-          {index < keys.length - 1 && <span className="text-gray-400 text-xs">+</span>}
+          {index < keys.length - 1 && (
+            <span className="text-gray-400 text-xs">+</span>
+          )}
         </span>
       ))}
     </div>
@@ -149,7 +310,6 @@ export default function KeyboardShortcuts() {
 
         {/* Main Content */}
         <div className="p-6 space-y-6 no-h-scroll">
-          
           {/* Search and Platform Info */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
@@ -167,15 +327,20 @@ export default function KeyboardShortcuts() {
                 </CardContent>
               </Card>
             </div>
-            
+
             <Card>
               <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium">Platform Support</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Platform Support
+                </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="space-y-2">
                   {platformShortcuts.map((platform) => (
-                    <div key={platform.platform} className="flex items-center justify-between text-sm">
+                    <div
+                      key={platform.platform}
+                      className="flex items-center justify-between text-sm"
+                    >
                       <span className="text-gray-600">{platform.platform}</span>
                       <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded">
                         {platform.modifier}
@@ -195,22 +360,36 @@ export default function KeyboardShortcuts() {
                 <Card key={category.title} className="h-fit">
                   <CardHeader className="pb-4">
                     <CardTitle className="flex items-center gap-2 text-lg">
-                      <div className={`p-2 rounded-lg ${
-                        category.color === 'blue' ? 'bg-blue-100' :
-                        category.color === 'green' ? 'bg-green-100' :
-                        category.color === 'purple' ? 'bg-purple-100' :
-                        category.color === 'orange' ? 'bg-orange-100' :
-                        category.color === 'red' ? 'bg-red-100' :
-                        'bg-gray-100'
-                      }`}>
-                        <IconComponent className={`h-4 w-4 ${
-                          category.color === 'blue' ? 'text-blue-600' :
-                          category.color === 'green' ? 'text-green-600' :
-                          category.color === 'purple' ? 'text-purple-600' :
-                          category.color === 'orange' ? 'text-orange-600' :
-                          category.color === 'red' ? 'text-red-600' :
-                          'text-gray-600'
-                        }`} />
+                      <div
+                        className={`p-2 rounded-lg ${
+                          category.color === "blue"
+                            ? "bg-blue-100"
+                            : category.color === "green"
+                              ? "bg-green-100"
+                              : category.color === "purple"
+                                ? "bg-purple-100"
+                                : category.color === "orange"
+                                  ? "bg-orange-100"
+                                  : category.color === "red"
+                                    ? "bg-red-100"
+                                    : "bg-gray-100"
+                        }`}
+                      >
+                        <IconComponent
+                          className={`h-4 w-4 ${
+                            category.color === "blue"
+                              ? "text-blue-600"
+                              : category.color === "green"
+                                ? "text-green-600"
+                                : category.color === "purple"
+                                  ? "text-purple-600"
+                                  : category.color === "orange"
+                                    ? "text-orange-600"
+                                    : category.color === "red"
+                                      ? "text-red-600"
+                                      : "text-gray-600"
+                          }`}
+                        />
                       </div>
                       {category.title}
                       <Badge variant="secondary" className="ml-auto">
@@ -221,7 +400,10 @@ export default function KeyboardShortcuts() {
                   <CardContent className="pt-0">
                     <div className="space-y-3">
                       {category.shortcuts.map((shortcut, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors"
+                        >
                           <div className="flex-1 min-w-0">
                             <div className="font-medium text-sm text-gray-900 mb-1">
                               {shortcut.description}
@@ -253,21 +435,51 @@ export default function KeyboardShortcuts() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <h4 className="font-medium text-gray-900">💡 Power User Tips</h4>
+                  <h4 className="font-medium text-gray-900">
+                    💡 Power User Tips
+                  </h4>
                   <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Hold <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">Ctrl</kbd> while clicking to select multiple items</li>
-                    <li>• Use <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">Tab</kbd> to navigate through forms quickly</li>
-                    <li>• Press <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">?</kbd> on any page to see relevant shortcuts</li>
-                    <li>• Most shortcuts work in combination with mouse actions</li>
+                    <li>
+                      • Hold{" "}
+                      <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">
+                        Ctrl
+                      </kbd>{" "}
+                      while clicking to select multiple items
+                    </li>
+                    <li>
+                      • Use{" "}
+                      <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">
+                        Tab
+                      </kbd>{" "}
+                      to navigate through forms quickly
+                    </li>
+                    <li>
+                      • Press{" "}
+                      <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">
+                        ?
+                      </kbd>{" "}
+                      on any page to see relevant shortcuts
+                    </li>
+                    <li>
+                      • Most shortcuts work in combination with mouse actions
+                    </li>
                   </ul>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="font-medium text-gray-900">⚙️ Customization</h4>
+                  <h4 className="font-medium text-gray-900">
+                    ⚙️ Customization
+                  </h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Shortcuts can be customized in Settings</li>
                     <li>• Some shortcuts are context-sensitive</li>
                     <li>• Tooltips show shortcuts for interactive elements</li>
-                    <li>• Press <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">Esc</kbd> to cancel most actions</li>
+                    <li>
+                      • Press{" "}
+                      <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">
+                        Esc
+                      </kbd>{" "}
+                      to cancel most actions
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -290,7 +502,11 @@ export default function KeyboardShortcuts() {
           {searchQuery && (
             <div className="text-center py-4">
               <p className="text-sm text-gray-500">
-                {filteredCategories.reduce((total, cat) => total + cat.shortcuts.length, 0)} shortcuts found for "{searchQuery}"
+                {filteredCategories.reduce(
+                  (total, cat) => total + cat.shortcuts.length,
+                  0,
+                )}{" "}
+                shortcuts found for "{searchQuery}"
               </p>
             </div>
           )}

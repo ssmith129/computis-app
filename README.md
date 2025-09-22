@@ -106,6 +106,7 @@ Set these in your Vercel dashboard:
 **Complete Documentation Suite**: [`/documentation`](./documentation/)
 
 ### Quick Links
+
 - **[📖 Complete Project Guide](./documentation/README.md)** - Comprehensive feature and technical documentation
 - **[🎨 Design System](./documentation/DESIGN_SYSTEM.md)** - UI components, colors, typography, and patterns
 - **[✍️ Content Guidelines](./documentation/UX_COPYWRITING_GUIDE.md)** - Voice, tone, and copy standards
@@ -113,6 +114,7 @@ Set these in your Vercel dashboard:
 - **[��� Documentation Index](./documentation/INDEX.md)** - Navigate all documentation by role/need
 
 ### Legacy Documentation
+
 - [Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md) - Detailed deployment instructions
 - [Component Documentation](./DESIGN_SYSTEM.md) - Design system and components
 - [User Flows](./USER_FLOWS.md) - Application user flows

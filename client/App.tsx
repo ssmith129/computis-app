@@ -47,6 +47,9 @@ const App = () => (
           <Route path="/settings" element={<Settings />} />
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/rule-engine" element={<RuleEngine />} />
+          <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/help" element={<HelpPage />} />
+          <Route path="/keyboard-shortcuts" element={<KeyboardShortcuts />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

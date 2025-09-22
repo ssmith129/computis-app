@@ -39,7 +39,7 @@ export function FixedHeader({ children, className }: FixedHeaderProps) {
     <header
       className={cn(
         // Fixed positioning with high z-index
-        "fixed top-0 left-0 right-0 z-[1000]",
+        "fixed top-0 left-0 right-0 z-50",
         // Styling
         "bg-sidebar border-b border-sidebar-border",
         // Prevent content from flowing under
@@ -70,7 +70,7 @@ export function FixedNavigation({
     <nav
       className={cn(
         // Fixed positioning with z-index below header
-        "fixed left-0 top-0 bottom-0 z-[900]",
+        "fixed left-0 top-0 bottom-0 z-30",
         // Width management
         "w-[--sidebar-width] transition-transform duration-300",
         // Conditional transform for collapsed state

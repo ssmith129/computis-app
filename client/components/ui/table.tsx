@@ -14,7 +14,7 @@ const Table = React.forwardRef<
       "relative w-full max-w-full box-border",
       scrollable
         ? "overflow-x-auto overflow-y-hidden scroll-smooth touch-pan-x"
-        : "overflow-x-hidden overflow-y-auto"
+        : "overflow-x-hidden overflow-y-auto",
     )}
     style={{
       WebkitOverflowScrolling: "touch",
@@ -25,11 +25,13 @@ const Table = React.forwardRef<
       className={cn(
         "w-full caption-bottom text-sm",
         scrollable && "min-w-[var(--table-min-width)]",
-        className
+        className,
       )}
-      style={{
-        "--table-min-width": minWidth,
-      } as React.CSSProperties}
+      style={
+        {
+          "--table-min-width": minWidth,
+        } as React.CSSProperties
+      }
       {...props}
     />
   </div>

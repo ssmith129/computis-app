@@ -1,21 +1,21 @@
 import React from "react";
-import { 
-  ScrollableLayout, 
-  FixedHeader, 
-  FixedNavigation, 
-  ContentArea, 
-  ScrollableCards, 
-  ScrollableTable, 
+import {
+  ScrollableLayout,
+  FixedHeader,
+  FixedNavigation,
+  ContentArea,
+  ScrollableCards,
+  ScrollableTable,
   EnhancedCard,
-  ResponsiveGrid 
+  ResponsiveGrid,
 } from "./scrollable-layout";
-import { 
-  Table, 
-  TableHeader, 
-  TableBody, 
-  TableRow, 
-  TableHead, 
-  TableCell 
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
 } from "@/components/ui/table";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,10 +60,18 @@ export function ScrollingLayoutDemo() {
 
           {/* Right side - Notifications and user */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white hover:bg-white/10"
+            >
               <Bell className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white hover:bg-white/10"
+            >
               <User className="h-5 w-5" />
             </Button>
           </div>
@@ -75,7 +83,13 @@ export function ScrollingLayoutDemo() {
         <div className="p-4">
           <div className="text-white font-bold text-lg mb-6">CryptoTax Pro</div>
           <nav className="space-y-2">
-            {["Dashboard", "Transactions", "Wallets", "Reports", "Settings"].map((item) => (
+            {[
+              "Dashboard",
+              "Transactions",
+              "Wallets",
+              "Reports",
+              "Settings",
+            ].map((item) => (
               <a
                 key={item}
                 href="#"
@@ -89,8 +103,8 @@ export function ScrollingLayoutDemo() {
       </FixedNavigation>
 
       {/* Main Content Area */}
-      <ContentArea 
-        hasHeader={true} 
+      <ContentArea
+        hasHeader={true}
         hasNavigation={true}
         headerHeight="72px"
         className="pt-[72px]"
@@ -98,25 +112,37 @@ export function ScrollingLayoutDemo() {
         {/* Page Title */}
         <div className="sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-4">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-1">View your portfolio metrics and recent activity</p>
+          <p className="text-gray-600 mt-1">
+            View your portfolio metrics and recent activity
+          </p>
         </div>
 
         {/* Content */}
         <div className="p-6 space-y-8">
           {/* Section 1: Horizontally Scrollable Cards */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Portfolio Overview</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Portfolio Overview
+            </h2>
             <ScrollableCards gap="1.5rem">
               {[
-                { title: "Total Portfolio", value: "$127,456", change: "+12.5%" },
+                {
+                  title: "Total Portfolio",
+                  value: "$127,456",
+                  change: "+12.5%",
+                },
                 { title: "Realized Gains", value: "$45,234", change: "+8.3%" },
-                { title: "Unrealized Gains", value: "$82,222", change: "+15.7%" },
+                {
+                  title: "Unrealized Gains",
+                  value: "$82,222",
+                  change: "+15.7%",
+                },
                 { title: "Tax Liability", value: "$12,891", change: "-2.1%" },
                 { title: "Cost Basis", value: "$85,234", change: "0%" },
                 { title: "Transactions", value: "1,234", change: "+45" },
               ].map((metric, index) => (
-                <EnhancedCard 
-                  key={index} 
+                <EnhancedCard
+                  key={index}
                   minWidth="280px"
                   className="flex-shrink-0"
                 >
@@ -129,11 +155,15 @@ export function ScrollingLayoutDemo() {
                     <div className="text-2xl font-bold text-gray-900 mb-1">
                       {metric.value}
                     </div>
-                    <div className={`text-sm ${
-                      metric.change.startsWith('+') ? 'text-green-600' : 
-                      metric.change.startsWith('-') ? 'text-red-600' : 
-                      'text-gray-600'
-                    }`}>
+                    <div
+                      className={`text-sm ${
+                        metric.change.startsWith("+")
+                          ? "text-green-600"
+                          : metric.change.startsWith("-")
+                            ? "text-red-600"
+                            : "text-gray-600"
+                      }`}
+                    >
                       {metric.change} from last month
                     </div>
                   </CardContent>
@@ -144,13 +174,27 @@ export function ScrollingLayoutDemo() {
 
           {/* Section 2: Responsive Grid (No horizontal scroll) */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Quick Actions
+            </h2>
             <ResponsiveGrid minCardWidth="250px" gap="1.5rem">
               {[
-                { title: "Import Transactions", desc: "Upload CSV or connect exchanges" },
-                { title: "Generate Reports", desc: "Create tax reports and forms" },
-                { title: "Review Transactions", desc: "Verify and categorize trades" },
-                { title: "Export Data", desc: "Download reports and summaries" },
+                {
+                  title: "Import Transactions",
+                  desc: "Upload CSV or connect exchanges",
+                },
+                {
+                  title: "Generate Reports",
+                  desc: "Create tax reports and forms",
+                },
+                {
+                  title: "Review Transactions",
+                  desc: "Verify and categorize trades",
+                },
+                {
+                  title: "Export Data",
+                  desc: "Download reports and summaries",
+                },
               ].map((action, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -167,7 +211,9 @@ export function ScrollingLayoutDemo() {
 
           {/* Section 3: Horizontally Scrollable Table */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Transactions</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Recent Transactions
+            </h2>
             <ScrollableTable>
               <Table scrollable={true} minWidth="800px">
                 <TableHeader>
@@ -216,7 +262,9 @@ export function ScrollingLayoutDemo() {
 
           {/* Section 4: Mixed Content */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Analytics</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Analytics
+            </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Left: Chart card with horizontal scrolling content */}
               <EnhancedCard scrollable={true} minWidth="400px">
@@ -224,13 +272,18 @@ export function ScrollingLayoutDemo() {
                   <CardTitle>Price History</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex gap-4 pb-4" style={{ minWidth: "600px" }}>
+                  <div
+                    className="flex gap-4 pb-4"
+                    style={{ minWidth: "600px" }}
+                  >
                     {Array.from({ length: 12 }, (_, i) => (
                       <div key={i} className="flex flex-col items-center gap-2">
                         <div className="text-xs text-gray-600">
-                          {new Date(2024, i, 1).toLocaleDateString('en', { month: 'short' })}
+                          {new Date(2024, i, 1).toLocaleDateString("en", {
+                            month: "short",
+                          })}
                         </div>
-                        <div 
+                        <div
                           className="bg-blue-500 w-8 rounded"
                           style={{ height: `${Math.random() * 100 + 20}px` }}
                         />

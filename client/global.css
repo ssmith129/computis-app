@@ -279,7 +279,10 @@
 
   .responsive-grid {
     @apply grid overflow-x-hidden max-w-full;
-    grid-template-columns: repeat(auto-fit, minmax(var(--min-card-width, 300px), 1fr));
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--min-card-width, 300px), 1fr)
+    );
   }
 }
 

@@ -7,7 +7,7 @@ This directory contains a complete solution for implementing a layout where the 
 ### Core Layout Components
 
 1. **`ScrollableLayout`** - Main container that prevents horizontal scrolling
-2. **`FixedHeader`** - Fixed header with proper z-index management  
+2. **`FixedHeader`** - Fixed header with proper z-index management
 3. **`FixedNavigation`** - Fixed sidebar navigation
 4. **`ContentArea`** - Content area that accounts for fixed elements
 5. **`ScrollableCards`** - Horizontally scrollable card container
@@ -18,14 +18,17 @@ This directory contains a complete solution for implementing a layout where the 
 ## Key Implementation Decisions
 
 ### 1. Main Container Behavior
+
 ```tsx
 // Prevents horizontal scrolling at the root level
 <ScrollableLayout className="min-h-screen w-full overflow-x-hidden max-w-full box-border">
 ```
+
 - Uses `overflow-x: hidden` to prevent any horizontal scrollbars
 - Ensures full viewport width with `max-w-full` and `box-border`
 
 ### 2. Fixed Element Positioning
+
 ```tsx
 // Header with high z-index
 <FixedHeader className="fixed top-0 left-0 right-0 z-[1000]">
@@ -33,11 +36,13 @@ This directory contains a complete solution for implementing a layout where the 
 // Navigation with lower z-index
 <FixedNavigation className="fixed left-0 top-0 bottom-0 z-[900]">
 ```
+
 - Header: `z-index: 1000` (highest priority)
 - Navigation: `z-index: 900` (below header)
 - Content overlays: `z-index: 10-50` range
 
 ### 3. Horizontal Scrolling for Nested Elements
+
 ```tsx
 // Cards that can scroll horizontally
 <ScrollableCards className="overflow-x-auto overflow-y-hidden scroll-smooth touch-pan-x">
@@ -45,6 +50,7 @@ This directory contains a complete solution for implementing a layout where the 
 // Tables with horizontal scrolling
 <ScrollableTable className="overflow-x-auto overflow-y-hidden">
 ```
+
 - Uses `overflow-x: auto` to enable horizontal scrolling when needed
 - `overflow-y: hidden` prevents vertical scrollbars on these containers
 - `scroll-smooth` for better user experience
@@ -77,18 +83,15 @@ The implementation uses **Tailwind CSS** with custom utility classes:
 ## Usage Examples
 
 ### Basic Layout Structure
+
 ```tsx
 function MyApp() {
   return (
     <ScrollableLayout>
-      <FixedHeader>
-        {/* Header content */}
-      </FixedHeader>
-      
-      <FixedNavigation>
-        {/* Navigation content */}
-      </FixedNavigation>
-      
+      <FixedHeader>{/* Header content */}</FixedHeader>
+
+      <FixedNavigation>{/* Navigation content */}</FixedNavigation>
+
       <ContentArea hasHeader hasNavigation>
         {/* Main content */}
       </ContentArea>
@@ -98,9 +101,10 @@ function MyApp() {
 ```
 
 ### Horizontally Scrollable Cards
+
 ```tsx
 <ScrollableCards gap="1.5rem">
-  {cards.map(card => (
+  {cards.map((card) => (
     <EnhancedCard key={card.id} minWidth="280px">
       {/* Card content */}
     </EnhancedCard>
@@ -109,6 +113,7 @@ function MyApp() {
 ```
 
 ### Horizontally Scrollable Table
+
 ```tsx
 <ScrollableTable>
   <Table scrollable={true} minWidth="800px">
@@ -118,12 +123,11 @@ function MyApp() {
 ```
 
 ### Responsive Grid (No Horizontal Scroll)
+
 ```tsx
 <ResponsiveGrid minCardWidth="250px" gap="1.5rem">
-  {items.map(item => (
-    <Card key={item.id}>
-      {/* Card content */}
-    </Card>
+  {items.map((item) => (
+    <Card key={item.id}>{/* Card content */}</Card>
   ))}
 </ResponsiveGrid>
 ```

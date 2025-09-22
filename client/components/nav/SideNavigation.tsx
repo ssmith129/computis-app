@@ -22,7 +22,12 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
   storageKey = "sidebar:collapsed",
 }) => {
   const location = useLocation();
-  const isMobile = useMemo(() => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches, []);
+  const isMobile = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 767px)").matches,
+    [],
+  );
   const [collapsed, setCollapsed] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     const saved = localStorage.getItem(storageKey);
@@ -33,7 +38,8 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
 
   // Persist state
   useEffect(() => {
-    if (typeof window !== "undefined") localStorage.setItem(storageKey, String(collapsed));
+    if (typeof window !== "undefined")
+      localStorage.setItem(storageKey, String(collapsed));
   }, [collapsed, storageKey]);
 
   // Close mobile menu on route change
@@ -74,8 +80,12 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
           >
             <Menu className="h-5 w-5" />
           </button>
-          <div className={cn("flex items-center gap-2 overflow-hidden", collapsed ? "w-0 md:w-0" : "")}
-               aria-hidden={collapsed}
+          <div
+            className={cn(
+              "flex items-center gap-2 overflow-hidden",
+              collapsed ? "w-0 md:w-0" : "",
+            )}
+            aria-hidden={collapsed}
           >
             {logo}
             {!!title && <span className="font-semibold truncate">{title}</span>}
@@ -88,7 +98,11 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
             aria-expanded={!collapsed}
             onClick={() => setCollapsed((c) => !c)}
           >
-            {collapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
+            {collapsed ? (
+              <ChevronRight className="h-5 w-5" />
+            ) : (
+              <ChevronLeft className="h-5 w-5" />
+            )}
           </button>
         </div>
 

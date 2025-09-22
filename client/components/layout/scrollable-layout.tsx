@@ -10,7 +10,10 @@ export interface ScrollableLayoutProps {
   className?: string;
 }
 
-export function ScrollableLayout({ children, className }: ScrollableLayoutProps) {
+export function ScrollableLayout({
+  children,
+  className,
+}: ScrollableLayoutProps) {
   return (
     <div
       className={cn(
@@ -18,7 +21,7 @@ export function ScrollableLayout({ children, className }: ScrollableLayoutProps)
         "min-h-screen w-full overflow-x-hidden",
         // Ensure full viewport width without horizontal scrollbars
         "max-w-full box-border",
-        className
+        className,
       )}
     >
       {children}
@@ -44,7 +47,7 @@ export function FixedHeader({ children, className }: FixedHeaderProps) {
         "bg-sidebar border-b border-sidebar-border",
         // Prevent content from flowing under
         "h-auto",
-        className
+        className,
       )}
     >
       {children}
@@ -61,10 +64,10 @@ export interface FixedNavigationProps {
   isOpen?: boolean;
 }
 
-export function FixedNavigation({ 
-  children, 
-  className, 
-  isOpen = true 
+export function FixedNavigation({
+  children,
+  className,
+  isOpen = true,
 }: FixedNavigationProps) {
   return (
     <nav
@@ -77,7 +80,7 @@ export function FixedNavigation({
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         // Styling
         "bg-sidebar border-r border-sidebar-border",
-        className
+        className,
       )}
     >
       {children}
@@ -96,12 +99,12 @@ export interface ContentAreaProps {
   headerHeight?: string;
 }
 
-export function ContentArea({ 
-  children, 
-  className, 
+export function ContentArea({
+  children,
+  className,
   hasHeader = true,
   hasNavigation = true,
-  headerHeight = "auto"
+  headerHeight = "auto",
 }: ContentAreaProps) {
   return (
     <main
@@ -115,11 +118,13 @@ export function ContentArea({
         "overflow-x-hidden max-w-full",
         // Allow vertical scrolling
         "min-h-screen",
-        className
+        className,
       )}
-      style={{
-        "--header-height": headerHeight,
-      } as React.CSSProperties}
+      style={
+        {
+          "--header-height": headerHeight,
+        } as React.CSSProperties
+      }
     >
       {children}
     </main>
@@ -135,10 +140,10 @@ export interface ScrollableCardsProps {
   gap?: string;
 }
 
-export function ScrollableCards({ 
-  children, 
-  className, 
-  gap = "1rem" 
+export function ScrollableCards({
+  children,
+  className,
+  gap = "1rem",
 }: ScrollableCardsProps) {
   return (
     <div
@@ -153,7 +158,7 @@ export function ScrollableCards({
         "scroll-smooth",
         // Mobile touch scrolling
         "touch-pan-x",
-        className
+        className,
       )}
       style={{
         gap: gap,
@@ -189,7 +194,7 @@ export function ScrollableTable({ children, className }: ScrollableTableProps) {
         "bg-card",
         // Mobile touch scrolling
         "touch-pan-x",
-        className
+        className,
       )}
       style={{
         // Prevent scroll momentum on iOS
@@ -211,11 +216,11 @@ export interface EnhancedCardProps {
   minWidth?: string;
 }
 
-export function EnhancedCard({ 
-  children, 
-  className, 
+export function EnhancedCard({
+  children,
+  className,
   scrollable = false,
-  minWidth = "auto"
+  minWidth = "auto",
 }: EnhancedCardProps) {
   return (
     <div
@@ -223,10 +228,11 @@ export function EnhancedCard({
         // Base card styling
         "rounded-lg border bg-card text-card-foreground shadow-sm",
         // Scrollable behavior
-        scrollable && "overflow-x-auto overflow-y-hidden scroll-smooth touch-pan-x",
+        scrollable &&
+          "overflow-x-auto overflow-y-hidden scroll-smooth touch-pan-x",
         // Prevent shrinking in flex containers
         scrollable && "flex-shrink-0",
-        className
+        className,
       )}
       style={{
         minWidth: minWidth,
@@ -249,11 +255,11 @@ export interface ResponsiveGridProps {
   gap?: string;
 }
 
-export function ResponsiveGrid({ 
-  children, 
+export function ResponsiveGrid({
+  children,
   className,
   minCardWidth = "300px",
-  gap = "1rem"
+  gap = "1rem",
 }: ResponsiveGridProps) {
   return (
     <div
@@ -262,12 +268,14 @@ export function ResponsiveGrid({
         "grid grid-cols-[repeat(auto-fit,minmax(var(--min-card-width),1fr))]",
         // Prevent horizontal overflow
         "overflow-x-hidden max-w-full",
-        className
+        className,
       )}
-      style={{
-        "--min-card-width": minCardWidth,
-        gap: gap,
-      } as React.CSSProperties}
+      style={
+        {
+          "--min-card-width": minCardWidth,
+          gap: gap,
+        } as React.CSSProperties
+      }
     >
       {children}
     </div>

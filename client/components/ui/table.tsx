@@ -4,12 +4,32 @@ import { cn } from "@/lib/utils";
 
 const Table = React.forwardRef<
   HTMLTableElement,
-  React.HTMLAttributes<HTMLTableElement>
->(({ className, ...props }, ref) => (
-  <div className="relative w-full max-w-full box-border overflow-y-auto overflow-x-hidden">
+  React.HTMLAttributes<HTMLTableElement> & {
+    scrollable?: boolean;
+    minWidth?: string;
+  }
+>(({ className, scrollable = true, minWidth = "600px", ...props }, ref) => (
+  <div
+    className={cn(
+      "relative w-full max-w-full box-border",
+      scrollable
+        ? "overflow-x-auto overflow-y-hidden scroll-smooth touch-pan-x"
+        : "overflow-x-hidden overflow-y-auto"
+    )}
+    style={{
+      WebkitOverflowScrolling: "touch",
+    }}
+  >
     <table
       ref={ref}
-      className={cn("w-full caption-bottom text-sm", className)}
+      className={cn(
+        "w-full caption-bottom text-sm",
+        scrollable && "min-w-[var(--table-min-width)]",
+        className
+      )}
+      style={{
+        "--table-min-width": minWidth,
+      } as React.CSSProperties}
       {...props}
     />
   </div>

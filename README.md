@@ -14,7 +14,7 @@ A modern crypto tax dashboard built with React, TypeScript, and Tailwind CSS, re
 │   └── demo.ts            # Demo endpoint
 ├── client/                 # React frontend application
 │   ├── components/         # Reusable UI components
-│   ├── pages/             # Page components
+│   ├─��� pages/             # Page components
 │   └── hooks/             # Custom React hooks
 ├── shared/                # Shared types and utilities
 ├── dist/spa/              # Built frontend (auto-generated)
@@ -103,6 +103,16 @@ Set these in your Vercel dashboard:
 
 ## 📚 Documentation
 
+**Complete Documentation Suite**: [`/documentation`](./documentation/)
+
+### Quick Links
+- **[📖 Complete Project Guide](./documentation/README.md)** - Comprehensive feature and technical documentation
+- **[🎨 Design System](./documentation/DESIGN_SYSTEM.md)** - UI components, colors, typography, and patterns
+- **[✍️ Content Guidelines](./documentation/UX_COPYWRITING_GUIDE.md)** - Voice, tone, and copy standards
+- **[🤖 AI Features](./documentation/AI_FEATURES.md)** - Machine learning capabilities and API
+- **[��� Documentation Index](./documentation/INDEX.md)** - Navigate all documentation by role/need
+
+### Legacy Documentation
 - [Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md) - Detailed deployment instructions
 - [Component Documentation](./DESIGN_SYSTEM.md) - Design system and components
 - [User Flows](./USER_FLOWS.md) - Application user flows

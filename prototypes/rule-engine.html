@@ -1,11 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Computis • Rule Engine</title><link rel="stylesheet" href="assets/styles.css"><script defer src="assets/app.js"></script></head><body>
-<header class="app-header"><div class="inner container"><a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a><nav class="nav"><a href="index.html">Dashboard</a><a href="transactions.html">Transactions</a><a href="anomaly-detection.html">Data Anomaly</a><a href="wallets.html">Wallets</a><a href="irs-8949.html">IRS-8949</a><a href="rule-engine.html">Rule Engine</a><a href="exports.html">Exports</a><a href="gain-loss.html">Gain/Loss</a></nav></div></header>
-<main class="container" data-page="rules" aria-labelledby="title">
-<h1 id="title">Rule Engine</h1>
-<section class="card"><h3>Create Rule</h3><div class="controls"><label>IF <select><option>Amount</option><option>Asset</option><option>Exchange</option><option>Type</option></select></label><select><option>></option><option><</option><option>=</option></select><input class="input" placeholder="Value"><label>THEN <select><option>Flag as Large Trade</option><option>Mark as Income</option><option>Ignore</option></select></label><button id="new-rule" class="primary">Add</button></div></section>
-<section class="table-wrap" role="region" aria-label="Rules table"><table><thead><tr><th>ID</th><th>Condition</th><th>Action</th><th>Manage</th></tr></thead><tbody id="rule-rows">
-<tr><td>R-1</td><td>Type = Airdrop</td><td>Mark as Income</td><td><button class="danger">Delete</button></td></tr>
-<tr><td>R-2</td><td>Exchange = Coinbase</td><td>Trusted Source</td><td><button class="danger">Delete</button></td></tr>
-</tbody></table></section>
-</main>
-<footer>© 2025 Computis • Demo prototype</footer><div class="toast-area" aria-live="polite"></div></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Computis • Rule Engine</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script defer src="assets/app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="inner container">
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
+        <nav class="nav">
+          <a href="index.html">Dashboard</a
+          ><a href="transactions.html">Transactions</a
+          ><a href="anomaly-detection.html">Data Anomaly</a
+          ><a href="wallets.html">Wallets</a><a href="irs-8949.html">IRS-8949</a
+          ><a href="rule-engine.html">Rule Engine</a
+          ><a href="exports.html">Exports</a
+          ><a href="gain-loss.html">Gain/Loss</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container" data-page="rules" aria-labelledby="title">
+      <h1 id="title">Rule Engine</h1>
+      <section class="card">
+        <h3>Create Rule</h3>
+        <div class="controls">
+          <label
+            >IF
+            <select>
+              <option>Amount</option>
+              <option>Asset</option>
+              <option>Exchange</option>
+              <option>Type</option>
+            </select></label
+          ><select>
+            <option>></option>
+            <option><</option>
+            <option>=</option></select
+          ><input class="input" placeholder="Value" /><label
+            >THEN
+            <select>
+              <option>Flag as Large Trade</option>
+              <option>Mark as Income</option>
+              <option>Ignore</option>
+            </select></label
+          ><button id="new-rule" class="primary">Add</button>
+        </div>
+      </section>
+      <section class="table-wrap" role="region" aria-label="Rules table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Condition</th>
+              <th>Action</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody id="rule-rows">
+            <tr>
+              <td>R-1</td>
+              <td>Type = Airdrop</td>
+              <td>Mark as Income</td>
+              <td><button class="danger">Delete</button></td>
+            </tr>
+            <tr>
+              <td>R-2</td>
+              <td>Exchange = Coinbase</td>
+              <td>Trusted Source</td>
+              <td><button class="danger">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer>© 2025 Computis • Demo prototype</footer>
+    <div class="toast-area" aria-live="polite"></div>
+  </body>
+</html>

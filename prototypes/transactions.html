@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Computis • Transactions</title><link rel="stylesheet" href="assets/styles.css"><script defer src="assets/app.js"></script></head><body>
+<header class="app-header"><div class="inner container"><a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a><nav class="nav"><a href="index.html">Dashboard</a><a href="transactions.html">Transactions</a><a href="anomaly-detection.html">Data Anomaly</a><a href="wallets.html">Wallets</a><a href="irs-8949.html">IRS-8949</a><a href="rule-engine.html">Rule Engine</a><a href="exports.html">Exports</a><a href="gain-loss.html">Gain/Loss</a></nav></div></header>
+<main class="container" data-page="transactions" aria-labelledby="title">
+<h1 id="title">Transactions</h1>
+<div class="controls" role="search"><input id="tx-search" class="input" placeholder="Search asset, exchange, status" aria-label="Search transactions"><select id="tx-type" aria-label="Filter by type"><option value="">All types</option><option>Buy</option><option>Sell</option><option>Transfer</option><option>Stake</option></select><label>From <input id="tx-from" type="date" class="input"></label><label>To <input id="tx-to" type="date" class="input"></label><button id="tx-clear">Clear</button></div>
+<div class="table-wrap" role="region" aria-label="Transactions table">
+<table><thead><tr><th>Date</th><th>Type</th><th>Asset</th><th>Amount</th><th>Price</th><th>Value</th><th>Exchange</th><th>Status</th></tr></thead><tbody>
+  <tr data-type="Buy" data-date="2024-01-15"><td>2024-01-15</td><td>Buy</td><td>BTC</td><td>0.025</td><td>$45,230</td><td>$1,130.75</td><td>Coinbase</td><td><span class="badge success">Complete</span></td></tr>
+  <tr data-type="Sell" data-date="2024-01-16"><td>2024-01-16</td><td>Sell</td><td>ETH</td><td>1.20</td><td>$2,345</td><td>$2,814</td><td>Binance</td><td><span class="badge">Pending</span></td></tr>
+  <tr data-type="Transfer" data-date="2024-01-17"><td>2024-01-17</td><td>Transfer</td><td>USDC</td><td>500</td><td>$1.00</td><td>$500</td><td>Kraken</td><td><span class="badge">Pending</span></td></tr>
+  <tr data-type="Stake" data-date="2024-01-18"><td>2024-01-18</td><td>Stake</td><td>ADA</td><td>1000</td><td>$0.56</td><td>$560</td><td>On-chain</td><td><span class="badge success">Complete</span></td></tr>
+</tbody></table></div>
+</main>
+<footer>© 2025 Computis • Demo prototype</footer><div class="toast-area" aria-live="polite"></div></body></html>

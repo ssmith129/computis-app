@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Computis • Data Anomaly Detection</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script defer src="../assets/app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="inner container">
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
+        <nav class="nav">
+          <a href="index.html">Dashboard</a
+          ><a href="transactions.html">Transactions</a
+          ><a href="anomaly-detection.html">Data Anomaly</a
+          ><a href="wallets.html">Wallets</a><a href="clients.html">Clients</a><a href="irs-8949.html">IRS-8949</a
+          ><a href="exports.html">Exports</a
+          ><a href="gain-loss.html">Gain/Loss</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container" data-page="anomalies" aria-labelledby="title">
+      <h1 id="title">Data Anomaly Detection</h1>
+      <div class="controls">
+        <button id="resolve-all" class="warning">Resolve All</button>
+      </div>
+      <div class="table-wrap" role="region" aria-label="Anomalies table">
+        <table>
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Asset</th>
+              <th>Details</th>
+              <th>Detected</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-status="open">
+              <td>Missing cost basis</td>
+              <td>ETH</td>
+              <td>2 tx without purchase record</td>
+              <td>2024-01-12</td>
+              <td class="status badge warn">Open</td>
+              <td><button class="resolve success">Resolve</button></td>
+            </tr>
+            <tr data-status="open">
+              <td>Duplicate transaction</td>
+              <td>BTC</td>
+              <td>Same hash imported twice</td>
+              <td>2024-01-10</td>
+              <td class="status badge warn">Open</td>
+              <td><button class="resolve success">Resolve</button></td>
+            </tr>
+            <tr data-status="open">
+              <td>Missing proceeds</td>
+              <td>ADA</td>
+              <td>1 sell missing price</td>
+              <td>2024-01-09</td>
+              <td class="status badge warn">Open</td>
+              <td><button class="resolve success">Resolve</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer>© 2025 Computis • Demo prototype</footer>
+    <div class="toast-area" aria-live="polite"></div>
+  </body>
+</html>

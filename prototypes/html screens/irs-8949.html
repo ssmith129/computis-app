@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Computis • IRS Form 8949</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script defer src="../assets/app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="inner container">
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
+        <nav class="nav">
+          <a href="index.html">Dashboard</a
+          ><a href="transactions.html">Transactions</a
+          ><a href="anomaly-detection.html">Data Anomaly</a
+          ><a href="wallets.html">Wallets</a><a href="clients.html">Clients</a><a href="irs-8949.html">IRS-8949</a
+          ><a href="exports.html">Exports</a
+          ><a href="gain-loss.html">Gain/Loss</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container" data-page="irs" aria-labelledby="title">
+      <h1 id="title">IRS Form 8949</h1>
+      <section class="card">
+        <h3>Generate Form</h3>
+        <div class="controls">
+          <label
+            >Tax Year
+            <select id="tax-year">
+              <option>2024</option>
+              <option>2023</option>
+              <option>2022</option>
+            </select></label
+          ><label
+            >Method
+            <select>
+              <option>FIFO</option>
+              <option>LIFO</option>
+              <option>HIFO</option>
+            </select></label
+          ><button id="gen8949" class="primary">Generate</button
+          ><button class="warning">Download PDF</button>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Summary</h2>
+        <div class="grid cards">
+          <div class="card">
+            <h3>Short-Term</h3>
+            <div class="value">$12,345</div>
+          </div>
+          <div class="card">
+            <h3>Long-Term</h3>
+            <div class="value">$23,456</div>
+          </div>
+          <div class="card">
+            <h3>Total Proceeds</h3>
+            <div class="value">$112,890</div>
+          </div>
+          <div class="card">
+            <h3>Total Cost Basis</h3>
+            <div class="value">$98,765</div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <h2>Preview</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date Acquired</th>
+                <th>Date Sold</th>
+                <th>Asset</th>
+                <th>Proceeds</th>
+                <th>Cost</th>
+                <th>Gain/Loss</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2023-05-01</td>
+                <td>2024-01-15</td>
+                <td>BTC</td>
+                <td>$2,500</td>
+                <td>$1,800</td>
+                <td><span class="badge success">+$700</span></td>
+              </tr>
+              <tr>
+                <td>2023-06-10</td>
+                <td>2024-01-10</td>
+                <td>ETH</td>
+                <td>$1,200</td>
+                <td>$1,400</td>
+                <td><span class="badge error">-$200</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer>© 2025 Computis • Demo prototype</footer>
+    <div class="toast-area" aria-live="polite"></div>
+  </body>
+</html>

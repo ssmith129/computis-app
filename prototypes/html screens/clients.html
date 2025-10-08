@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Computis • Clients</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script defer src="../assets/app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="inner container">
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
+        <nav class="nav">
+          <a href="index.html">Dashboard</a
+          ><a href="transactions.html">Transactions</a
+          ><a href="anomaly-detection.html">Data Anomaly</a
+          ><a href="wallets.html">Wallets</a><a href="clients.html">Clients</a><a href="irs-8949.html">IRS-8949</a
+          ><a href="exports.html">Exports</a
+          ><a href="gain-loss.html">Gain/Loss</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container" aria-labelledby="title">
+      <h1 id="title">Clients</h1>
+      <section class="card" aria-label="Client filters and actions">
+        <div class="controls" role="search">
+          <input id="client-search" class="input" placeholder="Search name or email" aria-label="Search clients" />
+          <button id="client-clear">Clear</button>
+        </div>
+      </section>
+      <section class="grid" style="grid-template-columns: 2fr 1fr; align-items: start">
+        <div class="card" role="region" aria-label="Clients table">
+          <h3>Directory</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Segment</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                </tr>
+              </thead>
+              <tbody id="client-rows">
+                <tr>
+                  <td>Alex Johnson</td>
+                  <td>alex.johnson@example.com</td>
+                  <td>Retail</td>
+                  <td><span class="badge success">Active</span></td>
+                  <td>2024-01-03</td>
+                </tr>
+                <tr>
+                  <td>Maria Chen</td>
+                  <td>maria.chen@contoso.io</td>
+                  <td>Pro</td>
+                  <td><span class="badge">Invited</span></td>
+                  <td>2024-01-11</td>
+                </tr>
+                <tr>
+                  <td>Samir Patel</td>
+                  <td>samir.patel@acme.co</td>
+                  <td>Retail</td>
+                  <td><span class="badge error">Suspended</span></td>
+                  <td>2023-12-20</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <form id="new-client" class="card" aria-label="Add client form">
+          <h3>Add Client</h3>
+          <label>Name<input id="c-name" class="input" required aria-required="true" /></label>
+          <label>Email<input id="c-email" class="input" type="email" required aria-required="true" /></label>
+          <label>Segment<select id="c-segment"><option>Retail</option><option>Pro</option></select></label>
+          <label>Status<select id="c-status"><option>Active</option><option>Invited</option><option>Suspended</option></select></label>
+          <button class="primary" type="submit">Add</button>
+        </form>
+      </section>
+    </main>
+    <footer>© 2025 Computis • Demo prototype</footer>
+    <div class="toast-area" aria-live="polite"></div>
+    <script>
+      (function(){
+        const rows = Array.from(document.querySelectorAll('#client-rows tr'));
+        const search = document.getElementById('client-search');
+        const clear = document.getElementById('client-clear');
+        function apply(){
+          const q = (search.value||'').toLowerCase();
+          rows.forEach(tr => {
+            const text = tr.textContent.toLowerCase();
+            tr.style.display = q && !text.includes(q) ? 'none' : '';
+          });
+        }
+        search.addEventListener('input', apply);
+        clear.addEventListener('click', ()=>{ search.value=''; apply(); toast('Filters cleared'); });
+        document.getElementById('new-client').addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const name = /** @type {HTMLInputElement} */(document.getElementById('c-name')).value.trim();
+          const email = /** @type {HTMLInputElement} */(document.getElementById('c-email')).value.trim();
+          const seg = /** @type {HTMLSelectElement} */(document.getElementById('c-segment')).value;
+          const status = /** @type {HTMLSelectElement} */(document.getElementById('c-status')).value;
+          if(!name || !email){ toast('Enter name and email'); return; }
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${name}</td><td>${email}</td><td>${seg}</td><td><span class="badge ${status==='Active'?'success':status==='Suspended'?'error':''}">${status}</span></td><td>${new Date().toISOString().slice(0,10)}</td>`;
+          document.getElementById('client-rows').prepend(tr);
+          e.target.reset();
+          toast('Client added');
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Computis • AI Confidence Chips</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <style>
+      .confidence-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: help;
+        position: relative;
+      }
+      .confidence-chip.high { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+      .confidence-chip.medium { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+      .confidence-chip.low { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+      
+      .tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1f2937;
+        color: #e5e7eb;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        z-index: 1000;
+        margin-bottom: 8px;
+      }
+      .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #1f2937;
+      }
+      .confidence-chip:hover .tooltip {
+        opacity: 1;
+      }
+      
+      .action-controls {
+        display: inline-flex;
+        gap: 6px;
+        margin-left: 8px;
+      }
+      .action-btn {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .action-btn.accept {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+      .action-btn.accept:hover {
+        background: rgba(34, 197, 94, 0.3);
+      }
+      .action-btn.reject {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+      .action-btn.reject:hover {
+        background: rgba(239, 68, 68, 0.3);
+      }
+      
+      .classification-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        border: 1px solid #2a3447;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        background: #161b26;
+      }
+      .classification-row.accepted {
+        border-color: rgba(34, 197, 94, 0.3);
+        background: rgba(34, 197, 94, 0.05);
+      }
+      .classification-row.rejected {
+        border-color: rgba(239, 68, 68, 0.3);
+        background: rgba(239, 68, 68, 0.05);
+        opacity: 0.6;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .stat-card {
+        background: #161b26;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #2a3447;
+      }
+      .stat-value {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .stat-label {
+        font-size: 13px;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="inner container">
+        <a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a>
+        <nav class="nav">
+          <a href="index.html">Dashboard</a>
+          <a href="ai-confidence-chips.html">AI Confidence</a>
+          <a href="audit-trail-drawer.html">Audit Trail</a>
+          <a href="visual-rule-builder.html">Rule Builder</a>
+          <a href="contextual-anomaly-detection.html">Anomaly Detection</a>
+          <a href="multi-tenant-architecture.html">Multi-Tenant</a>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="container" aria-labelledby="title">
+      <h1 id="title">AI Confidence Chips with Accept/Reject Controls</h1>
+      
+      <section class="card" style="margin-bottom: 24px;">
+        <h3>Design Element Overview</h3>
+        <p style="color: #9ca3af; line-height: 1.6;">
+          <strong>Problem:</strong> CPAs couldn't trust or validate automated classifications, creating professional liability concerns.<br><br>
+          <strong>Solution:</strong> Inline confidence indicators with one-click accept/reject and hover tooltips explaining AI rationale.<br><br>
+          <strong>Impact:</strong> 70%+ reduction in false positives through informed overrides; transformed skepticism into adoption.
+        </p>
+      </section>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" style="color: #22c55e;" id="accepted-count">0</div>
+          <div class="stat-label">Accepted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: #ef4444;" id="rejected-count">0</div>
+          <div class="stat-label">Rejected</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: #fbbf24;" id="pending-count">8</div>
+          <div class="stat-label">Pending Review</div>
+        </div>
+      </div>
+
+      <section class="card">
+        <h3>Transaction Classifications Requiring Review</h3>
+        <div id="classifications">
+          <div class="classification-row" data-id="1">
+            <div>
+              <div style="font-weight: 500;">BTC Sale → USDC (Coinbase)</div>
+              <div style="font-size: 13px; color: #9ca3af;">$12,450.00 on 2024-01-15</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge">Sale</span>
+              <div class="confidence-chip high">
+                <span>High (94%)</span>
+                <div class="tooltip">Pattern match: Direct crypto-to-stablecoin exchange<br>Historical accuracy: 96% on similar transactions</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(1)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(1)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="2">
+            <div>
+              <div style="font-weight: 500;">ETH Transfer (Wallet → Wallet)</div>
+              <div style="font-size: 13px; color: #9ca3af;">2.5 ETH on 2024-01-14</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge warn">Transfer</span>
+              <div class="confidence-chip medium">
+                <span>Medium (67%)</span>
+                <div class="tooltip">Ambiguous: Could be internal transfer or external send<br>Needs CPA context: Business vs personal wallet</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(2)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(2)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="3">
+            <div>
+              <div style="font-weight: 500;">USDT → BTC Swap (Uniswap)</div>
+              <div style="font-size: 13px; color: #9ca3af;">$8,900.00 on 2024-01-13</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge success">Trade</span>
+              <div class="confidence-chip high">
+                <span>High (91%)</span>
+                <div class="tooltip">DEX swap detected via smart contract interaction<br>FMV verified against CoinGecko API</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(3)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(3)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="4">
+            <div>
+              <div style="font-weight: 500;">Unknown Token Airdrop</div>
+              <div style="font-size: 13px; color: #9ca3af;">1,000 MYSTERY tokens on 2024-01-12</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge error">Income</span>
+              <div class="confidence-chip low">
+                <span>Low (42%)</span>
+                <div class="tooltip">Unknown token with no pricing data<br>Could be: Airdrop, spam, or protocol reward</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(4)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(4)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="5">
+            <div>
+              <div style="font-weight: 500;">Staking Reward (ETH2)</div>
+              <div style="font-size: 13px; color: #9ca3af;">0.08 ETH on 2024-01-11</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge">Staking Income</span>
+              <div class="confidence-chip high">
+                <span>High (89%)</span>
+                <div class="tooltip">Beacon chain validator reward identified<br>Matches expected staking yield pattern</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(5)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(5)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="6">
+            <div>
+              <div style="font-weight: 500;">NFT Purchase (OpenSea)</div>
+              <div style="font-size: 13px; color: #9ca3af;">2.1 ETH on 2024-01-10</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge">NFT Acquisition</span>
+              <div class="confidence-chip medium">
+                <span>Medium (73%)</span>
+                <div class="tooltip">OpenSea transaction detected<br>Uncertain: Personal collection or investment asset</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(6)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(6)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="7">
+            <div>
+              <div style="font-weight: 500;">Gas Fee Refund</div>
+              <div style="font-size: 13px; color: #9ca3af;">0.015 ETH on 2024-01-09</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge">Refund</span>
+              <div class="confidence-chip low">
+                <span>Low (58%)</span>
+                <div class="tooltip">Unusual: Gas refunds rarely occur<br>May be MEV reward or protocol incentive</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(7)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(7)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="classification-row" data-id="8">
+            <div>
+              <div style="font-weight: 500;">BTC Purchase (Kraken)</div>
+              <div style="font-size: 13px; color: #9ca3af;">$25,000.00 on 2024-01-08</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge success">Buy</span>
+              <div class="confidence-chip high">
+                <span>High (96%)</span>
+                <div class="tooltip">Exchange API confirmed: Fiat → BTC purchase<br>Cost basis and FMV automatically captured</div>
+              </div>
+              <div class="action-controls">
+                <button class="action-btn accept" onclick="handleAccept(8)">✓ Accept</button>
+                <button class="action-btn reject" onclick="handleReject(8)">✗ Reject</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2025 Computis • Design Element Showcase</footer>
+    <div class="toast-area" aria-live="polite"></div>
+
+    <script src="../assets/app.js"></script>
+    <script>
+      function updateStats() {
+        const accepted = document.querySelectorAll('.classification-row.accepted').length;
+        const rejected = document.querySelectorAll('.classification-row.rejected').length;
+        const pending = document.querySelectorAll('.classification-row:not(.accepted):not(.rejected)').length;
+        
+        document.getElementById('accepted-count').textContent = accepted;
+        document.getElementById('rejected-count').textContent = rejected;
+        document.getElementById('pending-count').textContent = pending;
+      }
+
+      function handleAccept(id) {
+        const row = document.querySelector(`[data-id="${id}"]`);
+        row.classList.add('accepted');
+        row.classList.remove('rejected');
+        row.querySelector('.action-controls').innerHTML = '<span style="color: #22c55e; font-size: 13px;">✓ Accepted</span>';
+        updateStats();
+        toast(`Classification accepted for transaction ${id}`);
+      }
+
+      function handleReject(id) {
+        const row = document.querySelector(`[data-id="${id}"]`);
+        row.classList.add('rejected');
+        row.classList.remove('accepted');
+        row.querySelector('.action-controls').innerHTML = '<span style="color: #ef4444; font-size: 13px;">✗ Rejected - requires manual review</span>';
+        updateStats();
+        toast(`Classification rejected for transaction ${id}`);
+      }
+    </script>
+  </body>
+</html>

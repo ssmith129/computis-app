@@ -336,11 +336,13 @@ export function ClientsContent() {
         {/* Tabs */}
         <div className="px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:grid-cols-4">
+            <TabsList className="grid w-full grid-cols-6 lg:w-auto lg:grid-cols-6">
               <TabsTrigger value="clients">Clients</TabsTrigger>
               <TabsTrigger value="users">Users</TabsTrigger>
               <TabsTrigger value="tax-entities">Tax Entities</TabsTrigger>
               <TabsTrigger value="permissions">Permissions</TabsTrigger>
+              <TabsTrigger value="team-access">Team Access</TabsTrigger>
+              <TabsTrigger value="client-settings">Client Settings</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
@@ -593,6 +595,403 @@ export function ClientsContent() {
                 <p className="text-muted-foreground">
                   Permissions management interface would be implemented here.
                 </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="team-access" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Team Members with Access</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Manage team access and permissions for this client
+                    </p>
+                  </div>
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add Member
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent className="p-0">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Team Member</TableHead>
+                      <TableHead>Role</TableHead>
+                      <TableHead>Last Active</TableHead>
+                      <TableHead>Permissions</TableHead>
+                      <TableHead>Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+                            SC
+                          </div>
+                          <div>
+                            <div className="font-medium">Sarah Chen</div>
+                            <div className="text-sm text-muted-foreground">
+                              sarah.chen@cpa.com
+                            </div>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-blue-100 text-blue-700 border-0">
+                          Senior CPA
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        2 hours ago
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-green-100 text-green-700 border-0">
+                          Full Access
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 w-8 p-0"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>
+                              <Edit2 className="mr-2 h-4 w-4" />
+                              Edit Permissions
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Users className="mr-2 h-4 w-4" />
+                              View Activity
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-red-600">
+                              <X className="mr-2 h-4 w-4" />
+                              Remove Access
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-white font-semibold text-sm">
+                            DW
+                          </div>
+                          <div>
+                            <div className="font-medium">David Wong</div>
+                            <div className="text-sm text-muted-foreground">
+                              david.wong@cpa.com
+                            </div>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-purple-100 text-purple-700 border-0">
+                          Managing Partner
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        1 day ago
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-green-100 text-green-700 border-0">
+                          Full Access
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 w-8 p-0"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>
+                              <Edit2 className="mr-2 h-4 w-4" />
+                              Edit Permissions
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Users className="mr-2 h-4 w-4" />
+                              View Activity
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-red-600">
+                              <X className="mr-2 h-4 w-4" />
+                              Remove Access
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-sm">
+                            JP
+                          </div>
+                          <div>
+                            <div className="font-medium">James Park</div>
+                            <div className="text-sm text-muted-foreground">
+                              james.park@acmefund.com
+                            </div>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-gray-100 text-gray-700 border-0">
+                          Client
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        3 days ago
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-yellow-100 text-yellow-700 border-0">
+                          View Only
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 w-8 p-0"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>
+                              <Edit2 className="mr-2 h-4 w-4" />
+                              Edit Permissions
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Users className="mr-2 h-4 w-4" />
+                              View Activity
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-red-600">
+                              <X className="mr-2 h-4 w-4" />
+                              Remove Access
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            {/* Permission Summary */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Access Level Summary</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-lg border bg-blue-50 dark:bg-blue-950/30">
+                    <div className="text-2xl font-semibold text-blue-600 dark:text-blue-400">
+                      2
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-1">
+                      Full Access Members
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg border bg-yellow-50 dark:bg-yellow-950/30">
+                    <div className="text-2xl font-semibold text-yellow-600 dark:text-yellow-400">
+                      1
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-1">
+                      Limited Access Members
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg border bg-green-50 dark:bg-green-950/30">
+                    <div className="text-2xl font-semibold text-green-600 dark:text-green-400">
+                      3
+                    </div>
+                    <div className="text-sm text-muted-foreground mt-1">
+                      Total Team Members
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="client-settings" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Client Configuration</CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Manage client-specific settings and preferences
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* General Settings */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-semibold">General Settings</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="client-name">Client Name</Label>
+                      <Input
+                        id="client-name"
+                        defaultValue="Acme Crypto Fund"
+                        placeholder="Enter client name"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="client-type">Client Type</Label>
+                      <Input
+                        id="client-type"
+                        defaultValue="Firm"
+                        placeholder="Select type"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="tax-year">Default Tax Year</Label>
+                      <Input
+                        id="tax-year"
+                        defaultValue="2023"
+                        placeholder="Enter tax year"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="accounting-method">Accounting Method</Label>
+                      <Input
+                        id="accounting-method"
+                        defaultValue="FIFO"
+                        placeholder="Select method"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tax Settings */}
+                <div className="space-y-4 pt-6 border-t">
+                  <h3 className="text-sm font-semibold">Tax Settings</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Enable Auto-Classification</div>
+                        <div className="text-xs text-muted-foreground">
+                          Automatically classify transactions using AI
+                        </div>
+                      </div>
+                      <Checkbox defaultChecked />
+                    </div>
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Require CPA Approval</div>
+                        <div className="text-xs text-muted-foreground">
+                          All classifications must be approved by a CPA
+                        </div>
+                      </div>
+                      <Checkbox defaultChecked />
+                    </div>
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Track Cost Basis</div>
+                        <div className="text-xs text-muted-foreground">
+                          Automatically track cost basis for all assets
+                        </div>
+                      </div>
+                      <Checkbox defaultChecked />
+                    </div>
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Generate Audit Trails</div>
+                        <div className="text-xs text-muted-foreground">
+                          Create detailed audit logs for all actions
+                        </div>
+                      </div>
+                      <Checkbox defaultChecked />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Notification Settings */}
+                <div className="space-y-4 pt-6 border-t">
+                  <h3 className="text-sm font-semibold">Notifications</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Email Alerts</div>
+                        <div className="text-xs text-muted-foreground">
+                          Send email notifications for important events
+                        </div>
+                      </div>
+                      <Checkbox defaultChecked />
+                    </div>
+                    <div className="flex items-center justify-between p-3 rounded-lg border">
+                      <div>
+                        <div className="font-medium text-sm">Weekly Reports</div>
+                        <div className="text-xs text-muted-foreground">
+                          Receive weekly summary reports via email
+                        </div>
+                      </div>
+                      <Checkbox />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Save Actions */}
+                <div className="flex justify-end gap-3 pt-6 border-t">
+                  <Button variant="outline">Cancel</Button>
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    Save Changes
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Danger Zone */}
+            <Card className="border-red-200 dark:border-red-900">
+              <CardHeader>
+                <CardTitle className="text-red-600 dark:text-red-400">
+                  Danger Zone
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Irreversible actions that affect this client
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between p-4 rounded-lg border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30">
+                  <div>
+                    <div className="font-medium text-sm">Archive Client</div>
+                    <div className="text-xs text-muted-foreground">
+                      Move this client to archived status
+                    </div>
+                  </div>
+                  <Button variant="outline" className="border-red-200 text-red-600 hover:bg-red-100">
+                    Archive
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between p-4 rounded-lg border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30">
+                  <div>
+                    <div className="font-medium text-sm">Delete Client</div>
+                    <div className="text-xs text-muted-foreground">
+                      Permanently delete this client and all associated data
+                    </div>
+                  </div>
+                  <Button variant="destructive">
+                    Delete
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { X } from "lucide-react";
+import { X, Eye, Upload, User, Download, Printer, CheckCircle, AlertTriangle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface AuditEntry {
@@ -130,15 +130,15 @@ const auditData: Record<string, AuditEntry[]> = {
   ],
 };
 
-const getIcon = (type: string) => {
+const getIconComponent = (type: string) => {
   const icons = {
-    classify: "AI",
-    accept: "✓",
-    view: "👁",
-    export: "📤",
-    override: "⚠",
+    classify: Sparkles,
+    accept: CheckCircle,
+    view: Eye,
+    export: Upload,
+    override: AlertTriangle,
   };
-  return icons[type as keyof typeof icons] || "•";
+  return icons[type as keyof typeof icons] || Eye;
 };
 
 const getIconClass = (icon: string) => {
@@ -222,14 +222,18 @@ export function AuditTrailDrawer({ isOpen, onClose, exportId }: AuditTrailDrawer
                   </div>
                   <div className="flex items-center gap-2 mb-1">
                     <span
-                      className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-xs ${getIconClass(entry.icon)}`}
+                      className={`inline-flex items-center justify-center w-5 h-5 rounded-full ${getIconClass(entry.icon)}`}
                     >
-                      {getIcon(entry.icon)}
+                      {(() => {
+                        const IconComponent = getIconComponent(entry.icon);
+                        return <IconComponent className="h-3 w-3" />;
+                      })()}
                     </span>
                     <span className="font-medium text-sm">{entry.action}</span>
                   </div>
-                  <div className="text-xs text-blue-400 mb-2">
-                    👤 {entry.user}
+                  <div className="flex items-center gap-1 text-xs text-blue-400 mb-2">
+                    <User className="h-3 w-3" />
+                    <span>{entry.user}</span>
                   </div>
                   <div className="text-sm text-muted-foreground pt-2 border-t border-border">
                     {entry.details}
@@ -243,10 +247,12 @@ export function AuditTrailDrawer({ isOpen, onClose, exportId }: AuditTrailDrawer
         {/* Footer */}
         <div className="flex gap-2 p-4 border-t border-border">
           <Button className="flex-1" variant="default">
-            📥 Export Trail
+            <Download className="h-4 w-4 mr-2" />
+            Export Trail
           </Button>
           <Button className="flex-1" variant="outline">
-            🖨️ Print
+            <Printer className="h-4 w-4 mr-2" />
+            Print
           </Button>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertTriangle, TrendingUp, Users, X } from "lucide-react";
+import { AlertTriangle, TrendingUp, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const anomalyFlags = [
@@ -8,118 +7,60 @@ const anomalyFlags = [
     id: "volume-spike",
     type: "error",
     icon: AlertTriangle,
-    title: "Volume Spike Detected",
-    description: "Unusual transaction volume on Aug 14, 2022",
-    details: "Transaction volume increased by 450% compared to 30-day average.",
-    actionLabel: "Investigate",
-    dismissLabel: "Dismiss"
+    title: "Volume Spike",
+    description: "Aug 14, 2022",
+    iconBg: "bg-red-100",
+    iconColor: "text-red-600",
+    actionLabel: "Investigate"
   },
   {
     id: "missing-fmv",
     type: "warning", 
     icon: TrendingUp,
-    title: "Missing FMV Data",
-    description: "3 transactions missing accurate pricing",
-    details: "Fair market value data be inaccurate for these transactions.",
-    actionLabel: "Fix Values",
-    dismissLabel: "Dismiss"
+    title: "Missing FMV",
+    description: "3 transactions",
+    iconBg: "bg-yellow-50",
+    iconColor: "text-yellow-600",
+    actionLabel: "Fix Values"
   },
   {
     id: "classification-conflict",
     type: "info",
     icon: Users,
-    title: "Classification Conflict", 
-    description: "Rule conflict detected in 2 transactions",
-    details: "Multiple rules are trying to classify the same transactions differently.",
-    actionLabel: "Resolve", 
-    dismissLabel: "Dismiss"
+    title: "Rule Conflict", 
+    description: "2 transactions",
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+    actionLabel: "Resolve"
   }
 ];
 
-const getAlertStyles = (type: string) => {
-  switch (type) {
-    case "error":
-      return "border-red-200 bg-red-50 text-red-800";
-    case "warning":
-      return "border-yellow-200 bg-yellow-50 text-yellow-800";
-    case "info":
-      return "border-blue-200 bg-blue-50 text-blue-800";
-    default:
-      return "border-gray-200 bg-gray-50 text-gray-800";
-  }
-};
-
-const getIconColor = (type: string) => {
-  switch (type) {
-    case "error":
-      return "text-red-500";
-    case "warning": 
-      return "text-yellow-500";
-    case "info":
-      return "text-blue-500";
-    default:
-      return "text-gray-500";
-  }
-};
-
 export function TransactionAnomalyFlags() {
   return (
-    <div className="space-y-4">
+    <div className="flex gap-4">
       {anomalyFlags.map((flag) => {
         const IconComponent = flag.icon;
         return (
-          <Alert key={flag.id} className={getAlertStyles(flag.type)}>
-            <div className="flex items-start gap-3">
-              <IconComponent className={`h-5 w-5 mt-0.5 ${getIconColor(flag.type)}`} />
-              <div className="flex-1 space-y-2">
-                <div>
-                  <h4 className="font-medium">{flag.title}</h4>
-                  <AlertDescription className="text-sm">
-                    {flag.description}
-                  </AlertDescription>
-                </div>
-                <p className="text-xs opacity-80">
-                  {flag.details}
-                </p>
-                <div className="flex gap-2 pt-1">
-                  <Link to="/data-anomaly-detection">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="h-7 text-xs"
-                    >
-                      {flag.actionLabel}
-                    </Button>
-                  </Link>
-                  <Button 
-                    size="sm" 
-                    variant="ghost"
-                    className="h-7 text-xs"
-                  >
-                    {flag.dismissLabel}
-                  </Button>
-                </div>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 w-6 p-0 opacity-50 hover:opacity-100"
-              >
-                <X className="h-3 w-3" />
-              </Button>
+          <div key={flag.id} className="flex-1 flex items-center gap-3 p-3 border rounded-lg bg-card">
+            <div className={`p-2 rounded-full ${flag.iconBg} shrink-0`}>
+              <IconComponent className={`h-4 w-4 ${flag.iconColor}`} />
             </div>
-          </Alert>
+            <div className="flex-1 min-w-0">
+              <h4 className="text-sm font-medium truncate">{flag.title}</h4>
+              <p className="text-xs text-muted-foreground truncate">{flag.description}</p>
+            </div>
+            <Link to="/data-anomaly-detection">
+              <Button
+                size="sm"
+                variant="link"
+                className="text-blue-600 p-0 h-auto text-sm shrink-0"
+              >
+                {flag.actionLabel}
+              </Button>
+            </Link>
+          </div>
         );
       })}
-
-      {/* Summary */}
-      <div className="pt-2 text-center">
-        <Link to="/data-anomaly-detection">
-          <Button variant="outline" size="sm" className="text-xs">
-            View All Anomalies
-          </Button>
-        </Link>
-      </div>
     </div>
   );
 }

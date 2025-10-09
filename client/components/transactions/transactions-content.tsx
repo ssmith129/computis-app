@@ -128,43 +128,28 @@ export function TransactionsContent() {
           {/* Bottom Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* AI Classification Insights */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between text-lg font-semibold">
-                  AI Classification Insights
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Hide Legend
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ClassificationInsights />
-              </CardContent>
+            <Card className="p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-lg font-semibold">AI Classification Insights</h3>
+              </div>
+              <ClassificationInsights />
             </Card>
 
             {/* Anomaly Flags */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between text-lg font-semibold">
-                  Anomaly Flags
-                  <Link to="/data-anomaly-detection">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      View All
-                    </Button>
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TransactionAnomalyFlags />
-              </CardContent>
+            <Card className="p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-lg font-semibold">Anomaly Flags</h3>
+                <Link to="/data-anomaly-detection">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-foreground h-auto p-0"
+                  >
+                    View All
+                  </Button>
+                </Link>
+              </div>
+              <TransactionAnomalyFlags />
             </Card>
           </div>
         </div>

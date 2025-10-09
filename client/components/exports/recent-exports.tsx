@@ -76,7 +76,11 @@ const getExportTypeBadge = (type: string) => {
   }
 };
 
-export function RecentExports() {
+interface RecentExportsProps {
+  onRowClick?: (id: string) => void;
+}
+
+export function RecentExports({ onRowClick }: RecentExportsProps = {}) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -106,7 +110,20 @@ export function RecentExports() {
             {recentExports.map((exportItem) => {
               const IconComponent = exportItem.icon;
               return (
-                <TableRow key={exportItem.id}>
+                <TableRow
+                  key={exportItem.id}
+                  className="cursor-pointer hover:bg-accent/50 transition-colors"
+                  onClick={() => onRowClick?.(exportItem.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onRowClick?.(exportItem.id);
+                    }
+                  }}
+                  aria-label={`View audit trail for ${exportItem.exportType} export`}
+                >
                   <TableCell className="font-medium">
                     {exportItem.date}
                   </TableCell>

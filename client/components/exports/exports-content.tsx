@@ -6,6 +6,7 @@ import { ExportConfiguration } from "./export-configuration";
 import { DataValidation } from "./data-validation";
 import { IssuesTable } from "./issues-table";
 import { RecentExports } from "./recent-exports";
+import { AuditTrailDrawer } from "./audit-trail-drawer";
 import { FileText, History } from "lucide-react";
 import {
   Dialog,
@@ -21,6 +22,8 @@ export function ExportsContent() {
 
   const [historyOpen, setHistoryOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [auditDrawerOpen, setAuditDrawerOpen] = useState(false);
+  const [selectedExportId, setSelectedExportId] = useState<string | null>(null);
 
   const handleGenerate = async () => {
     if (generating) return;
@@ -71,7 +74,9 @@ export function ExportsContent() {
                 variant="link"
                 size="sm"
                 className="text-blue-600 hover:text-blue-700 px-2"
-                onClick={() => toast({ title: "Audit trail coming soon" })}
+                onClick={() => setAuditDrawerOpen(true)}
+                aria-expanded={auditDrawerOpen}
+                aria-controls="audit-drawer"
               >
                 View Audit Trail
               </Button>
@@ -132,7 +137,12 @@ export function ExportsContent() {
         {/* Recent Exports */}
         <Card>
           <CardContent className="p-6">
-            <RecentExports />
+            <RecentExports
+              onRowClick={(id) => {
+                setSelectedExportId(id);
+                setAuditDrawerOpen(true);
+              }}
+            />
           </CardContent>
         </Card>
       </div>
@@ -142,10 +152,26 @@ export function ExportsContent() {
             <DialogTitle>Export History</DialogTitle>
           </DialogHeader>
           <div className="pt-2">
-            <RecentExports />
+            <RecentExports
+              onRowClick={(id) => {
+                setSelectedExportId(id);
+                setAuditDrawerOpen(true);
+                setHistoryOpen(false);
+              }}
+            />
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Audit Trail Drawer */}
+      <AuditTrailDrawer
+        isOpen={auditDrawerOpen}
+        onClose={() => {
+          setAuditDrawerOpen(false);
+          setSelectedExportId(null);
+        }}
+        exportId={selectedExportId}
+      />
     </div>
   );
 }

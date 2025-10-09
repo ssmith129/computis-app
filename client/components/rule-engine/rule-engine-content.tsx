@@ -75,22 +75,18 @@ export function RuleEngineContent() {
         </Card>
 
         {/* Rule Conflicts */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              Rule Conflicts
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                View All
-              </Button>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <RuleConflicts />
-          </CardContent>
+        <Card className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-lg font-semibold">Rule Conflicts</h3>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground h-auto p-0"
+            >
+              View All
+            </Button>
+          </div>
+          <RuleConflicts />
         </Card>
       </div>
 

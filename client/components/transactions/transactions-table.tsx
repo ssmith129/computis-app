@@ -213,10 +213,10 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
     <div className="space-y-4">
       {/* Table */}
       <div className="overflow-x-auto">
-        <Table className="min-w-full">
+        <Table className="min-w-full table-fixed">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-12">
+              <TableHead className="w-10 px-2">
                 <Checkbox
                   checked={
                     selectedTransactions.length ===
@@ -226,30 +226,30 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                   onCheckedChange={handleSelectAll}
                 />
               </TableHead>
-              <TableHead>
+              <TableHead className="w-24 px-2">
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="p-0 h-auto font-medium"
+                  className="p-0 h-auto font-medium text-xs"
                 >
                   Date
                   <ArrowUpDown className="ml-1 h-3 w-3" />
                 </Button>
               </TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Asset</TableHead>
-              <TableHead>Amount</TableHead>
-              <TableHead>FMV (USD)</TableHead>
-              <TableHead>AI Classification</TableHead>
-              <TableHead>Confidence</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead className="w-20 px-2 text-xs">Type</TableHead>
+              <TableHead className="w-36 px-2 text-xs">Asset</TableHead>
+              <TableHead className="w-24 px-2 text-xs">Amount</TableHead>
+              <TableHead className="w-28 px-2 text-xs">FMV (USD)</TableHead>
+              <TableHead className="w-32 px-2 text-xs">AI Classification</TableHead>
+              <TableHead className="w-24 px-2 text-xs">Confidence</TableHead>
+              <TableHead className="w-28 px-2 text-xs">Status</TableHead>
+              <TableHead className="w-12 px-2 text-xs">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {displayedTransactions.map((transaction) => (
-              <TableRow key={transaction.id}>
-                <TableCell>
+              <TableRow key={transaction.id} className="h-12">
+                <TableCell className="px-2 py-2">
                   <Checkbox
                     checked={selectedTransactions.includes(transaction.id)}
                     onCheckedChange={(checked) =>
@@ -257,55 +257,55 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     }
                   />
                 </TableCell>
-                <TableCell className="font-medium">
+                <TableCell className="font-medium px-2 py-2 text-sm">
                   {transaction.date}
                 </TableCell>
-                <TableCell>{transaction.type}</TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-orange-500">
+                <TableCell className="px-2 py-2 text-sm">{transaction.type}</TableCell>
+                <TableCell className="px-2 py-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono text-orange-500 text-sm">
                       {transaction.icon}
                     </span>
-                    {transaction.asset}
+                    <span className="text-sm truncate">{transaction.asset}</span>
                   </div>
                 </TableCell>
-                <TableCell className="font-mono">
+                <TableCell className="font-mono px-2 py-2 text-sm">
                   {transaction.amount}
                 </TableCell>
-                <TableCell className="font-mono">
+                <TableCell className="font-mono px-2 py-2 text-sm">
                   {transaction.fmvUsd}
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-2">
                   <Badge
-                    className={getClassificationBadgeColor(
+                    className={`${getClassificationBadgeColor(
                       transaction.aiClassification,
-                    )}
+                    )} text-xs px-2 py-0.5`}
                   >
                     {transaction.aiClassification}
                   </Badge>
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
+                <TableCell className="px-2 py-2">
+                  <div className="flex items-center gap-1.5">
                     <span
-                      className={`font-medium ${getConfidenceColor(transaction.confidence)}`}
+                      className={`font-medium text-sm ${getConfidenceColor(transaction.confidence)}`}
                     >
                       {transaction.confidence}%
                     </span>
                     {transaction.confidence < 40 && (
-                      <AlertTriangle className="h-4 w-4 text-red-500" />
+                      <AlertTriangle className="h-3 w-3 text-red-500" />
                     )}
                   </div>
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-2">
                   <StatusBadge variant={getStatusVariant(transaction.status)}>
                     {transaction.status}
                   </StatusBadge>
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                        <MoreHorizontal className="h-4 w-4" />
+                      <Button variant="ghost" size="sm" className="h-7 w-7 p-0">
+                        <MoreHorizontal className="h-3.5 w-3.5" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -346,7 +346,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
       </div>
 
       {/* Table Footer */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 px-4 py-2 border-t">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 px-2 py-2 border-t">
         <div className="text-sm text-muted-foreground">
           Showing {startIndex + 1} of {filteredTransactions.length} transactions
         </div>

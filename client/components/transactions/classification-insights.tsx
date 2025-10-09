@@ -12,18 +12,18 @@ const classificationData = [
     bgColor: "bg-green-100",
     icon: CheckCircle,
     progressColor: "bg-green-500",
-    actionColor: "text-green-600"
+    actionColor: "text-green-600",
   },
   {
-    level: "Medium Confidence", 
+    level: "Medium Confidence",
     count: 42,
     percentage: 34,
     description: "Somewhat reliable AI classifications",
     color: "text-yellow-600",
-    bgColor: "bg-yellow-100", 
+    bgColor: "bg-yellow-100",
     icon: AlertCircle,
     progressColor: "bg-yellow-500",
-    actionColor: "text-yellow-600"
+    actionColor: "text-yellow-600",
   },
   {
     level: "Low Confidence",
@@ -34,8 +34,8 @@ const classificationData = [
     bgColor: "bg-red-100",
     icon: XCircle,
     progressColor: "bg-red-500",
-    actionColor: "text-red-600"
-  }
+    actionColor: "text-red-600",
+  },
 ];
 
 export function ClassificationInsights() {
@@ -53,10 +53,7 @@ export function ClassificationInsights() {
 
             {/* Progress Bar */}
             <div className="flex-1 min-w-[120px]">
-              <Progress
-                value={item.percentage}
-                className="h-2"
-              />
+              <Progress value={item.percentage} className="h-2" />
             </div>
 
             {/* Count and Percentage */}
@@ -65,8 +62,8 @@ export function ClassificationInsights() {
             </div>
 
             {/* Primary Action */}
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className={`${item.actionColor} p-0 h-auto text-sm`}
             >
               Review
@@ -77,7 +74,9 @@ export function ClassificationInsights() {
 
       {/* Summary Row */}
       <div className="flex items-center justify-between pt-2 border-t">
-        <span className="text-sm text-muted-foreground">Total Classifications</span>
+        <span className="text-sm text-muted-foreground">
+          Total Classifications
+        </span>
         <span className="text-sm font-medium">117 transactions</span>
       </div>
     </div>

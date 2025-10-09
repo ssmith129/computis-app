@@ -240,7 +240,9 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
               <TableHead className="w-36 px-2 text-xs">Asset</TableHead>
               <TableHead className="w-24 px-2 text-xs">Amount</TableHead>
               <TableHead className="w-28 px-2 text-xs">FMV (USD)</TableHead>
-              <TableHead className="w-32 px-2 text-xs">AI Classification</TableHead>
+              <TableHead className="w-32 px-2 text-xs">
+                AI Classification
+              </TableHead>
               <TableHead className="w-24 px-2 text-xs">Confidence</TableHead>
               <TableHead className="w-28 px-2 text-xs">Status</TableHead>
               <TableHead className="w-12 px-2 text-xs">Actions</TableHead>
@@ -260,13 +262,17 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                 <TableCell className="font-medium px-2 py-2 text-sm">
                   {transaction.date}
                 </TableCell>
-                <TableCell className="px-2 py-2 text-sm">{transaction.type}</TableCell>
+                <TableCell className="px-2 py-2 text-sm">
+                  {transaction.type}
+                </TableCell>
                 <TableCell className="px-2 py-2">
                   <div className="flex items-center gap-1.5">
                     <span className="font-mono text-orange-500 text-sm">
                       {transaction.icon}
                     </span>
-                    <span className="text-sm truncate">{transaction.asset}</span>
+                    <span className="text-sm truncate">
+                      {transaction.asset}
+                    </span>
                   </div>
                 </TableCell>
                 <TableCell className="font-mono px-2 py-2 text-sm">

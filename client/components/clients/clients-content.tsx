@@ -871,7 +871,9 @@ export function ClientsContent() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="accounting-method">Accounting Method</Label>
+                      <Label htmlFor="accounting-method">
+                        Accounting Method
+                      </Label>
                       <Input
                         id="accounting-method"
                         defaultValue="FIFO"
@@ -887,7 +889,9 @@ export function ClientsContent() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
-                        <div className="font-medium text-sm">Enable Auto-Classification</div>
+                        <div className="font-medium text-sm">
+                          Enable Auto-Classification
+                        </div>
                         <div className="text-xs text-muted-foreground">
                           Automatically classify transactions using AI
                         </div>
@@ -896,7 +900,9 @@ export function ClientsContent() {
                     </div>
                     <div className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
-                        <div className="font-medium text-sm">Require CPA Approval</div>
+                        <div className="font-medium text-sm">
+                          Require CPA Approval
+                        </div>
                         <div className="text-xs text-muted-foreground">
                           All classifications must be approved by a CPA
                         </div>
@@ -905,7 +911,9 @@ export function ClientsContent() {
                     </div>
                     <div className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
-                        <div className="font-medium text-sm">Track Cost Basis</div>
+                        <div className="font-medium text-sm">
+                          Track Cost Basis
+                        </div>
                         <div className="text-xs text-muted-foreground">
                           Automatically track cost basis for all assets
                         </div>
@@ -914,7 +922,9 @@ export function ClientsContent() {
                     </div>
                     <div className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
-                        <div className="font-medium text-sm">Generate Audit Trails</div>
+                        <div className="font-medium text-sm">
+                          Generate Audit Trails
+                        </div>
                         <div className="text-xs text-muted-foreground">
                           Create detailed audit logs for all actions
                         </div>
@@ -939,7 +949,9 @@ export function ClientsContent() {
                     </div>
                     <div className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
-                        <div className="font-medium text-sm">Weekly Reports</div>
+                        <div className="font-medium text-sm">
+                          Weekly Reports
+                        </div>
                         <div className="text-xs text-muted-foreground">
                           Receive weekly summary reports via email
                         </div>
@@ -977,7 +989,10 @@ export function ClientsContent() {
                       Move this client to archived status
                     </div>
                   </div>
-                  <Button variant="outline" className="border-red-200 text-red-600 hover:bg-red-100">
+                  <Button
+                    variant="outline"
+                    className="border-red-200 text-red-600 hover:bg-red-100"
+                  >
                     Archive
                   </Button>
                 </div>
@@ -988,9 +1003,7 @@ export function ClientsContent() {
                       Permanently delete this client and all associated data
                     </div>
                   </div>
-                  <Button variant="destructive">
-                    Delete
-                  </Button>
+                  <Button variant="destructive">Delete</Button>
                 </div>
               </CardContent>
             </Card>

@@ -1,5 +1,15 @@
 import { useEffect } from "react";
-import { X, Eye, Upload, User, Download, Printer, CheckCircle, AlertTriangle, Sparkles } from "lucide-react";
+import {
+  X,
+  Eye,
+  Upload,
+  User,
+  Download,
+  Printer,
+  CheckCircle,
+  AlertTriangle,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface AuditEntry {
@@ -23,42 +33,48 @@ const auditData: Record<string, AuditEntry[]> = {
       user: "john.smith@company.com",
       action: "Export Initiated",
       icon: "classify",
-      details: "CSV export started for Tax Year 2022 (124 transactions selected)",
+      details:
+        "CSV export started for Tax Year 2022 (124 transactions selected)",
     },
     {
       time: "2023-10-24 14:23:46",
       user: "System",
       action: "Data Validation",
       icon: "view",
-      details: "All transactions validated: FMV data complete, cost basis verified",
+      details:
+        "All transactions validated: FMV data complete, cost basis verified",
     },
     {
       time: "2023-10-24 14:24:12",
       user: "System",
       action: "AI Classification Review",
       icon: "classify",
-      details: "AI confidence scores calculated: 118 High, 6 Medium confidence classifications",
+      details:
+        "AI confidence scores calculated: 118 High, 6 Medium confidence classifications",
     },
     {
       time: "2023-10-24 14:24:38",
       user: "john.smith@company.com",
       action: "Manual Review",
       icon: "view",
-      details: "User reviewed 6 medium-confidence transactions and approved classifications",
+      details:
+        "User reviewed 6 medium-confidence transactions and approved classifications",
     },
     {
       time: "2023-10-24 14:25:01",
       user: "System",
       action: "CSV Generation",
       icon: "export",
-      details: "CSV file generated with all required fields and audit trail metadata",
+      details:
+        "CSV file generated with all required fields and audit trail metadata",
     },
     {
       time: "2023-10-24 14:26:15",
       user: "john.smith@company.com",
       action: "Export Approved",
       icon: "accept",
-      details: "Final export approved and marked for download (File: crypto_export_2022.csv)",
+      details:
+        "Final export approved and marked for download (File: crypto_export_2022.csv)",
     },
     {
       time: "2023-10-24 16:45:22",
@@ -74,7 +90,8 @@ const auditData: Record<string, AuditEntry[]> = {
       user: "System",
       action: "IRS 8949 Export Initiated",
       icon: "classify",
-      details: "IRS Form 8949 export started for 120 transactions (Tax Year 2022)",
+      details:
+        "IRS Form 8949 export started for 120 transactions (Tax Year 2022)",
     },
     {
       time: "2023-10-20 09:15:33",
@@ -88,14 +105,16 @@ const auditData: Record<string, AuditEntry[]> = {
       user: "john.smith@company.com",
       action: "Tax Review",
       icon: "view",
-      details: "Verified tax treatment and holding periods for all transactions",
+      details:
+        "Verified tax treatment and holding periods for all transactions",
     },
     {
       time: "2023-10-20 10:22:45",
       user: "System",
       action: "Form 8949 Generated",
       icon: "export",
-      details: "IRS Form 8949 generated with proper formatting and calculations",
+      details:
+        "IRS Form 8949 generated with proper formatting and calculations",
     },
   ],
   "3": [
@@ -111,7 +130,8 @@ const auditData: Record<string, AuditEntry[]> = {
       user: "System",
       action: "Account Mapping",
       icon: "view",
-      details: "Chart of Accounts mapped: Crypto assets to Asset accounts, gains to Income",
+      details:
+        "Chart of Accounts mapped: Crypto assets to Asset accounts, gains to Income",
     },
     {
       time: "2023-10-15 11:45:22",
@@ -125,7 +145,8 @@ const auditData: Record<string, AuditEntry[]> = {
       user: "System",
       action: "QBO File Generated",
       icon: "export",
-      details: "QuickBooks import file created with 118 transactions and metadata",
+      details:
+        "QuickBooks import file created with 118 transactions and metadata",
     },
   ],
 };
@@ -149,10 +170,16 @@ const getIconClass = (icon: string) => {
     export: "bg-purple-500/20 text-purple-400",
     override: "bg-yellow-500/20 text-yellow-400",
   };
-  return classes[icon as keyof typeof classes] || "bg-gray-500/20 text-gray-400";
+  return (
+    classes[icon as keyof typeof classes] || "bg-gray-500/20 text-gray-400"
+  );
 };
 
-export function AuditTrailDrawer({ isOpen, onClose, exportId }: AuditTrailDrawerProps) {
+export function AuditTrailDrawer({
+  isOpen,
+  onClose,
+  exportId,
+}: AuditTrailDrawerProps) {
   // Close on ESC key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {

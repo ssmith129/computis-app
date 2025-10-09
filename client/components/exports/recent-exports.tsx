@@ -26,28 +26,28 @@ const recentExports = [
     transactions: 124,
     status: "Complete",
     user: "John Smith",
-    icon: FileText
+    icon: FileText,
   },
   {
-    id: "2", 
+    id: "2",
     date: "Oct 20, 2023",
     exportType: "IRS 8949",
     taxYear: "2022",
     transactions: 120,
     status: "Complete",
     user: "John Smith",
-    icon: FileText
+    icon: FileText,
   },
   {
     id: "3",
     date: "Oct 15, 2023",
     exportType: "QBO",
-    taxYear: "2022", 
+    taxYear: "2022",
     transactions: 118,
     status: "Complete",
     user: "John Smith",
-    icon: FileText
-  }
+    icon: FileText,
+  },
 ];
 
 const getStatusBadge = (status: string) => {
@@ -86,7 +86,9 @@ export function RecentExports({ onRowClick }: RecentExportsProps = {}) {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-lg font-semibold">Recent Exports</h3>
-          <p className="text-sm text-muted-foreground">Download and manage your export history</p>
+          <p className="text-sm text-muted-foreground">
+            Download and manage your export history
+          </p>
         </div>
         <Button variant="outline" size="sm">
           View All
@@ -117,7 +119,7 @@ export function RecentExports({ onRowClick }: RecentExportsProps = {}) {
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
                       onRowClick?.(exportItem.id);
                     }
@@ -139,9 +141,7 @@ export function RecentExports({ onRowClick }: RecentExportsProps = {}) {
                   <TableCell className="text-muted-foreground">
                     {exportItem.transactions}
                   </TableCell>
-                  <TableCell>
-                    {getStatusBadge(exportItem.status)}
-                  </TableCell>
+                  <TableCell>{getStatusBadge(exportItem.status)}</TableCell>
                   <TableCell className="text-muted-foreground">
                     {exportItem.user}
                   </TableCell>
@@ -157,7 +157,11 @@ export function RecentExports({ onRowClick }: RecentExportsProps = {}) {
                       </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-8 w-8 p-0"
+                          >
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>

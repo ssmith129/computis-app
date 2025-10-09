@@ -107,6 +107,18 @@ export function ExportsContent() {
 
       {/* Main content */}
       <div className="p-6 space-y-6">
+        {/* Recent Exports */}
+        <Card>
+          <CardContent className="p-6">
+            <RecentExports
+              onRowClick={(id) => {
+                setSelectedExportId(id);
+                setAuditDrawerOpen(true);
+              }}
+            />
+          </CardContent>
+        </Card>
+
         {/* Export Cards */}
         <ExportCards selectedYear={selectedYear} />
 
@@ -131,18 +143,6 @@ export function ExportsContent() {
         <Card>
           <CardContent className="p-6">
             <IssuesTable />
-          </CardContent>
-        </Card>
-
-        {/* Recent Exports */}
-        <Card>
-          <CardContent className="p-6">
-            <RecentExports
-              onRowClick={(id) => {
-                setSelectedExportId(id);
-                setAuditDrawerOpen(true);
-              }}
-            />
           </CardContent>
         </Card>
       </div>

@@ -5,6 +5,7 @@ Interactive HTML prototypes demonstrating key UX innovations in the Computis cry
 ## Pages Created
 
 ### Main Index
+
 - **design-elements-index.html** - Overview of all design elements with navigation
 
 ### Design Element Prototypes
@@ -99,17 +100,18 @@ All prototypes follow these UX principles:
 
 ## Impact Summary
 
-| Design Element | Key Metric | Result |
-|---------------|------------|--------|
-| AI Confidence Chips | False Positives | 70%+ reduction |
-| Audit Trail | Compliance Tickets | 40% reduction |
-| Visual Rule Builder | Engineering Dependency | 85% reduction |
-| Anomaly Detection | Coverage | 150% increase |
-| Multi-Tenant | Clients per Firm | 100+ supported |
+| Design Element      | Key Metric             | Result         |
+| ------------------- | ---------------------- | -------------- |
+| AI Confidence Chips | False Positives        | 70%+ reduction |
+| Audit Trail         | Compliance Tickets     | 40% reduction  |
+| Visual Rule Builder | Engineering Dependency | 85% reduction  |
+| Anomaly Detection   | Coverage               | 150% increase  |
+| Multi-Tenant        | Clients per Firm       | 100+ supported |
 
 ## Viewing the Prototypes
 
 To view locally:
+
 ```bash
 # From project root
 cd prototypes/html\ screens

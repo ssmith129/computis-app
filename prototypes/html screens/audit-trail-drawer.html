@@ -41,7 +41,7 @@
         display: flex;
         gap: 8px;
       }
-      
+
       .audit-entry {
         padding: 16px;
         background: #161b26;
@@ -75,7 +75,7 @@
         align-items: center;
         gap: 4px;
       }
-      
+
       .transaction-card {
         background: #161b26;
         border: 1px solid #2a3447;
@@ -94,7 +94,7 @@
         border-color: #6366f1;
         background: rgba(99, 102, 241, 0.1);
       }
-      
+
       .audit-badge {
         position: absolute;
         top: 12px;
@@ -106,7 +106,7 @@
         font-size: 11px;
         font-weight: 500;
       }
-      
+
       .action-icon {
         width: 20px;
         height: 20px;
@@ -116,17 +116,34 @@
         justify-content: center;
         font-size: 11px;
       }
-      .action-icon.override { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
-      .action-icon.accept { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-      .action-icon.view { background: rgba(99, 102, 241, 0.2); color: #6366f1; }
-      .action-icon.export { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
-      .action-icon.classify { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+      .action-icon.override {
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+      }
+      .action-icon.accept {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+      .action-icon.view {
+        background: rgba(99, 102, 241, 0.2);
+        color: #6366f1;
+      }
+      .action-icon.export {
+        background: rgba(168, 85, 247, 0.2);
+        color: #a855f7;
+      }
+      .action-icon.classify {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+      }
     </style>
   </head>
   <body>
     <header class="app-header">
       <div class="inner container">
-        <a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a>
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
         <nav class="nav">
           <a href="index.html">Dashboard</a>
           <a href="ai-confidence-chips.html">AI Confidence</a>
@@ -137,51 +154,79 @@
         </nav>
       </div>
     </header>
-    
+
     <main class="container" aria-labelledby="title">
       <h1 id="title">Inline Audit Trail Drawer</h1>
-      
-      <section class="card" style="margin-bottom: 24px;">
+
+      <section class="card" style="margin-bottom: 24px">
         <h3>Design Element Overview</h3>
-        <p style="color: #9ca3af; line-height: 1.6;">
-          <strong>Problem:</strong> No compliance visibility for regulators; CPAs couldn't demonstrate classification methodology.<br><br>
-          <strong>Solution:</strong> Persistent audit trail capturing every classification decision, override, and user action with export-ready history.<br><br>
-          <strong>Impact:</strong> Enabled CPA firms to pass internal and IRS audits without engineering support; reduced compliance-related dev tickets by 40%.
+        <p style="color: #9ca3af; line-height: 1.6">
+          <strong>Problem:</strong> No compliance visibility for regulators;
+          CPAs couldn't demonstrate classification methodology.<br /><br />
+          <strong>Solution:</strong> Persistent audit trail capturing every
+          classification decision, override, and user action with export-ready
+          history.<br /><br />
+          <strong>Impact:</strong> Enabled CPA firms to pass internal and IRS
+          audits without engineering support; reduced compliance-related dev
+          tickets by 40%.
         </p>
       </section>
 
       <section class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+          "
+        >
           <h3>Recent Transactions</h3>
-          <div style="font-size: 13px; color: #9ca3af;">Click any transaction to view audit trail →</div>
+          <div style="font-size: 13px; color: #9ca3af">
+            Click any transaction to view audit trail →
+          </div>
         </div>
 
         <div class="transaction-card" onclick="openAudit(1)">
           <span class="audit-badge">7 events</span>
-          <div style="font-weight: 500; margin-bottom: 4px;">BTC Sale → USDC (Coinbase)</div>
-          <div style="font-size: 13px; color: #9ca3af;">$12,450.00 on 2024-01-15 • Classification: Sale</div>
-          <div style="margin-top: 8px;">
+          <div style="font-weight: 500; margin-bottom: 4px">
+            BTC Sale → USDC (Coinbase)
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">
+            $12,450.00 on 2024-01-15 • Classification: Sale
+          </div>
+          <div style="margin-top: 8px">
             <span class="badge success">Accepted</span>
-            <span class="badge" style="margin-left: 8px;">AI Override</span>
+            <span class="badge" style="margin-left: 8px">AI Override</span>
           </div>
         </div>
 
         <div class="transaction-card" onclick="openAudit(2)">
           <span class="audit-badge">4 events</span>
-          <div style="font-weight: 500; margin-bottom: 4px;">ETH Staking Reward</div>
-          <div style="font-size: 13px; color: #9ca3af;">0.08 ETH on 2024-01-14 • Classification: Income</div>
-          <div style="margin-top: 8px;">
+          <div style="font-weight: 500; margin-bottom: 4px">
+            ETH Staking Reward
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">
+            0.08 ETH on 2024-01-14 • Classification: Income
+          </div>
+          <div style="margin-top: 8px">
             <span class="badge success">Accepted</span>
           </div>
         </div>
 
         <div class="transaction-card" onclick="openAudit(3)">
           <span class="audit-badge">12 events</span>
-          <div style="font-weight: 500; margin-bottom: 4px;">Complex DeFi Transaction</div>
-          <div style="font-size: 13px; color: #9ca3af;">Multiple tokens on 2024-01-13 • Classification: Trade</div>
-          <div style="margin-top: 8px;">
+          <div style="font-weight: 500; margin-bottom: 4px">
+            Complex DeFi Transaction
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">
+            Multiple tokens on 2024-01-13 • Classification: Trade
+          </div>
+          <div style="margin-top: 8px">
             <span class="badge warn">Multiple Overrides</span>
-            <span class="badge error" style="margin-left: 8px;">Anomaly Flagged</span>
+            <span class="badge error" style="margin-left: 8px"
+              >Anomaly Flagged</span
+            >
           </div>
         </div>
       </section>
@@ -189,17 +234,30 @@
 
     <div id="auditDrawer" class="audit-drawer">
       <div class="drawer-header">
-        <h3 style="margin: 0;">Audit Trail</h3>
-        <button onclick="closeAudit()" style="background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 20px;">×</button>
+        <h3 style="margin: 0">Audit Trail</h3>
+        <button
+          onclick="closeAudit()"
+          style="
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 20px;
+          "
+        >
+          ×
+        </button>
       </div>
       <div class="drawer-content" id="auditContent">
-        <div style="text-align: center; color: #9ca3af; padding: 40px;">
+        <div style="text-align: center; color: #9ca3af; padding: 40px">
           Select a transaction to view its audit trail
         </div>
       </div>
       <div class="drawer-footer">
-        <button class="primary" style="flex: 1;" onclick="exportAudit()">📥 Export Trail</button>
-        <button onclick="printAudit()" style="flex: 1;">🖨️ Print</button>
+        <button class="primary" style="flex: 1" onclick="exportAudit()">
+          📥 Export Trail
+        </button>
+        <button onclick="printAudit()" style="flex: 1">🖨️ Print</button>
       </div>
     </div>
 
@@ -210,45 +268,202 @@
     <script>
       const auditData = {
         1: [
-          { time: '2024-01-15 14:23:45', user: 'sarah.chen@cpa.com', action: 'AI Classification', icon: 'classify', details: 'Automatically classified as "Sale" based on exchange API data and transaction pattern (Confidence: 94%)' },
-          { time: '2024-01-15 14:23:46', user: 'System', action: 'FMV Calculation', icon: 'view', details: 'Fair Market Value calculated: $12,450.00 (source: CoinGecko API at 14:23 UTC)' },
-          { time: '2024-01-15 14:24:12', user: 'sarah.chen@cpa.com', action: 'Manual Review', icon: 'view', details: 'CPA reviewed AI classification and supporting documentation' },
-          { time: '2024-01-15 14:24:38', user: 'sarah.chen@cpa.com', action: 'Override Applied', icon: 'override', details: 'Changed classification from "Sale" to "Like-Kind Exchange" based on client tax strategy' },
-          { time: '2024-01-15 14:25:01', user: 'sarah.chen@cpa.com', action: 'Cost Basis Adjustment', icon: 'override', details: 'Manually adjusted cost basis from $11,200 to $11,450 based on verified purchase records' },
-          { time: '2024-01-15 14:26:15', user: 'sarah.chen@cpa.com', action: 'Classification Accepted', icon: 'accept', details: 'Final classification approved with manual adjustments documented' },
-          { time: '2024-01-15 16:45:22', user: 'david.wong@cpa.com', action: 'Audit Review', icon: 'view', details: 'Senior CPA reviewed transaction and approved methodology (Audit ID: AUD-2024-0145)' }
+          {
+            time: "2024-01-15 14:23:45",
+            user: "sarah.chen@cpa.com",
+            action: "AI Classification",
+            icon: "classify",
+            details:
+              'Automatically classified as "Sale" based on exchange API data and transaction pattern (Confidence: 94%)',
+          },
+          {
+            time: "2024-01-15 14:23:46",
+            user: "System",
+            action: "FMV Calculation",
+            icon: "view",
+            details:
+              "Fair Market Value calculated: $12,450.00 (source: CoinGecko API at 14:23 UTC)",
+          },
+          {
+            time: "2024-01-15 14:24:12",
+            user: "sarah.chen@cpa.com",
+            action: "Manual Review",
+            icon: "view",
+            details:
+              "CPA reviewed AI classification and supporting documentation",
+          },
+          {
+            time: "2024-01-15 14:24:38",
+            user: "sarah.chen@cpa.com",
+            action: "Override Applied",
+            icon: "override",
+            details:
+              'Changed classification from "Sale" to "Like-Kind Exchange" based on client tax strategy',
+          },
+          {
+            time: "2024-01-15 14:25:01",
+            user: "sarah.chen@cpa.com",
+            action: "Cost Basis Adjustment",
+            icon: "override",
+            details:
+              "Manually adjusted cost basis from $11,200 to $11,450 based on verified purchase records",
+          },
+          {
+            time: "2024-01-15 14:26:15",
+            user: "sarah.chen@cpa.com",
+            action: "Classification Accepted",
+            icon: "accept",
+            details:
+              "Final classification approved with manual adjustments documented",
+          },
+          {
+            time: "2024-01-15 16:45:22",
+            user: "david.wong@cpa.com",
+            action: "Audit Review",
+            icon: "view",
+            details:
+              "Senior CPA reviewed transaction and approved methodology (Audit ID: AUD-2024-0145)",
+          },
         ],
         2: [
-          { time: '2024-01-14 09:15:32', user: 'System', action: 'AI Classification', icon: 'classify', details: 'Automatically classified as "Staking Income" (Confidence: 89%)' },
-          { time: '2024-01-14 09:15:33', user: 'System', action: 'FMV Calculation', icon: 'view', details: 'Fair Market Value: 0.08 ETH × $2,341.50 = $187.32' },
-          { time: '2024-01-14 10:22:18', user: 'sarah.chen@cpa.com', action: 'Manual Review', icon: 'view', details: 'Verified beacon chain validator reward via Etherscan' },
-          { time: '2024-01-14 10:22:45', user: 'sarah.chen@cpa.com', action: 'Classification Accepted', icon: 'accept', details: 'AI classification confirmed without modifications' }
+          {
+            time: "2024-01-14 09:15:32",
+            user: "System",
+            action: "AI Classification",
+            icon: "classify",
+            details:
+              'Automatically classified as "Staking Income" (Confidence: 89%)',
+          },
+          {
+            time: "2024-01-14 09:15:33",
+            user: "System",
+            action: "FMV Calculation",
+            icon: "view",
+            details: "Fair Market Value: 0.08 ETH × $2,341.50 = $187.32",
+          },
+          {
+            time: "2024-01-14 10:22:18",
+            user: "sarah.chen@cpa.com",
+            action: "Manual Review",
+            icon: "view",
+            details: "Verified beacon chain validator reward via Etherscan",
+          },
+          {
+            time: "2024-01-14 10:22:45",
+            user: "sarah.chen@cpa.com",
+            action: "Classification Accepted",
+            icon: "accept",
+            details: "AI classification confirmed without modifications",
+          },
         ],
         3: [
-          { time: '2024-01-13 11:30:15', user: 'System', action: 'AI Classification', icon: 'classify', details: 'Initial classification uncertain: Multiple token swaps detected (Confidence: 34%)' },
-          { time: '2024-01-13 11:30:16', user: 'System', action: 'Anomaly Flagged', icon: 'override', details: 'Complex DeFi interaction: 5 token swaps in single transaction' },
-          { time: '2024-01-13 11:45:22', user: 'sarah.chen@cpa.com', action: 'Manual Investigation', icon: 'view', details: 'Analyzed smart contract interactions on Etherscan' },
-          { time: '2024-01-13 11:52:33', user: 'sarah.chen@cpa.com', action: 'Override Applied', icon: 'override', details: 'Split into 5 separate trade events for accurate cost basis tracking' },
-          { time: '2024-01-13 12:05:12', user: 'sarah.chen@cpa.com', action: 'FMV Manual Entry', icon: 'override', details: 'Manually entered FMV for obscure tokens using DEX pricing data' },
-          { time: '2024-01-13 12:15:44', user: 'sarah.chen@cpa.com', action: 'Note Added', icon: 'view', details: 'Documented methodology: "Used Uniswap V3 pool pricing at block height 18945234"' },
-          { time: '2024-01-13 12:18:30', user: 'sarah.chen@cpa.com', action: 'Cost Basis Override', icon: 'override', details: 'Applied FIFO method across split transactions' },
-          { time: '2024-01-13 12:20:15', user: 'sarah.chen@cpa.com', action: 'Classification Override', icon: 'override', details: 'Final classification: Multiple trades (5 events)' },
-          { time: '2024-01-13 12:21:03', user: 'sarah.chen@cpa.com', action: 'Client Note', icon: 'view', details: 'Added note: "Client confirmed business purpose - arbitrage trading strategy"' },
-          { time: '2024-01-13 12:22:18', user: 'sarah.chen@cpa.com', action: 'Classification Accepted', icon: 'accept', details: 'Complex transaction resolved with full documentation' },
-          { time: '2024-01-13 15:30:45', user: 'david.wong@cpa.com', action: 'Peer Review', icon: 'view', details: 'Senior CPA reviewed methodology and approved approach' },
-          { time: '2024-01-13 15:35:12', user: 'System', action: 'Export Generated', icon: 'export', details: 'Audit trail exported for client records (Export ID: EXP-2024-0089)' }
-        ]
+          {
+            time: "2024-01-13 11:30:15",
+            user: "System",
+            action: "AI Classification",
+            icon: "classify",
+            details:
+              "Initial classification uncertain: Multiple token swaps detected (Confidence: 34%)",
+          },
+          {
+            time: "2024-01-13 11:30:16",
+            user: "System",
+            action: "Anomaly Flagged",
+            icon: "override",
+            details:
+              "Complex DeFi interaction: 5 token swaps in single transaction",
+          },
+          {
+            time: "2024-01-13 11:45:22",
+            user: "sarah.chen@cpa.com",
+            action: "Manual Investigation",
+            icon: "view",
+            details: "Analyzed smart contract interactions on Etherscan",
+          },
+          {
+            time: "2024-01-13 11:52:33",
+            user: "sarah.chen@cpa.com",
+            action: "Override Applied",
+            icon: "override",
+            details:
+              "Split into 5 separate trade events for accurate cost basis tracking",
+          },
+          {
+            time: "2024-01-13 12:05:12",
+            user: "sarah.chen@cpa.com",
+            action: "FMV Manual Entry",
+            icon: "override",
+            details:
+              "Manually entered FMV for obscure tokens using DEX pricing data",
+          },
+          {
+            time: "2024-01-13 12:15:44",
+            user: "sarah.chen@cpa.com",
+            action: "Note Added",
+            icon: "view",
+            details:
+              'Documented methodology: "Used Uniswap V3 pool pricing at block height 18945234"',
+          },
+          {
+            time: "2024-01-13 12:18:30",
+            user: "sarah.chen@cpa.com",
+            action: "Cost Basis Override",
+            icon: "override",
+            details: "Applied FIFO method across split transactions",
+          },
+          {
+            time: "2024-01-13 12:20:15",
+            user: "sarah.chen@cpa.com",
+            action: "Classification Override",
+            icon: "override",
+            details: "Final classification: Multiple trades (5 events)",
+          },
+          {
+            time: "2024-01-13 12:21:03",
+            user: "sarah.chen@cpa.com",
+            action: "Client Note",
+            icon: "view",
+            details:
+              'Added note: "Client confirmed business purpose - arbitrage trading strategy"',
+          },
+          {
+            time: "2024-01-13 12:22:18",
+            user: "sarah.chen@cpa.com",
+            action: "Classification Accepted",
+            icon: "accept",
+            details: "Complex transaction resolved with full documentation",
+          },
+          {
+            time: "2024-01-13 15:30:45",
+            user: "david.wong@cpa.com",
+            action: "Peer Review",
+            icon: "view",
+            details: "Senior CPA reviewed methodology and approved approach",
+          },
+          {
+            time: "2024-01-13 15:35:12",
+            user: "System",
+            action: "Export Generated",
+            icon: "export",
+            details:
+              "Audit trail exported for client records (Export ID: EXP-2024-0089)",
+          },
+        ],
       };
 
       function openAudit(txId) {
-        const drawer = document.getElementById('auditDrawer');
-        const content = document.getElementById('auditContent');
-        
-        document.querySelectorAll('.transaction-card').forEach(card => card.classList.remove('selected'));
-        event.currentTarget.classList.add('selected');
-        
+        const drawer = document.getElementById("auditDrawer");
+        const content = document.getElementById("auditContent");
+
+        document
+          .querySelectorAll(".transaction-card")
+          .forEach((card) => card.classList.remove("selected"));
+        event.currentTarget.classList.add("selected");
+
         const entries = auditData[txId] || [];
-        content.innerHTML = entries.map(entry => `
+        content.innerHTML = entries
+          .map(
+            (entry) => `
           <div class="audit-entry">
             <div class="audit-timestamp">${entry.time}</div>
             <div class="audit-action">
@@ -258,33 +473,37 @@
             <div class="audit-user">👤 ${entry.user}</div>
             <div class="audit-details">${entry.details}</div>
           </div>
-        `).join('');
-        
-        drawer.classList.add('open');
+        `,
+          )
+          .join("");
+
+        drawer.classList.add("open");
       }
 
       function closeAudit() {
-        document.getElementById('auditDrawer').classList.remove('open');
-        document.querySelectorAll('.transaction-card').forEach(card => card.classList.remove('selected'));
+        document.getElementById("auditDrawer").classList.remove("open");
+        document
+          .querySelectorAll(".transaction-card")
+          .forEach((card) => card.classList.remove("selected"));
       }
 
       function getIcon(type) {
         const icons = {
-          classify: 'AI',
-          accept: '✓',
-          view: '👁',
-          export: '📤',
-          override: '⚠'
+          classify: "AI",
+          accept: "✓",
+          view: "👁",
+          export: "📤",
+          override: "⚠",
         };
-        return icons[type] || '•';
+        return icons[type] || "•";
       }
 
       function exportAudit() {
-        toast('Audit trail exported as PDF');
+        toast("Audit trail exported as PDF");
       }
 
       function printAudit() {
-        toast('Printing audit trail...');
+        toast("Printing audit trail...");
       }
     </script>
   </body>

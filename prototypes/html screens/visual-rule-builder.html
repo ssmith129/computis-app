@@ -138,7 +138,9 @@
   <body>
     <header class="app-header">
       <div class="inner container">
-        <a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a>
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
         <nav class="nav">
           <a href="index.html">Dashboard</a>
           <a href="ai-confidence-chips.html">AI Confidence</a>
@@ -149,26 +151,40 @@
         </nav>
       </div>
     </header>
-    
+
     <main class="container" aria-labelledby="title">
       <h1 id="title">Visual Rule Builder with Before/After Preview</h1>
-      
-      <section class="card" style="margin-bottom: 24px;">
+
+      <section class="card" style="margin-bottom: 24px">
         <h3>Design Element Overview</h3>
-        <p style="color: #9ca3af; line-height: 1.6;">
-          <strong>Problem:</strong> CPAs needed engineers to codify classification logic, creating bottlenecks and reducing autonomy.<br><br>
-          <strong>Solution:</strong> Drag-and-drop rule builder with natural language logic, before/after preview, and bulk application controls.<br><br>
-          <strong>Impact:</strong> Reduced engineering dependency by 85%; enabled scaling to hedge funds and DAOs with custom classification needs.
+        <p style="color: #9ca3af; line-height: 1.6">
+          <strong>Problem:</strong> CPAs needed engineers to codify
+          classification logic, creating bottlenecks and reducing autonomy.<br /><br />
+          <strong>Solution:</strong> Drag-and-drop rule builder with natural
+          language logic, before/after preview, and bulk application
+          controls.<br /><br />
+          <strong>Impact:</strong> Reduced engineering dependency by 85%;
+          enabled scaling to hedge funds and DAOs with custom classification
+          needs.
         </p>
       </section>
 
       <div class="builder-grid">
         <div class="rule-builder">
-          <h3 style="margin-bottom: 16px;">Build Rule</h3>
-          
+          <h3 style="margin-bottom: 16px">Build Rule</h3>
+
           <div class="condition-group">
-            <div style="font-size: 13px; font-weight: 500; margin-bottom: 12px; color: #9ca3af;">WHEN these conditions are met:</div>
-            
+            <div
+              style="
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 12px;
+                color: #9ca3af;
+              "
+            >
+              WHEN these conditions are met:
+            </div>
+
             <div class="condition-row" id="condition-1">
               <span class="drag-handle">⋮⋮</span>
               <select id="field-1" onchange="updatePreview()">
@@ -184,8 +200,26 @@
                 <option>greater than</option>
                 <option>less than</option>
               </select>
-              <input type="text" id="value-1" placeholder="value" value="Swap" oninput="updatePreview()" />
-              <button onclick="removeCondition(1)" style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">×</button>
+              <input
+                type="text"
+                id="value-1"
+                placeholder="value"
+                value="Swap"
+                oninput="updatePreview()"
+              />
+              <button
+                onclick="removeCondition(1)"
+                style="
+                  background: rgba(239, 68, 68, 0.2);
+                  color: #ef4444;
+                  border: none;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                ×
+              </button>
             </div>
 
             <div class="condition-row" id="condition-2">
@@ -202,38 +236,100 @@
                 <option>contains</option>
                 <option>less than</option>
               </select>
-              <input type="text" id="value-2" placeholder="value" value="10000" oninput="updatePreview()" />
-              <button onclick="removeCondition(2)" style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">×</button>
+              <input
+                type="text"
+                id="value-2"
+                placeholder="value"
+                value="10000"
+                oninput="updatePreview()"
+              />
+              <button
+                onclick="removeCondition(2)"
+                style="
+                  background: rgba(239, 68, 68, 0.2);
+                  color: #ef4444;
+                  border: none;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                ×
+              </button>
             </div>
 
-            <div class="add-condition" onclick="addCondition()">+ Add Condition</div>
+            <div class="add-condition" onclick="addCondition()">
+              + Add Condition
+            </div>
           </div>
 
           <div class="action-selector">
-            <div style="font-size: 13px; font-weight: 500; margin-bottom: 12px; color: #9ca3af;">THEN apply this action:</div>
-            <select id="action" onchange="updatePreview()" style="width: 100%; background: #161b26; border: 1px solid #2a3447; color: #e5e7eb; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+            <div
+              style="
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 12px;
+                color: #9ca3af;
+              "
+            >
+              THEN apply this action:
+            </div>
+            <select
+              id="action"
+              onchange="updatePreview()"
+              style="
+                width: 100%;
+                background: #161b26;
+                border: 1px solid #2a3447;
+                color: #e5e7eb;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+              "
+            >
               <option>Flag for Review</option>
               <option>Auto-classify as...</option>
               <option>Set Cost Basis Method</option>
               <option>Apply Tax Treatment</option>
               <option>Add to Report</option>
             </select>
-            <input type="text" id="action-value" placeholder="Action details..." value="Large Trade" oninput="updatePreview()" style="width: 100%; background: #161b26; border: 1px solid #2a3447; color: #e5e7eb; padding: 10px; border-radius: 4px;" />
+            <input
+              type="text"
+              id="action-value"
+              placeholder="Action details..."
+              value="Large Trade"
+              oninput="updatePreview()"
+              style="
+                width: 100%;
+                background: #161b26;
+                border: 1px solid #2a3447;
+                color: #e5e7eb;
+                padding: 10px;
+                border-radius: 4px;
+              "
+            />
           </div>
 
           <div class="rule-summary" id="rule-summary">
-            <strong>Rule Summary:</strong><br>
-            When <strong>Transaction Type</strong> equals "<strong>Swap</strong>" AND <strong>Amount</strong> greater than "<strong>10000</strong>", then <strong>Flag for Review</strong> as "<strong>Large Trade</strong>"
+            <strong>Rule Summary:</strong><br />
+            When <strong>Transaction Type</strong> equals
+            "<strong>Swap</strong>" AND <strong>Amount</strong> greater than
+            "<strong>10000</strong>", then <strong>Flag for Review</strong> as
+            "<strong>Large Trade</strong>"
           </div>
 
-          <div style="display: flex; gap: 8px; margin-top: 16px;">
-            <button class="primary" style="flex: 1;" onclick="applyRule()">Apply Rule</button>
-            <button style="flex: 1;" onclick="testRule()">Test on Sample Data</button>
+          <div style="display: flex; gap: 8px; margin-top: 16px">
+            <button class="primary" style="flex: 1" onclick="applyRule()">
+              Apply Rule
+            </button>
+            <button style="flex: 1" onclick="testRule()">
+              Test on Sample Data
+            </button>
           </div>
         </div>
 
         <div class="preview-pane">
-          <h3 style="margin-bottom: 8px;">Live Preview</h3>
+          <h3 style="margin-bottom: 8px">Live Preview</h3>
           <div class="stats-bar">
             <div class="stat-item">
               <div class="stat-value" id="matches-count">3</div>
@@ -250,20 +346,28 @@
               <div class="preview-label">Before Rule</div>
               <div id="before-preview">
                 <div class="preview-item">
-                  BTC → ETH Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$15,000 • No flags</span>
+                  BTC → ETH Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px"
+                    >$15,000 • No flags</span
+                  >
                 </div>
                 <div class="preview-item">
-                  USDC → SOL Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$12,500 • No flags</span>
+                  USDC → SOL Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px"
+                    >$12,500 • No flags</span
+                  >
                 </div>
                 <div class="preview-item">
-                  ETH → USDT Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$8,200 • No flags</span>
+                  ETH → USDT Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px"
+                    >$8,200 • No flags</span
+                  >
                 </div>
                 <div class="preview-item">
-                  BTC → USDC Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$22,000 • No flags</span>
+                  BTC → USDC Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px"
+                    >$22,000 • No flags</span
+                  >
                 </div>
               </div>
             </div>
@@ -272,23 +376,34 @@
               <div class="preview-label">After Rule</div>
               <div id="after-preview">
                 <div class="preview-item highlighted">
-                  BTC → ETH Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$15,000</span><br>
-                  <span class="badge warn" style="margin-top: 4px;">🚩 Large Trade</span>
+                  BTC → ETH Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px">$15,000</span
+                  ><br />
+                  <span class="badge warn" style="margin-top: 4px"
+                    >🚩 Large Trade</span
+                  >
                 </div>
                 <div class="preview-item highlighted">
-                  USDC → SOL Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$12,500</span><br>
-                  <span class="badge warn" style="margin-top: 4px;">🚩 Large Trade</span>
+                  USDC → SOL Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px">$12,500</span
+                  ><br />
+                  <span class="badge warn" style="margin-top: 4px"
+                    >🚩 Large Trade</span
+                  >
                 </div>
                 <div class="preview-item">
-                  ETH → USDT Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$8,200 • No flags</span>
+                  ETH → USDT Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px"
+                    >$8,200 • No flags</span
+                  >
                 </div>
                 <div class="preview-item highlighted">
-                  BTC → USDC Swap<br>
-                  <span style="color: #9ca3af; font-size: 12px;">$22,000</span><br>
-                  <span class="badge warn" style="margin-top: 4px;">🚩 Large Trade</span>
+                  BTC → USDC Swap<br />
+                  <span style="color: #9ca3af; font-size: 12px">$22,000</span
+                  ><br />
+                  <span class="badge warn" style="margin-top: 4px"
+                    >🚩 Large Trade</span
+                  >
                 </div>
               </div>
             </div>
@@ -318,8 +433,14 @@
                 <td>3</td>
                 <td><span class="badge success">Active</span></td>
                 <td>
-                  <button style="padding: 4px 8px; font-size: 12px;">Edit</button>
-                  <button style="padding: 4px 8px; font-size: 12px; margin-left: 4px;">Disable</button>
+                  <button style="padding: 4px 8px; font-size: 12px">
+                    Edit
+                  </button>
+                  <button
+                    style="padding: 4px 8px; font-size: 12px; margin-left: 4px"
+                  >
+                    Disable
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -329,8 +450,14 @@
                 <td>12</td>
                 <td><span class="badge success">Active</span></td>
                 <td>
-                  <button style="padding: 4px 8px; font-size: 12px;">Edit</button>
-                  <button style="padding: 4px 8px; font-size: 12px; margin-left: 4px;">Disable</button>
+                  <button style="padding: 4px 8px; font-size: 12px">
+                    Edit
+                  </button>
+                  <button
+                    style="padding: 4px 8px; font-size: 12px; margin-left: 4px"
+                  >
+                    Disable
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -340,8 +467,14 @@
                 <td>45</td>
                 <td><span class="badge success">Active</span></td>
                 <td>
-                  <button style="padding: 4px 8px; font-size: 12px;">Edit</button>
-                  <button style="padding: 4px 8px; font-size: 12px; margin-left: 4px;">Disable</button>
+                  <button style="padding: 4px 8px; font-size: 12px">
+                    Edit
+                  </button>
+                  <button
+                    style="padding: 4px 8px; font-size: 12px; margin-left: 4px"
+                  >
+                    Disable
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -356,28 +489,30 @@
     <script src="../assets/app.js"></script>
     <script>
       function updatePreview() {
-        const field1 = document.getElementById('field-1').value;
-        const operator1 = document.getElementById('operator-1').value;
-        const value1 = document.getElementById('value-1').value;
-        const field2 = document.getElementById('field-2').value;
-        const operator2 = document.getElementById('operator-2').value;
-        const value2 = document.getElementById('value-2').value;
-        const action = document.getElementById('action').value;
-        const actionValue = document.getElementById('action-value').value;
+        const field1 = document.getElementById("field-1").value;
+        const operator1 = document.getElementById("operator-1").value;
+        const value1 = document.getElementById("value-1").value;
+        const field2 = document.getElementById("field-2").value;
+        const operator2 = document.getElementById("operator-2").value;
+        const value2 = document.getElementById("value-2").value;
+        const action = document.getElementById("action").value;
+        const actionValue = document.getElementById("action-value").value;
 
-        document.getElementById('rule-summary').innerHTML = `
+        document.getElementById("rule-summary").innerHTML = `
           <strong>Rule Summary:</strong><br>
           When <strong>${field1}</strong> ${operator1} "<strong>${value1}</strong>" AND <strong>${field2}</strong> ${operator2} "<strong>${value2}</strong>", then <strong>${action}</strong> as "<strong>${actionValue}</strong>"
         `;
 
         const threshold = parseInt(value2) || 10000;
-        const matches = [15000, 12500, 22000].filter(v => v > threshold).length;
-        document.getElementById('matches-count').textContent = matches;
-        document.getElementById('affected-count').textContent = matches;
+        const matches = [15000, 12500, 22000].filter(
+          (v) => v > threshold,
+        ).length;
+        document.getElementById("matches-count").textContent = matches;
+        document.getElementById("affected-count").textContent = matches;
       }
 
       function addCondition() {
-        toast('New condition added');
+        toast("New condition added");
       }
 
       function removeCondition(id) {
@@ -385,12 +520,12 @@
       }
 
       function applyRule() {
-        toast('Rule applied to 3 transactions');
+        toast("Rule applied to 3 transactions");
       }
 
       function testRule() {
-        toast('Testing rule on sample dataset...');
-        setTimeout(() => toast('Test complete: 3 matches found'), 1000);
+        toast("Testing rule on sample dataset...");
+        setTimeout(() => toast("Test complete: 3 matches found"), 1000);
       }
     </script>
   </body>

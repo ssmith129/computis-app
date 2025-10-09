@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="../assets/styles.css" />
     <style>
       .hero {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
         border: 1px solid #6366f1;
         border-radius: 12px;
         padding: 48px;
@@ -29,14 +33,14 @@
         margin: 0 auto;
         line-height: 1.6;
       }
-      
+
       .design-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         gap: 24px;
         margin-bottom: 48px;
       }
-      
+
       .design-card {
         background: #161b26;
         border: 1px solid #2a3447;
@@ -48,7 +52,7 @@
         overflow: hidden;
       }
       .design-card::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -66,7 +70,7 @@
         transform: translateY(-4px);
         box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
       }
-      
+
       .design-icon {
         width: 64px;
         height: 64px;
@@ -76,23 +80,27 @@
         justify-content: center;
         font-size: 32px;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
       }
-      
+
       .design-title {
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 12px;
         color: #e5e7eb;
       }
-      
+
       .design-problem {
         font-size: 14px;
         color: #9ca3af;
         margin-bottom: 12px;
         line-height: 1.5;
       }
-      
+
       .design-impact {
         display: inline-flex;
         align-items: center;
@@ -105,7 +113,7 @@
         font-weight: 500;
         margin-top: 12px;
       }
-      
+
       .stats-banner {
         background: #161b26;
         border: 1px solid #2a3447;
@@ -137,20 +145,23 @@
   <body>
     <header class="app-header">
       <div class="inner container">
-        <a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a>
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
         <nav class="nav">
           <a href="index.html">Dashboard</a>
           <a href="design-elements-index.html">Design Elements</a>
         </nav>
       </div>
     </header>
-    
+
     <main class="container">
       <div class="hero">
         <h1>Design Elements Showcase</h1>
         <p>
-          Explore the key UX innovations that transformed Computis from a technical tool into a trusted platform for CPAs, 
-          enabling professional tax compliance for crypto transactions at scale.
+          Explore the key UX innovations that transformed Computis from a
+          technical tool into a trusted platform for CPAs, enabling professional
+          tax compliance for crypto transactions at scale.
         </p>
       </div>
 
@@ -174,70 +185,103 @@
       </div>
 
       <div class="design-grid">
-        <a href="ai-confidence-chips.html" class="design-card" style="text-decoration: none; color: inherit;">
+        <a
+          href="ai-confidence-chips.html"
+          class="design-card"
+          style="text-decoration: none; color: inherit"
+        >
           <div class="design-icon">🎯</div>
-          <div class="design-title">AI Confidence Chips with Accept/Reject Controls</div>
-          <div class="design-problem">
-            <strong>Problem:</strong> CPAs couldn't trust or validate automated classifications, creating professional liability concerns.
+          <div class="design-title">
+            AI Confidence Chips with Accept/Reject Controls
           </div>
           <div class="design-problem">
-            <strong>Solution:</strong> Inline confidence indicators with one-click accept/reject and hover tooltips explaining AI rationale.
+            <strong>Problem:</strong> CPAs couldn't trust or validate automated
+            classifications, creating professional liability concerns.
           </div>
-          <div class="design-impact">
-            📈 70%+ reduction in false positives
+          <div class="design-problem">
+            <strong>Solution:</strong> Inline confidence indicators with
+            one-click accept/reject and hover tooltips explaining AI rationale.
           </div>
+          <div class="design-impact">📈 70%+ reduction in false positives</div>
         </a>
 
-        <a href="audit-trail-drawer.html" class="design-card" style="text-decoration: none; color: inherit;">
+        <a
+          href="audit-trail-drawer.html"
+          class="design-card"
+          style="text-decoration: none; color: inherit"
+        >
           <div class="design-icon">📋</div>
           <div class="design-title">Inline Audit Trail Drawer</div>
           <div class="design-problem">
-            <strong>Problem:</strong> No compliance visibility for regulators; CPAs couldn't demonstrate classification methodology.
+            <strong>Problem:</strong> No compliance visibility for regulators;
+            CPAs couldn't demonstrate classification methodology.
           </div>
           <div class="design-problem">
-            <strong>Solution:</strong> Persistent audit trail capturing every classification decision, override, and user action with export-ready history.
+            <strong>Solution:</strong> Persistent audit trail capturing every
+            classification decision, override, and user action with export-ready
+            history.
           </div>
           <div class="design-impact">
             📈 40% reduction in compliance dev tickets
           </div>
         </a>
 
-        <a href="visual-rule-builder.html" class="design-card" style="text-decoration: none; color: inherit;">
+        <a
+          href="visual-rule-builder.html"
+          class="design-card"
+          style="text-decoration: none; color: inherit"
+        >
           <div class="design-icon">🔧</div>
-          <div class="design-title">Visual Rule Builder with Before/After Preview</div>
-          <div class="design-problem">
-            <strong>Problem:</strong> CPAs needed engineers to codify classification logic, creating bottlenecks and reducing autonomy.
+          <div class="design-title">
+            Visual Rule Builder with Before/After Preview
           </div>
           <div class="design-problem">
-            <strong>Solution:</strong> Drag-and-drop rule builder with natural language logic, before/after preview, and bulk application controls.
+            <strong>Problem:</strong> CPAs needed engineers to codify
+            classification logic, creating bottlenecks and reducing autonomy.
+          </div>
+          <div class="design-problem">
+            <strong>Solution:</strong> Drag-and-drop rule builder with natural
+            language logic, before/after preview, and bulk application controls.
           </div>
           <div class="design-impact">
             📈 85% reduction in engineering dependency
           </div>
         </a>
 
-        <a href="contextual-anomaly-detection.html" class="design-card" style="text-decoration: none; color: inherit;">
+        <a
+          href="contextual-anomaly-detection.html"
+          class="design-card"
+          style="text-decoration: none; color: inherit"
+        >
           <div class="design-icon">🔍</div>
           <div class="design-title">Contextual Anomaly Detection System</div>
           <div class="design-problem">
-            <strong>Problem:</strong> FMV reconciliation errors buried in CSV exports caused filing mistakes and client disputes.
+            <strong>Problem:</strong> FMV reconciliation errors buried in CSV
+            exports caused filing mistakes and client disputes.
           </div>
           <div class="design-problem">
-            <strong>Solution:</strong> Color-coded anomaly flags surfaced in-context with hover explainers and one-click resolution flows.
+            <strong>Solution:</strong> Color-coded anomaly flags surfaced
+            in-context with hover explainers and one-click resolution flows.
           </div>
           <div class="design-impact">
             📈 150% increase in anomaly detection coverage
           </div>
         </a>
 
-        <a href="multi-tenant-architecture.html" class="design-card" style="text-decoration: none; color: inherit;">
+        <a
+          href="multi-tenant-architecture.html"
+          class="design-card"
+          style="text-decoration: none; color: inherit"
+        >
           <div class="design-icon">👥</div>
           <div class="design-title">Modular Multi-Tenant Architecture</div>
           <div class="design-problem">
-            <strong>Problem:</strong> CPAs manage multiple clients with different needs; single-tenant design wouldn't scale.
+            <strong>Problem:</strong> CPAs manage multiple clients with
+            different needs; single-tenant design wouldn't scale.
           </div>
           <div class="design-problem">
-            <strong>Solution:</strong> Multi-tenant architecture with role-based views and client-level permissions.
+            <strong>Solution:</strong> Multi-tenant architecture with role-based
+            views and client-level permissions.
           </div>
           <div class="design-impact">
             📈 100+ client portfolios per platform
@@ -246,14 +290,17 @@
       </div>
 
       <section class="card">
-        <h3 style="margin-bottom: 16px;">About These Design Elements</h3>
-        <p style="color: #9ca3af; line-height: 1.8; margin-bottom: 16px;">
-          Each design element was crafted to address specific pain points discovered through extensive user research with CPAs and tax professionals. 
-          The solutions prioritize trust, transparency, and professional autonomy while leveraging AI capabilities.
+        <h3 style="margin-bottom: 16px">About These Design Elements</h3>
+        <p style="color: #9ca3af; line-height: 1.8; margin-bottom: 16px">
+          Each design element was crafted to address specific pain points
+          discovered through extensive user research with CPAs and tax
+          professionals. The solutions prioritize trust, transparency, and
+          professional autonomy while leveraging AI capabilities.
         </p>
-        <p style="color: #9ca3af; line-height: 1.8;">
-          Click any card above to explore interactive prototypes demonstrating how these elements work in practice, 
-          with realistic workflows and example scenarios based on actual CPA use cases.
+        <p style="color: #9ca3af; line-height: 1.8">
+          Click any card above to explore interactive prototypes demonstrating
+          how these elements work in practice, with realistic workflows and
+          example scenarios based on actual CPA use cases.
         </p>
       </section>
     </main>

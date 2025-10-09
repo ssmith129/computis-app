@@ -17,10 +17,22 @@
         cursor: help;
         position: relative;
       }
-      .anomaly-flag.critical { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-      .anomaly-flag.warning { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
-      .anomaly-flag.info { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
-      
+      .anomaly-flag.critical {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .anomaly-flag.warning {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+      .anomaly-flag.info {
+        background: rgba(59, 130, 246, 0.15);
+        color: #3b82f6;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+      }
+
       .anomaly-tooltip {
         position: absolute;
         top: calc(100% + 8px);
@@ -35,10 +47,10 @@
         pointer-events: none;
         transition: opacity 0.2s;
         z-index: 1000;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
       }
       .anomaly-tooltip::before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 100%;
         left: 16px;
@@ -49,7 +61,7 @@
         opacity: 1;
         pointer-events: all;
       }
-      
+
       .resolution-actions {
         display: flex;
         gap: 8px;
@@ -66,11 +78,21 @@
         cursor: pointer;
         transition: all 0.2s;
       }
-      .resolution-btn.primary { background: #6366f1; color: white; }
-      .resolution-btn.primary:hover { background: #4f46e5; }
-      .resolution-btn.secondary { background: #374151; color: #e5e7eb; }
-      .resolution-btn.secondary:hover { background: #4b5563; }
-      
+      .resolution-btn.primary {
+        background: #6366f1;
+        color: white;
+      }
+      .resolution-btn.primary:hover {
+        background: #4f46e5;
+      }
+      .resolution-btn.secondary {
+        background: #374151;
+        color: #e5e7eb;
+      }
+      .resolution-btn.secondary:hover {
+        background: #4b5563;
+      }
+
       .transaction-row {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr 1fr 1fr 100px;
@@ -90,7 +112,7 @@
         opacity: 0.6;
         border-color: rgba(34, 197, 94, 0.3);
       }
-      
+
       .anomaly-stats {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -113,7 +135,7 @@
         font-size: 20px;
         margin-bottom: 12px;
       }
-      
+
       .filter-tabs {
         display: flex;
         gap: 8px;
@@ -143,7 +165,9 @@
   <body>
     <header class="app-header">
       <div class="inner container">
-        <a class="brand" href="index.html"><span class="logo"></span><span class="label">Computis</span></a>
+        <a class="brand" href="index.html"
+          ><span class="logo"></span><span class="label">Computis</span></a
+        >
         <nav class="nav">
           <a href="index.html">Dashboard</a>
           <a href="ai-confidence-chips.html">AI Confidence</a>
@@ -154,49 +178,93 @@
         </nav>
       </div>
     </header>
-    
+
     <main class="container" aria-labelledby="title">
       <h1 id="title">Contextual Anomaly Detection System</h1>
-      
-      <section class="card" style="margin-bottom: 24px;">
+
+      <section class="card" style="margin-bottom: 24px">
         <h3>Design Element Overview</h3>
-        <p style="color: #9ca3af; line-height: 1.6;">
-          <strong>Problem:</strong> FMV reconciliation errors buried in CSV exports caused filing mistakes and client disputes.<br><br>
-          <strong>Solution:</strong> Color-coded anomaly flags surfaced in-context with hover explainers and one-click resolution flows.<br><br>
-          <strong>Impact:</strong> Anomaly detection coverage increased 150%; drastically reduced manual triage and filing errors.
+        <p style="color: #9ca3af; line-height: 1.6">
+          <strong>Problem:</strong> FMV reconciliation errors buried in CSV
+          exports caused filing mistakes and client disputes.<br /><br />
+          <strong>Solution:</strong> Color-coded anomaly flags surfaced
+          in-context with hover explainers and one-click resolution flows.<br /><br />
+          <strong>Impact:</strong> Anomaly detection coverage increased 150%;
+          drastically reduced manual triage and filing errors.
         </p>
       </section>
 
       <div class="anomaly-stats">
         <div class="anomaly-stat-card">
-          <div class="anomaly-stat-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">🚨</div>
-          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px;">7</div>
-          <div style="font-size: 13px; color: #9ca3af;">Critical Issues</div>
+          <div
+            class="anomaly-stat-icon"
+            style="background: rgba(239, 68, 68, 0.15); color: #ef4444"
+          >
+            🚨
+          </div>
+          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px">
+            7
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">Critical Issues</div>
         </div>
         <div class="anomaly-stat-card">
-          <div class="anomaly-stat-icon" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">⚠️</div>
-          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px;">15</div>
-          <div style="font-size: 13px; color: #9ca3af;">Warnings</div>
+          <div
+            class="anomaly-stat-icon"
+            style="background: rgba(251, 191, 36, 0.15); color: #fbbf24"
+          >
+            ⚠️
+          </div>
+          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px">
+            15
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">Warnings</div>
         </div>
         <div class="anomaly-stat-card">
-          <div class="anomaly-stat-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">ℹ️</div>
-          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px;">23</div>
-          <div style="font-size: 13px; color: #9ca3af;">Info Flags</div>
+          <div
+            class="anomaly-stat-icon"
+            style="background: rgba(59, 130, 246, 0.15); color: #3b82f6"
+          >
+            ℹ️
+          </div>
+          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px">
+            23
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">Info Flags</div>
         </div>
         <div class="anomaly-stat-card">
-          <div class="anomaly-stat-icon" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">✓</div>
-          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px;">182</div>
-          <div style="font-size: 13px; color: #9ca3af;">Resolved</div>
+          <div
+            class="anomaly-stat-icon"
+            style="background: rgba(34, 197, 94, 0.15); color: #22c55e"
+          >
+            ✓
+          </div>
+          <div style="font-size: 24px; font-weight: 600; margin-bottom: 4px">
+            182
+          </div>
+          <div style="font-size: 13px; color: #9ca3af">Resolved</div>
         </div>
       </div>
 
       <section class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+          "
+        >
           <h3>Transactions with Anomalies</h3>
           <div class="filter-tabs">
-            <div class="filter-tab active" onclick="filterAnomalies('all')">All</div>
-            <div class="filter-tab" onclick="filterAnomalies('critical')">Critical</div>
-            <div class="filter-tab" onclick="filterAnomalies('warning')">Warnings</div>
+            <div class="filter-tab active" onclick="filterAnomalies('all')">
+              All
+            </div>
+            <div class="filter-tab" onclick="filterAnomalies('critical')">
+              Critical
+            </div>
+            <div class="filter-tab" onclick="filterAnomalies('warning')">
+              Warnings
+            </div>
             <div class="filter-tab" onclick="filterAnomalies('info')">Info</div>
           </div>
         </div>
@@ -204,8 +272,10 @@
         <div id="transactions-list">
           <div class="transaction-row has-anomaly" data-severity="critical">
             <div>
-              <div style="font-weight: 500;">BTC Sale on Coinbase</div>
-              <div style="font-size: 13px; color: #9ca3af;">0.5 BTC → $22,450 on 2024-01-15</div>
+              <div style="font-weight: 500">BTC Sale on Coinbase</div>
+              <div style="font-size: 13px; color: #9ca3af">
+                0.5 BTC → $22,450 on 2024-01-15
+              </div>
             </div>
             <div>$22,450</div>
             <div><span class="badge">Sale</span></div>
@@ -213,32 +283,52 @@
               <div class="anomaly-flag critical">
                 🚨 FMV Mismatch
                 <div class="anomaly-tooltip">
-                  <strong style="color: #ef4444;">Critical: Fair Market Value Discrepancy</strong>
-                  <div style="margin: 8px 0; line-height: 1.5;">
-                    Transaction price ($44,900/BTC) differs significantly from market rate ($42,200/BTC) at time of sale.
-                    <br><br>
-                    <strong>Possible causes:</strong><br>
-                    • Price manipulation<br>
-                    • Incorrect exchange rate<br>
+                  <strong style="color: #ef4444"
+                    >Critical: Fair Market Value Discrepancy</strong
+                  >
+                  <div style="margin: 8px 0; line-height: 1.5">
+                    Transaction price ($44,900/BTC) differs significantly from
+                    market rate ($42,200/BTC) at time of sale.
+                    <br /><br />
+                    <strong>Possible causes:</strong><br />
+                    • Price manipulation<br />
+                    • Incorrect exchange rate<br />
                     • Timing mismatch
                   </div>
                   <div class="resolution-actions">
-                    <button class="resolution-btn primary" onclick="resolveAnomaly(this, 'accept')">Accept Price</button>
-                    <button class="resolution-btn secondary" onclick="resolveAnomaly(this, 'adjust')">Adjust FMV</button>
+                    <button
+                      class="resolution-btn primary"
+                      onclick="resolveAnomaly(this, 'accept')"
+                    >
+                      Accept Price
+                    </button>
+                    <button
+                      class="resolution-btn secondary"
+                      onclick="resolveAnomaly(this, 'adjust')"
+                    >
+                      Adjust FMV
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="text-align: right;">14:23</div>
+            <div style="text-align: right">14:23</div>
             <div>
-              <button onclick="viewDetails()" style="padding: 6px 12px; font-size: 12px;">Details</button>
+              <button
+                onclick="viewDetails()"
+                style="padding: 6px 12px; font-size: 12px"
+              >
+                Details
+              </button>
             </div>
           </div>
 
           <div class="transaction-row has-anomaly" data-severity="critical">
             <div>
-              <div style="font-weight: 500;">ETH Transfer (Unknown Wallet)</div>
-              <div style="font-size: 13px; color: #9ca3af;">5.0 ETH on 2024-01-14</div>
+              <div style="font-weight: 500">ETH Transfer (Unknown Wallet)</div>
+              <div style="font-size: 13px; color: #9ca3af">
+                5.0 ETH on 2024-01-14
+              </div>
             </div>
             <div>$11,725</div>
             <div><span class="badge warn">Transfer</span></div>
@@ -246,32 +336,52 @@
               <div class="anomaly-flag critical">
                 🚨 Missing Cost Basis
                 <div class="anomaly-tooltip">
-                  <strong style="color: #ef4444;">Critical: No Cost Basis Found</strong>
-                  <div style="margin: 8px 0; line-height: 1.5;">
-                    Cannot locate original purchase records for this ETH. This will cause errors in tax calculations.
-                    <br><br>
-                    <strong>Next steps:</strong><br>
-                    • Import historical data<br>
-                    • Manual cost basis entry<br>
+                  <strong style="color: #ef4444"
+                    >Critical: No Cost Basis Found</strong
+                  >
+                  <div style="margin: 8px 0; line-height: 1.5">
+                    Cannot locate original purchase records for this ETH. This
+                    will cause errors in tax calculations.
+                    <br /><br />
+                    <strong>Next steps:</strong><br />
+                    • Import historical data<br />
+                    • Manual cost basis entry<br />
                     • Mark as gift/inheritance
                   </div>
                   <div class="resolution-actions">
-                    <button class="resolution-btn primary" onclick="resolveAnomaly(this, 'import')">Import Data</button>
-                    <button class="resolution-btn secondary" onclick="resolveAnomaly(this, 'manual')">Enter Manually</button>
+                    <button
+                      class="resolution-btn primary"
+                      onclick="resolveAnomaly(this, 'import')"
+                    >
+                      Import Data
+                    </button>
+                    <button
+                      class="resolution-btn secondary"
+                      onclick="resolveAnomaly(this, 'manual')"
+                    >
+                      Enter Manually
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="text-align: right;">09:15</div>
+            <div style="text-align: right">09:15</div>
             <div>
-              <button onclick="viewDetails()" style="padding: 6px 12px; font-size: 12px;">Details</button>
+              <button
+                onclick="viewDetails()"
+                style="padding: 6px 12px; font-size: 12px"
+              >
+                Details
+              </button>
             </div>
           </div>
 
           <div class="transaction-row has-anomaly" data-severity="warning">
             <div>
-              <div style="font-weight: 500;">USDC → USDT Swap (Uniswap)</div>
-              <div style="font-size: 13px; color: #9ca3af;">$10,000 on 2024-01-13</div>
+              <div style="font-weight: 500">USDC → USDT Swap (Uniswap)</div>
+              <div style="font-size: 13px; color: #9ca3af">
+                $10,000 on 2024-01-13
+              </div>
             </div>
             <div>$10,000</div>
             <div><span class="badge">Swap</span></div>
@@ -279,32 +389,52 @@
               <div class="anomaly-flag warning">
                 ⚠️ Duplicate Detected
                 <div class="anomaly-tooltip">
-                  <strong style="color: #fbbf24;">Warning: Possible Duplicate Transaction</strong>
-                  <div style="margin: 8px 0; line-height: 1.5;">
-                    Similar transaction found with matching amount and timestamp. May be imported from multiple sources.
-                    <br><br>
-                    <strong>Similar transactions:</strong><br>
-                    • Same hash on Etherscan<br>
-                    • Same timestamp ±5 minutes<br>
+                  <strong style="color: #fbbf24"
+                    >Warning: Possible Duplicate Transaction</strong
+                  >
+                  <div style="margin: 8px 0; line-height: 1.5">
+                    Similar transaction found with matching amount and
+                    timestamp. May be imported from multiple sources.
+                    <br /><br />
+                    <strong>Similar transactions:</strong><br />
+                    • Same hash on Etherscan<br />
+                    • Same timestamp ±5 minutes<br />
                     • Same amount and assets
                   </div>
                   <div class="resolution-actions">
-                    <button class="resolution-btn primary" onclick="resolveAnomaly(this, 'merge')">Merge</button>
-                    <button class="resolution-btn secondary" onclick="resolveAnomaly(this, 'keep')">Keep Both</button>
+                    <button
+                      class="resolution-btn primary"
+                      onclick="resolveAnomaly(this, 'merge')"
+                    >
+                      Merge
+                    </button>
+                    <button
+                      class="resolution-btn secondary"
+                      onclick="resolveAnomaly(this, 'keep')"
+                    >
+                      Keep Both
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="text-align: right;">16:42</div>
+            <div style="text-align: right">16:42</div>
             <div>
-              <button onclick="viewDetails()" style="padding: 6px 12px; font-size: 12px;">Details</button>
+              <button
+                onclick="viewDetails()"
+                style="padding: 6px 12px; font-size: 12px"
+              >
+                Details
+              </button>
             </div>
           </div>
 
           <div class="transaction-row has-anomaly" data-severity="warning">
             <div>
-              <div style="font-weight: 500;">Airdrop: MYSTERY Token</div>
-              <div style="font-size: 13px; color: #9ca3af;">1,000 MYSTERY on 2024-01-12</div>
+              <div style="font-weight: 500">Airdrop: MYSTERY Token</div>
+              <div style="font-size: 13px; color: #9ca3af">
+                1,000 MYSTERY on 2024-01-12
+              </div>
             </div>
             <div>Unknown</div>
             <div><span class="badge">Income</span></div>
@@ -312,32 +442,52 @@
               <div class="anomaly-flag warning">
                 ⚠️ No Pricing Data
                 <div class="anomaly-tooltip">
-                  <strong style="color: #fbbf24;">Warning: Token Price Unknown</strong>
-                  <div style="margin: 8px 0; line-height: 1.5;">
-                    Cannot determine Fair Market Value. Token not listed on major price feeds.
-                    <br><br>
-                    <strong>Options:</strong><br>
-                    • Wait for price discovery<br>
-                    • Manual valuation<br>
+                  <strong style="color: #fbbf24"
+                    >Warning: Token Price Unknown</strong
+                  >
+                  <div style="margin: 8px 0; line-height: 1.5">
+                    Cannot determine Fair Market Value. Token not listed on
+                    major price feeds.
+                    <br /><br />
+                    <strong>Options:</strong><br />
+                    • Wait for price discovery<br />
+                    • Manual valuation<br />
                     • Mark as $0 (spam token)
                   </div>
                   <div class="resolution-actions">
-                    <button class="resolution-btn primary" onclick="resolveAnomaly(this, 'zero')">Mark as $0</button>
-                    <button class="resolution-btn secondary" onclick="resolveAnomaly(this, 'value')">Set Value</button>
+                    <button
+                      class="resolution-btn primary"
+                      onclick="resolveAnomaly(this, 'zero')"
+                    >
+                      Mark as $0
+                    </button>
+                    <button
+                      class="resolution-btn secondary"
+                      onclick="resolveAnomaly(this, 'value')"
+                    >
+                      Set Value
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="text-align: right;">11:20</div>
+            <div style="text-align: right">11:20</div>
             <div>
-              <button onclick="viewDetails()" style="padding: 6px 12px; font-size: 12px;">Details</button>
+              <button
+                onclick="viewDetails()"
+                style="padding: 6px 12px; font-size: 12px"
+              >
+                Details
+              </button>
             </div>
           </div>
 
           <div class="transaction-row has-anomaly" data-severity="info">
             <div>
-              <div style="font-weight: 500;">Staking Reward (Beacon Chain)</div>
-              <div style="font-size: 13px; color: #9ca3af;">0.08 ETH on 2024-01-11</div>
+              <div style="font-weight: 500">Staking Reward (Beacon Chain)</div>
+              <div style="font-size: 13px; color: #9ca3af">
+                0.08 ETH on 2024-01-11
+              </div>
             </div>
             <div>$187.36</div>
             <div><span class="badge">Income</span></div>
@@ -345,24 +495,37 @@
               <div class="anomaly-flag info">
                 ℹ️ Tax Event
                 <div class="anomaly-tooltip">
-                  <strong style="color: #3b82f6;">Info: Taxable Income Event</strong>
-                  <div style="margin: 8px 0; line-height: 1.5;">
-                    Staking rewards are taxable as ordinary income at FMV upon receipt.
-                    <br><br>
-                    <strong>Tax treatment applied:</strong><br>
-                    • Income: $187.36<br>
-                    • Cost basis: $187.36<br>
+                  <strong style="color: #3b82f6"
+                    >Info: Taxable Income Event</strong
+                  >
+                  <div style="margin: 8px 0; line-height: 1.5">
+                    Staking rewards are taxable as ordinary income at FMV upon
+                    receipt.
+                    <br /><br />
+                    <strong>Tax treatment applied:</strong><br />
+                    • Income: $187.36<br />
+                    • Cost basis: $187.36<br />
                     • Date: 2024-01-11
                   </div>
                   <div class="resolution-actions">
-                    <button class="resolution-btn primary" onclick="resolveAnomaly(this, 'confirm')">Confirm</button>
+                    <button
+                      class="resolution-btn primary"
+                      onclick="resolveAnomaly(this, 'confirm')"
+                    >
+                      Confirm
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="text-align: right;">03:42</div>
+            <div style="text-align: right">03:42</div>
             <div>
-              <button onclick="viewDetails()" style="padding: 6px 12px; font-size: 12px;">Details</button>
+              <button
+                onclick="viewDetails()"
+                style="padding: 6px 12px; font-size: 12px"
+              >
+                Details
+              </button>
             </div>
           </div>
         </div>
@@ -375,51 +538,67 @@
     <script src="../assets/app.js"></script>
     <script>
       function filterAnomalies(severity) {
-        document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
-        event.target.classList.add('active');
-        
-        document.querySelectorAll('.transaction-row').forEach(row => {
-          if (severity === 'all' || row.dataset.severity === severity) {
-            row.style.display = 'grid';
+        document
+          .querySelectorAll(".filter-tab")
+          .forEach((tab) => tab.classList.remove("active"));
+        event.target.classList.add("active");
+
+        document.querySelectorAll(".transaction-row").forEach((row) => {
+          if (severity === "all" || row.dataset.severity === severity) {
+            row.style.display = "grid";
           } else {
-            row.style.display = 'none';
+            row.style.display = "none";
           }
         });
-        
-        toast(`Filtered to ${severity === 'all' ? 'all' : severity} anomalies`);
+
+        toast(`Filtered to ${severity === "all" ? "all" : severity} anomalies`);
       }
 
       function resolveAnomaly(btn, action) {
-        const row = btn.closest('.transaction-row');
-        row.classList.add('resolved');
-        row.classList.remove('has-anomaly');
-        
-        const flag = row.querySelector('.anomaly-flag');
-        flag.innerHTML = '✓ Resolved';
-        flag.className = 'anomaly-flag';
-        flag.style.background = 'rgba(34, 197, 94, 0.15)';
-        flag.style.color = '#22c55e';
-        flag.style.border = '1px solid rgba(34, 197, 94, 0.3)';
-        
+        const row = btn.closest(".transaction-row");
+        row.classList.add("resolved");
+        row.classList.remove("has-anomaly");
+
+        const flag = row.querySelector(".anomaly-flag");
+        flag.innerHTML = "✓ Resolved";
+        flag.className = "anomaly-flag";
+        flag.style.background = "rgba(34, 197, 94, 0.15)";
+        flag.style.color = "#22c55e";
+        flag.style.border = "1px solid rgba(34, 197, 94, 0.3)";
+
         toast(`Anomaly resolved: ${action}`);
-        
+
         updateStats();
       }
 
       function updateStats() {
-        const critical = document.querySelectorAll('[data-severity="critical"]:not(.resolved)').length;
-        const warning = document.querySelectorAll('[data-severity="warning"]:not(.resolved)').length;
-        const info = document.querySelectorAll('[data-severity="info"]:not(.resolved)').length;
-        const resolved = document.querySelectorAll('.resolved').length;
-        
-        document.querySelector('.anomaly-stats').children[0].querySelector('div:nth-child(2)').textContent = critical;
-        document.querySelector('.anomaly-stats').children[1].querySelector('div:nth-child(2)').textContent = warning;
-        document.querySelector('.anomaly-stats').children[2].querySelector('div:nth-child(2)').textContent = info;
-        document.querySelector('.anomaly-stats').children[3].querySelector('div:nth-child(2)').textContent = resolved;
+        const critical = document.querySelectorAll(
+          '[data-severity="critical"]:not(.resolved)',
+        ).length;
+        const warning = document.querySelectorAll(
+          '[data-severity="warning"]:not(.resolved)',
+        ).length;
+        const info = document.querySelectorAll(
+          '[data-severity="info"]:not(.resolved)',
+        ).length;
+        const resolved = document.querySelectorAll(".resolved").length;
+
+        document
+          .querySelector(".anomaly-stats")
+          .children[0].querySelector("div:nth-child(2)").textContent = critical;
+        document
+          .querySelector(".anomaly-stats")
+          .children[1].querySelector("div:nth-child(2)").textContent = warning;
+        document
+          .querySelector(".anomaly-stats")
+          .children[2].querySelector("div:nth-child(2)").textContent = info;
+        document
+          .querySelector(".anomaly-stats")
+          .children[3].querySelector("div:nth-child(2)").textContent = resolved;
       }
 
       function viewDetails() {
-        toast('Opening transaction details...');
+        toast("Opening transaction details...");
       }
     </script>
   </body>

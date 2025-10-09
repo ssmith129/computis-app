@@ -24,7 +24,7 @@
       .audit-drawer.open {
         transform: translateX(0);
       }
-      
+
       /* Drawer Header */
       .drawer-header {
         padding: 20px;
@@ -33,14 +33,14 @@
         justify-content: space-between;
         align-items: center;
       }
-      
+
       /* Drawer Content */
       .drawer-content {
         flex: 1;
         overflow-y: auto;
         padding: 20px;
       }
-      
+
       /* Drawer Footer */
       .drawer-footer {
         padding: 16px 20px;
@@ -213,26 +213,43 @@
     <main class="container" aria-labelledby="title">
       <!-- Page Header -->
       <div class="page-titlebar">
-        <div style="padding: 24px;">
-          <div style="margin-bottom: 4px;">
-            <h1 id="title" style="font-size: 24px; font-weight: 700;">Export</h1>
-            <p style="color: #9ca3af; margin-top: 4px;">
+        <div style="padding: 24px">
+          <div style="margin-bottom: 4px">
+            <h1 id="title" style="font-size: 24px; font-weight: 700">Export</h1>
+            <p style="color: #9ca3af; margin-top: 4px">
               Generate IRS 8949, QBO, and CSV files with embedded audit logs
             </p>
           </div>
 
           <!-- Tax Year Selection and Actions -->
-          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 16px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 14px; font-weight: 500; color: #9ca3af;">Tax Year:</span>
-              <div style="display: flex; gap: 4px;">
-                <button class="filter-btn active" onclick="selectYear('2023')">2023</button>
-                <button class="filter-btn" onclick="selectYear('2022')">2022</button>
-                <button class="filter-btn" onclick="selectYear('2021')">2021</button>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: center;
+              gap: 16px;
+              margin-top: 16px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500; color: #9ca3af"
+                >Tax Year:</span
+              >
+              <div style="display: flex; gap: 4px">
+                <button class="filter-btn active" onclick="selectYear('2023')">
+                  2023
+                </button>
+                <button class="filter-btn" onclick="selectYear('2022')">
+                  2022
+                </button>
+                <button class="filter-btn" onclick="selectYear('2021')">
+                  2021
+                </button>
               </div>
-              <button 
-                class="primary" 
-                style="padding: 6px 12px; font-size: 13px; background: #6366f1;"
+              <button
+                class="primary"
+                style="padding: 6px 12px; font-size: 13px; background: #6366f1"
                 onclick="openAuditDrawer()"
                 aria-label="View audit trail"
                 aria-expanded="false"
@@ -242,11 +259,23 @@
               </button>
             </div>
 
-            <div style="display: flex; gap: 8px;">
-              <button onclick="showHistory()" style="padding: 6px 12px; font-size: 13px;">
+            <div style="display: flex; gap: 8px">
+              <button
+                onclick="showHistory()"
+                style="padding: 6px 12px; font-size: 13px"
+              >
                 📜 Export History
               </button>
-              <button class="primary" onclick="generateExport()" style="padding: 6px 12px; font-size: 13px; background: #fbbf24; color: #000;">
+              <button
+                class="primary"
+                onclick="generateExport()"
+                style="
+                  padding: 6px 12px;
+                  font-size: 13px;
+                  background: #fbbf24;
+                  color: #000;
+                "
+              >
                 📄 Generate Now
               </button>
             </div>
@@ -255,89 +284,134 @@
       </div>
 
       <!-- Main Content -->
-      <div style="padding: 24px;">
+      <div style="padding: 24px">
         <!-- Export Stats -->
         <div class="export-stats">
           <div class="stat-card">
-            <div class="stat-value" style="color: #6366f1;">3</div>
+            <div class="stat-value" style="color: #6366f1">3</div>
             <div class="stat-label">Export Types</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" style="color: #22c55e;">124</div>
+            <div class="stat-value" style="color: #22c55e">124</div>
             <div class="stat-label">Transactions Ready</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" style="color: #fbbf24;">12</div>
+            <div class="stat-value" style="color: #fbbf24">12</div>
             <div class="stat-label">Requiring Review</div>
           </div>
         </div>
 
         <!-- Recent Exports with Audit Trail Access -->
         <section class="card">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding: 16px; padding-bottom: 0;">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 16px;
+              padding: 16px;
+              padding-bottom: 0;
+            "
+          >
             <h3>Recent Exports</h3>
-            <div style="font-size: 13px; color: #9ca3af;">
+            <div style="font-size: 13px; color: #9ca3af">
               Click any export to view audit trail →
             </div>
           </div>
 
-          <div style="padding: 16px;">
+          <div style="padding: 16px">
             <!-- Export Card 1 -->
-            <div class="export-card" onclick="openAudit(1)" tabindex="0" role="button" aria-label="View audit trail for IRS 8949 export">
+            <div
+              class="export-card"
+              onclick="openAudit(1)"
+              tabindex="0"
+              role="button"
+              aria-label="View audit trail for IRS 8949 export"
+            >
               <span class="audit-badge">7 events</span>
-              <div style="font-weight: 500; margin-bottom: 4px;">
+              <div style="font-weight: 500; margin-bottom: 4px">
                 IRS 8949 Export - Tax Year 2023
               </div>
-              <div style="font-size: 13px; color: #9ca3af;">
+              <div style="font-size: 13px; color: #9ca3af">
                 Generated on 2024-01-15 • 24 transactions • CSV format
               </div>
-              <div style="margin-top: 8px;">
+              <div style="margin-top: 8px">
                 <span class="badge success">Completed</span>
-                <span class="badge" style="margin-left: 8px;">AI Validated</span>
+                <span class="badge" style="margin-left: 8px">AI Validated</span>
               </div>
             </div>
 
             <!-- Export Card 2 -->
-            <div class="export-card" onclick="openAudit(2)" tabindex="0" role="button" aria-label="View audit trail for QuickBooks export">
+            <div
+              class="export-card"
+              onclick="openAudit(2)"
+              tabindex="0"
+              role="button"
+              aria-label="View audit trail for QuickBooks export"
+            >
               <span class="audit-badge">4 events</span>
-              <div style="font-weight: 500; margin-bottom: 4px;">
+              <div style="font-weight: 500; margin-bottom: 4px">
                 QuickBooks Export - Tax Year 2023
               </div>
-              <div style="font-size: 13px; color: #9ca3af;">
+              <div style="font-size: 13px; color: #9ca3af">
                 Generated on 2024-01-14 • QBO format • 124 transactions
               </div>
-              <div style="margin-top: 8px;">
+              <div style="margin-top: 8px">
                 <span class="badge success">Completed</span>
               </div>
             </div>
 
             <!-- Export Card 3 -->
-            <div class="export-card" onclick="openAudit(3)" tabindex="0" role="button" aria-label="View audit trail for CSV export">
+            <div
+              class="export-card"
+              onclick="openAudit(3)"
+              tabindex="0"
+              role="button"
+              aria-label="View audit trail for CSV export"
+            >
               <span class="audit-badge">12 events</span>
-              <div style="font-weight: 500; margin-bottom: 4px;">
+              <div style="font-weight: 500; margin-bottom: 4px">
                 Full CSV Export - All Data
               </div>
-              <div style="font-size: 13px; color: #9ca3af;">
+              <div style="font-size: 13px; color: #9ca3af">
                 Generated on 2024-01-13 • All tax years • 482 transactions
               </div>
-              <div style="margin-top: 8px;">
+              <div style="margin-top: 8px">
                 <span class="badge warn">In Progress</span>
-                <span class="badge error" style="margin-left: 8px;">Manual Review Required</span>
+                <span class="badge error" style="margin-left: 8px"
+                  >Manual Review Required</span
+                >
               </div>
             </div>
           </div>
         </section>
 
         <!-- Export Configuration -->
-        <section class="card" style="margin-top: 24px;">
-          <div style="padding: 16px;">
-            <h3 style="margin-bottom: 16px;">Export Configuration</h3>
-            <div style="display: grid; gap: 16px;">
+        <section class="card" style="margin-top: 24px">
+          <div style="padding: 16px">
+            <h3 style="margin-bottom: 16px">Export Configuration</h3>
+            <div style="display: grid; gap: 16px">
               <div>
-                <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px;">
+                <label
+                  style="
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                  "
+                >
                   Export Format
                 </label>
-                <select style="width: 100%; padding: 8px; background: #161b26; border: 1px solid #2a3447; border-radius: 6px; color: #e5e7eb;">
+                <select
+                  style="
+                    width: 100%;
+                    padding: 8px;
+                    background: #161b26;
+                    border: 1px solid #2a3447;
+                    border-radius: 6px;
+                    color: #e5e7eb;
+                  "
+                >
                   <option>IRS Form 8949</option>
                   <option>QuickBooks (QBO)</option>
                   <option>CSV (All Fields)</option>
@@ -346,10 +420,17 @@
               </div>
 
               <div>
-                <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px;">
+                <label
+                  style="
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                  "
+                >
                   Include Audit Trail
                 </label>
-                <div style="display: flex; gap: 8px;">
+                <div style="display: flex; gap: 8px">
                   <button class="filter-btn active">Yes</button>
                   <button class="filter-btn">No</button>
                   <button class="filter-btn">Summary Only</button>
@@ -357,8 +438,19 @@
               </div>
 
               <div>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
-                  <input type="checkbox" checked style="width: 16px; height: 16px;" />
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    checked
+                    style="width: 16px; height: 16px"
+                  />
                   Include AI confidence scores
                 </label>
               </div>
@@ -369,11 +461,27 @@
     </main>
 
     <!-- Audit Trail Drawer -->
-    <div id="drawerBackdrop" class="drawer-backdrop" onclick="closeAuditDrawer()" aria-hidden="true"></div>
-    
-    <div id="auditDrawer" class="audit-drawer" role="dialog" aria-labelledby="drawerTitle" aria-modal="true">
+    <div
+      id="drawerBackdrop"
+      class="drawer-backdrop"
+      onclick="closeAuditDrawer()"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      id="auditDrawer"
+      class="audit-drawer"
+      role="dialog"
+      aria-labelledby="drawerTitle"
+      aria-modal="true"
+    >
       <div class="drawer-header">
-        <h3 id="drawerTitle" style="margin: 0; font-size: 18px; font-weight: 600;">Audit Trail</h3>
+        <h3
+          id="drawerTitle"
+          style="margin: 0; font-size: 18px; font-weight: 600"
+        >
+          Audit Trail
+        </h3>
         <button
           onclick="closeAuditDrawer()"
           aria-label="Close audit trail drawer"
@@ -392,20 +500,18 @@
           ×
         </button>
       </div>
-      
+
       <div class="drawer-content" id="auditContent">
-        <div style="text-align: center; color: #9ca3af; padding: 40px;">
+        <div style="text-align: center; color: #9ca3af; padding: 40px">
           Select an export to view its audit trail
         </div>
       </div>
-      
+
       <div class="drawer-footer">
-        <button class="primary" style="flex: 1;" onclick="exportAuditTrail()">
+        <button class="primary" style="flex: 1" onclick="exportAuditTrail()">
           📥 Export Trail
         </button>
-        <button style="flex: 1;" onclick="printAuditTrail()">
-          🖨️ Print
-        </button>
+        <button style="flex: 1" onclick="printAuditTrail()">🖨️ Print</button>
       </div>
     </div>
 
@@ -422,50 +528,57 @@
             user: "sarah.chen@cpa.com",
             action: "Export Initiated",
             icon: "classify",
-            details: 'IRS 8949 export started for Tax Year 2023 (24 transactions selected)'
+            details:
+              "IRS 8949 export started for Tax Year 2023 (24 transactions selected)",
           },
           {
             time: "2024-01-15 14:23:46",
             user: "System",
             action: "Data Validation",
             icon: "view",
-            details: "All transactions validated: FMV data complete, cost basis verified"
+            details:
+              "All transactions validated: FMV data complete, cost basis verified",
           },
           {
             time: "2024-01-15 14:24:12",
             user: "System",
             action: "AI Classification Review",
             icon: "classify",
-            details: "AI confidence scores calculated: 22 High, 2 Medium confidence classifications"
+            details:
+              "AI confidence scores calculated: 22 High, 2 Medium confidence classifications",
           },
           {
             time: "2024-01-15 14:24:38",
             user: "sarah.chen@cpa.com",
             action: "Manual Review",
             icon: "view",
-            details: "CPA reviewed 2 medium-confidence transactions and approved classifications"
+            details:
+              "CPA reviewed 2 medium-confidence transactions and approved classifications",
           },
           {
             time: "2024-01-15 14:25:01",
             user: "System",
             action: "Form Generation",
             icon: "export",
-            details: "IRS Form 8949 generated with all required fields and audit trail metadata"
+            details:
+              "IRS Form 8949 generated with all required fields and audit trail metadata",
           },
           {
             time: "2024-01-15 14:26:15",
             user: "sarah.chen@cpa.com",
             action: "Export Approved",
             icon: "accept",
-            details: "Final export approved and marked for download (File: 8949_2023_export.csv)"
+            details:
+              "Final export approved and marked for download (File: 8949_2023_export.csv)",
           },
           {
             time: "2024-01-15 16:45:22",
             user: "david.wong@cpa.com",
             action: "Senior Review",
             icon: "view",
-            details: "Senior CPA reviewed export methodology and approved for client delivery"
-          }
+            details:
+              "Senior CPA reviewed export methodology and approved for client delivery",
+          },
         ],
         2: [
           {
@@ -473,29 +586,33 @@
             user: "System",
             action: "QBO Export Initiated",
             icon: "classify",
-            details: "QuickBooks export started for 124 transactions (Tax Year 2023)"
+            details:
+              "QuickBooks export started for 124 transactions (Tax Year 2023)",
           },
           {
             time: "2024-01-14 09:15:33",
             user: "System",
             action: "Account Mapping",
             icon: "view",
-            details: "Chart of Accounts mapped: Crypto assets to Asset accounts, gains to Income"
+            details:
+              "Chart of Accounts mapped: Crypto assets to Asset accounts, gains to Income",
           },
           {
             time: "2024-01-14 10:22:18",
             user: "sarah.chen@cpa.com",
             action: "Mapping Review",
             icon: "view",
-            details: "Verified account mappings against client's QuickBooks chart of accounts"
+            details:
+              "Verified account mappings against client's QuickBooks chart of accounts",
           },
           {
             time: "2024-01-14 10:22:45",
             user: "System",
             action: "QBO File Generated",
             icon: "export",
-            details: "QuickBooks import file created with 124 transactions and metadata"
-          }
+            details:
+              "QuickBooks import file created with 124 transactions and metadata",
+          },
         ],
         3: [
           {
@@ -503,86 +620,96 @@
             user: "System",
             action: "Bulk Export Initiated",
             icon: "classify",
-            details: "Full dataset export requested: All tax years, 482 total transactions"
+            details:
+              "Full dataset export requested: All tax years, 482 total transactions",
           },
           {
             time: "2024-01-13 11:30:16",
             user: "System",
             action: "Data Compilation",
             icon: "view",
-            details: "Collecting transactions from 2021-2023, including all classifications and FMV data"
+            details:
+              "Collecting transactions from 2021-2023, including all classifications and FMV data",
           },
           {
             time: "2024-01-13 11:45:22",
             user: "System",
             action: "Anomaly Detection",
             icon: "override",
-            details: "Flagged 8 transactions with missing cost basis data requiring manual review"
+            details:
+              "Flagged 8 transactions with missing cost basis data requiring manual review",
           },
           {
             time: "2024-01-13 11:52:33",
             user: "sarah.chen@cpa.com",
             action: "Manual Investigation",
             icon: "view",
-            details: "Investigating 8 flagged transactions for missing cost basis data"
+            details:
+              "Investigating 8 flagged transactions for missing cost basis data",
           },
           {
             time: "2024-01-13 12:05:12",
             user: "sarah.chen@cpa.com",
             action: "Cost Basis Update",
             icon: "override",
-            details: "Manually added cost basis for 5 transactions using historical exchange data"
+            details:
+              "Manually added cost basis for 5 transactions using historical exchange data",
           },
           {
             time: "2024-01-13 12:15:44",
             user: "sarah.chen@cpa.com",
             action: "Client Contact",
             icon: "view",
-            details: "Contacted client for documentation on 3 remaining transactions with missing data"
+            details:
+              "Contacted client for documentation on 3 remaining transactions with missing data",
           },
           {
             time: "2024-01-13 12:18:30",
             user: "System",
             action: "Export Status",
             icon: "override",
-            details: "Export paused pending client documentation for 3 transactions"
+            details:
+              "Export paused pending client documentation for 3 transactions",
           },
           {
             time: "2024-01-13 12:20:15",
             user: "sarah.chen@cpa.com",
             action: "Follow-up Scheduled",
             icon: "view",
-            details: "Set reminder for client follow-up on Jan 20, 2024"
+            details: "Set reminder for client follow-up on Jan 20, 2024",
           },
           {
             time: "2024-01-13 12:21:03",
             user: "sarah.chen@cpa.com",
             action: "Note Added",
             icon: "view",
-            details: 'Added export note: "Pending client documentation for transactions TX-456, TX-789, TX-012"'
+            details:
+              'Added export note: "Pending client documentation for transactions TX-456, TX-789, TX-012"',
           },
           {
             time: "2024-01-13 15:30:45",
             user: "david.wong@cpa.com",
             action: "Senior Review",
             icon: "view",
-            details: "Senior CPA reviewed handling of missing data and approved methodology"
+            details:
+              "Senior CPA reviewed handling of missing data and approved methodology",
           },
           {
             time: "2024-01-13 15:35:12",
             user: "System",
             action: "Partial Export",
             icon: "export",
-            details: "Generated partial CSV export with 479 complete transactions (3 pending)"
+            details:
+              "Generated partial CSV export with 479 complete transactions (3 pending)",
           },
           {
             time: "2024-01-13 15:40:00",
             user: "System",
             action: "Client Notification",
             icon: "export",
-            details: "Email sent to client requesting missing documentation"
-          }
-        ]
+            details: "Email sent to client requesting missing documentation",
+          },
+        ],
       };
 
       // State management
@@ -591,42 +718,44 @@
 
       // Open audit drawer
       function openAuditDrawer() {
-        const drawer = document.getElementById('auditDrawer');
-        const backdrop = document.getElementById('drawerBackdrop');
+        const drawer = document.getElementById("auditDrawer");
+        const backdrop = document.getElementById("drawerBackdrop");
         const button = document.querySelector('[aria-controls="auditDrawer"]');
-        
-        drawer.classList.add('open');
-        backdrop.classList.add('visible');
+
+        drawer.classList.add("open");
+        backdrop.classList.add("visible");
         isDrawerOpen = true;
-        
+
         if (button) {
-          button.setAttribute('aria-expanded', 'true');
+          button.setAttribute("aria-expanded", "true");
         }
-        
+
         // Set focus to drawer
         drawer.focus();
-        
-        toast('Audit trail drawer opened');
+
+        toast("Audit trail drawer opened");
       }
 
       // Open specific audit trail
       function openAudit(exportId) {
-        const drawer = document.getElementById('auditDrawer');
-        const content = document.getElementById('auditContent');
-        const backdrop = document.getElementById('drawerBackdrop');
+        const drawer = document.getElementById("auditDrawer");
+        const content = document.getElementById("auditContent");
+        const backdrop = document.getElementById("drawerBackdrop");
 
         // Update selected card state
-        document.querySelectorAll('.export-card').forEach(card => {
-          card.classList.remove('selected');
+        document.querySelectorAll(".export-card").forEach((card) => {
+          card.classList.remove("selected");
         });
-        event.currentTarget.classList.add('selected');
+        event.currentTarget.classList.add("selected");
 
         // Get audit data
         const entries = auditData[exportId] || [];
         selectedExportId = exportId;
-        
+
         // Render audit entries
-        content.innerHTML = entries.map(entry => `
+        content.innerHTML = entries
+          .map(
+            (entry) => `
           <div class="audit-entry">
             <div class="audit-timestamp">${entry.time}</div>
             <div class="audit-action">
@@ -636,78 +765,80 @@
             <div class="audit-user">👤 ${entry.user}</div>
             <div class="audit-details">${entry.details}</div>
           </div>
-        `).join('');
+        `,
+          )
+          .join("");
 
         // Open drawer
-        drawer.classList.add('open');
-        backdrop.classList.add('visible');
+        drawer.classList.add("open");
+        backdrop.classList.add("visible");
         isDrawerOpen = true;
-        
+
         // Set ARIA attributes
         const button = document.querySelector('[aria-controls="auditDrawer"]');
         if (button) {
-          button.setAttribute('aria-expanded', 'true');
+          button.setAttribute("aria-expanded", "true");
         }
       }
 
       // Close audit drawer
       function closeAuditDrawer() {
-        const drawer = document.getElementById('auditDrawer');
-        const backdrop = document.getElementById('drawerBackdrop');
+        const drawer = document.getElementById("auditDrawer");
+        const backdrop = document.getElementById("drawerBackdrop");
         const button = document.querySelector('[aria-controls="auditDrawer"]');
-        
-        drawer.classList.remove('open');
-        backdrop.classList.remove('visible');
+
+        drawer.classList.remove("open");
+        backdrop.classList.remove("visible");
         isDrawerOpen = false;
         selectedExportId = null;
-        
+
         if (button) {
-          button.setAttribute('aria-expanded', 'false');
+          button.setAttribute("aria-expanded", "false");
         }
-        
+
         // Clear selected state
-        document.querySelectorAll('.export-card').forEach(card => {
-          card.classList.remove('selected');
+        document.querySelectorAll(".export-card").forEach((card) => {
+          card.classList.remove("selected");
         });
       }
 
       // Get icon for action type
       function getIcon(type) {
         const icons = {
-          classify: 'AI',
-          accept: '✓',
-          view: '👁',
-          export: '📤',
-          override: '⚠'
+          classify: "AI",
+          accept: "✓",
+          view: "👁",
+          export: "📤",
+          override: "⚠",
         };
-        return icons[type] || '•';
+        return icons[type] || "•";
       }
 
       // Export audit trail
       function exportAuditTrail() {
         if (selectedExportId) {
-          toast('Audit trail exported as PDF');
+          toast("Audit trail exported as PDF");
         } else {
-          toast('Select an export first');
+          toast("Select an export first");
         }
       }
 
       // Print audit trail
       function printAuditTrail() {
         if (selectedExportId) {
-          toast('Printing audit trail...');
+          toast("Printing audit trail...");
         } else {
-          toast('Select an export first');
+          toast("Select an export first");
         }
       }
 
       // Tax year selection
       function selectYear(year) {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
           if (btn.textContent === year) {
-            btn.classList.add('active');
+            btn.classList.add("active");
           } else {
-            btn.classList.remove('active');
+            btn.classList.remove("active");
           }
         });
         toast(`Tax year ${year} selected`);
@@ -715,31 +846,31 @@
 
       // Show export history
       function showHistory() {
-        toast('Export history opened');
+        toast("Export history opened");
       }
 
       // Generate export
       function generateExport() {
-        toast('Generating export...');
-        setTimeout(() => toast('Export completed'), 1200);
+        toast("Generating export...");
+        setTimeout(() => toast("Export completed"), 1200);
       }
 
       // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isDrawerOpen) {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isDrawerOpen) {
           closeAuditDrawer();
         }
       });
 
       // Prevent drawer close when clicking inside drawer
-      document.getElementById('auditDrawer').addEventListener('click', (e) => {
+      document.getElementById("auditDrawer").addEventListener("click", (e) => {
         e.stopPropagation();
       });
 
       // Accessibility: Handle keyboard navigation for export cards
-      document.querySelectorAll('.export-card').forEach(card => {
-        card.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+      document.querySelectorAll(".export-card").forEach((card) => {
+        card.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             card.click();
           }

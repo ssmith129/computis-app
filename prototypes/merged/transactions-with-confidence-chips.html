@@ -161,49 +161,93 @@
 
     <main class="container" aria-labelledby="title">
       <div class="page-titlebar">
-        <div style="padding: 24px;">
-          <div style="margin-bottom: 4px;">
-            <h1 id="title" style="font-size: 24px; font-weight: 700;">Transactions</h1>
-            <p style="color: #9ca3af; margin-top: 4px;">
+        <div style="padding: 24px">
+          <div style="margin-bottom: 4px">
+            <h1 id="title" style="font-size: 24px; font-weight: 700">
+              Transactions
+            </h1>
+            <p style="color: #9ca3af; margin-top: 4px">
               Review and manage classified crypto transactions
             </p>
           </div>
         </div>
       </div>
 
-      <div style="padding: 24px;">
+      <div style="padding: 24px">
         <!-- Stats Section -->
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-value" style="color: #22c55e;" id="accepted-count">0</div>
+            <div class="stat-value" style="color: #22c55e" id="accepted-count">
+              0
+            </div>
             <div class="stat-label">Accepted</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" style="color: #ef4444;" id="rejected-count">0</div>
+            <div class="stat-value" style="color: #ef4444" id="rejected-count">
+              0
+            </div>
             <div class="stat-label">Rejected</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" style="color: #fbbf24;" id="pending-count">7</div>
+            <div class="stat-value" style="color: #fbbf24" id="pending-count">
+              7
+            </div>
             <div class="stat-label">Pending Review</div>
           </div>
         </div>
 
         <!-- Filters Section -->
-        <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-            <span style="font-size: 14px; color: #9ca3af; white-space: nowrap;">Confidence:</span>
-            <button class="filter-btn active" onclick="filterConfidence('All')">All</button>
-            <button class="filter-btn" onclick="filterConfidence('High')">High</button>
-            <button class="filter-btn" onclick="filterConfidence('Medium')">Medium</button>
-            <button class="filter-btn" onclick="filterConfidence('Low')">Low</button>
+        <div
+          style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px"
+        >
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <span style="font-size: 14px; color: #9ca3af; white-space: nowrap"
+              >Confidence:</span
+            >
+            <button class="filter-btn active" onclick="filterConfidence('All')">
+              All
+            </button>
+            <button class="filter-btn" onclick="filterConfidence('High')">
+              High
+            </button>
+            <button class="filter-btn" onclick="filterConfidence('Medium')">
+              Medium
+            </button>
+            <button class="filter-btn" onclick="filterConfidence('Low')">
+              Low
+            </button>
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-            <span style="font-size: 14px; color: #9ca3af; white-space: nowrap;">Status:</span>
-            <button class="filter-btn active" onclick="filterStatus('All')">All</button>
-            <button class="filter-btn" onclick="filterStatus('Confirmed')">Confirmed</button>
-            <button class="filter-btn" onclick="filterStatus('Suggested')">Suggested</button>
-            <button class="filter-btn" onclick="filterStatus('Flagged')">Flagged</button>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <span style="font-size: 14px; color: #9ca3af; white-space: nowrap"
+              >Status:</span
+            >
+            <button class="filter-btn active" onclick="filterStatus('All')">
+              All
+            </button>
+            <button class="filter-btn" onclick="filterStatus('Confirmed')">
+              Confirmed
+            </button>
+            <button class="filter-btn" onclick="filterStatus('Suggested')">
+              Suggested
+            </button>
+            <button class="filter-btn" onclick="filterStatus('Flagged')">
+              Flagged
+            </button>
           </div>
         </div>
 
@@ -213,8 +257,12 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width: 50px;">
-                    <input type="checkbox" id="select-all" onclick="toggleSelectAll()" />
+                  <th style="width: 50px">
+                    <input
+                      type="checkbox"
+                      id="select-all"
+                      onclick="toggleSelectAll()"
+                    />
                   </th>
                   <th>Date</th>
                   <th>Type</th>
@@ -229,24 +277,31 @@
               </thead>
               <tbody id="transactions-table">
                 <!-- Transaction 1 -->
-                <tr class="transaction-row" data-id="1" data-confidence="high" data-status="Confirmed">
+                <tr
+                  class="transaction-row"
+                  data-id="1"
+                  data-confidence="high"
+                  data-status="Confirmed"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-06-15</td>
+                  <td style="font-weight: 500">2022-06-15</td>
                   <td>Receive</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">₿</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >₿</span
+                      >
                       Bitcoin (BTC)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">0.25 BTC</td>
-                  <td style="font-family: monospace;">$5,250.00</td>
+                  <td style="font-family: monospace">0.25 BTC</td>
+                  <td style="font-family: monospace">$5,250.00</td>
                   <td><span class="badge success">Income</span></td>
                   <td>
                     <div class="confidence-chip high">
                       <span>High (94%)</span>
                       <div class="confidence-tooltip">
-                        Pattern match: Crypto received from known exchange<br>
+                        Pattern match: Crypto received from known exchange<br />
                         Historical accuracy: 96% on similar transactions
                       </div>
                     </div>
@@ -254,10 +309,18 @@
                   <td><span class="badge success">Confirmed</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(1)" aria-label="Accept classification">
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(1)"
+                        aria-label="Accept classification"
+                      >
                         ✓ Accept
                       </button>
-                      <button class="action-btn reject" onclick="handleReject(1)" aria-label="Reject classification">
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(1)"
+                        aria-label="Reject classification"
+                      >
                         ✗ Reject
                       </button>
                     </div>
@@ -265,24 +328,31 @@
                 </tr>
 
                 <!-- Transaction 2 -->
-                <tr class="transaction-row" data-id="2" data-confidence="medium" data-status="Suggested">
+                <tr
+                  class="transaction-row"
+                  data-id="2"
+                  data-confidence="medium"
+                  data-status="Suggested"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-07-02</td>
+                  <td style="font-weight: 500">2022-07-02</td>
                   <td>Swap</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">Ξ</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >Ξ</span
+                      >
                       Ethereum (ETH)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">1.5 ETH</td>
-                  <td style="font-family: monospace;">$2,850.00</td>
+                  <td style="font-family: monospace">1.5 ETH</td>
+                  <td style="font-family: monospace">$2,850.00</td>
                   <td><span class="badge">Trade</span></td>
                   <td>
                     <div class="confidence-chip medium">
                       <span>Medium (67%)</span>
                       <div class="confidence-tooltip">
-                        DEX swap detected via smart contract<br>
+                        DEX swap detected via smart contract<br />
                         Needs verification: Multiple token interactions
                       </div>
                     </div>
@@ -290,31 +360,48 @@
                   <td><span class="badge warn">Suggested</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(2)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(2)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(2)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(2)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Transaction 3 -->
-                <tr class="transaction-row" data-id="3" data-confidence="low" data-status="Flagged">
+                <tr
+                  class="transaction-row"
+                  data-id="3"
+                  data-confidence="low"
+                  data-status="Flagged"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-08-14</td>
+                  <td style="font-weight: 500">2022-08-14</td>
                   <td>Send</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">₿</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >₿</span
+                      >
                       Bitcoin (BTC)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">0.15 BTC</td>
-                  <td style="font-family: monospace;">$3,750.00</td>
+                  <td style="font-family: monospace">0.15 BTC</td>
+                  <td style="font-family: monospace">$3,750.00</td>
                   <td><span class="badge error">Expense</span></td>
                   <td>
                     <div class="confidence-chip low">
                       <span>Low (45%)</span>
                       <div class="confidence-tooltip">
-                        Uncertain: Unknown wallet destination<br>
+                        Uncertain: Unknown wallet destination<br />
                         Could be: Expense, transfer, or personal wallet
                       </div>
                     </div>
@@ -322,31 +409,48 @@
                   <td><span class="badge error">Flagged</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(3)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(3)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(3)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(3)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Transaction 4 -->
-                <tr class="transaction-row" data-id="4" data-confidence="high" data-status="Confirmed">
+                <tr
+                  class="transaction-row"
+                  data-id="4"
+                  data-confidence="high"
+                  data-status="Confirmed"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-09-05</td>
+                  <td style="font-weight: 500">2022-09-05</td>
                   <td>Receive</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">$</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >$</span
+                      >
                       USD Coin (USDC)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">500 USDC</td>
-                  <td style="font-family: monospace;">$500.00</td>
+                  <td style="font-family: monospace">500 USDC</td>
+                  <td style="font-family: monospace">$500.00</td>
                   <td><span class="badge">Unclassified</span></td>
                   <td>
                     <div class="confidence-chip high">
                       <span>High (89%)</span>
                       <div class="confidence-tooltip">
-                        Stablecoin transfer from verified address<br>
+                        Stablecoin transfer from verified address<br />
                         Pattern confidence: High reliability
                       </div>
                     </div>
@@ -354,31 +458,48 @@
                   <td><span class="badge">Pending</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(4)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(4)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(4)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(4)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Transaction 5 -->
-                <tr class="transaction-row" data-id="5" data-confidence="high" data-status="Confirmed">
+                <tr
+                  class="transaction-row"
+                  data-id="5"
+                  data-confidence="high"
+                  data-status="Confirmed"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-10-22</td>
+                  <td style="font-weight: 500">2022-10-22</td>
                   <td>Merge</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">Ξ</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >Ξ</span
+                      >
                       Ethereum (ETH)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">0.75 ETH</td>
-                  <td style="font-family: monospace;">$1,125.00</td>
+                  <td style="font-family: monospace">0.75 ETH</td>
+                  <td style="font-family: monospace">$1,125.00</td>
                   <td><span class="badge">Transfer</span></td>
                   <td>
                     <div class="confidence-chip high">
                       <span>High (92%)</span>
                       <div class="confidence-tooltip">
-                        Internal wallet consolidation detected<br>
+                        Internal wallet consolidation detected<br />
                         Same owner verification: 94% match
                       </div>
                     </div>
@@ -386,31 +507,48 @@
                   <td><span class="badge success">Confirmed</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(5)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(5)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(5)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(5)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Transaction 6 -->
-                <tr class="transaction-row" data-id="6" data-confidence="medium" data-status="Suggested">
+                <tr
+                  class="transaction-row"
+                  data-id="6"
+                  data-confidence="medium"
+                  data-status="Suggested"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-11-08</td>
+                  <td style="font-weight: 500">2022-11-08</td>
                   <td>Swap</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">₿</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >₿</span
+                      >
                       Bitcoin (BTC)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">0.08 BTC</td>
-                  <td style="font-family: monospace;">$1,050.00</td>
+                  <td style="font-family: monospace">0.08 BTC</td>
+                  <td style="font-family: monospace">$1,050.00</td>
                   <td><span class="badge">Trade</span></td>
                   <td>
                     <div class="confidence-chip medium">
                       <span>Medium (73%)</span>
                       <div class="confidence-tooltip">
-                        Exchange API data available<br>
+                        Exchange API data available<br />
                         Minor discrepancy in timing data
                       </div>
                     </div>
@@ -418,31 +556,48 @@
                   <td><span class="badge warn">Suggested</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(6)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(6)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(6)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(6)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
 
                 <!-- Transaction 7 -->
-                <tr class="transaction-row" data-id="7" data-confidence="low" data-status="Flagged">
+                <tr
+                  class="transaction-row"
+                  data-id="7"
+                  data-confidence="low"
+                  data-status="Flagged"
+                >
                   <td><input type="checkbox" class="row-checkbox" /></td>
-                  <td style="font-weight: 500;">2022-12-01</td>
+                  <td style="font-weight: 500">2022-12-01</td>
                   <td>Receive</td>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="font-family: monospace; color: #f59e0b;">◎</span>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span style="font-family: monospace; color: #f59e0b"
+                        >◎</span
+                      >
                       Solana (SOL)
                     </div>
                   </td>
-                  <td style="font-family: monospace;">10 SOL</td>
-                  <td style="font-family: monospace;">$350.00</td>
+                  <td style="font-family: monospace">10 SOL</td>
+                  <td style="font-family: monospace">$350.00</td>
                   <td><span class="badge">Income</span></td>
                   <td>
                     <div class="confidence-chip low">
                       <span>Low (55%)</span>
                       <div class="confidence-tooltip">
-                        Unknown source address<br>
+                        Unknown source address<br />
                         Could be: Airdrop, reward, or income
                       </div>
                     </div>
@@ -450,8 +605,18 @@
                   <td><span class="badge error">Flagged</span></td>
                   <td>
                     <div class="action-controls">
-                      <button class="action-btn accept" onclick="handleAccept(7)">✓ Accept</button>
-                      <button class="action-btn reject" onclick="handleReject(7)">✗ Reject</button>
+                      <button
+                        class="action-btn accept"
+                        onclick="handleAccept(7)"
+                      >
+                        ✓ Accept
+                      </button>
+                      <button
+                        class="action-btn reject"
+                        onclick="handleReject(7)"
+                      >
+                        ✗ Reject
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -460,16 +625,52 @@
           </div>
 
           <!-- Table Footer with Bulk Actions and Pagination -->
-          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 16px; border-top: 1px solid #2a3447;">
-            <div style="font-size: 14px; color: #9ca3af;">
-              Showing <span id="showing-count">7</span> of <span id="total-count">7</span> transactions
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: center;
+              gap: 16px;
+              padding: 16px;
+              border-top: 1px solid #2a3447;
+            "
+          >
+            <div style="font-size: 14px; color: #9ca3af">
+              Showing <span id="showing-count">7</span> of
+              <span id="total-count">7</span> transactions
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-              <span style="font-size: 14px; color: #9ca3af; white-space: nowrap;">Bulk Actions:</span>
-              <button class="primary" onclick="bulkAccept()" style="padding: 6px 12px; font-size: 13px;">Accept Selected</button>
-              <button onclick="bulkReject()" style="padding: 6px 12px; font-size: 13px;">Reject Selected</button>
-              <button onclick="bulkExport()" style="padding: 6px 12px; font-size: 13px;">Export</button>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <span style="font-size: 14px; color: #9ca3af; white-space: nowrap"
+                >Bulk Actions:</span
+              >
+              <button
+                class="primary"
+                onclick="bulkAccept()"
+                style="padding: 6px 12px; font-size: 13px"
+              >
+                Accept Selected
+              </button>
+              <button
+                onclick="bulkReject()"
+                style="padding: 6px 12px; font-size: 13px"
+              >
+                Reject Selected
+              </button>
+              <button
+                onclick="bulkExport()"
+                style="padding: 6px 12px; font-size: 13px"
+              >
+                Export
+              </button>
             </div>
           </div>
         </section>
@@ -483,21 +684,27 @@
     <script>
       // Stats tracking
       function updateStats() {
-        const accepted = document.querySelectorAll('.transaction-row.accepted').length;
-        const rejected = document.querySelectorAll('.transaction-row.rejected').length;
-        const pending = document.querySelectorAll('.transaction-row:not(.accepted):not(.rejected)').length;
+        const accepted = document.querySelectorAll(
+          ".transaction-row.accepted",
+        ).length;
+        const rejected = document.querySelectorAll(
+          ".transaction-row.rejected",
+        ).length;
+        const pending = document.querySelectorAll(
+          ".transaction-row:not(.accepted):not(.rejected)",
+        ).length;
 
-        document.getElementById('accepted-count').textContent = accepted;
-        document.getElementById('rejected-count').textContent = rejected;
-        document.getElementById('pending-count').textContent = pending;
+        document.getElementById("accepted-count").textContent = accepted;
+        document.getElementById("rejected-count").textContent = rejected;
+        document.getElementById("pending-count").textContent = pending;
       }
 
       // Accept/Reject handlers
       function handleAccept(id) {
         const row = document.querySelector(`[data-id="${id}"]`);
-        row.classList.add('accepted');
-        row.classList.remove('rejected');
-        row.querySelector('.action-controls').innerHTML = 
+        row.classList.add("accepted");
+        row.classList.remove("rejected");
+        row.querySelector(".action-controls").innerHTML =
           '<span style="color: #22c55e; font-size: 13px; font-weight: 500;">✓ Accepted</span>';
         updateStats();
         toast(`Classification accepted for transaction ${id}`);
@@ -505,28 +712,31 @@
 
       function handleReject(id) {
         const row = document.querySelector(`[data-id="${id}"]`);
-        row.classList.add('rejected');
-        row.classList.remove('accepted');
-        row.querySelector('.action-controls').innerHTML = 
+        row.classList.add("rejected");
+        row.classList.remove("accepted");
+        row.querySelector(".action-controls").innerHTML =
           '<span style="color: #ef4444; font-size: 13px; font-weight: 500;">✗ Rejected - requires manual review</span>';
         updateStats();
         toast(`Classification rejected for transaction ${id}`);
       }
 
       // Filter functionality
-      let currentConfidenceFilter = 'All';
-      let currentStatusFilter = 'All';
+      let currentConfidenceFilter = "All";
+      let currentStatusFilter = "All";
 
       function filterConfidence(filter) {
         currentConfidenceFilter = filter;
         applyFilters();
-        
+
         // Update button states
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-          if (btn.textContent === filter && btn.onclick.toString().includes('filterConfidence')) {
-            btn.classList.add('active');
-          } else if (btn.onclick.toString().includes('filterConfidence')) {
-            btn.classList.remove('active');
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          if (
+            btn.textContent === filter &&
+            btn.onclick.toString().includes("filterConfidence")
+          ) {
+            btn.classList.add("active");
+          } else if (btn.onclick.toString().includes("filterConfidence")) {
+            btn.classList.remove("active");
           }
         });
       }
@@ -534,71 +744,76 @@
       function filterStatus(filter) {
         currentStatusFilter = filter;
         applyFilters();
-        
+
         // Update button states
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-          if (btn.textContent === filter && btn.onclick.toString().includes('filterStatus')) {
-            btn.classList.add('active');
-          } else if (btn.onclick.toString().includes('filterStatus')) {
-            btn.classList.remove('active');
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          if (
+            btn.textContent === filter &&
+            btn.onclick.toString().includes("filterStatus")
+          ) {
+            btn.classList.add("active");
+          } else if (btn.onclick.toString().includes("filterStatus")) {
+            btn.classList.remove("active");
           }
         });
       }
 
       function applyFilters() {
-        const rows = document.querySelectorAll('.transaction-row');
+        const rows = document.querySelectorAll(".transaction-row");
         let visibleCount = 0;
 
-        rows.forEach(row => {
+        rows.forEach((row) => {
           const confidence = row.dataset.confidence;
           const status = row.dataset.status;
-          
-          const confidenceMatch = currentConfidenceFilter === 'All' || 
+
+          const confidenceMatch =
+            currentConfidenceFilter === "All" ||
             confidence.toLowerCase() === currentConfidenceFilter.toLowerCase();
-          const statusMatch = currentStatusFilter === 'All' || status === currentStatusFilter;
+          const statusMatch =
+            currentStatusFilter === "All" || status === currentStatusFilter;
 
           if (confidenceMatch && statusMatch) {
-            row.style.display = '';
+            row.style.display = "";
             visibleCount++;
           } else {
-            row.style.display = 'none';
+            row.style.display = "none";
           }
         });
 
-        document.getElementById('showing-count').textContent = visibleCount;
+        document.getElementById("showing-count").textContent = visibleCount;
       }
 
       // Bulk actions
       function toggleSelectAll() {
-        const selectAll = document.getElementById('select-all');
-        const checkboxes = document.querySelectorAll('.row-checkbox');
-        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+        const selectAll = document.getElementById("select-all");
+        const checkboxes = document.querySelectorAll(".row-checkbox");
+        checkboxes.forEach((cb) => (cb.checked = selectAll.checked));
       }
 
       function bulkAccept() {
         const selected = getSelectedRows();
         if (selected.length === 0) {
-          toast('No transactions selected');
+          toast("No transactions selected");
           return;
         }
-        selected.forEach(id => handleAccept(id));
+        selected.forEach((id) => handleAccept(id));
         toast(`${selected.length} transactions accepted`);
       }
 
       function bulkReject() {
         const selected = getSelectedRows();
         if (selected.length === 0) {
-          toast('No transactions selected');
+          toast("No transactions selected");
           return;
         }
-        selected.forEach(id => handleReject(id));
+        selected.forEach((id) => handleReject(id));
         toast(`${selected.length} transactions rejected`);
       }
 
       function bulkExport() {
         const selected = getSelectedRows();
         if (selected.length === 0) {
-          toast('No transactions selected');
+          toast("No transactions selected");
           return;
         }
         toast(`Exporting ${selected.length} transactions...`);
@@ -606,9 +821,9 @@
 
       function getSelectedRows() {
         const selected = [];
-        document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
-          const row = cb.closest('.transaction-row');
-          if (row && row.style.display !== 'none') {
+        document.querySelectorAll(".row-checkbox:checked").forEach((cb) => {
+          const row = cb.closest(".transaction-row");
+          if (row && row.style.display !== "none") {
             selected.push(row.dataset.id);
           }
         });

@@ -23,11 +23,10 @@ pids/
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Coverage directory
 coverage/
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # Optional npm cache directory
@@ -42,7 +41,7 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# parcel-bundler cache (https://parceljs.org/)
+# Parcel cache
 .cache/
 .parcel-cache/
 
@@ -61,6 +60,15 @@ jspm_packages/
 ehthumbs.db
 Thumbs.db
 
-# Netlify files since we're using Vercel
-netlify/
-netlify.toml
+# Documentation and development files
+*.md
+!README.md
+docs/
+documentation/
+prototypes/
+
+# Test files
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx

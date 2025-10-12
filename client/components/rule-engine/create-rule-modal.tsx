@@ -367,9 +367,9 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 overflow-x-auto">
               {/* Before */}
-              <Card>
+              <Card className="flex-1 min-w-[280px]">
                 <CardHeader>
                   <CardTitle className="text-base">Before</CardTitle>
                 </CardHeader>
@@ -392,12 +392,12 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
               </Card>
 
               {/* Arrow */}
-              <div className="hidden lg:flex items-center justify-center">
-                <ArrowRight className="h-6 w-6 text-muted-foreground" />
+              <div className="flex items-center justify-center shrink-0 self-center" aria-label="transforms to">
+                <ArrowRight className="h-8 w-8 text-primary" />
               </div>
 
               {/* After */}
-              <Card>
+              <Card className="flex-1 min-w-[280px]">
                 <CardHeader>
                   <CardTitle className="text-base">After</CardTitle>
                 </CardHeader>

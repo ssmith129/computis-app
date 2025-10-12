@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Separator } from "@/components/ui/separator";
 import {
   TrendingUp,
   ArrowLeft,
@@ -17,7 +16,13 @@ import {
   Download,
   Plus,
   RotateCcw,
+  AlertCircle,
+  CheckCircle2,
+  XCircle,
+  Sparkles,
 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 interface AnomalyIssueDetailsProps {
   issueId: string;
@@ -34,342 +39,424 @@ const issueData = {
   description:
     "This appears to be a legitimate set of transactions based on historical patterns for this wallet.",
   suggestion: "Mark as resolved after confirming with client.",
-  confidence: "85%",
+  confidence: 85,
 };
 
 const affectedTransactions = [
   {
+    id: "1",
     date: "2022-08-14 09:15",
     type: "Receive",
     amount: "0.15 BTC",
     fmv: "$3,750.00",
     classification: "Income",
-    actions: true,
   },
   {
+    id: "2",
     date: "2022-08-14 09:22",
     type: "Receive",
     amount: "0.25 BTC",
     fmv: "$6,250.00",
     classification: "Income",
-    actions: true,
   },
   {
+    id: "3",
     date: "2022-08-14 10:05",
     type: "Receive",
     amount: "0.10 BTC",
     fmv: "$2,500.00",
     classification: "Income",
-    actions: true,
+  },
+  {
+    id: "4",
+    date: "2022-08-14 11:30",
+    type: "Receive",
+    amount: "0.08 BTC",
+    fmv: "$2,000.00",
+    classification: "Income",
+  },
+  {
+    id: "5",
+    date: "2022-08-14 14:20",
+    type: "Receive",
+    amount: "0.12 BTC",
+    fmv: "$3,000.00",
+    classification: "Income",
   },
 ];
 
 const quickActions = [
   {
     title: "Bulk Classify",
-    description: "Apply classification to all transactions",
+    description: "Apply classification to all",
     icon: Plus,
-    color: "text-green-600",
+    color: "text-green-600 bg-green-50 hover:bg-green-100",
   },
   {
     title: "Create Rule",
-    description: "Make rules to avoid in the future",
+    description: "Avoid future issues",
     icon: Plus,
-    color: "text-blue-600",
+    color: "text-blue-600 bg-blue-50 hover:bg-blue-100",
   },
   {
     title: "Update FMV",
-    description: "Fix proposed w/ calculations",
+    description: "Fix calculations",
     icon: RotateCcw,
-    color: "text-yellow-600",
+    color: "text-amber-600 bg-amber-50 hover:bg-amber-100",
   },
   {
     title: "Export",
-    description: "Download as CSV or PDF",
+    description: "CSV or PDF",
     icon: Download,
-    color: "text-purple-600",
+    color: "text-purple-600 bg-purple-50 hover:bg-purple-100",
   },
 ];
+
+const getPriorityStyles = (priority: string) => {
+  switch (priority) {
+    case "High":
+      return "bg-red-50 text-red-700 border-red-200";
+    case "Medium":
+      return "bg-amber-50 text-amber-700 border-amber-200";
+    case "Low":
+      return "bg-blue-50 text-blue-700 border-blue-200";
+    default:
+      return "bg-gray-50 text-gray-700 border-gray-200";
+  }
+};
+
+const getStatusStyles = (status: string) => {
+  switch (status) {
+    case "Open":
+      return "bg-yellow-50 text-yellow-700 border-yellow-200";
+    case "In Progress":
+      return "bg-blue-50 text-blue-700 border-blue-200";
+    case "Resolved":
+      return "bg-green-50 text-green-700 border-green-200";
+    default:
+      return "bg-gray-50 text-gray-700 border-gray-200";
+  }
+};
 
 export function AnomalyIssueDetails({
   issueId,
   onClose,
 }: AnomalyIssueDetailsProps) {
+  const [selectedTransactions, setSelectedTransactions] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  
+  const totalPages = Math.ceil(affectedTransactions.length / itemsPerPage);
+  const paginatedTransactions = affectedTransactions.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handleResolve = () => {
+    toast({ 
+      title: "Issue Resolved", 
+      description: "Volume spike marked as resolved successfully." 
+    });
+    onClose();
+  };
+
+  const handleIgnore = () => {
+    toast({ 
+      title: "Issue Ignored", 
+      description: "This anomaly will be hidden from the list." 
+    });
+    onClose();
+  };
+
+  const handleApplyRecommendation = () => {
+    toast({ 
+      title: "Recommendation Applied", 
+      description: "AI suggestion has been implemented for all affected transactions.",
+      duration: 3000
+    });
+  };
+
   return (
     <div className="app-content">
-      {/* Header */}
-      <div className="page-titlebar">
-        <div className="flex items-center justify-between p-6">
+      {/* Sticky Header with Actions */}
+      <div className="sticky top-0 z-10 bg-background border-b shadow-sm">
+        <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" onClick={onClose}>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={onClose}
+              className="h-9"
+            >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back
             </Button>
-            <div className="space-y-1">
-              <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-                <TrendingUp className="h-6 w-6 text-red-500" />
-                Volume Spike Details
-              </h1>
-              <p className="text-muted-foreground">
-                Issue Information and Affected Transactions
-              </p>
+            <div className="flex items-center gap-3">
+              <div className="bg-red-50 rounded-lg p-2">
+                <TrendingUp className="h-5 w-5 text-red-600" />
+              </div>
+              <div>
+                <h1 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                  Volume Spike Details
+                </h1>
+                <p className="text-sm text-gray-500">
+                  15 transactions • Bitcoin (BTC)
+                </p>
+              </div>
             </div>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-muted-foreground"
-            onClick={onClose}
-          >
-            ✕ Close
-          </Button>
+
+          {/* Primary Actions - Sticky */}
+          <div className="flex items-center gap-3">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleIgnore}
+              className="h-9 border-gray-300 hover:bg-gray-50"
+            >
+              <XCircle className="h-4 w-4 mr-2" />
+              Ignore Issue
+            </Button>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={handleApplyRecommendation}
+              className="h-9 w-fit bg-blue-600 hover:bg-blue-700 text-white"
+              aria-label="Apply AI recommendation"
+            >
+              <Sparkles className="h-4 w-4 mr-2" />
+              Apply AI Recommendation
+            </Button>
+            <Button
+              size="sm"
+              onClick={handleResolve}
+              className="h-9 bg-green-600 hover:bg-green-700 text-white"
+            >
+              <CheckCircle2 className="h-4 w-4 mr-2" />
+              Mark as Resolved
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6 space-y-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Issue Information */}
-          <div className="lg:col-span-1 space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Issue Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <div className="text-sm text-muted-foreground">Type</div>
-                  <div className="font-medium">{issueData.type}</div>
+      {/* Main Content - Responsive Grid */}
+      <div className="p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+          {/* Issue Information Card - 25% on desktop */}
+          <Card className="border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <CardHeader className="pb-4 px-5 pt-5">
+              <CardTitle className="text-base font-semibold text-gray-900 flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 text-gray-600" />
+                Issue Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-5 space-y-3">
+              <div className="space-y-1.5">
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Type</div>
+                <div className="text-sm font-semibold text-gray-900">{issueData.type}</div>
+              </div>
+              <div className="space-y-1.5">
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Detected</div>
+                <div className="text-sm text-gray-700">{issueData.detected}</div>
+              </div>
+              <div className="space-y-1.5">
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Priority</div>
+                <Badge className={`border text-xs font-medium ${getPriorityStyles(issueData.priority)}`}>
+                  {issueData.priority}
+                </Badge>
+              </div>
+              <div className="space-y-1.5">
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Status</div>
+                <Badge className={`border text-xs font-medium ${getStatusStyles(issueData.status)}`}>
+                  {issueData.status}
+                </Badge>
+              </div>
+              <div className="pt-2 border-t border-gray-100">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-gray-500">Affected</div>
+                  <div className="text-sm font-semibold text-gray-900">{issueData.affected}</div>
                 </div>
-                <Separator />
-                <div>
-                  <div className="text-sm text-muted-foreground">Detected</div>
-                  <div className="font-medium">{issueData.detected}</div>
+                <div className="flex items-center justify-between mt-2">
+                  <div className="text-xs text-gray-500">Asset</div>
+                  <div className="text-sm font-medium text-gray-900">{issueData.asset}</div>
                 </div>
-                <Separator />
-                <div>
-                  <div className="text-sm text-muted-foreground">Priority</div>
-                  <Badge
-                    variant="secondary"
-                    className="bg-red-100 text-red-700 border-0"
-                  >
-                    {issueData.priority}
-                  </Badge>
-                </div>
-                <Separator />
-                <div>
-                  <div className="text-sm text-muted-foreground">Status</div>
-                  <Badge
-                    variant="secondary"
-                    className="bg-yellow-100 text-yellow-700 border-0"
-                  >
-                    {issueData.status}
-                  </Badge>
-                </div>
-                <Separator />
-                <div>
-                  <div className="text-sm text-muted-foreground">Affected</div>
-                  <div className="font-medium">{issueData.affected}</div>
-                </div>
-                <Separator />
-                <div>
-                  <div className="text-sm text-muted-foreground">Asset</div>
-                  <div className="font-medium">{issueData.asset}</div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
 
-            {/* AI Recommendation */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">AI Recommendation</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <div className="text-sm text-muted-foreground">Analysis:</div>
-                  <p className="text-sm mt-1">{issueData.description}</p>
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">
-                    Suggested Action:
+          {/* AI Recommendation Card - 25% on desktop */}
+          <Card className="border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:shadow-md transition-shadow">
+            <CardHeader className="pb-4 px-5 pt-5">
+              <CardTitle className="text-base font-semibold text-gray-900 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-blue-600" />
+                AI Recommendation
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-5 space-y-4">
+              <div>
+                <div className="text-xs font-medium text-gray-600 mb-1.5">Analysis</div>
+                <p className="text-sm text-gray-700 leading-relaxed">{issueData.description}</p>
+              </div>
+              <div>
+                <div className="text-xs font-medium text-gray-600 mb-1.5">Suggested Action</div>
+                <p className="text-sm text-gray-700 leading-relaxed">{issueData.suggestion}</p>
+              </div>
+              <div className="pt-3 border-t border-blue-100">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-gray-600">Confidence Score</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-green-500 rounded-full transition-all" 
+                        style={{ width: `${issueData.confidence}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-bold text-gray-900">{issueData.confidence}%</span>
                   </div>
-                  <p className="text-sm mt-1">{issueData.suggestion}</p>
                 </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">
-                    Confidence:
-                  </div>
-                  <div className="font-medium">{issueData.confidence}</div>
-                </div>
-                <Button
-                  size="sm"
-                  className="w-full bg-blue-600 hover:bg-blue-700"
-                >
-                  Apply AI Recommendation
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+          {/* Quick Actions Card - 50% on desktop, spans 2 columns */}
+          <Card className="md:col-span-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <CardHeader className="pb-4 px-5 pt-5">
+              <CardTitle className="text-base font-semibold text-gray-900">Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent className="px-5 pb-5">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 {quickActions.map((action, index) => {
                   const IconComponent = action.icon;
                   return (
-                    <div
+                    <button
                       key={index}
-                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 cursor-pointer"
+                      className={`flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-md ${action.color.split(' ')[1]} ${action.color.split(' ')[2]}`}
+                      onClick={() => toast({ title: `${action.title} initiated` })}
+                      aria-label={action.title}
                     >
-                      <IconComponent className={`h-4 w-4 ${action.color}`} />
-                      <div className="flex-1">
-                        <div className="text-sm font-medium">
-                          {action.title}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {action.description}
-                        </div>
+                      <IconComponent className={`h-5 w-5 ${action.color.split(' ')[0]}`} />
+                      <div className="text-center">
+                        <div className="text-xs font-semibold text-gray-900">{action.title}</div>
+                        <div className="text-xs text-gray-500 mt-0.5">{action.description}</div>
                       </div>
-                    </div>
+                    </button>
                   );
                 })}
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Right Column - Affected Transactions */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">
-                    Affected Transactions
-                  </CardTitle>
-                  <Button variant="outline" size="sm">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Export List
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Amount</TableHead>
-                      <TableHead>FMV (USD)</TableHead>
-                      <TableHead>Classification</TableHead>
-                      <TableHead>Actions</TableHead>
+        {/* Affected Transactions - Full Width */}
+        <Card className="border-gray-200 shadow-sm">
+          <CardHeader className="px-5 py-4 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-base font-semibold text-gray-900">
+                  Affected Transactions
+                </CardTitle>
+                <p className="text-sm text-gray-500 mt-1">
+                  Showing {paginatedTransactions.length} of {affectedTransactions.length} transactions
+                </p>
+              </div>
+              <Button variant="outline" size="sm" className="h-9">
+                <ExternalLink className="h-4 w-4 mr-2" />
+                Export List
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-gray-50">
+                    <TableHead className="text-xs font-semibold text-gray-600 px-5">Date</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">Type</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">Amount</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">FMV (USD)</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">Classification</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600 text-right px-5">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {paginatedTransactions.map((transaction) => (
+                    <TableRow 
+                      key={transaction.id}
+                      className="hover:bg-gray-50 transition-colors"
+                    >
+                      <TableCell className="font-medium text-sm text-gray-900 px-5">
+                        {transaction.date}
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-blue-50 text-blue-700 border-blue-200 border text-xs">
+                          {transaction.type}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="font-mono text-sm font-semibold text-gray-900">
+                        {transaction.amount}
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-green-50 text-green-700 border-green-200 border text-xs">
+                          {transaction.fmv}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <Badge className="bg-orange-50 text-orange-700 border-orange-200 border text-xs">
+                          {transaction.classification}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right px-5">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 w-8 p-0 hover:bg-gray-100"
+                          aria-label="View transaction details"
+                        >
+                          <ExternalLink className="h-4 w-4 text-gray-600" />
+                        </Button>
+                      </TableCell>
                     </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {affectedTransactions.map((transaction, index) => (
-                      <TableRow key={index}>
-                        <TableCell className="font-medium">
-                          {transaction.date}
-                        </TableCell>
-                        <TableCell>
-                          <Badge
-                            variant="secondary"
-                            className="bg-blue-100 text-blue-700 border-0"
-                          >
-                            {transaction.type}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="font-medium">
-                          {transaction.amount}
-                        </TableCell>
-                        <TableCell>
-                          <Badge
-                            variant="secondary"
-                            className="bg-green-100 text-green-700 border-0"
-                          >
-                            {transaction.fmv}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Badge
-                            variant="secondary"
-                            className="bg-orange-100 text-orange-700 border-0"
-                          >
-                            {transaction.classification}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-2">
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="h-8 w-8 p-0"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
 
-                {/* Pagination */}
-                <div className="flex items-center justify-between p-4 border-t">
-                  <div className="text-sm text-muted-foreground">
-                    Showing 3 of 15 transactions
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" disabled>
-                      Previous
-                    </Button>
-                    <div className="flex gap-1">
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="h-8 w-8 p-0"
-                      >
-                        1
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-8 w-8 p-0"
-                      >
-                        2
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-8 w-8 p-0"
-                      >
-                        3
-                      </Button>
-                      <span className="flex items-center px-2">...</span>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-8 w-8 p-0"
-                      >
-                        5
-                      </Button>
-                    </div>
-                    <Button variant="outline" size="sm">
-                      Next
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-4 pt-6">
-          <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
-            Mark as Resolved
-          </Button>
-          <Button variant="outline">Ignore Issue</Button>
-        </div>
+            {/* Pagination */}
+            <div className="flex items-center justify-between px-5 py-4 border-t border-gray-200">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="h-9"
+              >
+                Previous
+              </Button>
+              <div className="flex items-center gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setCurrentPage(page)}
+                    className="h-9 w-9 p-0"
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="h-9"
+              >
+                Next
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

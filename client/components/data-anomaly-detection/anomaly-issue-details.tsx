@@ -324,7 +324,7 @@ export function AnomalyIssueDetails({
               <CardTitle className="text-base font-semibold text-gray-900">Quick Actions</CardTitle>
             </CardHeader>
             <CardContent className="px-5 pb-5">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 {quickActions.map((action, index) => {
                   const IconComponent = action.icon;
                   return (

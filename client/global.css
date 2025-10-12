@@ -181,9 +181,13 @@
 
   .app-header {
     @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
+    /* Ensure header stays above all content on tablets */
+    isolation: isolate;
   }
   .page-titlebar {
     @apply sticky top-0 z-40 bg-background border-b border-border;
+    /* Prevent z-index inheritance issues */
+    isolation: isolate;
   }
   .app-content {
     @apply flex-1 min-h-0 bg-background overflow-y-auto overflow-x-hidden max-w-full box-border;

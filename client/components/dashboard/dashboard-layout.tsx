@@ -7,7 +7,9 @@ interface DashboardLayoutProps {
   activeItem?: string;
 }
 
-export function DashboardLayout({ activeItem = "Dashboard" }: DashboardLayoutProps) {
+export function DashboardLayout({
+  activeItem = "Dashboard",
+}: DashboardLayoutProps) {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full overflow-x-hidden">

@@ -40,7 +40,9 @@ export function DashboardHeader() {
                   <User className="h-4 w-4" />
                 </AvatarFallback>
               </Avatar>
-              <span className="text-white font-medium hidden lg:inline-block">John Smith</span>
+              <span className="text-white font-medium hidden lg:inline-block">
+                John Smith
+              </span>
               <ChevronDown className="h-4 w-4 text-white hidden lg:inline-block" />
             </button>
           </DropdownMenuTrigger>

@@ -1,11 +1,13 @@
 # Layout Design System Standards
 
 ## Overview
+
 This document establishes consistent layout patterns, spacing standards, and responsive design principles for the Computis application to ensure visual consistency and maintainable code.
 
 ## Z-Index Hierarchy
 
 ### Standardized Layers
+
 ```css
 /* Z-Index Layering Strategy */
 z-0 to z-10:    Base content, backgrounds
@@ -19,21 +21,25 @@ z-[200]+:       Modals, dialogs, critical overlays
 ```
 
 ### Semantic Class Usage
+
 Always use semantic classes instead of arbitrary z-index values:
 
 ✅ **Correct**:
+
 ```jsx
 <header className="app-header">...</header>
 <div className="page-titlebar">...</div>
 ```
 
 ❌ **Incorrect**:
+
 ```jsx
 <header className="z-[50]">...</header>
 <div className="z-[40]">...</div>
 ```
 
 ### Stacking Context Isolation
+
 Use `isolation: isolate` to create new stacking contexts:
 
 ```css
@@ -45,20 +51,22 @@ Use `isolation: isolate` to create new stacking contexts:
 ## Spacing Scale
 
 ### Standardized Spacing Units
+
 Use consistent spacing scale based on 4px grid:
 
-| Class | Value | Use Case |
-|-------|-------|----------|
-| `p-2` | 8px | Compact buttons, badges |
-| `p-3` | 12px | Small cards, list items |
-| `p-4` | 16px | Standard cards, sections |
-| `p-5` | 20px | Card headers, prominent sections |
-| `p-6` | 24px | Page containers, main sections |
-| `p-8` | 32px | Large containers, page headers |
+| Class | Value | Use Case                         |
+| ----- | ----- | -------------------------------- |
+| `p-2` | 8px   | Compact buttons, badges          |
+| `p-3` | 12px  | Small cards, list items          |
+| `p-4` | 16px  | Standard cards, sections         |
+| `p-5` | 20px  | Card headers, prominent sections |
+| `p-6` | 24px  | Page containers, main sections   |
+| `p-8` | 32px  | Large containers, page headers   |
 
 ### Spacing Patterns by Component
 
 #### Cards
+
 ```jsx
 // Standard Card
 <Card className="p-5">
@@ -74,6 +82,7 @@ Use consistent spacing scale based on 4px grid:
 ```
 
 #### Page Layouts
+
 ```jsx
 // Standard Page
 <div className="app-content">
@@ -89,6 +98,7 @@ Use consistent spacing scale based on 4px grid:
 ```
 
 #### Grid Spacing
+
 ```jsx
 // Standard Grid
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -103,6 +113,7 @@ Use consistent spacing scale based on 4px grid:
 ## Responsive Breakpoint Strategy
 
 ### Standard Breakpoints
+
 ```javascript
 // tailwind.config.ts
 screens: {
@@ -115,6 +126,7 @@ screens: {
 ```
 
 ### Tablet-Specific Breakpoints
+
 ```javascript
 // Custom breakpoints for precise tablet targeting
 screens: {
@@ -126,17 +138,21 @@ screens: {
 ### Breakpoint Usage Guidelines
 
 #### Mobile-First Approach (Preferred)
+
 ✅ **Correct**:
+
 ```jsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 ```
 
 ❌ **Incorrect**:
+
 ```jsx
 <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
 ```
 
 #### Tablet-Specific Adjustments
+
 ```jsx
 // When tablet needs different layout than mobile/desktop
 <div className="
@@ -150,6 +166,7 @@ screens: {
 ## Layout Patterns
 
 ### Standard Page Structure
+
 ```jsx
 <div className="app-content">
   {/* Sticky Page Header */}
@@ -159,45 +176,44 @@ screens: {
         <h1 className="text-2xl font-bold">Page Title</h1>
         <p className="text-gray-500 mt-1">Description</p>
       </div>
-      <div className="flex items-center gap-3">
-        {/* Actions */}
-      </div>
+      <div className="flex items-center gap-3">{/* Actions */}</div>
     </div>
   </div>
-  
+
   {/* Scrollable Content */}
-  <div className="p-6 space-y-6">
-    {/* Page content */}
-  </div>
+  <div className="p-6 space-y-6">{/* Page content */}</div>
 </div>
 ```
 
 ### Card Grid Pattern
+
 ```jsx
-{/* Responsive Card Grid */}
+{
+  /* Responsive Card Grid */
+}
 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
   <Card className="p-5">
     <CardContent>...</CardContent>
   </Card>
-</div>
+</div>;
 ```
 
 ### Two-Column Layout Pattern
+
 ```jsx
-{/* Main/Sidebar Layout */}
+{
+  /* Main/Sidebar Layout */
+}
 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-  <div className="lg:col-span-2">
-    {/* Main content */}
-  </div>
-  <div>
-    {/* Sidebar */}
-  </div>
-</div>
+  <div className="lg:col-span-2">{/* Main content */}</div>
+  <div>{/* Sidebar */}</div>
+</div>;
 ```
 
 ## Scroll Container Standards
 
 ### Primary Scroll Container
+
 ```css
 .app-content {
   flex: 1;
@@ -210,21 +226,29 @@ screens: {
 ```
 
 ### Horizontal Scroll Containers
-```jsx
-{/* Scrollable Cards */}
-<div className="scrollable-cards">
-  {cards.map(card => <Card key={card.id}>...</Card>)}
-</div>
 
-{/* Scrollable Table */}
+```jsx
+{
+  /* Scrollable Cards */
+}
+<div className="scrollable-cards">
+  {cards.map((card) => (
+    <Card key={card.id}>...</Card>
+  ))}
+</div>;
+
+{
+  /* Scrollable Table */
+}
 <div className="scrollable-table">
   <Table>...</Table>
-</div>
+</div>;
 ```
 
 ## Sticky Element Standards
 
 ### Header Sticky Pattern
+
 ```css
 .app-header {
   position: sticky;
@@ -235,6 +259,7 @@ screens: {
 ```
 
 ### Page Title Sticky Pattern
+
 ```css
 .page-titlebar {
   position: sticky;
@@ -245,6 +270,7 @@ screens: {
 ```
 
 ### Implementation Requirements
+
 1. ✅ Parent container must NOT have `overflow: hidden`
 2. ✅ Parent container should use `min-height: 0` instead of `height: 0`
 3. ✅ Sticky element must have explicit `top` value
@@ -255,28 +281,35 @@ screens: {
 ### Recommended Units
 
 #### Height Units
+
 ✅ **Use**:
+
 - `min-h-screen` - For stable full-height containers
 - `h-screen` - For fixed full-height elements
 - `min-h-0` - For flex containers that need to shrink
 
 ❌ **Avoid**:
+
 - `min-h-svh` - Causes layout shifts on mobile (address bar show/hide)
 - `h-[100dvh]` - Dynamic viewport height, unreliable on older browsers
 
 #### Width Units
+
 ✅ **Use**:
+
 - `w-full` - Full width of parent
 - `max-w-full` - Prevent overflow
 - `w-screen` - Full viewport width (use sparingly)
 
 ❌ **Avoid**:
+
 - Fixed pixel widths for layout containers
 - `w-[100vw]` - Can cause horizontal scroll
 
 ## Touch Interaction Standards
 
 ### Touch Target Sizes
+
 All interactive elements must meet 44x44px minimum:
 
 ```jsx
@@ -293,6 +326,7 @@ All interactive elements must meet 44x44px minimum:
 ```
 
 ### Touch Utilities
+
 ```jsx
 // Prevent text selection during touch
 <div className="select-none">
@@ -305,6 +339,7 @@ All interactive elements must meet 44x44px minimum:
 ```
 
 ### Scroll Optimization
+
 ```css
 /* Apply to scrollable containers */
 .scrollable {
@@ -320,28 +355,33 @@ All interactive elements must meet 44x44px minimum:
 ### Layout Thrashing Prevention
 
 ✅ **Do**:
+
 ```jsx
 // Batch layout reads
-const heights = elements.map(el => el.offsetHeight);
+const heights = elements.map((el) => el.offsetHeight);
 elements.forEach((el, i) => {
-  el.style.height = heights[i] + 'px';
+  el.style.height = heights[i] + "px";
 });
 ```
 
 ❌ **Don't**:
+
 ```jsx
 // Causes forced reflow
-elements.forEach(el => {
+elements.forEach((el) => {
   const height = el.offsetHeight; // Read
-  el.style.height = height + 'px'; // Write (forces reflow)
+  el.style.height = height + "px"; // Write (forces reflow)
 });
 ```
 
 ### Animation Performance
+
 ```css
 /* Use transform/opacity for animations */
 .animated {
-  transition: transform 200ms, opacity 200ms;
+  transition:
+    transform 200ms,
+    opacity 200ms;
   will-change: transform, opacity; /* Hint for GPU acceleration */
 }
 
@@ -354,21 +394,23 @@ elements.forEach(el => {
 ## Accessibility Standards
 
 ### Focus Management
+
 ```jsx
 // Visible focus indicators
 <Button className="
-  focus:ring-2 
-  focus:ring-offset-2 
+  focus:ring-2
+  focus:ring-offset-2
   focus:ring-primary
   focus:outline-none
 ">
 ```
 
 ### Skip Links
+
 ```jsx
 // Provide skip to content link
-<a 
-  href="#main-content" 
+<a
+  href="#main-content"
   className="
     sr-only 
     focus:not-sr-only 
@@ -383,6 +425,7 @@ elements.forEach(el => {
 ```
 
 ### ARIA Landmarks
+
 ```jsx
 <header role="banner">...</header>
 <nav role="navigation">...</nav>
@@ -394,18 +437,19 @@ elements.forEach(el => {
 ## Component Library Standards
 
 ### Consistent Card Implementation
+
 ```jsx
 // Standard Card Component Pattern
-export function StandardCard({ 
-  title, 
-  children, 
+export function StandardCard({
+  title,
+  children,
   actions,
-  variant = "default" // "default" | "compact" | "dense"
+  variant = "default", // "default" | "compact" | "dense"
 }) {
   const padding = {
     default: "p-5",
     compact: "p-4",
-    dense: "p-3"
+    dense: "p-3",
   }[variant];
 
   return (
@@ -416,15 +460,14 @@ export function StandardCard({
           {actions}
         </div>
       </CardHeader>
-      <CardContent className="space-y-3">
-        {children}
-      </CardContent>
+      <CardContent className="space-y-3">{children}</CardContent>
     </Card>
   );
 }
 ```
 
 ### Button Patterns
+
 ```jsx
 // Primary Action
 <Button size="default" className="min-h-[44px]">
@@ -445,6 +488,7 @@ export function StandardCard({
 ## Code Review Checklist
 
 Before merging layout changes:
+
 - [ ] Uses semantic z-index classes (not arbitrary values)
 - [ ] Follows standardized spacing scale
 - [ ] Implements mobile-first responsive design
@@ -461,6 +505,7 @@ Before merging layout changes:
 ### Updating Existing Components
 
 #### Step 1: Fix Scroll Container
+
 ```diff
 .app-content {
   flex: 1;
@@ -471,6 +516,7 @@ Before merging layout changes:
 ```
 
 #### Step 2: Add Stacking Context Isolation
+
 ```diff
 .app-header {
   position: sticky;
@@ -481,6 +527,7 @@ Before merging layout changes:
 ```
 
 #### Step 3: Replace Viewport Units
+
 ```diff
 <SidebarInset className="
 - min-h-svh
@@ -489,12 +536,13 @@ Before merging layout changes:
 ```
 
 #### Step 4: Standardize Spacing
+
 ```diff
-<Card 
+<Card
 - className="p-6"
 + className="p-5"
 >
-  <CardHeader 
+  <CardHeader
 -   className="pb-6"
 +   className="pb-4"
   >
@@ -503,10 +551,12 @@ Before merging layout changes:
 ## Questions and Support
 
 For questions about layout standards:
+
 1. Check this document first
 2. Review example implementations in codebase
 3. Consult with design system maintainers
 4. File issue with `design-system` label
 
 ## Version History
+
 - v1.0.0 - Initial layout standards (Current)

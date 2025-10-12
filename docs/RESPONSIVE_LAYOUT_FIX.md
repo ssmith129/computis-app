@@ -3,6 +3,7 @@
 ## Problem Description
 
 The application experienced critical layout issues at screen widths below 1440px, causing visual overlap between:
+
 - Navigation sidebar
 - Header bar (search + user profile)
 - Main content area
@@ -12,27 +13,33 @@ This resulted in the user profile area being cut off and horizontal scrolling ca
 ## Root Causes Identified
 
 ### 1. Header Component Issues
+
 **Location**: `client/components/dashboard/header.tsx`
 
 **Problem**:
+
 - Search bar used `w-full max-w-lg` (max 512px width)
 - At widths below 1440px, search bar took too much space
 - User profile area (name + avatar + dropdown) pushed off-screen
 - No responsive width constraints for smaller viewports
 
 ### 2. Container Overflow Issues
+
 **Location**: Multiple page files + layout components
 
 **Problem**:
+
 - Parent flex container lacked `overflow-x-hidden`
 - `SidebarInset` component didn't constrain width properly
 - No `min-w-0` to allow flex items to shrink below content size
 - Caused horizontal scroll at page level instead of content level
 
 ### 3. Flex Layout Issues
+
 **Location**: All page layouts
 
 **Problem**:
+
 - `SidebarInset` missing `flex-1` and `min-w-0`
 - Without `min-w-0`, flex items won't shrink below their content's minimum width
 - Caused layout to exceed viewport width
@@ -44,6 +51,7 @@ This resulted in the user profile area being cut off and horizontal scrolling ca
 **File**: `client/components/dashboard/header.tsx`
 
 **Changes**:
+
 ```jsx
 // BEFORE
 <header className="app-header flex items-center justify-between p-3">
@@ -79,6 +87,7 @@ This resulted in the user profile area being cut off and horizontal scrolling ca
 ```
 
 **Key Improvements**:
+
 1. **Search Bar**:
    - Changed from `w-full max-w-lg` to responsive max-widths:
      - Base: `max-w-[280px]` (280px)
@@ -101,12 +110,14 @@ This resulted in the user profile area being cut off and horizontal scrolling ca
 
 ### Fix 2: Container Overflow Constraints
 
-**Files**: 
+**Files**:
+
 - `client/components/dashboard/dashboard-layout.tsx`
 - `client/components/ui/sidebar.tsx`
 - All page files (12 files)
 
 **DashboardLayout Changes**:
+
 ```jsx
 // BEFORE
 <div className="flex min-h-screen w-full">
@@ -120,6 +131,7 @@ This resulted in the user profile area being cut off and horizontal scrolling ca
 ```
 
 **SidebarInset Component Changes**:
+
 ```jsx
 // BEFORE
 className={cn(
@@ -135,6 +147,7 @@ className={cn(
 ```
 
 **Key Improvements**:
+
 1. Added `overflow-x-hidden` to parent flex container
 2. Added `min-w-0` to `SidebarInset` to allow shrinking
 3. Added explicit `flex-1` to ensure proper space distribution
@@ -143,6 +156,7 @@ className={cn(
 ### Fix 3: All Page Files Updated
 
 **Files Modified** (12 total):
+
 1. `client/pages/Transactions.tsx`
 2. `client/pages/DataAnomalyDetection.tsx`
 3. `client/pages/Irs8949.tsx`
@@ -157,6 +171,7 @@ className={cn(
 12. `client/components/dashboard/dashboard-layout.tsx`
 
 **Pattern Applied**:
+
 ```jsx
 <div className="flex min-h-screen w-full overflow-x-hidden">
   <DashboardSidebar activeItem="..." />
@@ -170,28 +185,33 @@ className={cn(
 ## Responsive Breakpoints
 
 ### Search Bar Width by Breakpoint:
+
 - **< 768px (Mobile)**: 280px max
 - **768px - 1023px (Tablet)**: 384px max (`md:max-w-sm`)
 - **1024px - 1279px (Desktop)**: 448px max (`lg:max-w-md`)
 - **≥ 1280px (Large)**: 512px max (`xl:max-w-lg`)
 
 ### User Profile Visibility:
+
 - **< 1024px**: Avatar only (name and chevron hidden)
 - **≥ 1024px**: Full display (avatar + name + chevron)
 
 ### Header Gaps:
+
 - **< 1024px**: 12px gap (`gap-3`)
 - **≥ 1024px**: 24px gap (`lg:gap-6`)
 
 ## Testing Results
 
 ### Before Fix:
+
 ❌ At 1280px: User name partially cut off
 ❌ At 1024px: User profile area pushed off-screen
 ❌ At 834px (iPad): Severe overlap, horizontal scroll
 ❌ Tables causing page-level horizontal scroll
 
 ### After Fix:
+
 ✅ At 1440px: Full layout visible, all elements accessible
 ✅ At 1280px: Search bar 448px, user profile fully visible
 ✅ At 1024px: Search bar 384px, avatar-only mode works
@@ -203,6 +223,7 @@ className={cn(
 ## Browser Compatibility
 
 Tested and verified on:
+
 - ✅ Chrome 100+ (Desktop & Android)
 - ✅ Firefox 100+
 - ✅ Safari 15+ (Desktop & iOS)
@@ -213,6 +234,7 @@ Tested and verified on:
 ## CSS Properties Used
 
 ### Flexbox Shrinking:
+
 ```css
 min-w-0        /* Allow flex item to shrink below content width */
 flex-1         /* Grow to fill available space */
@@ -220,12 +242,14 @@ flex-shrink-0  /* Prevent item from shrinking (alias: shrink-0) */
 ```
 
 ### Overflow Control:
+
 ```css
 overflow-x-hidden  /* Prevent horizontal scroll */
 overflow-x-auto    /* Allow horizontal scroll (tables only) */
 ```
 
 ### Responsive Utilities:
+
 ```css
 hidden              /* Display: none */
 lg:inline-block    /* Display: inline-block at ≥1024px */
@@ -237,7 +261,9 @@ xl:max-w-lg        /* Max-width: 512px at ≥1280px */
 ## Migration Guide
 
 ### For New Pages:
+
 Always use this pattern:
+
 ```jsx
 <SidebarProvider defaultOpen={true}>
   <div className="flex min-h-screen w-full overflow-x-hidden">
@@ -251,7 +277,9 @@ Always use this pattern:
 ```
 
 ### For Custom Headers:
+
 If creating custom headers, follow these rules:
+
 1. Use `overflow-x-hidden` on header container
 2. Use responsive max-widths for search/input areas
 3. Add `shrink-0` to elements that should never compress
@@ -259,6 +287,7 @@ If creating custom headers, follow these rules:
 5. Hide non-essential text on smaller screens
 
 ### For Content Areas:
+
 1. Always allow flex items to shrink: `min-w-0`
 2. Add `flex-1` for space distribution
 3. Use `overflow-x-auto` only on scrollable containers (tables)
@@ -267,6 +296,7 @@ If creating custom headers, follow these rules:
 ## Common Pitfalls to Avoid
 
 ### ❌ Don't Do:
+
 ```jsx
 // Missing min-w-0 causes overflow
 <SidebarInset className="flex flex-col">
@@ -279,6 +309,7 @@ If creating custom headers, follow these rules:
 ```
 
 ### ✅ Do Instead:
+
 ```jsx
 // Allow shrinking
 <SidebarInset className="flex flex-col min-w-0 flex-1">
@@ -301,6 +332,7 @@ If creating custom headers, follow these rules:
 ## Accessibility
 
 All fixes maintain WCAG 2.1 AA compliance:
+
 - ✅ Touch targets remain ≥44px × 44px
 - ✅ Text remains readable at all breakpoints
 - ✅ Focus indicators visible
@@ -309,7 +341,7 @@ All fixes maintain WCAG 2.1 AA compliance:
 
 ## Future Recommendations
 
-1. **Design System Update**: 
+1. **Design System Update**:
    - Standardize responsive header patterns
    - Create reusable header component with built-in responsiveness
 
@@ -336,6 +368,7 @@ All fixes maintain WCAG 2.1 AA compliance:
 ## Deployment Checklist
 
 Before deploying to production:
+
 - [x] All affected pages tested at breakpoints: 768px, 1024px, 1280px, 1440px
 - [x] Cross-browser testing complete
 - [x] Mobile device testing (iOS/Android) complete
@@ -348,6 +381,7 @@ Before deploying to production:
 ## Rollback Plan
 
 If issues arise in production:
+
 1. Revert commit: `git revert <commit-hash>`
 2. Emergency hotfix available in branch: `hotfix/layout-overlap`
 3. Previous layout restored within 5 minutes
@@ -355,6 +389,7 @@ If issues arise in production:
 ## Support
 
 For questions or issues:
+
 - File GitHub issue with `layout` and `responsive` labels
 - Include viewport width, browser, and screenshot
 - Reference this document: `RESPONSIVE_LAYOUT_FIX.md`

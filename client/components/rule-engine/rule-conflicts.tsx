@@ -9,20 +9,22 @@ const ruleConflicts = [
     icon: AlertTriangle,
     title: "Classification Conflict",
     description: "ETH-BTC Swaps vs Exchange Transfer: 23 rules",
-    details: "3 transactions are affected by both rules with different classifications.",
+    details:
+      "3 transactions are affected by both rules with different classifications.",
     actionLabel: "Resolve",
-    dismissLabel: "Adjust Priority"
+    dismissLabel: "Adjust Priority",
   },
   {
     id: "priority-conflict",
-    type: "warning", 
+    type: "warning",
     icon: Flag,
     title: "Priority Conflict",
     description: "Tag: Mining Income vs Exchange Fees",
-    details: "Both rules have the same priority level and may cause inconsistent results.",
+    details:
+      "Both rules have the same priority level and may cause inconsistent results.",
     actionLabel: "Adjust Priority",
-    dismissLabel: "Ignore"
-  }
+    dismissLabel: "Ignore",
+  },
 ];
 
 const getAlertStyles = (type: string) => {
@@ -42,7 +44,7 @@ const getIconColor = (type: string) => {
   switch (type) {
     case "error":
       return "text-red-500";
-    case "warning": 
+    case "warning":
       return "text-yellow-500";
     case "info":
       return "text-blue-500";
@@ -57,9 +59,14 @@ export function RuleConflicts() {
       {ruleConflicts.map((conflict) => {
         const IconComponent = conflict.icon;
         return (
-          <Alert key={conflict.id} className={`${getAlertStyles(conflict.type)} flex-1 min-w-0`}>
+          <Alert
+            key={conflict.id}
+            className={`${getAlertStyles(conflict.type)} flex-1 min-w-0`}
+          >
             <div className="flex items-start gap-3">
-              <IconComponent className={`h-5 w-5 mt-0.5 shrink-0 ${getIconColor(conflict.type)}`} />
+              <IconComponent
+                className={`h-5 w-5 mt-0.5 shrink-0 ${getIconColor(conflict.type)}`}
+              />
               <div className="flex-1 min-w-0 space-y-2">
                 <div>
                   <h4 className="font-medium">{conflict.title}</h4>
@@ -67,22 +74,12 @@ export function RuleConflicts() {
                     {conflict.description}
                   </AlertDescription>
                 </div>
-                <p className="text-xs opacity-80">
-                  {conflict.details}
-                </p>
+                <p className="text-xs opacity-80">{conflict.details}</p>
                 <div className="flex flex-wrap gap-2 pt-1">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-7 text-xs"
-                  >
+                  <Button size="sm" variant="outline" className="h-7 text-xs">
                     {conflict.actionLabel}
                   </Button>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="h-7 text-xs"
-                  >
+                  <Button size="sm" variant="ghost" className="h-7 text-xs">
                     {conflict.dismissLabel}
                   </Button>
                 </div>

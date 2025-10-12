@@ -186,9 +186,10 @@
     @apply sticky top-0 z-40 bg-background border-b border-border;
   }
   .app-content {
-    @apply flex-1 h-0 bg-background overflow-y-auto overflow-x-hidden max-w-full box-border;
+    @apply flex-1 min-h-0 bg-background overflow-y-auto overflow-x-hidden max-w-full box-border;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
+    overscroll-behavior-x: none;
   }
 
   .btn-no-gap {

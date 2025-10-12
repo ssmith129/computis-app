@@ -142,37 +142,40 @@ export function AnomalyIssueDetails({
   issueId,
   onClose,
 }: AnomalyIssueDetailsProps) {
-  const [selectedTransactions, setSelectedTransactions] = useState<string[]>([]);
+  const [selectedTransactions, setSelectedTransactions] = useState<string[]>(
+    [],
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  
+
   const totalPages = Math.ceil(affectedTransactions.length / itemsPerPage);
   const paginatedTransactions = affectedTransactions.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const handleResolve = () => {
-    toast({ 
-      title: "Issue Resolved", 
-      description: "Volume spike marked as resolved successfully." 
+    toast({
+      title: "Issue Resolved",
+      description: "Volume spike marked as resolved successfully.",
     });
     onClose();
   };
 
   const handleIgnore = () => {
-    toast({ 
-      title: "Issue Ignored", 
-      description: "This anomaly will be hidden from the list." 
+    toast({
+      title: "Issue Ignored",
+      description: "This anomaly will be hidden from the list.",
     });
     onClose();
   };
 
   const handleApplyRecommendation = () => {
-    toast({ 
-      title: "Recommendation Applied", 
-      description: "AI suggestion has been implemented for all affected transactions.",
-      duration: 3000
+    toast({
+      title: "Recommendation Applied",
+      description:
+        "AI suggestion has been implemented for all affected transactions.",
+      duration: 3000,
     });
   };
 
@@ -182,12 +185,7 @@ export function AnomalyIssueDetails({
       <div className="sticky top-0 z-10 bg-background border-b shadow-sm">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={onClose}
-              className="h-9"
-            >
+            <Button variant="ghost" size="sm" onClick={onClose} className="h-9">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back
             </Button>
@@ -252,33 +250,53 @@ export function AnomalyIssueDetails({
             </CardHeader>
             <CardContent className="px-5 pb-5 space-y-3">
               <div className="space-y-1.5">
-                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Type</div>
-                <div className="text-sm font-semibold text-gray-900">{issueData.type}</div>
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                  Type
+                </div>
+                <div className="text-sm font-semibold text-gray-900">
+                  {issueData.type}
+                </div>
               </div>
               <div className="space-y-1.5">
-                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Detected</div>
-                <div className="text-sm text-gray-700">{issueData.detected}</div>
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                  Detected
+                </div>
+                <div className="text-sm text-gray-700">
+                  {issueData.detected}
+                </div>
               </div>
               <div className="space-y-1.5">
-                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Priority</div>
-                <Badge className={`border text-xs font-medium ${getPriorityStyles(issueData.priority)}`}>
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                  Priority
+                </div>
+                <Badge
+                  className={`border text-xs font-medium ${getPriorityStyles(issueData.priority)}`}
+                >
                   {issueData.priority}
                 </Badge>
               </div>
               <div className="space-y-1.5">
-                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">Status</div>
-                <Badge className={`border text-xs font-medium ${getStatusStyles(issueData.status)}`}>
+                <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                  Status
+                </div>
+                <Badge
+                  className={`border text-xs font-medium ${getStatusStyles(issueData.status)}`}
+                >
                   {issueData.status}
                 </Badge>
               </div>
               <div className="pt-2 border-t border-gray-100">
                 <div className="flex items-center justify-between">
                   <div className="text-xs text-gray-500">Affected</div>
-                  <div className="text-sm font-semibold text-gray-900">{issueData.affected}</div>
+                  <div className="text-sm font-semibold text-gray-900">
+                    {issueData.affected}
+                  </div>
                 </div>
                 <div className="flex items-center justify-between mt-2">
                   <div className="text-xs text-gray-500">Asset</div>
-                  <div className="text-sm font-medium text-gray-900">{issueData.asset}</div>
+                  <div className="text-sm font-medium text-gray-900">
+                    {issueData.asset}
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -294,24 +312,36 @@ export function AnomalyIssueDetails({
             </CardHeader>
             <CardContent className="px-5 pb-5 space-y-4">
               <div>
-                <div className="text-xs font-medium text-gray-600 mb-1.5">Analysis</div>
-                <p className="text-sm text-gray-700 leading-relaxed">{issueData.description}</p>
+                <div className="text-xs font-medium text-gray-600 mb-1.5">
+                  Analysis
+                </div>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {issueData.description}
+                </p>
               </div>
               <div>
-                <div className="text-xs font-medium text-gray-600 mb-1.5">Suggested Action</div>
-                <p className="text-sm text-gray-700 leading-relaxed">{issueData.suggestion}</p>
+                <div className="text-xs font-medium text-gray-600 mb-1.5">
+                  Suggested Action
+                </div>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {issueData.suggestion}
+                </p>
               </div>
               <div className="pt-3 border-t border-blue-100">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-600">Confidence Score</span>
+                  <span className="text-xs font-medium text-gray-600">
+                    Confidence Score
+                  </span>
                   <div className="flex items-center gap-2">
                     <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-green-500 rounded-full transition-all" 
+                      <div
+                        className="h-full bg-green-500 rounded-full transition-all"
                         style={{ width: `${issueData.confidence}%` }}
                       />
                     </div>
-                    <span className="text-sm font-bold text-gray-900">{issueData.confidence}%</span>
+                    <span className="text-sm font-bold text-gray-900">
+                      {issueData.confidence}%
+                    </span>
                   </div>
                 </div>
               </div>
@@ -321,7 +351,9 @@ export function AnomalyIssueDetails({
           {/* Quick Actions Card - 50% on desktop, spans 2 columns */}
           <Card className="md:col-span-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardHeader className="pb-4 px-5 pt-5">
-              <CardTitle className="text-base font-semibold text-gray-900">Quick Actions</CardTitle>
+              <CardTitle className="text-base font-semibold text-gray-900">
+                Quick Actions
+              </CardTitle>
             </CardHeader>
             <CardContent className="px-5 pb-5">
               <div className="grid grid-cols-2 gap-3">
@@ -330,14 +362,22 @@ export function AnomalyIssueDetails({
                   return (
                     <button
                       key={index}
-                      className={`flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-md ${action.color.split(' ')[1]} ${action.color.split(' ')[2]}`}
-                      onClick={() => toast({ title: `${action.title} initiated` })}
+                      className={`flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 transition-all hover:scale-105 hover:shadow-md ${action.color.split(" ")[1]} ${action.color.split(" ")[2]}`}
+                      onClick={() =>
+                        toast({ title: `${action.title} initiated` })
+                      }
                       aria-label={action.title}
                     >
-                      <IconComponent className={`h-5 w-5 ${action.color.split(' ')[0]}`} />
+                      <IconComponent
+                        className={`h-5 w-5 ${action.color.split(" ")[0]}`}
+                      />
                       <div className="text-center">
-                        <div className="text-xs font-semibold text-gray-900">{action.title}</div>
-                        <div className="text-xs text-gray-500 mt-0.5">{action.description}</div>
+                        <div className="text-xs font-semibold text-gray-900">
+                          {action.title}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {action.description}
+                        </div>
                       </div>
                     </button>
                   );
@@ -356,7 +396,8 @@ export function AnomalyIssueDetails({
                   Affected Transactions
                 </CardTitle>
                 <p className="text-sm text-gray-500 mt-1">
-                  Showing {paginatedTransactions.length} of {affectedTransactions.length} transactions
+                  Showing {paginatedTransactions.length} of{" "}
+                  {affectedTransactions.length} transactions
                 </p>
               </div>
               <Button variant="outline" size="sm" className="h-9">
@@ -370,17 +411,29 @@ export function AnomalyIssueDetails({
               <Table>
                 <TableHeader>
                   <TableRow className="bg-gray-50">
-                    <TableHead className="text-xs font-semibold text-gray-600 px-5">Date</TableHead>
-                    <TableHead className="text-xs font-semibold text-gray-600">Type</TableHead>
-                    <TableHead className="text-xs font-semibold text-gray-600">Amount</TableHead>
-                    <TableHead className="text-xs font-semibold text-gray-600">FMV (USD)</TableHead>
-                    <TableHead className="text-xs font-semibold text-gray-600">Classification</TableHead>
-                    <TableHead className="text-xs font-semibold text-gray-600 text-right px-5">Actions</TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600 px-5">
+                      Date
+                    </TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">
+                      Type
+                    </TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">
+                      Amount
+                    </TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">
+                      FMV (USD)
+                    </TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600">
+                      Classification
+                    </TableHead>
+                    <TableHead className="text-xs font-semibold text-gray-600 text-right px-5">
+                      Actions
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {paginatedTransactions.map((transaction) => (
-                    <TableRow 
+                    <TableRow
                       key={transaction.id}
                       className="hover:bg-gray-50 transition-colors"
                     >
@@ -426,29 +479,33 @@ export function AnomalyIssueDetails({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
                 className="h-9"
               >
                 Previous
               </Button>
               <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Button
-                    key={page}
-                    variant={currentPage === page ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setCurrentPage(page)}
-                    className="h-9 w-9 p-0"
-                  >
-                    {page}
-                  </Button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <Button
+                      key={page}
+                      variant={currentPage === page ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setCurrentPage(page)}
+                      className="h-9 w-9 p-0"
+                    >
+                      {page}
+                    </Button>
+                  ),
+                )}
               </div>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
                 disabled={currentPage === totalPages}
                 className="h-9"
               >

@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
   DialogDescription,
-  DialogFooter
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -47,17 +47,27 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
   const [ruleType, setRuleType] = useState("Merge");
   const [priority, setPriority] = useState("Low");
   const [logicalOperator, setLogicalOperator] = useState("AND");
-  
+
   const [conditions, setConditions] = useState<Condition[]>([
     { id: "1", field: "Transaction", operator: "equals", value: "Receive" },
-    { id: "2", field: "Transaction", operator: "equals", value: "Bitcoin (BTC)" },
-    { id: "3", field: "Transaction", operator: "equals", value: "mining-pool" }
+    {
+      id: "2",
+      field: "Transaction",
+      operator: "equals",
+      value: "Bitcoin (BTC)",
+    },
+    { id: "3", field: "Transaction", operator: "equals", value: "mining-pool" },
   ]);
 
   const [actions, setActions] = useState<Action[]>([
     { id: "1", type: "Set Classification", classification: "Transfer" },
-    { id: "2", type: "Set Classification", classification: "Mining", tags: ["Income"] },
-    { id: "3", type: "Set Classification", status: "Pending" }
+    {
+      id: "2",
+      type: "Set Classification",
+      classification: "Mining",
+      tags: ["Income"],
+    },
+    { id: "3", type: "Set Classification", status: "Pending" },
   ]);
 
   const addCondition = () => {
@@ -65,42 +75,52 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
       id: Date.now().toString(),
       field: "Transaction",
       operator: "equals",
-      value: ""
+      value: "",
     };
     setConditions([...conditions, newCondition]);
   };
 
   const removeCondition = (id: string) => {
-    setConditions(conditions.filter(c => c.id !== id));
+    setConditions(conditions.filter((c) => c.id !== id));
   };
 
   const updateCondition = (id: string, updates: Partial<Condition>) => {
-    setConditions(conditions.map(c => 
-      c.id === id ? { ...c, ...updates } : c
-    ));
+    setConditions(
+      conditions.map((c) => (c.id === id ? { ...c, ...updates } : c)),
+    );
   };
 
   const addAction = () => {
     const newAction: Action = {
       id: Date.now().toString(),
       type: "Set Classification",
-      classification: ""
+      classification: "",
     };
     setActions([...actions, newAction]);
   };
 
   const removeAction = (id: string) => {
-    setActions(actions.filter(a => a.id !== id));
+    setActions(actions.filter((a) => a.id !== id));
   };
 
   const updateAction = (id: string, updates: Partial<Action>) => {
-    setActions(actions.map(a => 
-      a.id === id ? { ...a, ...updates } : a
-    ));
+    setActions(actions.map((a) => (a.id === id ? { ...a, ...updates } : a)));
   };
 
-  const conditionFields = ["Transaction", "Asset", "Amount", "Date", "Exchange"];
-  const operators = ["equals", "contains", "greater than", "less than", "starts with"];
+  const conditionFields = [
+    "Transaction",
+    "Asset",
+    "Amount",
+    "Date",
+    "Exchange",
+  ];
+  const operators = [
+    "equals",
+    "contains",
+    "greater than",
+    "less than",
+    "starts with",
+  ];
   const actionTypes = ["Set Classification", "Add Tag", "Set Status"];
   const classifications = ["Transfer", "Mining", "Income", "Expense", "Trade"];
   const statuses = ["Pending", "Confirmed", "Flagged"];
@@ -162,11 +182,18 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-semibold">Conditions</h3>
-                <p className="text-sm text-muted-foreground">Define when this rule should be applied</p>
+                <p className="text-sm text-muted-foreground">
+                  Define when this rule should be applied
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <Label htmlFor="logicalOperator" className="text-sm">Logical Operator:</Label>
-                <Select value={logicalOperator} onValueChange={setLogicalOperator}>
+                <Label htmlFor="logicalOperator" className="text-sm">
+                  Logical Operator:
+                </Label>
+                <Select
+                  value={logicalOperator}
+                  onValueChange={setLogicalOperator}
+                >
                   <SelectTrigger className="w-20">
                     <SelectValue />
                   </SelectTrigger>
@@ -182,30 +209,38 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
               {conditions.map((condition, index) => (
                 <div key={condition.id} className="flex items-center gap-3">
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <Select 
-                      value={condition.field} 
-                      onValueChange={(value) => updateCondition(condition.id, { field: value })}
+                    <Select
+                      value={condition.field}
+                      onValueChange={(value) =>
+                        updateCondition(condition.id, { field: value })
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {conditionFields.map(field => (
-                          <SelectItem key={field} value={field}>{field}</SelectItem>
+                        {conditionFields.map((field) => (
+                          <SelectItem key={field} value={field}>
+                            {field}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
 
-                    <Select 
-                      value={condition.operator} 
-                      onValueChange={(value) => updateCondition(condition.id, { operator: value })}
+                    <Select
+                      value={condition.operator}
+                      onValueChange={(value) =>
+                        updateCondition(condition.id, { operator: value })
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {operators.map(op => (
-                          <SelectItem key={op} value={op}>{op}</SelectItem>
+                        {operators.map((op) => (
+                          <SelectItem key={op} value={op}>
+                            {op}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -214,9 +249,11 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                       {condition.value && (
                         <Badge variant="outline" className="shrink-0">
                           {condition.value}
-                          <X 
-                            className="ml-1 h-3 w-3 cursor-pointer" 
-                            onClick={() => updateCondition(condition.id, { value: "" })}
+                          <X
+                            className="ml-1 h-3 w-3 cursor-pointer"
+                            onClick={() =>
+                              updateCondition(condition.id, { value: "" })
+                            }
                           />
                         </Badge>
                       )}
@@ -225,20 +262,24 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                         value=""
                         onChange={(e) => {
                           if (e.target.value) {
-                            updateCondition(condition.id, { value: e.target.value });
+                            updateCondition(condition.id, {
+                              value: e.target.value,
+                            });
                             e.target.value = "";
                           }
                         }}
                         onKeyDown={(e) => {
                           if (e.key === "Enter" && e.currentTarget.value) {
-                            updateCondition(condition.id, { value: e.currentTarget.value });
+                            updateCondition(condition.id, {
+                              value: e.currentTarget.value,
+                            });
                             e.currentTarget.value = "";
                           }
                         }}
                       />
                     </div>
                   </div>
-                  
+
                   <Button
                     variant="ghost"
                     size="sm"
@@ -263,23 +304,29 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
           <div className="space-y-4">
             <div>
               <h3 className="text-lg font-semibold">Actions</h3>
-              <p className="text-sm text-muted-foreground">Define what happens when conditions are met</p>
+              <p className="text-sm text-muted-foreground">
+                Define what happens when conditions are met
+              </p>
             </div>
 
             <div className="space-y-3">
               {actions.map((action) => (
                 <div key={action.id} className="flex items-center gap-3">
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <Select 
-                      value={action.type} 
-                      onValueChange={(value) => updateAction(action.id, { type: value })}
+                    <Select
+                      value={action.type}
+                      onValueChange={(value) =>
+                        updateAction(action.id, { type: value })
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {actionTypes.map(type => (
-                          <SelectItem key={type} value={type}>{type}</SelectItem>
+                        {actionTypes.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -290,8 +337,11 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                           {action.classification}
                         </Badge>
                       )}
-                      {action.tags?.map(tag => (
-                        <Badge key={tag} className="bg-green-100 text-green-800">
+                      {action.tags?.map((tag) => (
+                        <Badge
+                          key={tag}
+                          className="bg-green-100 text-green-800"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -300,41 +350,49 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                           {action.status}
                         </Badge>
                       )}
-                      
+
                       {action.type === "Set Classification" && (
-                        <Select 
-                          value={action.classification || ""} 
-                          onValueChange={(value) => updateAction(action.id, { classification: value })}
+                        <Select
+                          value={action.classification || ""}
+                          onValueChange={(value) =>
+                            updateAction(action.id, { classification: value })
+                          }
                         >
                           <SelectTrigger className="w-40">
                             <SelectValue placeholder="Select..." />
                           </SelectTrigger>
                           <SelectContent>
-                            {classifications.map(cls => (
-                              <SelectItem key={cls} value={cls}>{cls}</SelectItem>
+                            {classifications.map((cls) => (
+                              <SelectItem key={cls} value={cls}>
+                                {cls}
+                              </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
-                      
+
                       {action.type === "Set Status" && (
-                        <Select 
-                          value={action.status || ""} 
-                          onValueChange={(value) => updateAction(action.id, { status: value })}
+                        <Select
+                          value={action.status || ""}
+                          onValueChange={(value) =>
+                            updateAction(action.id, { status: value })
+                          }
                         >
                           <SelectTrigger className="w-32">
                             <SelectValue placeholder="Select..." />
                           </SelectTrigger>
                           <SelectContent>
-                            {statuses.map(status => (
-                              <SelectItem key={status} value={status}>{status}</SelectItem>
+                            {statuses.map((status) => (
+                              <SelectItem key={status} value={status}>
+                                {status}
+                              </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       )}
                     </div>
                   </div>
-                  
+
                   <Button
                     variant="ghost"
                     size="sm"
@@ -360,7 +418,9 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-semibold">Preview Impact</h3>
-                <p className="text-sm text-muted-foreground">23 transactions will be affected by this rule</p>
+                <p className="text-sm text-muted-foreground">
+                  23 transactions will be affected by this rule
+                </p>
               </div>
               <Button variant="outline" size="sm">
                 View Transactions
@@ -375,7 +435,9 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div>
-                    <div className="text-sm text-muted-foreground">Classification:</div>
+                    <div className="text-sm text-muted-foreground">
+                      Classification:
+                    </div>
                     <div className="text-sm">Unclassified (18)</div>
                     <div className="text-sm">Transfer (5)</div>
                   </div>
@@ -392,7 +454,10 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
               </Card>
 
               {/* Arrow */}
-              <div className="flex items-center justify-center shrink-0 self-center" aria-label="transforms to">
+              <div
+                className="flex items-center justify-center shrink-0 self-center"
+                aria-label="transforms to"
+              >
                 <ArrowRight className="h-8 w-8 text-primary" />
               </div>
 
@@ -403,12 +468,16 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div>
-                    <div className="text-sm text-muted-foreground">Classification:</div>
+                    <div className="text-sm text-muted-foreground">
+                      Classification:
+                    </div>
                     <div className="text-sm text-green-600">Income (23)</div>
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Tags:</div>
-                    <div className="text-sm text-green-600">Mining, Income (23)</div>
+                    <div className="text-sm text-green-600">
+                      Mining, Income (23)
+                    </div>
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Status:</div>
@@ -424,9 +493,7 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button onClick={() => onOpenChange(false)}>
-            Save Rule
-          </Button>
+          <Button onClick={() => onOpenChange(false)}>Save Rule</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

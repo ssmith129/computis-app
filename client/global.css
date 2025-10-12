@@ -364,4 +364,43 @@
       transform: scale(0.98);
     }
   }
+
+  /* Tablet-specific optimizations (768px-1024px) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .tablet-stack {
+      flex-direction: column;
+    }
+    .tablet-full {
+      width: 100%;
+    }
+    .tablet-spacing {
+      padding: 1rem;
+    }
+    /* Ensure header stays visible on tablet scroll */
+    .app-header {
+      position: -webkit-sticky;
+      position: sticky;
+      will-change: transform;
+    }
+  }
+
+  /* Portrait tablet optimizations (768px-834px) */
+  @media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
+    .tablet-portrait-hide {
+      display: none;
+    }
+    .tablet-portrait-stack {
+      flex-direction: column;
+    }
+  }
+
+  /* Landscape tablet optimizations (834px-1024px) */
+  @media (min-width: 834px) and (max-width: 1024px) and (orientation: landscape) {
+    .tablet-landscape-row {
+      flex-direction: row;
+    }
+    .tablet-landscape-spacing {
+      padding: 1.5rem;
+    }
+  }
 }

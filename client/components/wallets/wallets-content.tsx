@@ -85,7 +85,7 @@ const getStatusColor = (status: string) => {
   }
 };
 
-function WalletCard({ wallet }: { wallet: typeof mockWallets[0] }) {
+function WalletCard({ wallet }: { wallet: (typeof mockWallets)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

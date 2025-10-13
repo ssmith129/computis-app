@@ -1,1014 +1,1443 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Computis Design System - Interactive Reference</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            /* Design Tokens - Colors */
-            --primary: hsl(218, 91%, 48%);
-            --primary-foreground: hsl(0, 0%, 100%);
-            --secondary: hsl(210, 40%, 96.1%);
-            --secondary-foreground: hsl(0, 0%, 10%);
-            --background: hsl(0, 0%, 97%);
-            --foreground: hsl(0, 0%, 10%);
-            --muted: hsl(210, 40%, 96.1%);
-            --muted-foreground: hsl(215.4, 16.3%, 46.9%);
-            --accent: hsl(210, 40%, 96.1%);
-            --border: hsl(214.3, 31.8%, 91.4%);
-            
-            /* Status Colors */
-            --success: hsl(142, 76%, 36%);
-            --warning: hsl(32, 95%, 44%);
-            --error: hsl(0, 84%, 60%);
-            --info: hsl(201, 96%, 32%);
-            
-            /* Typography */
-            --font-sans: "Noto Sans", system-ui, sans-serif;
-            --font-mono: "JetBrains Mono", "Fira Code", monospace;
-            
-            /* Spacing */
-            --space-1: 0.5rem;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-6: 3rem;
-            --space-8: 4rem;
-            
-            /* Border Radius */
-            --radius: 0.5rem;
-            
-            /* Elevation */
-            --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-            --elevation-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        }
+      :root {
+        /* Design Tokens - Colors */
+        --primary: hsl(218, 91%, 48%);
+        --primary-foreground: hsl(0, 0%, 100%);
+        --secondary: hsl(210, 40%, 96.1%);
+        --secondary-foreground: hsl(0, 0%, 10%);
+        --background: hsl(0, 0%, 97%);
+        --foreground: hsl(0, 0%, 10%);
+        --muted: hsl(210, 40%, 96.1%);
+        --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+        --accent: hsl(210, 40%, 96.1%);
+        --border: hsl(214.3, 31.8%, 91.4%);
 
-        body {
-            font-family: var(--font-sans);
-            background: var(--background);
-            color: var(--foreground);
-            line-height: 1.6;
-        }
+        /* Status Colors */
+        --success: hsl(142, 76%, 36%);
+        --warning: hsl(32, 95%, 44%);
+        --error: hsl(0, 84%, 60%);
+        --info: hsl(201, 96%, 32%);
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--space-2);
-        }
+        /* Typography */
+        --font-sans: "Noto Sans", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-        /* Navigation */
-        .nav {
-            position: sticky;
-            top: 0;
-            background: var(--primary);
-            color: var(--primary-foreground);
-            padding: var(--space-2) 0;
-            box-shadow: var(--elevation-2);
-            z-index: 100;
-        }
+        /* Spacing */
+        --space-1: 0.5rem;
+        --space-2: 1rem;
+        --space-3: 1.5rem;
+        --space-4: 2rem;
+        --space-6: 3rem;
+        --space-8: 4rem;
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Border Radius */
+        --radius: 0.5rem;
 
-        .nav-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+        /* Elevation */
+        --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --elevation-2:
+          0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        --elevation-3:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      }
 
+      body {
+        font-family: var(--font-sans);
+        background: var(--background);
+        color: var(--foreground);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 var(--space-2);
+      }
+
+      /* Navigation */
+      .nav {
+        position: sticky;
+        top: 0;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        padding: var(--space-2) 0;
+        box-shadow: var(--elevation-2);
+        z-index: 100;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--space-3);
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--primary-foreground);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        transition: background 0.2s;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          hsl(218, 91%, 38%) 100%
+        );
+        color: var(--primary-foreground);
+        padding: var(--space-8) 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: var(--space-2);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Section */
+      .section {
+        padding: var(--space-6) 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: var(--space-4);
+        padding-bottom: var(--space-2);
+        border-bottom: 3px solid var(--primary);
+      }
+
+      .section-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: var(--space-4);
+        margin-bottom: var(--space-2);
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      /* Card */
+      .card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--space-3);
+        box-shadow: var(--elevation-2);
+        transition: box-shadow 0.2s;
+      }
+
+      .card:hover {
+        box-shadow: var(--elevation-3);
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: var(--space-2);
+      }
+
+      /* Color Swatch */
+      .color-swatch {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-2);
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      .color-box {
+        width: 60px;
+        height: 60px;
+        border-radius: calc(var(--radius) - 2px);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+      }
+
+      .color-info {
+        flex: 1;
+      }
+
+      .color-name {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .color-value {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+
+      /* Button Showcase */
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1rem;
+        border-radius: var(--radius);
+        font-weight: 500;
+        font-size: 0.875rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+      }
+
+      .button-default {
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .button-default:hover {
+        background: hsl(218, 91%, 43%);
+      }
+
+      .button-secondary {
+        background: var(--secondary);
+        color: var(--secondary-foreground);
+      }
+
+      .button-outline {
+        background: transparent;
+        color: var(--foreground);
+        border: 1px solid var(--border);
+      }
+
+      .button-destructive {
+        background: var(--error);
+        color: white;
+      }
+
+      .button-success {
+        background: var(--success);
+        color: white;
+      }
+
+      /* Typography Showcase */
+      .typography-sample {
+        padding: var(--space-3);
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+
+      /* Spacing Showcase */
+      .spacing-box {
+        background: var(--primary);
+        border-radius: var(--radius);
+        color: var(--primary-foreground);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+      }
+
+      /* Icon Grid */
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--space-2);
+      }
+
+      .icon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-1);
+        padding: var(--space-2);
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        text-align: center;
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      /* Component Preview */
+      .component-preview {
+        background: white;
+        padding: var(--space-4);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: var(--space-3);
+      }
+
+      .code-block {
+        background: hsl(220, 13%, 18%);
+        color: hsl(220, 14%, 96%);
+        padding: var(--space-3);
+        border-radius: var(--radius);
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        overflow-x: auto;
+      }
+
+      /* Table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--elevation-2);
+      }
+
+      th,
+      td {
+        padding: var(--space-2);
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: var(--muted);
+        font-weight: 600;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Badge */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .badge-default {
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .badge-success {
+        background: var(--success);
+        color: white;
+      }
+
+      .badge-warning {
+        background: var(--warning);
+        color: hsl(0, 0%, 10%);
+      }
+
+      .badge-error {
+        background: var(--error);
+        color: white;
+      }
+
+      /* Accessibility */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .nav-links {
-            display: flex;
-            gap: var(--space-3);
-            list-style: none;
+          display: none;
         }
 
-        .nav-links a {
-            color: var(--primary-foreground);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-            transition: background 0.2s;
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
         }
+      }
 
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+      /* Stats */
+      .stat-card {
+        background: white;
+        padding: var(--space-4);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--elevation-2);
+      }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, hsl(218, 91%, 38%) 100%);
-            color: var(--primary-foreground);
-            padding: var(--space-8) 0;
-            text-align: center;
-        }
+      .stat-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: var(--space-2);
-        }
+      .stat-label {
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+      }
 
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Section */
-        .section {
-            padding: var(--space-6) 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: var(--space-4);
-            padding-bottom: var(--space-2);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .section-subtitle {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: var(--space-4);
-            margin-bottom: var(--space-2);
-        }
-
-        /* Grid */
-        .grid {
-            display: grid;
-            gap: var(--space-3);
-        }
-
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-
-        /* Card */
-        .card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: var(--space-3);
-            box-shadow: var(--elevation-2);
-            transition: box-shadow 0.2s;
-        }
-
-        .card:hover {
-            box-shadow: var(--elevation-3);
-        }
-
-        .card-title {
-            font-weight: 600;
-            margin-bottom: var(--space-2);
-        }
-
-        /* Color Swatch */
-        .color-swatch {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-2);
-            background: white;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-        }
-
-        .color-box {
-            width: 60px;
-            height: 60px;
-            border-radius: calc(var(--radius) - 2px);
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-        }
-
-        .color-info {
-            flex: 1;
-        }
-
-        .color-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .color-value {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-        }
-
-        /* Button Showcase */
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            font-size: 0.875rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-
-        .button-default {
-            background: var(--primary);
-            color: var(--primary-foreground);
-        }
-
-        .button-default:hover {
-            background: hsl(218, 91%, 43%);
-        }
-
-        .button-secondary {
-            background: var(--secondary);
-            color: var(--secondary-foreground);
-        }
-
-        .button-outline {
-            background: transparent;
-            color: var(--foreground);
-            border: 1px solid var(--border);
-        }
-
-        .button-destructive {
-            background: var(--error);
-            color: white;
-        }
-
-        .button-success {
-            background: var(--success);
-            color: white;
-        }
-
-        /* Typography Showcase */
-        .typography-sample {
-            padding: var(--space-3);
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-        }
-
-        /* Spacing Showcase */
-        .spacing-box {
-            background: var(--primary);
-            border-radius: var(--radius);
-            color: var(--primary-foreground);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        /* Icon Grid */
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: var(--space-2);
-        }
-
-        .icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-1);
-            padding: var(--space-2);
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            text-align: center;
-        }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Component Preview */
-        .component-preview {
-            background: white;
-            padding: var(--space-4);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-3);
-        }
-
-        .code-block {
-            background: hsl(220, 13%, 18%);
-            color: hsl(220, 14%, 96%);
-            padding: var(--space-3);
-            border-radius: var(--radius);
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            overflow-x: auto;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--elevation-2);
-        }
-
-        th, td {
-            padding: var(--space-2);
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            background: var(--muted);
-            font-weight: 600;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Badge */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .badge-default {
-            background: var(--primary);
-            color: var(--primary-foreground);
-        }
-
-        .badge-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .badge-warning {
-            background: var(--warning);
-            color: hsl(0, 0%, 10%);
-        }
-
-        .badge-error {
-            background: var(--error);
-            color: white;
-        }
-
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .grid-2, .grid-3, .grid-4 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Stats */
-        .stat-card {
-            background: white;
-            padding: var(--space-4);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--elevation-2);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--foreground);
-            color: var(--background);
-            padding: var(--space-4) 0;
-            margin-top: var(--space-8);
-            text-align: center;
-        }
+      /* Footer */
+      .footer {
+        background: var(--foreground);
+        color: var(--background);
+        padding: var(--space-4) 0;
+        margin-top: var(--space-8);
+        text-align: center;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-title">Computis Design System</div>
-                <ul class="nav-links">
-                    <li><a href="#tokens">Tokens</a></li>
-                    <li><a href="#components">Components</a></li>
-                    <li><a href="#patterns">Patterns</a></li>
-                    <li><a href="#accessibility">Accessibility</a></li>
-                </ul>
-            </div>
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-title">Computis Design System</div>
+          <ul class="nav-links">
+            <li><a href="#tokens">Tokens</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#patterns">Patterns</a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <h1>Computis Design System</h1>
-            <p>A comprehensive design system for crypto tax preparation applications, built with React, TypeScript, and Tailwind CSS.</p>
-        </div>
+      <div class="container">
+        <h1>Computis Design System</h1>
+        <p>
+          A comprehensive design system for crypto tax preparation applications,
+          built with React, TypeScript, and Tailwind CSS.
+        </p>
+      </div>
     </section>
 
     <!-- Overview Stats -->
     <section class="section">
-        <div class="container">
-            <div class="grid grid-4">
-                <div class="stat-card">
-                    <div class="stat-value">53</div>
-                    <div class="stat-label">UI Components</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">95%</div>
-                    <div class="stat-label">Target Accessibility</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">40+</div>
-                    <div class="stat-label">Design Tokens</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">Core Principles</div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="grid grid-4">
+          <div class="stat-card">
+            <div class="stat-value">53</div>
+            <div class="stat-label">UI Components</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">95%</div>
+            <div class="stat-label">Target Accessibility</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">40+</div>
+            <div class="stat-label">Design Tokens</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">6</div>
+            <div class="stat-label">Core Principles</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Design Principles -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Design Principles</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 class="card-title">🎯 Accessibility Without Compromise</h3>
-                    <p>Every user deserves full access to tax preparation tools. WCAG 2.1 AA compliance minimum with keyboard navigation, screen reader support, and high contrast modes.</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">📱 Mobile-First Financial Clarity</h3>
-                    <p>Complex tax data must be clear on any device. Design for 320px screens first, scale up with responsive typography and progressive enhancement.</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">🔍 Progressive Disclosure</h3>
-                    <p>Show what's needed, when it's needed. Multi-step forms, collapsible advanced options, and contextual help reduce cognitive load.</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">🔒 Trust Through Transparency</h3>
-                    <p>Users must understand and trust every calculation. Clear validation, audit trails, and confirmation dialogs build confidence.</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">⚡ Performance as a Feature</h3>
-                    <p>Speed builds confidence in professional tools. Optimized bundles, virtualization for large datasets, and instant responsiveness.</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">🎨 Consistent by Default</h3>
-                    <p>Predictability reduces cognitive load. Single source of truth for components with standardized patterns.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Design Principles</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 class="card-title">🎯 Accessibility Without Compromise</h3>
+            <p>
+              Every user deserves full access to tax preparation tools. WCAG 2.1
+              AA compliance minimum with keyboard navigation, screen reader
+              support, and high contrast modes.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">📱 Mobile-First Financial Clarity</h3>
+            <p>
+              Complex tax data must be clear on any device. Design for 320px
+              screens first, scale up with responsive typography and progressive
+              enhancement.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">🔍 Progressive Disclosure</h3>
+            <p>
+              Show what's needed, when it's needed. Multi-step forms,
+              collapsible advanced options, and contextual help reduce cognitive
+              load.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">🔒 Trust Through Transparency</h3>
+            <p>
+              Users must understand and trust every calculation. Clear
+              validation, audit trails, and confirmation dialogs build
+              confidence.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">⚡ Performance as a Feature</h3>
+            <p>
+              Speed builds confidence in professional tools. Optimized bundles,
+              virtualization for large datasets, and instant responsiveness.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">🎨 Consistent by Default</h3>
+            <p>
+              Predictability reduces cognitive load. Single source of truth for
+              components with standardized patterns.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Design Tokens: Colors -->
     <section id="tokens" class="section">
-        <div class="container">
-            <h2 class="section-title">Design Tokens: Colors</h2>
-            
-            <h3 class="section-subtitle">Primary Colors</h3>
-            <div class="grid grid-2">
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(218, 91%, 48%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Primary</div>
-                        <div class="color-value">hsl(218, 91%, 48%) / #0F65E5</div>
-                        <div class="color-value" style="margin-top: 0.25rem;">Contrast: 4.8:1 on white ✅</div>
-                    </div>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(210, 40%, 96.1%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Secondary</div>
-                        <div class="color-value">hsl(210, 40%, 96.1%)</div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Design Tokens: Colors</h2>
 
-            <h3 class="section-subtitle">Semantic Colors</h3>
-            <div class="grid grid-4">
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(142, 76%, 36%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Success</div>
-                        <div class="color-value">hsl(142, 76%, 36%)</div>
-                    </div>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(32, 95%, 44%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Warning</div>
-                        <div class="color-value">hsl(32, 95%, 44%)</div>
-                    </div>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(0, 84%, 60%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Error</div>
-                        <div class="color-value">hsl(0, 84%, 60%)</div>
-                    </div>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-box" style="background: hsl(201, 96%, 32%);"></div>
-                    <div class="color-info">
-                        <div class="color-name">Info</div>
-                        <div class="color-value">hsl(201, 96%, 32%)</div>
-                    </div>
-                </div>
+        <h3 class="section-subtitle">Primary Colors</h3>
+        <div class="grid grid-2">
+          <div class="color-swatch">
+            <div class="color-box" style="background: hsl(218, 91%, 48%)"></div>
+            <div class="color-info">
+              <div class="color-name">Primary</div>
+              <div class="color-value">hsl(218, 91%, 48%) / #0F65E5</div>
+              <div class="color-value" style="margin-top: 0.25rem">
+                Contrast: 4.8:1 on white ✅
+              </div>
             </div>
+          </div>
+          <div class="color-swatch">
+            <div
+              class="color-box"
+              style="background: hsl(210, 40%, 96.1%)"
+            ></div>
+            <div class="color-info">
+              <div class="color-name">Secondary</div>
+              <div class="color-value">hsl(210, 40%, 96.1%)</div>
+            </div>
+          </div>
         </div>
+
+        <h3 class="section-subtitle">Semantic Colors</h3>
+        <div class="grid grid-4">
+          <div class="color-swatch">
+            <div class="color-box" style="background: hsl(142, 76%, 36%)"></div>
+            <div class="color-info">
+              <div class="color-name">Success</div>
+              <div class="color-value">hsl(142, 76%, 36%)</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: hsl(32, 95%, 44%)"></div>
+            <div class="color-info">
+              <div class="color-name">Warning</div>
+              <div class="color-value">hsl(32, 95%, 44%)</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: hsl(0, 84%, 60%)"></div>
+            <div class="color-info">
+              <div class="color-name">Error</div>
+              <div class="color-value">hsl(0, 84%, 60%)</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: hsl(201, 96%, 32%)"></div>
+            <div class="color-info">
+              <div class="color-name">Info</div>
+              <div class="color-value">hsl(201, 96%, 32%)</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Typography -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Typography</h2>
-            <div class="typography-sample">
-                <h1 style="font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem); margin-bottom: 1rem;">Heading 1 - Page Title</h1>
-                <h2 style="font-size: clamp(1.5rem, 1.1rem + 0.9vw, 1.875rem); margin-bottom: 1rem;">Heading 2 - Section Title</h2>
-                <h3 style="font-size: clamp(1.25rem, 1rem + 0.6vw, 1.5rem); margin-bottom: 1rem;">Heading 3 - Subsection</h3>
-                <h4 style="font-size: clamp(1.125rem, 0.95rem + 0.4vw, 1.25rem); margin-bottom: 1rem;">Heading 4 - Minor Heading</h4>
-                <p style="margin-bottom: 1rem;">Body text: The quick brown fox jumps over the lazy dog. This is how regular paragraph text appears in the application with proper line height for comfortable reading.</p>
-                <p style="font-size: 0.875rem; color: var(--muted-foreground);">Small text: Used for captions, help text, and secondary information.</p>
-            </div>
-
-            <h3 class="section-subtitle">Font Families</h3>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h4 class="card-title" style="font-family: var(--font-sans);">Noto Sans (Primary)</h4>
-                    <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title" style="font-family: var(--font-mono);">JetBrains Mono (Code)</h4>
-                    <p style="font-family: var(--font-mono);">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 (){} []</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Typography</h2>
+        <div class="typography-sample">
+          <h1
+            style="
+              font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem);
+              margin-bottom: 1rem;
+            "
+          >
+            Heading 1 - Page Title
+          </h1>
+          <h2
+            style="
+              font-size: clamp(1.5rem, 1.1rem + 0.9vw, 1.875rem);
+              margin-bottom: 1rem;
+            "
+          >
+            Heading 2 - Section Title
+          </h2>
+          <h3
+            style="
+              font-size: clamp(1.25rem, 1rem + 0.6vw, 1.5rem);
+              margin-bottom: 1rem;
+            "
+          >
+            Heading 3 - Subsection
+          </h3>
+          <h4
+            style="
+              font-size: clamp(1.125rem, 0.95rem + 0.4vw, 1.25rem);
+              margin-bottom: 1rem;
+            "
+          >
+            Heading 4 - Minor Heading
+          </h4>
+          <p style="margin-bottom: 1rem">
+            Body text: The quick brown fox jumps over the lazy dog. This is how
+            regular paragraph text appears in the application with proper line
+            height for comfortable reading.
+          </p>
+          <p style="font-size: 0.875rem; color: var(--muted-foreground)">
+            Small text: Used for captions, help text, and secondary information.
+          </p>
         </div>
+
+        <h3 class="section-subtitle">Font Families</h3>
+        <div class="grid grid-2">
+          <div class="card">
+            <h4 class="card-title" style="font-family: var(--font-sans)">
+              Noto Sans (Primary)
+            </h4>
+            <p>
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789
+            </p>
+          </div>
+          <div class="card">
+            <h4 class="card-title" style="font-family: var(--font-mono)">
+              JetBrains Mono (Code)
+            </h4>
+            <p style="font-family: var(--font-mono)">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789
+              (){} []
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Spacing -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Spacing System</h2>
-            <p style="margin-bottom: var(--space-3); color: var(--muted-foreground);">8pt base grid system with semantic tokens</p>
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="spacing-box" style="height: 8px;">8px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-1 / 0.5rem</p>
-                </div>
-                <div class="card">
-                    <div class="spacing-box" style="height: 16px;">16px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-2 / 1rem</p>
-                </div>
-                <div class="card">
-                    <div class="spacing-box" style="height: 24px;">24px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-3 / 1.5rem</p>
-                </div>
-                <div class="card">
-                    <div class="spacing-box" style="height: 32px;">32px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-4 / 2rem</p>
-                </div>
-                <div class="card">
-                    <div class="spacing-box" style="height: 48px;">48px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-6 / 3rem</p>
-                </div>
-                <div class="card">
-                    <div class="spacing-box" style="height: 64px;">64px</div>
-                    <p style="margin-top: var(--space-2); text-align: center; font-family: var(--font-mono); font-size: 0.875rem;">--space-8 / 4rem</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Spacing System</h2>
+        <p
+          style="margin-bottom: var(--space-3); color: var(--muted-foreground)"
+        >
+          8pt base grid system with semantic tokens
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="spacing-box" style="height: 8px">8px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-1 / 0.5rem
+            </p>
+          </div>
+          <div class="card">
+            <div class="spacing-box" style="height: 16px">16px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-2 / 1rem
+            </p>
+          </div>
+          <div class="card">
+            <div class="spacing-box" style="height: 24px">24px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-3 / 1.5rem
+            </p>
+          </div>
+          <div class="card">
+            <div class="spacing-box" style="height: 32px">32px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-4 / 2rem
+            </p>
+          </div>
+          <div class="card">
+            <div class="spacing-box" style="height: 48px">48px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-6 / 3rem
+            </p>
+          </div>
+          <div class="card">
+            <div class="spacing-box" style="height: 64px">64px</div>
+            <p
+              style="
+                margin-top: var(--space-2);
+                text-align: center;
+                font-family: var(--font-mono);
+                font-size: 0.875rem;
+              "
+            >
+              --space-8 / 4rem
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Components: Buttons -->
     <section id="components" class="section">
-        <div class="container">
-            <h2 class="section-title">Components: Buttons</h2>
-            
-            <h3 class="section-subtitle">Button Variants</h3>
-            <div class="component-preview">
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-                    <button class="button button-default">Primary Button</button>
-                    <button class="button button-secondary">Secondary</button>
-                    <button class="button button-outline">Outline</button>
-                    <button class="button button-destructive">Destructive</button>
-                    <button class="button button-success">Success</button>
-                    <button class="button button-outline" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Components: Buttons</h2>
 
-            <h3 class="section-subtitle">Button Sizes</h3>
-            <div class="component-preview">
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-                    <button class="button button-default" style="padding: 0.375rem 0.75rem; font-size: 0.75rem;">Small</button>
-                    <button class="button button-default">Default</button>
-                    <button class="button button-default" style="padding: 0.75rem 2rem;">Large</button>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle">Code Example</h3>
-            <div class="code-block">
-&lt;Button variant="default"&gt;
-  Primary Action
-&lt;/Button&gt;
-
-&lt;Button variant="destructive"&gt;
-  Delete
-&lt;/Button&gt;
-
-&lt;Button variant="outline"&gt;
-  Cancel
-&lt;/Button&gt;</div>
+        <h3 class="section-subtitle">Button Variants</h3>
+        <div class="component-preview">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              align-items: center;
+            "
+          >
+            <button class="button button-default">Primary Button</button>
+            <button class="button button-secondary">Secondary</button>
+            <button class="button button-outline">Outline</button>
+            <button class="button button-destructive">Destructive</button>
+            <button class="button button-success">Success</button>
+            <button
+              class="button button-outline"
+              disabled
+              style="opacity: 0.5; cursor: not-allowed"
+            >
+              Disabled
+            </button>
+          </div>
         </div>
+
+        <h3 class="section-subtitle">Button Sizes</h3>
+        <div class="component-preview">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              align-items: center;
+            "
+          >
+            <button
+              class="button button-default"
+              style="padding: 0.375rem 0.75rem; font-size: 0.75rem"
+            >
+              Small
+            </button>
+            <button class="button button-default">Default</button>
+            <button class="button button-default" style="padding: 0.75rem 2rem">
+              Large
+            </button>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">Code Example</h3>
+        <div class="code-block">
+          &lt;Button variant="default"&gt; Primary Action &lt;/Button&gt;
+          &lt;Button variant="destructive"&gt; Delete &lt;/Button&gt; &lt;Button
+          variant="outline"&gt; Cancel &lt;/Button&gt;
+        </div>
+      </div>
     </section>
 
     <!-- Components: Badges -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Components: Badges</h2>
-            <div class="component-preview">
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-                    <span class="badge badge-default">Default</span>
-                    <span class="badge badge-success">Success</span>
-                    <span class="badge badge-warning">Warning</span>
-                    <span class="badge badge-error">Error</span>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle">Usage in Context</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Transaction ID</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="font-family: var(--font-mono); font-size: 0.875rem;">TX-2024-001</td>
-                        <td>2024-01-15</td>
-                        <td><span class="badge badge-success">Processed</span></td>
-                        <td>$1,250.00</td>
-                    </tr>
-                    <tr>
-                        <td style="font-family: var(--font-mono); font-size: 0.875rem;">TX-2024-002</td>
-                        <td>2024-01-16</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>$850.00</td>
-                    </tr>
-                    <tr>
-                        <td style="font-family: var(--font-mono); font-size: 0.875rem;">TX-2024-003</td>
-                        <td>2024-01-17</td>
-                        <td><span class="badge badge-error">Failed</span></td>
-                        <td>$320.00</td>
-                    </tr>
-                </tbody>
-            </table>
+      <div class="container">
+        <h2 class="section-title">Components: Badges</h2>
+        <div class="component-preview">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              align-items: center;
+            "
+          >
+            <span class="badge badge-default">Default</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-error">Error</span>
+          </div>
         </div>
+
+        <h3 class="section-subtitle">Usage in Context</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-family: var(--font-mono); font-size: 0.875rem">
+                TX-2024-001
+              </td>
+              <td>2024-01-15</td>
+              <td><span class="badge badge-success">Processed</span></td>
+              <td>$1,250.00</td>
+            </tr>
+            <tr>
+              <td style="font-family: var(--font-mono); font-size: 0.875rem">
+                TX-2024-002
+              </td>
+              <td>2024-01-16</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td>$850.00</td>
+            </tr>
+            <tr>
+              <td style="font-family: var(--font-mono); font-size: 0.875rem">
+                TX-2024-003
+              </td>
+              <td>2024-01-17</td>
+              <td><span class="badge badge-error">Failed</span></td>
+              <td>$320.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <!-- Patterns -->
     <section id="patterns" class="section">
-        <div class="container">
-            <h2 class="section-title">Common Patterns</h2>
-            
-            <h3 class="section-subtitle">Form Pattern</h3>
-            <div class="component-preview">
-                <div style="max-width: 500px;">
-                    <div style="margin-bottom: var(--space-3);">
-                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">
-                            Email Address <span style="color: var(--error);">*</span>
-                        </label>
-                        <input type="email" placeholder="you@example.com" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit;">
-                        <p style="font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.5rem;">We'll never share your email</p>
-                    </div>
-                    <div style="margin-bottom: var(--space-3);">
-                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Amount</label>
-                        <input type="number" placeholder="0.00" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit;">
-                    </div>
-                    <div style="display: flex; gap: var(--space-2); justify-content: flex-end;">
-                        <button class="button button-outline">Cancel</button>
-                        <button class="button button-default">Submit</button>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Common Patterns</h2>
 
-            <h3 class="section-subtitle">Card Pattern</h3>
-            <div class="grid grid-3">
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-2);">
-                        <div>
-                            <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Total Value</div>
-                            <div style="font-size: 2rem; font-weight: 700;">$45,231</div>
-                        </div>
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
-                        <span style="color: var(--success); font-weight: 600;">+12.5%</span>
-                        <span style="color: var(--muted-foreground);">from last month</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-2);">
-                        <div>
-                            <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Transactions</div>
-                            <div style="font-size: 2rem; font-weight: 700;">1,234</div>
-                        </div>
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
-                        <span style="color: var(--error); font-weight: 600;">-3.2%</span>
-                        <span style="color: var(--muted-foreground);">from last week</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-2);">
-                        <div>
-                            <div style="font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Tax Saved</div>
-                            <div style="font-size: 2rem; font-weight: 700;">$8,450</div>
-                        </div>
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M20 6 9 17l-5-5"></path>
-                        </svg>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
-                        <span style="color: var(--success); font-weight: 600;">+18.7%</span>
-                        <span style="color: var(--muted-foreground);">from last year</span>
-                    </div>
-                </div>
+        <h3 class="section-subtitle">Form Pattern</h3>
+        <div class="component-preview">
+          <div style="max-width: 500px">
+            <div style="margin-bottom: var(--space-3)">
+              <label
+                style="display: block; font-weight: 600; margin-bottom: 0.5rem"
+              >
+                Email Address <span style="color: var(--error)">*</span>
+              </label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                style="
+                  width: 100%;
+                  padding: 0.625rem;
+                  border: 1px solid var(--border);
+                  border-radius: var(--radius);
+                  font-family: inherit;
+                "
+              />
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--muted-foreground);
+                  margin-top: 0.5rem;
+                "
+              >
+                We'll never share your email
+              </p>
             </div>
+            <div style="margin-bottom: var(--space-3)">
+              <label
+                style="display: block; font-weight: 600; margin-bottom: 0.5rem"
+                >Amount</label
+              >
+              <input
+                type="number"
+                placeholder="0.00"
+                style="
+                  width: 100%;
+                  padding: 0.625rem;
+                  border: 1px solid var(--border);
+                  border-radius: var(--radius);
+                  font-family: inherit;
+                "
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: var(--space-2);
+                justify-content: flex-end;
+              "
+            >
+              <button class="button button-outline">Cancel</button>
+              <button class="button button-default">Submit</button>
+            </div>
+          </div>
         </div>
+
+        <h3 class="section-subtitle">Card Pattern</h3>
+        <div class="grid grid-3">
+          <div class="card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                margin-bottom: var(--space-2);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 0.875rem;
+                    color: var(--muted-foreground);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Total Value
+                </div>
+                <div style="font-size: 2rem; font-weight: 700">$45,231</div>
+              </div>
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                ></path>
+              </svg>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.875rem;
+              "
+            >
+              <span style="color: var(--success); font-weight: 600"
+                >+12.5%</span
+              >
+              <span style="color: var(--muted-foreground)"
+                >from last month</span
+              >
+            </div>
+          </div>
+          <div class="card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                margin-bottom: var(--space-2);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 0.875rem;
+                    color: var(--muted-foreground);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Transactions
+                </div>
+                <div style="font-size: 2rem; font-weight: 700">1,234</div>
+              </div>
+              <svg class="icon" viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.875rem;
+              "
+            >
+              <span style="color: var(--error); font-weight: 600">-3.2%</span>
+              <span style="color: var(--muted-foreground)">from last week</span>
+            </div>
+          </div>
+          <div class="card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                margin-bottom: var(--space-2);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 0.875rem;
+                    color: var(--muted-foreground);
+                    margin-bottom: 0.25rem;
+                  "
+                >
+                  Tax Saved
+                </div>
+                <div style="font-size: 2rem; font-weight: 700">$8,450</div>
+              </div>
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M20 6 9 17l-5-5"></path>
+              </svg>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.875rem;
+              "
+            >
+              <span style="color: var(--success); font-weight: 600"
+                >+18.7%</span
+              >
+              <span style="color: var(--muted-foreground)">from last year</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Accessibility -->
     <section id="accessibility" class="section">
-        <div class="container">
-            <h2 class="section-title">Accessibility Standards</h2>
-            <p style="margin-bottom: var(--space-4); font-size: 1.125rem;">WCAG 2.1 AA Compliance - Target 95%</p>
+      <div class="container">
+        <h2 class="section-title">Accessibility Standards</h2>
+        <p style="margin-bottom: var(--space-4); font-size: 1.125rem">
+          WCAG 2.1 AA Compliance - Target 95%
+        </p>
 
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 class="card-title">✅ Implemented</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Keyboard Navigation:</strong> All interactive elements accessible via keyboard
-                        </li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Focus Indicators:</strong> Visible 2px ring on focus-visible
-                        </li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>ARIA Labels:</strong> Comprehensive labeling for screen readers
-                        </li>
-                        <li style="padding: 0.5rem 0;">
-                            <strong>Semantic HTML:</strong> Proper heading hierarchy and landmarks
-                        </li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">⚠️ In Progress</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Contrast Validation:</strong> Implementing real-time contrast checking
-                        </li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Skip Links:</strong> Adding skip-to-content navigation
-                        </li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Focus Trap:</strong> Improving modal focus management
-                        </li>
-                        <li style="padding: 0.5rem 0;">
-                            <strong>Required Fields:</strong> Adding aria-required attributes
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle">Color Contrast Requirements</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Element Type</th>
-                        <th>Min Contrast (AA)</th>
-                        <th>Min Contrast (AAA)</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Normal Text</td>
-                        <td>4.5:1</td>
-                        <td>7:1</td>
-                        <td><span class="badge badge-success">Pass</span></td>
-                    </tr>
-                    <tr>
-                        <td>Large Text (18px+)</td>
-                        <td>3:1</td>
-                        <td>4.5:1</td>
-                        <td><span class="badge badge-success">Pass</span></td>
-                    </tr>
-                    <tr>
-                        <td>UI Components</td>
-                        <td>3:1</td>
-                        <td>N/A</td>
-                        <td><span class="badge badge-warning">Testing</span></td>
-                    </tr>
-                    <tr>
-                        <td>Data Visualization</td>
-                        <td>3:1</td>
-                        <td>N/A</td>
-                        <td><span class="badge badge-warning">Testing</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 class="card-title">✅ Implemented</h3>
+            <ul style="list-style: none; padding: 0">
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>Keyboard Navigation:</strong> All interactive elements
+                accessible via keyboard
+              </li>
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>Focus Indicators:</strong> Visible 2px ring on
+                focus-visible
+              </li>
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>ARIA Labels:</strong> Comprehensive labeling for screen
+                readers
+              </li>
+              <li style="padding: 0.5rem 0">
+                <strong>Semantic HTML:</strong> Proper heading hierarchy and
+                landmarks
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">⚠️ In Progress</h3>
+            <ul style="list-style: none; padding: 0">
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>Contrast Validation:</strong> Implementing real-time
+                contrast checking
+              </li>
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>Skip Links:</strong> Adding skip-to-content navigation
+              </li>
+              <li
+                style="
+                  padding: 0.5rem 0;
+                  border-bottom: 1px solid var(--border);
+                "
+              >
+                <strong>Focus Trap:</strong> Improving modal focus management
+              </li>
+              <li style="padding: 0.5rem 0">
+                <strong>Required Fields:</strong> Adding aria-required
+                attributes
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <h3 class="section-subtitle">Color Contrast Requirements</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Element Type</th>
+              <th>Min Contrast (AA)</th>
+              <th>Min Contrast (AAA)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Normal Text</td>
+              <td>4.5:1</td>
+              <td>7:1</td>
+              <td><span class="badge badge-success">Pass</span></td>
+            </tr>
+            <tr>
+              <td>Large Text (18px+)</td>
+              <td>3:1</td>
+              <td>4.5:1</td>
+              <td><span class="badge badge-success">Pass</span></td>
+            </tr>
+            <tr>
+              <td>UI Components</td>
+              <td>3:1</td>
+              <td>N/A</td>
+              <td><span class="badge badge-warning">Testing</span></td>
+            </tr>
+            <tr>
+              <td>Data Visualization</td>
+              <td>3:1</td>
+              <td>N/A</td>
+              <td><span class="badge badge-warning">Testing</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <!-- Component Inventory -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Component Inventory</h2>
-            <p style="margin-bottom: var(--space-4); color: var(--muted-foreground);">53 UI primitives + 40+ page-specific components</p>
+      <div class="container">
+        <h2 class="section-title">Component Inventory</h2>
+        <p
+          style="margin-bottom: var(--space-4); color: var(--muted-foreground)"
+        >
+          53 UI primitives + 40+ page-specific components
+        </p>
 
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3 class="card-title">Inputs & Controls (15)</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
-                        <li style="padding: 0.25rem 0;">Input, EnhancedInput</li>
-                        <li style="padding: 0.25rem 0;">Select, Checkbox, RadioGroup</li>
-                        <li style="padding: 0.25rem 0;">Switch, Slider, Toggle</li>
-                        <li style="padding: 0.25rem 0;">Button, EnhancedButton</li>
-                        <li style="padding: 0.25rem 0;">Textarea, InputOTP</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Navigation & Layout (14)</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
-                        <li style="padding: 0.25rem 0;">Sidebar, Breadcrumb</li>
-                        <li style="padding: 0.25rem 0;">Menubar, NavigationMenu</li>
-                        <li style="padding: 0.25rem 0;">Drawer, Sheet, Tabs</li>
-                        <li style="padding: 0.25rem 0;">Pagination, Card</li>
-                        <li style="padding: 0.25rem 0;">ScrollArea, Resizable</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Feedback & Overlays (12)</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
-                        <li style="padding: 0.25rem 0;">Dialog, AlertDialog</li>
-                        <li style="padding: 0.25rem 0;">Toast, Toaster</li>
-                        <li style="padding: 0.25rem 0;">Tooltip, Popover, HoverCard</li>
-                        <li style="padding: 0.25rem 0;">ContextMenu, DropdownMenu</li>
-                        <li style="padding: 0.25rem 0;">Alert, Progress</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Data Display (7)</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
-                        <li style="padding: 0.25rem 0;">Table, Chart</li>
-                        <li style="padding: 0.25rem 0;">Calendar, Carousel</li>
-                        <li style="padding: 0.25rem 0;">Badge, Avatar</li>
-                        <li style="padding: 0.25rem 0;">Skeleton, LoadingStates</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Composite & Utils (5)</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
-                        <li style="padding: 0.25rem 0;">Command, Form</li>
-                        <li style="padding: 0.25rem 0;">Accordion, Collapsible</li>
-                        <li style="padding: 0.25rem 0;">Separator</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3 class="card-title">Inputs & Controls (15)</h3>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem">
+              <li style="padding: 0.25rem 0">Input, EnhancedInput</li>
+              <li style="padding: 0.25rem 0">Select, Checkbox, RadioGroup</li>
+              <li style="padding: 0.25rem 0">Switch, Slider, Toggle</li>
+              <li style="padding: 0.25rem 0">Button, EnhancedButton</li>
+              <li style="padding: 0.25rem 0">Textarea, InputOTP</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Navigation & Layout (14)</h3>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem">
+              <li style="padding: 0.25rem 0">Sidebar, Breadcrumb</li>
+              <li style="padding: 0.25rem 0">Menubar, NavigationMenu</li>
+              <li style="padding: 0.25rem 0">Drawer, Sheet, Tabs</li>
+              <li style="padding: 0.25rem 0">Pagination, Card</li>
+              <li style="padding: 0.25rem 0">ScrollArea, Resizable</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Feedback & Overlays (12)</h3>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem">
+              <li style="padding: 0.25rem 0">Dialog, AlertDialog</li>
+              <li style="padding: 0.25rem 0">Toast, Toaster</li>
+              <li style="padding: 0.25rem 0">Tooltip, Popover, HoverCard</li>
+              <li style="padding: 0.25rem 0">ContextMenu, DropdownMenu</li>
+              <li style="padding: 0.25rem 0">Alert, Progress</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Data Display (7)</h3>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem">
+              <li style="padding: 0.25rem 0">Table, Chart</li>
+              <li style="padding: 0.25rem 0">Calendar, Carousel</li>
+              <li style="padding: 0.25rem 0">Badge, Avatar</li>
+              <li style="padding: 0.25rem 0">Skeleton, LoadingStates</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Composite & Utils (5)</h3>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem">
+              <li style="padding: 0.25rem 0">Command, Form</li>
+              <li style="padding: 0.25rem 0">Accordion, Collapsible</li>
+              <li style="padding: 0.25rem 0">Separator</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Migration Guide -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Migration Guide</h2>
-            <p style="margin-bottom: var(--space-4); color: var(--muted-foreground);">Critical priorities and timeline for design system consolidation</p>
+      <div class="container">
+        <h2 class="section-title">Migration Guide</h2>
+        <p
+          style="margin-bottom: var(--space-4); color: var(--muted-foreground)"
+        >
+          Critical priorities and timeline for design system consolidation
+        </p>
 
-            <div class="grid grid-2">
-                <div class="card">
-                    <span class="badge badge-error" style="margin-bottom: var(--space-2);">P0 - Critical</span>
-                    <h3 class="card-title">Button Consolidation</h3>
-                    <p style="margin-bottom: var(--space-2);">Merge button.tsx and enhanced-button.tsx to eliminate duplicate buttonVariants exports.</p>
-                    <p style="font-size: 0.875rem; color: var(--muted-foreground);"><strong>Timeline:</strong> Week 1-2</p>
-                </div>
-                <div class="card">
-                    <span class="badge badge-error" style="margin-bottom: var(--space-2);">P0 - Critical</span>
-                    <h3 class="card-title">Toast System Unification</h3>
-                    <p style="margin-bottom: var(--space-2);">Standardize on Radix Toast, remove Sonner to prevent dual notifications.</p>
-                    <p style="font-size: 0.875rem; color: var(--muted-foreground);"><strong>Timeline:</strong> Week 1-2</p>
-                </div>
-                <div class="card">
-                    <span class="badge badge-error" style="margin-bottom: var(--space-2);">P0 - Critical</span>
-                    <h3 class="card-title">Accessibility Fixes</h3>
-                    <p style="margin-bottom: var(--space-2);">Implement real contrast validation, fix focus traps, add skip links.</p>
-                    <p style="font-size: 0.875rem; color: var(--muted-foreground);"><strong>Timeline:</strong> Week 2-3</p>
-                </div>
-                <div class="card">
-                    <span class="badge badge-warning" style="margin-bottom: var(--space-2);">P1 - High</span>
-                    <h3 class="card-title">Design Token System</h3>
-                    <p style="margin-bottom: var(--space-2);">Complete elevation, spacing, and typography token definitions.</p>
-                    <p style="font-size: 0.875rem; color: var(--muted-foreground);"><strong>Timeline:</strong> Week 3-5</p>
-                </div>
-            </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <span
+              class="badge badge-error"
+              style="margin-bottom: var(--space-2)"
+              >P0 - Critical</span
+            >
+            <h3 class="card-title">Button Consolidation</h3>
+            <p style="margin-bottom: var(--space-2)">
+              Merge button.tsx and enhanced-button.tsx to eliminate duplicate
+              buttonVariants exports.
+            </p>
+            <p style="font-size: 0.875rem; color: var(--muted-foreground)">
+              <strong>Timeline:</strong> Week 1-2
+            </p>
+          </div>
+          <div class="card">
+            <span
+              class="badge badge-error"
+              style="margin-bottom: var(--space-2)"
+              >P0 - Critical</span
+            >
+            <h3 class="card-title">Toast System Unification</h3>
+            <p style="margin-bottom: var(--space-2)">
+              Standardize on Radix Toast, remove Sonner to prevent dual
+              notifications.
+            </p>
+            <p style="font-size: 0.875rem; color: var(--muted-foreground)">
+              <strong>Timeline:</strong> Week 1-2
+            </p>
+          </div>
+          <div class="card">
+            <span
+              class="badge badge-error"
+              style="margin-bottom: var(--space-2)"
+              >P0 - Critical</span
+            >
+            <h3 class="card-title">Accessibility Fixes</h3>
+            <p style="margin-bottom: var(--space-2)">
+              Implement real contrast validation, fix focus traps, add skip
+              links.
+            </p>
+            <p style="font-size: 0.875rem; color: var(--muted-foreground)">
+              <strong>Timeline:</strong> Week 2-3
+            </p>
+          </div>
+          <div class="card">
+            <span
+              class="badge badge-warning"
+              style="margin-bottom: var(--space-2)"
+              >P1 - High</span
+            >
+            <h3 class="card-title">Design Token System</h3>
+            <p style="margin-bottom: var(--space-2)">
+              Complete elevation, spacing, and typography token definitions.
+            </p>
+            <p style="font-size: 0.875rem; color: var(--muted-foreground)">
+              <strong>Timeline:</strong> Week 3-5
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Resources -->
     <section class="section">
-        <div class="container">
-            <h2 class="section-title">Resources</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3 class="card-title">📚 Documentation</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><a href="DESIGN_SYSTEM_DOCUMENTATION.md" style="color: var(--primary);">Full Documentation (MD)</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="#" style="color: var(--primary);">Component API Reference</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="#" style="color: var(--primary);">Migration Guides</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">🔧 Tools</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><a href="https://www.radix-ui.com/" style="color: var(--primary);" target="_blank">Radix UI Docs</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://tailwindcss.com/docs" style="color: var(--primary);" target="_blank">Tailwind CSS</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://react-hook-form.com/" style="color: var(--primary);" target="_blank">React Hook Form</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">♿ Accessibility</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><a href="https://www.w3.org/WAI/WCAG21/quickref/" style="color: var(--primary);" target="_blank">WCAG 2.1 Guidelines</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://webaim.org/resources/contrastchecker/" style="color: var(--primary);" target="_blank">Contrast Checker</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://www.a11yproject.com/checklist/" style="color: var(--primary);" target="_blank">A11y Checklist</a></li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Resources</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3 class="card-title">📚 Documentation</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="DESIGN_SYSTEM_DOCUMENTATION.md"
+                  style="color: var(--primary)"
+                  >Full Documentation (MD)</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a href="#" style="color: var(--primary)"
+                  >Component API Reference</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a href="#" style="color: var(--primary)">Migration Guides</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">🔧 Tools</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://www.radix-ui.com/"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >Radix UI Docs</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://tailwindcss.com/docs"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >Tailwind CSS</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://react-hook-form.com/"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >React Hook Form</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">♿ Accessibility</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://www.w3.org/WAI/WCAG21/quickref/"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >WCAG 2.1 Guidelines</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://webaim.org/resources/contrastchecker/"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >Contrast Checker</a
+                >
+              </li>
+              <li style="padding: 0.5rem 0">
+                <a
+                  href="https://www.a11yproject.com/checklist/"
+                  style="color: var(--primary)"
+                  target="_blank"
+                  >A11y Checklist</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>Computis Design System v1.0.0</p>
-            <p style="margin-top: 0.5rem; opacity: 0.7;">Built with ❤️ for accessible, consistent crypto tax applications</p>
-        </div>
+      <div class="container">
+        <p>Computis Design System v1.0.0</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7">
+          Built with ❤️ for accessible, consistent crypto tax applications
+        </p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

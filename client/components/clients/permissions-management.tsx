@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -521,8 +521,8 @@ export function PermissionsManagement() {
                   </TableHeader>
                   <TableBody>
                     {Object.entries(permissionCategories).map(([category, permissions]) => (
-                      <>
-                        <TableRow key={category} className="bg-muted/50">
+                      <Fragment key={category}>
+                        <TableRow className="bg-muted/50">
                           <TableCell
                             colSpan={mockRoles.length + 1}
                             className="font-semibold sticky left-0 bg-muted/50"
@@ -555,7 +555,7 @@ export function PermissionsManagement() {
                             ))}
                           </TableRow>
                         ))}
-                      </>
+                      </Fragment>
                     ))}
                   </TableBody>
                 </Table>

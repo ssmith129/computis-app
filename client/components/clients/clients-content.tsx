@@ -53,6 +53,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UsersManagement } from "./users-management";
+import { TaxEntitiesManagement } from "./tax-entities-management";
+import { PermissionsManagement } from "./permissions-management";
 
 const mockClients = [
   {
@@ -568,35 +571,16 @@ export function ClientsContent() {
             </Card>
           </TabsContent>
 
-          {/* Other tabs would be implemented similarly */}
           <TabsContent value="users" className="space-y-6">
-            <Card>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  User management interface would be implemented here.
-                </p>
-              </CardContent>
-            </Card>
+            <UsersManagement />
           </TabsContent>
 
           <TabsContent value="tax-entities" className="space-y-6">
-            <Card>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  Tax entities management interface would be implemented here.
-                </p>
-              </CardContent>
-            </Card>
+            <TaxEntitiesManagement />
           </TabsContent>
 
           <TabsContent value="permissions" className="space-y-6">
-            <Card>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  Permissions management interface would be implemented here.
-                </p>
-              </CardContent>
-            </Card>
+            <PermissionsManagement />
           </TabsContent>
 
           <TabsContent value="team-access" className="space-y-6">

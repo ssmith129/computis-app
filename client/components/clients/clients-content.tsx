@@ -53,6 +53,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UsersManagement } from "./users-management";
+import { TaxEntitiesManagement } from "./tax-entities-management";
+import { PermissionsManagement } from "./permissions-management";
 
 const mockClients = [
   {

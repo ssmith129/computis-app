@@ -167,7 +167,15 @@ const mockTaxEntities: TaxEntity[] = [
   },
 ];
 
-const entityTypes = ["LLC", "Corporation", "Partnership", "Individual", "Trust", "S-Corp", "C-Corp"];
+const entityTypes = [
+  "LLC",
+  "Corporation",
+  "Partnership",
+  "Individual",
+  "Trust",
+  "S-Corp",
+  "C-Corp",
+];
 const jurisdictions = [
   "Delaware",
   "California",
@@ -203,7 +211,10 @@ const getStatusBadge = (status: TaxEntity["status"]) => {
 };
 
 const getEntityTypeBadge = (type: string) => {
-  const color = type === "Individual" ? "bg-cyan-100 text-cyan-700" : "bg-purple-100 text-purple-700";
+  const color =
+    type === "Individual"
+      ? "bg-cyan-100 text-cyan-700"
+      : "bg-purple-100 text-purple-700";
   return <Badge className={`${color} border-0`}>{type}</Badge>;
 };
 
@@ -231,7 +242,9 @@ export function TaxEntitiesManagement() {
   });
 
   // Validation states
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
 
   const filteredEntities = useMemo(() => {
     return mockTaxEntities.filter((entity) => {
@@ -239,8 +252,10 @@ export function TaxEntitiesManagement() {
         entity.entityName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         entity.taxId.toLowerCase().includes(searchTerm.toLowerCase()) ||
         entity.client.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesType = filterType === "all" || entity.entityType === filterType;
-      const matchesStatus = filterStatus === "all" || entity.status === filterStatus;
+      const matchesType =
+        filterType === "all" || entity.entityType === filterType;
+      const matchesStatus =
+        filterStatus === "all" || entity.status === filterStatus;
       return matchesSearch && matchesType && matchesStatus;
     });
   }, [searchTerm, filterType, filterStatus]);
@@ -263,7 +278,8 @@ export function TaxEntitiesManagement() {
 
   const validateForm = () => {
     const errors: Record<string, string> = {};
-    if (!formData.entityName.trim()) errors.entityName = "Entity name is required";
+    if (!formData.entityName.trim())
+      errors.entityName = "Entity name is required";
     if (!formData.taxId.trim()) errors.taxId = "Tax ID is required";
     if (!formData.client.trim()) errors.client = "Client is required";
     setValidationErrors(errors);
@@ -328,9 +344,15 @@ export function TaxEntitiesManagement() {
     setDeleteDialogOpen(false);
   };
 
-  const activeCount = mockTaxEntities.filter((e) => e.status === "Active").length;
-  const inProgressCount = mockTaxEntities.filter((e) => e.status === "In Progress").length;
-  const archivedCount = mockTaxEntities.filter((e) => e.status === "Archived").length;
+  const activeCount = mockTaxEntities.filter(
+    (e) => e.status === "Active",
+  ).length;
+  const inProgressCount = mockTaxEntities.filter(
+    (e) => e.status === "In Progress",
+  ).length;
+  const archivedCount = mockTaxEntities.filter(
+    (e) => e.status === "Archived",
+  ).length;
 
   return (
     <div className="space-y-6">
@@ -340,8 +362,12 @@ export function TaxEntitiesManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Total Entities</p>
-                <p className="text-3xl font-bold text-blue-600">{mockTaxEntities.length}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Total Entities
+                </p>
+                <p className="text-3xl font-bold text-blue-600">
+                  {mockTaxEntities.length}
+                </p>
               </div>
               <div className="p-3 bg-blue-100 rounded-lg">
                 <Building2 className="h-6 w-6 text-blue-600" />
@@ -353,8 +379,12 @@ export function TaxEntitiesManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Active</p>
-                <p className="text-3xl font-bold text-green-600">{activeCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Active
+                </p>
+                <p className="text-3xl font-bold text-green-600">
+                  {activeCount}
+                </p>
               </div>
               <div className="p-3 bg-green-100 rounded-lg">
                 <CheckCircle2 className="h-6 w-6 text-green-600" />
@@ -366,8 +396,12 @@ export function TaxEntitiesManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">In Progress</p>
-                <p className="text-3xl font-bold text-blue-600">{inProgressCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  In Progress
+                </p>
+                <p className="text-3xl font-bold text-blue-600">
+                  {inProgressCount}
+                </p>
               </div>
               <div className="p-3 bg-blue-100 rounded-lg">
                 <TrendingUp className="h-6 w-6 text-blue-600" />
@@ -379,8 +413,12 @@ export function TaxEntitiesManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Archived</p>
-                <p className="text-3xl font-bold text-orange-600">{archivedCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Archived
+                </p>
+                <p className="text-3xl font-bold text-orange-600">
+                  {archivedCount}
+                </p>
               </div>
               <div className="p-3 bg-orange-100 rounded-lg">
                 <Archive className="h-6 w-6 text-orange-600" />
@@ -426,7 +464,10 @@ export function TaxEntitiesManagement() {
               <SelectItem value="Archived">Archived</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={() => toast({ title: "Export started" })}>
+          <Button
+            variant="outline"
+            onClick={() => toast({ title: "Export started" })}
+          >
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
@@ -446,8 +487,8 @@ export function TaxEntitiesManagement() {
           {selectedEntities.length > 0 && (
             <div className="flex items-center justify-between p-4 border-b bg-muted/30">
               <div className="text-sm font-medium">
-                {selectedEntities.length} {selectedEntities.length > 1 ? "entities" : "entity"}{" "}
-                selected
+                {selectedEntities.length}{" "}
+                {selectedEntities.length > 1 ? "entities" : "entity"} selected
               </div>
               <div className="flex gap-2">
                 <Button variant="outline" size="sm">
@@ -490,7 +531,10 @@ export function TaxEntitiesManagement() {
             <TableBody>
               {filteredEntities.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">
+                  <TableCell
+                    colSpan={10}
+                    className="text-center py-8 text-muted-foreground"
+                  >
                     No tax entities found
                   </TableCell>
                 </TableRow>
@@ -516,10 +560,16 @@ export function TaxEntitiesManagement() {
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell className="font-mono text-sm">{entity.taxId}</TableCell>
-                    <TableCell>{getEntityTypeBadge(entity.entityType)}</TableCell>
+                    <TableCell className="font-mono text-sm">
+                      {entity.taxId}
+                    </TableCell>
+                    <TableCell>
+                      {getEntityTypeBadge(entity.entityType)}
+                    </TableCell>
                     <TableCell>{entity.jurisdiction}</TableCell>
-                    <TableCell className="text-muted-foreground">{entity.client}</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {entity.client}
+                    </TableCell>
                     <TableCell>{entity.taxYear}</TableCell>
                     <TableCell>
                       <div className="flex items-center gap-1">
@@ -531,16 +581,24 @@ export function TaxEntitiesManagement() {
                     <TableCell className="text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-8 w-8 p-0"
+                          >
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => handleViewEntity(entity)}>
+                          <DropdownMenuItem
+                            onClick={() => handleViewEntity(entity)}
+                          >
                             <Eye className="mr-2 h-4 w-4" />
                             View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleEditEntity(entity)}>
+                          <DropdownMenuItem
+                            onClick={() => handleEditEntity(entity)}
+                          >
                             <Edit2 className="mr-2 h-4 w-4" />
                             Edit Entity
                           </DropdownMenuItem>
@@ -578,7 +636,8 @@ export function TaxEntitiesManagement() {
           <DialogHeader>
             <DialogTitle>Create Tax Entity</DialogTitle>
             <DialogDescription>
-              Add a new tax entity for a client. All fields marked with * are required.
+              Add a new tax entity for a client. All fields marked with * are
+              required.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
@@ -594,10 +653,14 @@ export function TaxEntitiesManagement() {
                     setFormData({ ...formData, entityName: e.target.value })
                   }
                   placeholder="Acme Corp 2023"
-                  className={validationErrors.entityName ? "border-red-500" : ""}
+                  className={
+                    validationErrors.entityName ? "border-red-500" : ""
+                  }
                 />
                 {validationErrors.entityName && (
-                  <p className="text-sm text-red-500">{validationErrors.entityName}</p>
+                  <p className="text-sm text-red-500">
+                    {validationErrors.entityName}
+                  </p>
                 )}
               </div>
               <div className="space-y-2">
@@ -607,12 +670,16 @@ export function TaxEntitiesManagement() {
                 <Input
                   id="taxId"
                   value={formData.taxId}
-                  onChange={(e) => setFormData({ ...formData, taxId: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, taxId: e.target.value })
+                  }
                   placeholder="XX-XXXXXXX"
                   className={validationErrors.taxId ? "border-red-500" : ""}
                 />
                 {validationErrors.taxId && (
-                  <p className="text-sm text-red-500">{validationErrors.taxId}</p>
+                  <p className="text-sm text-red-500">
+                    {validationErrors.taxId}
+                  </p>
                 )}
               </div>
             </div>
@@ -666,12 +733,16 @@ export function TaxEntitiesManagement() {
                 <Input
                   id="client"
                   value={formData.client}
-                  onChange={(e) => setFormData({ ...formData, client: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, client: e.target.value })
+                  }
                   placeholder="Select or enter client name"
                   className={validationErrors.client ? "border-red-500" : ""}
                 />
                 {validationErrors.client && (
-                  <p className="text-sm text-red-500">{validationErrors.client}</p>
+                  <p className="text-sm text-red-500">
+                    {validationErrors.client}
+                  </p>
                 )}
               </div>
               <div className="space-y-2">
@@ -679,7 +750,9 @@ export function TaxEntitiesManagement() {
                 <Input
                   id="taxYear"
                   value={formData.taxYear}
-                  onChange={(e) => setFormData({ ...formData, taxYear: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, taxYear: e.target.value })
+                  }
                   placeholder="2023"
                 />
               </div>
@@ -705,7 +778,8 @@ export function TaxEntitiesManagement() {
           <DialogHeader>
             <DialogTitle>Edit Tax Entity</DialogTitle>
             <DialogDescription>
-              Update the tax entity information. All fields marked with * are required.
+              Update the tax entity information. All fields marked with * are
+              required.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
@@ -720,7 +794,9 @@ export function TaxEntitiesManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, entityName: e.target.value })
                   }
-                  className={validationErrors.entityName ? "border-red-500" : ""}
+                  className={
+                    validationErrors.entityName ? "border-red-500" : ""
+                  }
                 />
               </div>
               <div className="space-y-2">
@@ -730,7 +806,9 @@ export function TaxEntitiesManagement() {
                 <Input
                   id="edit-taxId"
                   value={formData.taxId}
-                  onChange={(e) => setFormData({ ...formData, taxId: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, taxId: e.target.value })
+                  }
                   className={validationErrors.taxId ? "border-red-500" : ""}
                 />
               </div>
@@ -805,14 +883,20 @@ export function TaxEntitiesManagement() {
                   <Building2 className="h-8 w-8 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">{selectedEntity.entityName}</h3>
-                  <p className="text-muted-foreground">{selectedEntity.client}</p>
+                  <h3 className="text-xl font-semibold">
+                    {selectedEntity.entityName}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {selectedEntity.client}
+                  </p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label className="text-muted-foreground">Tax ID</Label>
-                  <p className="font-mono font-medium">{selectedEntity.taxId}</p>
+                  <p className="font-mono font-medium">
+                    {selectedEntity.taxId}
+                  </p>
                 </div>
                 <div className="space-y-2">
                   <Label className="text-muted-foreground">Entity Type</Label>
@@ -841,7 +925,9 @@ export function TaxEntitiesManagement() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-muted-foreground">Wallets</p>
-                        <p className="text-2xl font-bold">{selectedEntity.walletCount}</p>
+                        <p className="text-2xl font-bold">
+                          {selectedEntity.walletCount}
+                        </p>
                       </div>
                       <Wallet className="h-6 w-6 text-blue-600" />
                     </div>
@@ -851,7 +937,9 @@ export function TaxEntitiesManagement() {
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground">Transactions</p>
+                        <p className="text-sm text-muted-foreground">
+                          Transactions
+                        </p>
                         <p className="text-2xl font-bold">
                           {selectedEntity.transactionCount.toLocaleString()}
                         </p>
@@ -888,8 +976,8 @@ export function TaxEntitiesManagement() {
             <AlertDialogTitle>Delete Tax Entities</AlertDialogTitle>
             <AlertDialogDescription>
               Are you sure you want to delete {selectedEntities.length}{" "}
-              {selectedEntities.length > 1 ? "entities" : "entity"}? This action cannot be
-              undone and will remove all associated data.
+              {selectedEntities.length > 1 ? "entities" : "entity"}? This action
+              cannot be undone and will remove all associated data.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

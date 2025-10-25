@@ -94,24 +94,60 @@ interface AuditEntry {
 
 const permissionCategories = {
   "Client Management": [
-    { id: "clients.view", name: "View Clients", description: "View client information" },
-    { id: "clients.create", name: "Create Clients", description: "Create new clients" },
-    { id: "clients.edit", name: "Edit Clients", description: "Modify client details" },
-    { id: "clients.delete", name: "Delete Clients", description: "Delete clients" },
+    {
+      id: "clients.view",
+      name: "View Clients",
+      description: "View client information",
+    },
+    {
+      id: "clients.create",
+      name: "Create Clients",
+      description: "Create new clients",
+    },
+    {
+      id: "clients.edit",
+      name: "Edit Clients",
+      description: "Modify client details",
+    },
+    {
+      id: "clients.delete",
+      name: "Delete Clients",
+      description: "Delete clients",
+    },
   ],
   "User Management": [
     { id: "users.view", name: "View Users", description: "View user accounts" },
     { id: "users.create", name: "Create Users", description: "Add new users" },
-    { id: "users.edit", name: "Edit Users", description: "Modify user accounts" },
+    {
+      id: "users.edit",
+      name: "Edit Users",
+      description: "Modify user accounts",
+    },
     { id: "users.delete", name: "Delete Users", description: "Remove users" },
   ],
   "Tax Entities": [
-    { id: "entities.view", name: "View Entities", description: "View tax entities" },
-    { id: "entities.create", name: "Create Entities", description: "Create tax entities" },
-    { id: "entities.edit", name: "Edit Entities", description: "Modify tax entities" },
-    { id: "entities.delete", name: "Delete Entities", description: "Delete tax entities" },
+    {
+      id: "entities.view",
+      name: "View Entities",
+      description: "View tax entities",
+    },
+    {
+      id: "entities.create",
+      name: "Create Entities",
+      description: "Create tax entities",
+    },
+    {
+      id: "entities.edit",
+      name: "Edit Entities",
+      description: "Modify tax entities",
+    },
+    {
+      id: "entities.delete",
+      name: "Delete Entities",
+      description: "Delete tax entities",
+    },
   ],
-  "Transactions": [
+  Transactions: [
     {
       id: "transactions.view",
       name: "View Transactions",
@@ -135,8 +171,16 @@ const permissionCategories = {
   ],
   Reports: [
     { id: "reports.view", name: "View Reports", description: "Access reports" },
-    { id: "reports.generate", name: "Generate Reports", description: "Create new reports" },
-    { id: "reports.export", name: "Export Reports", description: "Download reports" },
+    {
+      id: "reports.generate",
+      name: "Generate Reports",
+      description: "Create new reports",
+    },
+    {
+      id: "reports.export",
+      name: "Export Reports",
+      description: "Download reports",
+    },
     {
       id: "reports.schedule",
       name: "Schedule Reports",
@@ -144,7 +188,11 @@ const permissionCategories = {
     },
   ],
   Settings: [
-    { id: "settings.view", name: "View Settings", description: "View system settings" },
+    {
+      id: "settings.view",
+      name: "View Settings",
+      description: "View system settings",
+    },
     {
       id: "settings.edit",
       name: "Edit Settings",
@@ -313,7 +361,9 @@ export function PermissionsManagement() {
   const [newRoleName, setNewRoleName] = useState("");
   const [newRoleDescription, setNewRoleDescription] = useState("");
   const [newRoleColor, setNewRoleColor] = useState("blue");
-  const [newRolePermissions, setNewRolePermissions] = useState<Record<string, boolean>>({});
+  const [newRolePermissions, setNewRolePermissions] = useState<
+    Record<string, boolean>
+  >({});
 
   // Bulk assignment states
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
@@ -338,7 +388,10 @@ export function PermissionsManagement() {
       toast({ title: "Role name is required", variant: "destructive" });
       return;
     }
-    toast({ title: "Role created successfully", description: `${newRoleName} has been created` });
+    toast({
+      title: "Role created successfully",
+      description: `${newRoleName} has been created`,
+    });
     setCreateRoleOpen(false);
     setNewRoleName("");
     setNewRoleDescription("");
@@ -379,8 +432,11 @@ export function PermissionsManagement() {
   };
 
   const toggleCategoryPermissions = (category: string, enabled: boolean) => {
-    const categoryPermissions = permissionCategories[category as keyof typeof permissionCategories];
-    const updates = Object.fromEntries(categoryPermissions.map((p) => [p.id, enabled]));
+    const categoryPermissions =
+      permissionCategories[category as keyof typeof permissionCategories];
+    const updates = Object.fromEntries(
+      categoryPermissions.map((p) => [p.id, enabled]),
+    );
     setNewRolePermissions((prev) => ({ ...prev, ...updates }));
   };
 
@@ -420,25 +476,36 @@ export function PermissionsManagement() {
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`p-3 rounded-lg ${getRoleColor(role.color)}`}>
+                      <div
+                        className={`p-3 rounded-lg ${getRoleColor(role.color)}`}
+                      >
                         <Shield className="h-6 w-6" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg">{role.name}</h3>
-                        <p className="text-sm text-muted-foreground">{role.description}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {role.description}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Users with this role</span>
-                    <Badge className={getRoleColor(role.color)} variant="secondary">
+                    <span className="text-sm text-muted-foreground">
+                      Users with this role
+                    </span>
+                    <Badge
+                      className={getRoleColor(role.color)}
+                      variant="secondary"
+                    >
                       {role.userCount}
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Total Permissions</span>
+                    <span className="text-sm text-muted-foreground">
+                      Total Permissions
+                    </span>
                     <span className="font-semibold">
                       {Object.values(role.permissions).filter(Boolean).length} /{" "}
                       {Object.keys(role.permissions).length}
@@ -458,8 +525,15 @@ export function PermissionsManagement() {
                       Edit
                     </Button>
                     <DropdownMenu>
-                      <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-                        <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
+                      <DropdownMenuTrigger
+                        asChild
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-9 w-9 p-0"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -520,43 +594,50 @@ export function PermissionsManagement() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {Object.entries(permissionCategories).map(([category, permissions]) => (
-                      <Fragment key={category}>
-                        <TableRow className="bg-muted/50">
-                          <TableCell
-                            colSpan={mockRoles.length + 1}
-                            className="font-semibold sticky left-0 bg-muted/50"
-                          >
-                            {category}
-                          </TableCell>
-                        </TableRow>
-                        {permissions.map((permission) => (
-                          <TableRow key={permission.id}>
-                            <TableCell className="sticky left-0 bg-background">
-                              <div>
-                                <div className="font-medium">{permission.name}</div>
-                                <div className="text-sm text-muted-foreground">
-                                  {permission.description}
-                                </div>
-                              </div>
+                    {Object.entries(permissionCategories).map(
+                      ([category, permissions]) => (
+                        <Fragment key={category}>
+                          <TableRow className="bg-muted/50">
+                            <TableCell
+                              colSpan={mockRoles.length + 1}
+                              className="font-semibold sticky left-0 bg-muted/50"
+                            >
+                              {category}
                             </TableCell>
-                            {mockRoles.map((role) => (
-                              <TableCell key={role.id} className="text-center">
-                                {role.permissions[permission.id] ? (
-                                  <div className="flex justify-center">
-                                    <Check className="h-5 w-5 text-green-600" />
-                                  </div>
-                                ) : (
-                                  <div className="flex justify-center">
-                                    <X className="h-5 w-5 text-red-400" />
-                                  </div>
-                                )}
-                              </TableCell>
-                            ))}
                           </TableRow>
-                        ))}
-                      </Fragment>
-                    ))}
+                          {permissions.map((permission) => (
+                            <TableRow key={permission.id}>
+                              <TableCell className="sticky left-0 bg-background">
+                                <div>
+                                  <div className="font-medium">
+                                    {permission.name}
+                                  </div>
+                                  <div className="text-sm text-muted-foreground">
+                                    {permission.description}
+                                  </div>
+                                </div>
+                              </TableCell>
+                              {mockRoles.map((role) => (
+                                <TableCell
+                                  key={role.id}
+                                  className="text-center"
+                                >
+                                  {role.permissions[permission.id] ? (
+                                    <div className="flex justify-center">
+                                      <Check className="h-5 w-5 text-green-600" />
+                                    </div>
+                                  ) : (
+                                    <div className="flex justify-center">
+                                      <X className="h-5 w-5 text-red-400" />
+                                    </div>
+                                  )}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          ))}
+                        </Fragment>
+                      ),
+                    )}
                   </TableBody>
                 </Table>
               </div>
@@ -595,7 +676,9 @@ export function PermissionsManagement() {
                 <TableBody>
                   {mockAuditTrail.map((entry) => (
                     <TableRow key={entry.id}>
-                      <TableCell className="text-muted-foreground">{entry.timestamp}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {entry.timestamp}
+                      </TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-xs">
@@ -615,7 +698,9 @@ export function PermissionsManagement() {
                           {entry.role}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-muted-foreground">{entry.details}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {entry.details}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -634,57 +719,77 @@ export function PermissionsManagement() {
           {selectedRole && (
             <div className="space-y-6 py-4">
               <div className="flex items-center gap-4">
-                <div className={`p-4 rounded-lg ${getRoleColor(selectedRole.color)}`}>
+                <div
+                  className={`p-4 rounded-lg ${getRoleColor(selectedRole.color)}`}
+                >
                   <Shield className="h-8 w-8" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">{selectedRole.name}</h3>
-                  <p className="text-muted-foreground">{selectedRole.description}</p>
+                  <p className="text-muted-foreground">
+                    {selectedRole.description}
+                  </p>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <Card>
                   <CardContent className="p-4">
                     <p className="text-sm text-muted-foreground">Users</p>
-                    <p className="text-2xl font-bold">{selectedRole.userCount}</p>
+                    <p className="text-2xl font-bold">
+                      {selectedRole.userCount}
+                    </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4">
                     <p className="text-sm text-muted-foreground">Created</p>
-                    <p className="text-lg font-medium">{selectedRole.createdDate}</p>
+                    <p className="text-lg font-medium">
+                      {selectedRole.createdDate}
+                    </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4">
-                    <p className="text-sm text-muted-foreground">Last Modified</p>
-                    <p className="text-lg font-medium">{selectedRole.lastModified}</p>
+                    <p className="text-sm text-muted-foreground">
+                      Last Modified
+                    </p>
+                    <p className="text-lg font-medium">
+                      {selectedRole.lastModified}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
               <div className="space-y-4">
                 <h4 className="font-semibold">Permissions</h4>
-                {Object.entries(permissionCategories).map(([category, permissions]) => (
-                  <div key={category} className="space-y-2">
-                    <h5 className="font-medium text-sm text-muted-foreground">{category}</h5>
-                    <div className="grid grid-cols-2 gap-2">
-                      {permissions.map((permission) => (
-                        <div
-                          key={permission.id}
-                          className="flex items-center justify-between p-3 rounded-lg border"
-                        >
-                          <div>
-                            <div className="font-medium text-sm">{permission.name}</div>
-                            <div className="text-xs text-muted-foreground">
-                              {permission.description}
+                {Object.entries(permissionCategories).map(
+                  ([category, permissions]) => (
+                    <div key={category} className="space-y-2">
+                      <h5 className="font-medium text-sm text-muted-foreground">
+                        {category}
+                      </h5>
+                      <div className="grid grid-cols-2 gap-2">
+                        {permissions.map((permission) => (
+                          <div
+                            key={permission.id}
+                            className="flex items-center justify-between p-3 rounded-lg border"
+                          >
+                            <div>
+                              <div className="font-medium text-sm">
+                                {permission.name}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {permission.description}
+                              </div>
                             </div>
+                            {getPermissionIcon(
+                              selectedRole.permissions[permission.id] || false,
+                            )}
                           </div>
-                          {getPermissionIcon(selectedRole.permissions[permission.id] || false)}
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             </div>
           )}
@@ -722,7 +827,9 @@ export function PermissionsManagement() {
       >
         <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>{editRoleOpen ? "Edit Role" : "Create New Role"}</DialogTitle>
+            <DialogTitle>
+              {editRoleOpen ? "Edit Role" : "Create New Role"}
+            </DialogTitle>
             <DialogDescription>
               {editRoleOpen
                 ? "Update role information and permissions"
@@ -768,69 +875,88 @@ export function PermissionsManagement() {
             </div>
             <div className="space-y-4">
               <Label>Permissions</Label>
-              {Object.entries(permissionCategories).map(([category, permissions]) => {
-                const allEnabled = permissions.every((p) => newRolePermissions[p.id]);
-                const someEnabled = permissions.some((p) => newRolePermissions[p.id]);
-                return (
-                  <Card key={category}>
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-semibold">{category}</h4>
-                        <div className="flex gap-2">
-                          <Button
-                            variant={allEnabled ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => toggleCategoryPermissions(category, true)}
-                          >
-                            <Lock className="h-4 w-4 mr-1" />
-                            Enable All
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => toggleCategoryPermissions(category, false)}
-                          >
-                            <Unlock className="h-4 w-4 mr-1" />
-                            Disable All
-                          </Button>
+              {Object.entries(permissionCategories).map(
+                ([category, permissions]) => {
+                  const allEnabled = permissions.every(
+                    (p) => newRolePermissions[p.id],
+                  );
+                  const someEnabled = permissions.some(
+                    (p) => newRolePermissions[p.id],
+                  );
+                  return (
+                    <Card key={category}>
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold">{category}</h4>
+                          <div className="flex gap-2">
+                            <Button
+                              variant={allEnabled ? "default" : "outline"}
+                              size="sm"
+                              onClick={() =>
+                                toggleCategoryPermissions(category, true)
+                              }
+                            >
+                              <Lock className="h-4 w-4 mr-1" />
+                              Enable All
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() =>
+                                toggleCategoryPermissions(category, false)
+                              }
+                            >
+                              <Unlock className="h-4 w-4 mr-1" />
+                              Disable All
+                            </Button>
+                          </div>
                         </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      {permissions.map((permission) => (
-                        <div
-                          key={permission.id}
-                          className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50 transition-colors"
-                        >
-                          <div className="flex items-center gap-3 flex-1">
-                            <Checkbox
-                              checked={newRolePermissions[permission.id] || false}
-                              onCheckedChange={() => togglePermission(permission.id)}
-                            />
-                            <div>
-                              <div className="font-medium text-sm">{permission.name}</div>
-                              <div className="text-xs text-muted-foreground">
-                                {permission.description}
+                      </CardHeader>
+                      <CardContent className="space-y-2">
+                        {permissions.map((permission) => (
+                          <div
+                            key={permission.id}
+                            className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50 transition-colors"
+                          >
+                            <div className="flex items-center gap-3 flex-1">
+                              <Checkbox
+                                checked={
+                                  newRolePermissions[permission.id] || false
+                                }
+                                onCheckedChange={() =>
+                                  togglePermission(permission.id)
+                                }
+                              />
+                              <div>
+                                <div className="font-medium text-sm">
+                                  {permission.name}
+                                </div>
+                                <div className="text-xs text-muted-foreground">
+                                  {permission.description}
+                                </div>
                               </div>
                             </div>
+                            {newRolePermissions[permission.id] ? (
+                              <Badge className="bg-green-100 text-green-700 border-0">
+                                <Check className="h-3 w-3 mr-1" />
+                                Enabled
+                              </Badge>
+                            ) : (
+                              <Badge
+                                variant="outline"
+                                className="text-muted-foreground"
+                              >
+                                <X className="h-3 w-3 mr-1" />
+                                Disabled
+                              </Badge>
+                            )}
                           </div>
-                          {newRolePermissions[permission.id] ? (
-                            <Badge className="bg-green-100 text-green-700 border-0">
-                              <Check className="h-3 w-3 mr-1" />
-                              Enabled
-                            </Badge>
-                          ) : (
-                            <Badge variant="outline" className="text-muted-foreground">
-                              <X className="h-3 w-3 mr-1" />
-                              Disabled
-                            </Badge>
-                          )}
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                        ))}
+                      </CardContent>
+                    </Card>
+                  );
+                },
+              )}
             </div>
           </div>
           <DialogFooter>
@@ -901,7 +1027,9 @@ export function PermissionsManagement() {
                           size="sm"
                           className="h-6 w-6 p-0"
                           onClick={() =>
-                            setSelectedUsers((prev) => prev.filter((id) => id !== userId))
+                            setSelectedUsers((prev) =>
+                              prev.filter((id) => id !== userId),
+                            )
                           }
                         >
                           <X className="h-4 w-4" />
@@ -916,7 +1044,10 @@ export function PermissionsManagement() {
               <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5" />
               <div className="text-sm text-blue-900">
                 <p className="font-medium">Note:</p>
-                <p>Bulk role assignment will override existing roles for selected users.</p>
+                <p>
+                  Bulk role assignment will override existing roles for selected
+                  users.
+                </p>
               </div>
             </div>
           </div>
@@ -941,8 +1072,9 @@ export function PermissionsManagement() {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Role</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete the role "{selectedRole?.name}"? This action cannot
-              be undone. Users with this role will need to be reassigned.
+              Are you sure you want to delete the role "{selectedRole?.name}"?
+              This action cannot be undone. Users with this role will need to be
+              reassigned.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

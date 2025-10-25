@@ -257,10 +257,16 @@ export function UsersManagement() {
 
   const handleAddUser = () => {
     if (!newUserName || !newUserEmail) {
-      toast({ title: "Please fill in required fields", variant: "destructive" });
+      toast({
+        title: "Please fill in required fields",
+        variant: "destructive",
+      });
       return;
     }
-    toast({ title: "User invitation sent", description: `Invitation sent to ${newUserEmail}` });
+    toast({
+      title: "User invitation sent",
+      description: `Invitation sent to ${newUserEmail}`,
+    });
     setAddUserOpen(false);
     setNewUserName("");
     setNewUserEmail("");
@@ -291,8 +297,12 @@ export function UsersManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Active Users</p>
-                <p className="text-3xl font-bold text-green-600">{activeCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Active Users
+                </p>
+                <p className="text-3xl font-bold text-green-600">
+                  {activeCount}
+                </p>
               </div>
               <div className="p-3 bg-green-100 rounded-lg">
                 <UserCheck className="h-6 w-6 text-green-600" />
@@ -304,8 +314,12 @@ export function UsersManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Inactive Users</p>
-                <p className="text-3xl font-bold text-gray-600">{inactiveCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Inactive Users
+                </p>
+                <p className="text-3xl font-bold text-gray-600">
+                  {inactiveCount}
+                </p>
               </div>
               <div className="p-3 bg-gray-100 rounded-lg">
                 <UserX className="h-6 w-6 text-gray-600" />
@@ -317,8 +331,12 @@ export function UsersManagement() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Pending Approvals</p>
-                <p className="text-3xl font-bold text-yellow-600">{pendingCount}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Pending Approvals
+                </p>
+                <p className="text-3xl font-bold text-yellow-600">
+                  {pendingCount}
+                </p>
               </div>
               <div className="p-3 bg-yellow-100 rounded-lg">
                 <Clock className="h-6 w-6 text-yellow-600" />
@@ -414,7 +432,8 @@ export function UsersManagement() {
           <DialogHeader>
             <DialogTitle>Add New User</DialogTitle>
             <DialogDescription>
-              Send an invitation to a new user. They will receive an email with setup instructions.
+              Send an invitation to a new user. They will receive an email with
+              setup instructions.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
@@ -481,7 +500,10 @@ export function UsersManagement() {
             <Button variant="outline" onClick={() => setAddUserOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={handleAddUser} className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button
+              onClick={handleAddUser}
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
               <Mail className="h-4 w-4 mr-2" />
               Send Invitation
             </Button>
@@ -520,7 +542,9 @@ export function UsersManagement() {
                 </div>
                 <div className="space-y-2">
                   <Label className="text-muted-foreground">Department</Label>
-                  <p className="font-medium">{selectedUser.department || "N/A"}</p>
+                  <p className="font-medium">
+                    {selectedUser.department || "N/A"}
+                  </p>
                 </div>
                 <div className="space-y-2">
                   <Label className="text-muted-foreground">Phone</Label>
@@ -570,7 +594,11 @@ export function UsersManagement() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="edit-email">Email Address</Label>
-                  <Input id="edit-email" type="email" defaultValue={selectedUser.email} />
+                  <Input
+                    id="edit-email"
+                    type="email"
+                    defaultValue={selectedUser.email}
+                  />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -581,7 +609,9 @@ export function UsersManagement() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Administrator">Administrator</SelectItem>
+                      <SelectItem value="Administrator">
+                        Administrator
+                      </SelectItem>
                       <SelectItem value="Tax Preparer">Tax Preparer</SelectItem>
                       <SelectItem value="Client User">Client User</SelectItem>
                     </SelectContent>
@@ -604,7 +634,10 @@ export function UsersManagement() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="edit-department">Department</Label>
-                  <Input id="edit-department" defaultValue={selectedUser.department} />
+                  <Input
+                    id="edit-department"
+                    defaultValue={selectedUser.department}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="edit-phone">Phone Number</Label>
@@ -701,7 +734,10 @@ function UserTableSection({
               <SelectItem value="Client User">Client User</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={() => toast({ title: "Export started" })}>
+          <Button
+            variant="outline"
+            onClick={() => toast({ title: "Export started" })}
+          >
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
@@ -714,7 +750,8 @@ function UserTableSection({
           {selectedUsers.length > 0 && (
             <div className="flex items-center justify-between p-4 border-b bg-muted/30">
               <div className="text-sm font-medium">
-                {selectedUsers.length} user{selectedUsers.length > 1 ? "s" : ""} selected
+                {selectedUsers.length} user{selectedUsers.length > 1 ? "s" : ""}{" "}
+                selected
               </div>
               <div className="flex gap-2">
                 <Button variant="outline" size="sm">
@@ -732,7 +769,9 @@ function UserTableSection({
               <TableRow>
                 <TableHead className="w-12">
                   <Checkbox
-                    checked={selectedUsers.length === users.length && users.length > 0}
+                    checked={
+                      selectedUsers.length === users.length && users.length > 0
+                    }
                     onCheckedChange={handleSelectAll}
                   />
                 </TableHead>
@@ -772,7 +811,10 @@ function UserTableSection({
             <TableBody>
               {users.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                  <TableCell
+                    colSpan={7}
+                    className="text-center py-8 text-muted-foreground"
+                  >
                     No users found
                   </TableCell>
                 </TableRow>
@@ -795,27 +837,41 @@ function UserTableSection({
                         </div>
                         <div>
                           <div className="font-medium">{user.name}</div>
-                          <div className="text-sm text-muted-foreground">{user.department}</div>
+                          <div className="text-sm text-muted-foreground">
+                            {user.department}
+                          </div>
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell className="text-muted-foreground">{user.email}</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {user.email}
+                    </TableCell>
                     <TableCell>{getRoleBadge(user.role)}</TableCell>
-                    <TableCell className="text-muted-foreground">{user.lastLogin}</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {user.lastLogin}
+                    </TableCell>
                     <TableCell>{getStatusBadge(user.status)}</TableCell>
                     <TableCell className="text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-8 w-8 p-0"
+                          >
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => handleViewUser(user)}>
+                          <DropdownMenuItem
+                            onClick={() => handleViewUser(user)}
+                          >
                             <Eye className="mr-2 h-4 w-4" />
                             View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleEditUser(user)}>
+                          <DropdownMenuItem
+                            onClick={() => handleEditUser(user)}
+                          >
                             <Edit2 className="mr-2 h-4 w-4" />
                             Edit User
                           </DropdownMenuItem>

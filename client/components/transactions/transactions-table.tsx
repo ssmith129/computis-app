@@ -41,7 +41,7 @@ interface TransactionsTableProps {
   };
 }
 
-const mockTransactions = [
+const mockTransactions: Transaction[] = [
   {
     id: "1",
     date: "2022-06-15",

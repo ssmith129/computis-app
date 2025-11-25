@@ -29,6 +29,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "@/hooks/use-toast";
+import {
+  TransactionDetailsModal,
+  type Transaction,
+} from "./transaction-details-modal";
 
 interface TransactionsTableProps {
   filters: {

@@ -173,7 +173,15 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
     [],
   );
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedTransaction, setSelectedTransaction] =
+    useState<Transaction | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const itemsPerPage = 25;
+
+  const handleViewDetails = (transaction: Transaction) => {
+    setSelectedTransaction(transaction);
+    setIsModalOpen(true);
+  };
 
   const filteredTransactions = mockTransactions.filter((transaction) => {
     const confidenceMatch =

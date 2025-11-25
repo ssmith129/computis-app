@@ -7,7 +7,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { StatusBadge } from "@/components/dashboard/status-badge";
 import { Separator } from "@/components/ui/separator";
-import { AlertTriangle, ArrowDownLeft, ArrowUpRight, RefreshCw } from "lucide-react";
+import {
+  AlertTriangle,
+  ArrowDownLeft,
+  ArrowUpRight,
+  RefreshCw,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface Transaction {

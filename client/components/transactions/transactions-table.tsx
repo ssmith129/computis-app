@@ -336,7 +336,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                         Confirm
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={() => toast({ title: "Showing details" })}
+                        onClick={() => handleViewDetails(transaction)}
                       >
                         <Eye className="mr-2 h-4 w-4" />
                         View Details

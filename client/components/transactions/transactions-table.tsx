@@ -445,6 +445,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
           </Button>
         </div>
       </div>
+
+      {/* Transaction Details Modal */}
+      <TransactionDetailsModal
+        transaction={selectedTransaction}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
     </div>
   );
 }

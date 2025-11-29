@@ -187,7 +187,6 @@ export function AnomalyIssueDetails({
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onClose} className="h-9">
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back
             </Button>
             <div className="flex items-center gap-3">
               <div className="bg-red-50 rounded-lg p-2">
@@ -223,7 +222,7 @@ export function AnomalyIssueDetails({
               aria-label="Apply AI recommendation"
             >
               <Sparkles className="h-4 w-4 mr-2" />
-              Apply AI Recommendation
+              Apply Recommendation
             </Button>
             <Button
               size="sm"

@@ -109,7 +109,11 @@ export function TransactionInsightsUnified() {
           </Badge>
         </div>
 
-        <div className="space-y-3" role="list" aria-label="Classification levels">
+        <div
+          className="space-y-3"
+          role="list"
+          aria-label="Classification levels"
+        >
           {classificationData.map((item) => {
             const IconComponent = item.icon;
             return (

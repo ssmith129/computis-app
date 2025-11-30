@@ -15,6 +15,21 @@ export function TransactionsContent() {
   const confidenceFilters = ["All", "High", "Medium", "Low"];
   const statusFilters = ["All", "Confirmed", "Suggested", "Flagged"];
 
+  const getConfidenceButtonClass = (filter: string, isActive: boolean) => {
+    if (!isActive) return "h-8";
+
+    switch (filter) {
+      case "High":
+        return "h-8 bg-green-100 text-green-800 hover:bg-green-200 border-green-200";
+      case "Medium":
+        return "h-8 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200";
+      case "Low":
+        return "h-8 bg-red-100 text-red-800 hover:bg-red-200 border-red-200";
+      default:
+        return "h-8";
+    }
+  };
+
   return (
     <div className="app-content">
       <div className="page-titlebar">

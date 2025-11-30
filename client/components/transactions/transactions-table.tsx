@@ -228,7 +228,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
         <Table className="min-w-full table-fixed">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-10 px-2">
+              <TableHead className="w-10 px-1.5">
                 <Checkbox
                   checked={
                     selectedTransactions.length ===
@@ -239,7 +239,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                 />
               </TableHead>
               <TableHead className="w-10 px-2" />
-              <TableHead className="w-24 px-2">
+              <TableHead className="w-24 px-1.5">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -249,22 +249,22 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                   <ArrowUpDown className="ml-1 h-3 w-3" />
                 </Button>
               </TableHead>
-              <TableHead className="w-20 px-2 text-xs">Type</TableHead>
-              <TableHead className="w-36 px-2 text-xs">Asset</TableHead>
-              <TableHead className="w-24 px-2 text-xs">Amount</TableHead>
-              <TableHead className="w-28 px-2 text-xs">FMV (USD)</TableHead>
-              <TableHead className="w-32 px-2 text-xs">
+              <TableHead className="w-20 px-1.5 text-xs">Type</TableHead>
+              <TableHead className="w-36 px-1.5 text-xs">Asset</TableHead>
+              <TableHead className="w-24 px-1.5 text-xs">Amount</TableHead>
+              <TableHead className="w-28 px-1.5 text-xs">FMV (USD)</TableHead>
+              <TableHead className="w-32 px-1.5 text-xs">
                 AI Classification
               </TableHead>
-              <TableHead className="w-24 px-2 text-xs">Confidence</TableHead>
-              <TableHead className="w-28 px-2 text-xs">Status</TableHead>
-              <TableHead className="w-12 px-2 text-xs">Actions</TableHead>
+              <TableHead className="w-24 px-1.5 text-xs">Confidence</TableHead>
+              <TableHead className="w-28 px-1.5 text-xs">Status</TableHead>
+              <TableHead className="w-12 px-1.5 text-xs">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {displayedTransactions.map((transaction) => (
               <TableRow key={transaction.id} className="h-12">
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <Checkbox
                     checked={selectedTransactions.includes(transaction.id)}
                     onCheckedChange={(checked) =>
@@ -272,7 +272,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     }
                   />
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <Button
                     variant="ghost"
                     size="sm"
@@ -283,13 +283,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     <Eye className="h-4 w-4" />
                   </Button>
                 </TableCell>
-                <TableCell className="font-medium px-2 py-2 text-sm">
+                <TableCell className="font-medium px-1.5 py-2 text-sm">
                   {transaction.date}
                 </TableCell>
-                <TableCell className="px-2 py-2 text-sm">
+                <TableCell className="px-1.5 py-2 text-sm">
                   {transaction.type}
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <div className="flex items-center gap-1.5">
                     <span className="font-mono text-orange-500 text-sm">
                       {transaction.icon}
@@ -299,13 +299,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="font-mono px-2 py-2 text-sm">
+                <TableCell className="font-mono px-1.5 py-2 text-sm">
                   {transaction.amount}
                 </TableCell>
-                <TableCell className="font-mono px-2 py-2 text-sm">
+                <TableCell className="font-mono px-1.5 py-2 text-sm">
                   {transaction.fmvUsd}
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <Badge
                     className={`${getClassificationBadgeColor(
                       transaction.aiClassification,
@@ -314,7 +314,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     {transaction.aiClassification}
                   </Badge>
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <div className="flex items-center gap-1.5">
                     <span
                       className={`font-medium text-sm ${getConfidenceColor(transaction.confidence)}`}
@@ -326,12 +326,12 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     )}
                   </div>
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <StatusBadge variant={getStatusVariant(transaction.status)}>
                     {transaction.status}
                   </StatusBadge>
                 </TableCell>
-                <TableCell className="px-2 py-2">
+                <TableCell className="px-1.5 py-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm" className="h-7 w-7 p-0">

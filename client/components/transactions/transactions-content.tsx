@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TransactionsTable } from "./transactions-table";
-import { ClassificationInsights } from "./classification-insights";
-import { TransactionAnomalyFlags } from "./transaction-anomaly-flags";
+import { TransactionInsightsUnified } from "./transaction-insights-unified";
 import { Filter, Tag, AlertTriangle } from "lucide-react";
-import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
 export function TransactionsContent() {
@@ -125,35 +123,10 @@ export function TransactionsContent() {
             </CardContent>
           </Card>
 
-          {/* Bottom Sections */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* AI Classification Insights */}
-            <Card className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">
-                  AI Classification Insights
-                </h3>
-              </div>
-              <ClassificationInsights />
-            </Card>
-
-            {/* Anomaly Flags */}
-            <Card className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">Anomaly Flags</h3>
-                <Link to="/data-anomaly-detection">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-muted-foreground hover:text-foreground h-auto p-0"
-                  >
-                    View All
-                  </Button>
-                </Link>
-              </div>
-              <TransactionAnomalyFlags />
-            </Card>
-          </div>
+          {/* Unified Insights Card */}
+          <Card className="p-6">
+            <TransactionInsightsUnified />
+          </Card>
         </div>
       </div>
     </div>

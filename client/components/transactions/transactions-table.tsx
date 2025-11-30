@@ -238,7 +238,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                   onCheckedChange={handleSelectAll}
                 />
               </TableHead>
-              <TableHead className="w-10 px-2" />
+              <TableHead className="w-10 px-1.5 text-xs">View</TableHead>
               <TableHead className="w-24 px-1.5">
                 <Button
                   variant="ghost"

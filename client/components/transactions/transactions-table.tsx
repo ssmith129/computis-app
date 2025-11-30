@@ -238,6 +238,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                   onCheckedChange={handleSelectAll}
                 />
               </TableHead>
+              <TableHead className="w-10 px-2" />
               <TableHead className="w-24 px-2">
                 <Button
                   variant="ghost"
@@ -270,6 +271,17 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       handleSelectTransaction(transaction.id, !!checked)
                     }
                   />
+                </TableCell>
+                <TableCell className="px-2 py-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 w-7 p-0"
+                    onClick={() => handleViewDetails(transaction)}
+                    aria-label="View transaction details"
+                  >
+                    <Eye className="h-4 w-4" />
+                  </Button>
                 </TableCell>
                 <TableCell className="font-medium px-2 py-2 text-sm">
                   {transaction.date}
@@ -334,12 +346,6 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       >
                         <Check className="mr-2 h-4 w-4" />
                         Confirm
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => handleViewDetails(transaction)}
-                      >
-                        <Eye className="mr-2 h-4 w-4" />
-                        View Details
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         onClick={() => toast({ title: "Transaction flagged" })}

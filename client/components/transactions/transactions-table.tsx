@@ -228,7 +228,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
         <Table className="min-w-full table-fixed">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-10 px-1.5">
+              <TableHead className="w-10 pl-10 pr-1.5">
                 <Checkbox
                   checked={
                     selectedTransactions.length ===
@@ -264,7 +264,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
           <TableBody>
             {displayedTransactions.map((transaction) => (
               <TableRow key={transaction.id} className="h-12">
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="pl-10 pr-1.5 py-2">
                   <Checkbox
                     checked={selectedTransactions.includes(transaction.id)}
                     onCheckedChange={(checked) =>

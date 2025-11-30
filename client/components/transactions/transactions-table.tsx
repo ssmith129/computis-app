@@ -264,7 +264,7 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
               </TableHead>
               <TableHead className="w-24 px-1.5 text-xs">Confidence</TableHead>
               <TableHead className="w-28 px-1.5 text-xs">Status</TableHead>
-              <TableHead className="w-12 px-1.5 text-xs">Actions</TableHead>
+              <TableHead className="w-24 px-1.5 text-xs">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

@@ -338,36 +338,66 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                   </StatusBadge>
                 </TableCell>
                 <TableCell className="px-1.5 py-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm" className="h-7 w-7 p-0">
-                        <MoreHorizontal className="h-3.5 w-3.5" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem
-                        onClick={() =>
-                          toast({ title: "Transaction confirmed" })
-                        }
-                      >
-                        <Check className="mr-2 h-4 w-4" />
-                        Confirm
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => toast({ title: "Transaction flagged" })}
-                      >
-                        <Flag className="mr-2 h-4 w-4" />
-                        Flag
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="text-red-600"
-                        onClick={() => toast({ title: "Transaction rejected" })}
-                      >
-                        <X className="mr-2 h-4 w-4" />
-                        Reject
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <TooltipProvider>
+                    <div className="flex items-center gap-1">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-7 w-7 p-0 hover:bg-green-100 hover:text-green-600"
+                            onClick={() =>
+                              toast({ title: "Transaction confirmed" })
+                            }
+                            aria-label="Confirm transaction"
+                          >
+                            <Check className="h-3.5 w-3.5" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Confirm</p>
+                        </TooltipContent>
+                      </Tooltip>
+
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-7 w-7 p-0 hover:bg-yellow-100 hover:text-yellow-600"
+                            onClick={() =>
+                              toast({ title: "Transaction flagged" })
+                            }
+                            aria-label="Flag transaction"
+                          >
+                            <Flag className="h-3.5 w-3.5" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Flag</p>
+                        </TooltipContent>
+                      </Tooltip>
+
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-7 w-7 p-0 hover:bg-red-100 hover:text-red-600"
+                            onClick={() =>
+                              toast({ title: "Transaction rejected" })
+                            }
+                            aria-label="Reject transaction"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Reject</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </TooltipProvider>
                 </TableCell>
               </TableRow>
             ))}

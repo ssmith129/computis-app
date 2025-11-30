@@ -50,24 +50,25 @@ export function TransactionsContent() {
               <span className="text-sm text-muted-foreground whitespace-nowrap">
                 Confidence:
               </span>
-              {confidenceFilters.map((filter) => (
-                <Button
-                  key={filter}
-                  variant={
-                    activeFilters.confidence === filter ? "default" : "outline"
-                  }
-                  size="sm"
-                  onClick={() =>
-                    setActiveFilters((prev) => ({
-                      ...prev,
-                      confidence: filter,
-                    }))
-                  }
-                  className="h-8"
-                >
-                  {filter}
-                </Button>
-              ))}
+              {confidenceFilters.map((filter) => {
+                const isActive = activeFilters.confidence === filter;
+                return (
+                  <Button
+                    key={filter}
+                    variant={isActive ? "default" : "outline"}
+                    size="sm"
+                    onClick={() =>
+                      setActiveFilters((prev) => ({
+                        ...prev,
+                        confidence: filter,
+                      }))
+                    }
+                    className={getConfidenceButtonClass(filter, isActive)}
+                  >
+                    {filter}
+                  </Button>
+                );
+              })}
             </div>
 
             <div className="flex flex-wrap items-center gap-2">

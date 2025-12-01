@@ -331,7 +331,10 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       {transaction.confidence}%
                     </span>
                     {transaction.confidence < 40 && (
-                      <AlertTriangle className="h-3 w-3 text-red-500" aria-label="Low confidence" />
+                      <AlertTriangle
+                        className="h-3 w-3 text-red-500"
+                        aria-label="Low confidence"
+                      />
                     )}
                   </div>
                 </TableCell>

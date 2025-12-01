@@ -230,11 +230,11 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
   return (
     <div className="space-y-4">
       {/* Table */}
-      <div className="overflow-x-auto">
-        <Table className="min-w-full table-fixed">
+      <div className="responsive-table-container">
+        <Table className="responsive-transactions-table">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-10 pl-10 pr-1.5">
+              <TableHead className="checkbox-column">
                 <Checkbox
                   checked={
                     selectedTransactions.length ===
@@ -242,85 +242,88 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                     displayedTransactions.length > 0
                   }
                   onCheckedChange={handleSelectAll}
+                  aria-label="Select all transactions"
                 />
               </TableHead>
-              <TableHead className="w-10 px-1.5 text-xs">View</TableHead>
-              <TableHead className="w-24 px-1.5">
+              <TableHead className="view-column">View</TableHead>
+              <TableHead className="date-column">
                 <Button
                   variant="ghost"
                   size="sm"
                   className="p-0 h-auto font-medium text-xs"
+                  aria-label="Sort by date"
                 >
                   Date
                   <ArrowUpDown className="ml-1 h-3 w-3" />
                 </Button>
               </TableHead>
-              <TableHead className="w-20 px-1.5 text-xs">Type</TableHead>
-              <TableHead className="w-36 px-1.5 text-xs">Asset</TableHead>
-              <TableHead className="w-24 px-1.5 text-xs">Amount</TableHead>
-              <TableHead className="w-28 px-1.5 text-xs">FMV (USD)</TableHead>
-              <TableHead className="w-32 px-1.5 text-xs">
+              <TableHead className="type-column">Type</TableHead>
+              <TableHead className="asset-column">Asset</TableHead>
+              <TableHead className="amount-column">Amount</TableHead>
+              <TableHead className="fmv-column">FMV (USD)</TableHead>
+              <TableHead className="classification-column">
                 AI Classification
               </TableHead>
-              <TableHead className="w-24 px-1.5 text-xs">Confidence</TableHead>
-              <TableHead className="w-28 px-1.5 text-xs">Status</TableHead>
-              <TableHead className="w-24 px-1.5 text-xs">Actions</TableHead>
+              <TableHead className="confidence-column">Confidence</TableHead>
+              <TableHead className="status-column">Status</TableHead>
+              <TableHead className="actions-column">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {displayedTransactions.map((transaction) => (
-              <TableRow key={transaction.id} className="h-12">
-                <TableCell className="pl-10 pr-1.5 py-2">
+              <TableRow key={transaction.id} className="table-row-responsive">
+                <TableCell className="checkbox-column">
                   <Checkbox
                     checked={selectedTransactions.includes(transaction.id)}
                     onCheckedChange={(checked) =>
                       handleSelectTransaction(transaction.id, !!checked)
                     }
+                    aria-label={`Select transaction ${transaction.id}`}
                   />
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="view-column">
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-7 w-7 p-0"
+                    className="touch-target h-9 w-9 md:h-7 md:w-7 p-0"
                     onClick={() => handleViewDetails(transaction)}
-                    aria-label="View transaction details"
+                    aria-label={`View details for transaction ${transaction.id}`}
                   >
                     <Eye className="h-4 w-4" />
                   </Button>
                 </TableCell>
-                <TableCell className="font-medium px-1.5 py-2 text-sm">
+                <TableCell className="date-column">
                   {transaction.date}
                 </TableCell>
-                <TableCell className="px-1.5 py-2 text-sm">
+                <TableCell className="type-column">
                   {transaction.type}
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="asset-column">
                   <div className="flex items-center gap-1.5">
                     <span className="font-mono text-orange-500 text-sm">
                       {transaction.icon}
                     </span>
-                    <span className="text-sm truncate">
+                    <span className="text-sm truncate max-w-[120px] md:max-w-[160px]">
                       {transaction.asset}
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="font-mono px-1.5 py-2 text-sm">
+                <TableCell className="amount-column">
                   {transaction.amount}
                 </TableCell>
-                <TableCell className="font-mono px-1.5 py-2 text-sm">
+                <TableCell className="fmv-column">
                   {transaction.fmvUsd}
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="classification-column">
                   <Badge
                     className={`${getClassificationBadgeColor(
                       transaction.aiClassification,
-                    )} text-xs px-2 py-0.5`}
+                    )} text-xs px-2 py-0.5 whitespace-nowrap`}
                   >
                     {transaction.aiClassification}
                   </Badge>
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="confidence-column">
                   <div className="flex items-center gap-1.5">
                     <span
                       className={`font-medium text-sm ${getConfidenceColor(transaction.confidence)}`}
@@ -328,30 +331,30 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                       {transaction.confidence}%
                     </span>
                     {transaction.confidence < 40 && (
-                      <AlertTriangle className="h-3 w-3 text-red-500" />
+                      <AlertTriangle className="h-3 w-3 text-red-500" aria-label="Low confidence" />
                     )}
                   </div>
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="status-column">
                   <StatusBadge variant={getStatusVariant(transaction.status)}>
                     {transaction.status}
                   </StatusBadge>
                 </TableCell>
-                <TableCell className="px-1.5 py-2">
+                <TableCell className="actions-column">
                   <TooltipProvider>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 md:gap-1">
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0 hover:bg-green-100 hover:text-green-600"
+                            className="touch-target h-9 w-9 md:h-7 md:w-7 p-0 hover:bg-green-100 hover:text-green-600"
                             onClick={() =>
                               toast({ title: "Transaction confirmed" })
                             }
-                            aria-label="Confirm transaction"
+                            aria-label={`Confirm transaction ${transaction.id}`}
                           >
-                            <Check className="h-3.5 w-3.5" />
+                            <Check className="h-4 w-4 md:h-3.5 md:w-3.5" />
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
@@ -364,13 +367,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0 hover:bg-yellow-100 hover:text-yellow-600"
+                            className="touch-target h-9 w-9 md:h-7 md:w-7 p-0 hover:bg-yellow-100 hover:text-yellow-600"
                             onClick={() =>
                               toast({ title: "Transaction flagged" })
                             }
-                            aria-label="Flag transaction"
+                            aria-label={`Flag transaction ${transaction.id}`}
                           >
-                            <Flag className="h-3.5 w-3.5" />
+                            <Flag className="h-4 w-4 md:h-3.5 md:w-3.5" />
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
@@ -383,13 +386,13 @@ export function TransactionsTable({ filters }: TransactionsTableProps) {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 w-7 p-0 hover:bg-red-100 hover:text-red-600"
+                            className="touch-target h-9 w-9 md:h-7 md:w-7 p-0 hover:bg-red-100 hover:text-red-600"
                             onClick={() =>
                               toast({ title: "Transaction rejected" })
                             }
-                            aria-label="Reject transaction"
+                            aria-label={`Reject transaction ${transaction.id}`}
                           >
-                            <X className="h-3.5 w-3.5" />
+                            <X className="h-4 w-4 md:h-3.5 md:w-3.5" />
                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>

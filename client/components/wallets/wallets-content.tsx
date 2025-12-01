@@ -170,34 +170,36 @@ export function WalletsContent() {
   return (
     <div className="app-content">
       <div className="page-titlebar">
-        <div className="flex items-center justify-between p-6">
+        <div className="page-titlebar-content">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="responsive-page-title text-gray-900">
               Wallets and Exchanges
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="text-sm md:text-base text-gray-500">
               Connect and manage your crypto wallets and exchange accounts
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <Button asChild>
+          <div className="page-titlebar-actions">
+            <Button asChild size="sm" className="sm:size-default">
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
-                Add Wallet
+                <span className="hidden sm:inline">Add Wallet</span>
+                <span className="sm:hidden">Wallet</span>
               </Link>
             </Button>
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild size="sm" className="sm:size-default">
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
-                Add Exchange
+                <span className="hidden sm:inline">Add Exchange</span>
+                <span className="sm:hidden">Exchange</span>
               </Link>
             </Button>
           </div>
         </div>
       </div>
-      <div className="p-6 space-y-6">
+      <div className="p-4 md:p-6 space-y-4 md:space-y-6">
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="responsive-grid-stats">
           <Card className="border-gray-200">
             <CardContent className="p-4">
               <div className="text-2xl font-bold text-gray-900">4</div>
@@ -225,7 +227,7 @@ export function WalletsContent() {
         </div>
 
         {/* Wallets and Exchanges Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="card-grid-wallet">
           {mockWallets.map((wallet) => (
             <WalletCard key={wallet.id} wallet={wallet} />
           ))}

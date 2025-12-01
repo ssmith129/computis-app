@@ -55,30 +55,35 @@ All pages (except Index and NotFound) share this structure:
 ### 🔴 High Priority Issues
 
 #### 1. **Sidebar Mobile Behavior**
+
 - **Issue**: Sidebar defaultOpen={true} on all breakpoints
 - **Impact**: Sidebar covers content on mobile devices
 - **Devices Affected**: Mobile (320px-767px)
 - **Fix Required**: Implement mobile-first sidebar collapse
 
 #### 2. **Header Search Bar**
+
 - **Issue**: Search input has max-width but can still overflow on very small screens
 - **Impact**: Header layout breaks on 320px devices
 - **Devices Affected**: Mobile (320px-480px)
 - **Fix Required**: Better responsive constraints
 
 #### 3. **Settings Tabs**
+
 - **Issue**: `grid-cols-5` on TabsList breaks on mobile
 - **Impact**: Tabs are unreadable and unusable on small screens
 - **Devices Affected**: Mobile (320px-640px)
 - **Fix Required**: Stack tabs vertically or use scroll container
 
 #### 4. **Wallets Grid**
+
 - **Issue**: Fixed grid columns (md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4)
 - **Impact**: Cards too narrow on tablet, not enough on mobile
 - **Devices Affected**: All breakpoints
 - **Fix Required**: Better breakpoint distribution
 
 #### 5. **Form Layouts**
+
 - **Issue**: Fixed 2-column grids in settings forms
 - **Impact**: Form fields too narrow on tablets
 - **Devices Affected**: Tablet (768px-1023px)
@@ -87,30 +92,35 @@ All pages (except Index and NotFound) share this structure:
 ### 🟡 Medium Priority Issues
 
 #### 6. **Stats Cards**
+
 - **Issue**: 4-column grid (md:grid-cols-4) too cramped on tablet
 - **Impact**: Reduced readability
 - **Devices Affected**: Tablet (768px-900px)
 - **Fix Required**: Use 2 columns on tablet
 
 #### 7. **Typography Scaling**
+
 - **Issue**: Some headings don't scale between breakpoints
 - **Impact**: Poor visual hierarchy on mobile
 - **Devices Affected**: Mobile
 - **Fix Required**: Implement fluid typography
 
 #### 8. **Button Groups**
+
 - **Issue**: Filter buttons wrap awkwardly on narrow screens
 - **Impact**: Inconsistent spacing and alignment
 - **Devices Affected**: Mobile, small tablets
 - **Fix Required**: Better flex wrapping and gaps
 
 #### 9. **Page Title Bars**
+
 - **Issue**: Title and action buttons can overlap on tablet
 - **Impact**: Layout breaks, buttons inaccessible
 - **Devices Affected**: Tablet portrait (768px-834px)
 - **Fix Required**: Stack vertically on narrow screens
 
 #### 10. **Modals and Dialogs**
+
 - **Issue**: Some modals have fixed widths that don't adapt
 - **Impact**: Horizontal scrolling on mobile
 - **Devices Affected**: Mobile
@@ -119,16 +129,19 @@ All pages (except Index and NotFound) share this structure:
 ### 🟢 Low Priority Issues
 
 #### 11. **Inconsistent Spacing**
+
 - **Issue**: p-6 used throughout, doesn't scale
 - **Impact**: Wasted space on desktop, cramped on mobile
 - **Fix Required**: Responsive padding scale
 
 #### 12. **Icon Sizes**
+
 - **Issue**: Fixed h-4 w-4 and h-5 w-5 don't scale
 - **Impact**: Icons too small on large screens
 - **Fix Required**: Responsive icon sizing
 
 #### 13. **Notification Badge**
+
 - **Issue**: May be too small on high-DPI mobile screens
 - **Impact**: Reduced visibility
 - **Fix Required**: Touch-friendly sizing
@@ -138,6 +151,7 @@ All pages (except Index and NotFound) share this structure:
 ## Breakpoint Strategy
 
 ### Current Tailwind Breakpoints
+
 ```css
 'sm': '640px',
 'md': '768px',
@@ -147,6 +161,7 @@ All pages (except Index and NotFound) share this structure:
 ```
 
 ### Recommended Usage
+
 - **Mobile**: Base styles (no prefix) - 320px to 767px
 - **Tablet**: `md:` prefix - 768px to 1023px
 - **Desktop**: `lg:` prefix - 1024px to 1279px
@@ -157,30 +172,36 @@ All pages (except Index and NotFound) share this structure:
 ## Page-Specific Issues
 
 ### Dashboard (/)
+
 - ✅ Uses DashboardLayout component (needs audit)
 - ⚠️ Charts may not be responsive
 - ⚠️ Card grids need breakpoint review
 
 ### Transactions (/transactions)
+
 - ✅ **FIXED**: Table now responsive with column hiding
 - ✅ **FIXED**: Touch-friendly buttons on mobile
 - ⚠️ Filter buttons need better wrapping
 
 ### Wallets (/wallets)
+
 - ⚠️ **CRITICAL**: Grid cols too aggressive
 - ⚠️ WalletCard hover states may not work on touch
 - ⚠️ Stats grid needs tablet breakpoint
 
 ### Settings (/settings)
+
 - ⚠️ **CRITICAL**: Tabs break on mobile
 - ⚠️ 2-column forms too narrow on tablet
 - ⚠️ Button groups wrap poorly
 
 ### Exports (/exports)
+
 - ⚠️ Export cards likely use fixed grids
 - ⚠️ Table may need responsive treatment
 
 ### All Other Pages
+
 - ⚠️ Need individual component audits
 - ⚠️ Likely share similar grid/layout issues
 
@@ -189,18 +210,21 @@ All pages (except Index and NotFound) share this structure:
 ## Implementation Priority
 
 ### Phase 1: Critical Fixes (Immediate)
+
 1. ✅ Sidebar mobile collapse behavior
 2. ✅ Settings tabs mobile layout
 3. ✅ Header search bar constraints
 4. ✅ Form grid responsiveness
 
 ### Phase 2: Layout Improvements (Week 1)
+
 5. ✅ Card grids across all pages
 6. ✅ Page title bar stacking
 7. ✅ Stats card breakpoints
 8. ✅ Button group wrapping
 
 ### Phase 3: Polish (Week 2)
+
 9. ✅ Typography fluid scaling
 10. ✅ Spacing system
 11. ✅ Icon responsive sizing
@@ -211,6 +235,7 @@ All pages (except Index and NotFound) share this structure:
 ## Testing Checklist
 
 ### Mobile (320px - 767px)
+
 - [ ] Sidebar collapses and can be toggled
 - [ ] Header fits without horizontal scroll
 - [ ] All text is readable (min 14px)
@@ -221,6 +246,7 @@ All pages (except Index and NotFound) share this structure:
 - [ ] No horizontal scrolling
 
 ### Tablet (768px - 1023px)
+
 - [ ] Optimal column counts (usually 2-3)
 - [ ] Typography scales appropriately
 - [ ] Sidebar can collapse if needed
@@ -229,6 +255,7 @@ All pages (except Index and NotFound) share this structure:
 - [ ] No awkward text wrapping
 
 ### Desktop (1024px+)
+
 - [ ] Full feature set visible
 - [ ] Optimal use of screen space
 - [ ] Hover states work properly
@@ -236,6 +263,7 @@ All pages (except Index and NotFound) share this structure:
 - [ ] Sidebar always visible
 
 ### Cross-Browser
+
 - [ ] Chrome/Edge
 - [ ] Firefox
 - [ ] Safari
@@ -247,6 +275,7 @@ All pages (except Index and NotFound) share this structure:
 ## Proposed Solutions
 
 ### 1. Responsive Sidebar
+
 ```tsx
 // Change from defaultOpen={true} to:
 const isMobile = useIsMobile(); // Custom hook
@@ -254,23 +283,29 @@ const isMobile = useIsMobile(); // Custom hook
 ```
 
 ### 2. Responsive Grids
+
 ```tsx
 // Change from: grid-cols-1 md:grid-cols-4
 // To: grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
 ```
 
 ### 3. Responsive Tabs
+
 ```tsx
 // Change from: grid-cols-5
 // To: flex flex-wrap or use ScrollArea
 ```
 
 ### 4. Fluid Typography
+
 ```css
-h1 { font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem); }
+h1 {
+  font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem);
+}
 ```
 
 ### 5. Responsive Spacing
+
 ```tsx
 // Change from: p-6
 // To: p-4 md:p-6 lg:p-8

@@ -3,6 +3,7 @@
 ## 🎯 Quick Start
 
 ### 1. New Page Template
+
 ```tsx
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -24,6 +25,7 @@ export default function MyPage() {
 ```
 
 ### 2. Page Header
+
 ```tsx
 <div className="page-titlebar">
   <div className="page-titlebar-content">
@@ -40,25 +42,25 @@ export default function MyPage() {
 ```
 
 ### 3. Content Area
+
 ```tsx
-<div className="p-4 md:p-6 space-y-4 md:space-y-6">
-  {/* Your content */}
-</div>
+<div className="p-4 md:p-6 space-y-4 md:space-y-6">{/* Your content */}</div>
 ```
 
 ---
 
 ## 📏 Spacing Scale
 
-| Class | Mobile | Tablet | Desktop |
-|-------|--------|--------|---------|
-| `responsive-page-padding` | p-4 | p-6 | p-8 |
-| `responsive-section-padding` | p-3 | p-4 | p-6 |
-| `responsive-card-padding` | p-3 | p-4 | p-5 |
-| `space-y-responsive` | space-y-3 | space-y-4 | space-y-6 |
-| `gap-responsive` | gap-3 | gap-4 | gap-6 |
+| Class                        | Mobile    | Tablet    | Desktop   |
+| ---------------------------- | --------- | --------- | --------- |
+| `responsive-page-padding`    | p-4       | p-6       | p-8       |
+| `responsive-section-padding` | p-3       | p-4       | p-6       |
+| `responsive-card-padding`    | p-3       | p-4       | p-5       |
+| `space-y-responsive`         | space-y-3 | space-y-4 | space-y-6 |
+| `gap-responsive`             | gap-3     | gap-4     | gap-6     |
 
 **Quick Use**:
+
 ```tsx
 <div className="responsive-page-padding space-y-responsive">
   {/* Content */}
@@ -70,6 +72,7 @@ export default function MyPage() {
 ## 📐 Grid Systems
 
 ### Stats Grid (2/4 columns)
+
 ```tsx
 <div className="responsive-grid-stats">
   <StatCard />
@@ -78,9 +81,11 @@ export default function MyPage() {
   <StatCard />
 </div>
 ```
+
 **Breakpoints**: 2 cols (mobile/tablet) → 4 cols (desktop)
 
 ### Cards Grid (1/2/3 columns)
+
 ```tsx
 <div className="responsive-grid-cards">
   <Card />
@@ -88,18 +93,22 @@ export default function MyPage() {
   <Card />
 </div>
 ```
+
 **Breakpoints**: 1 col (mobile) → 2 cols (tablet) → 3 cols (desktop)
 
 ### Forms Grid (1/2 columns)
+
 ```tsx
 <div className="responsive-grid-forms">
   <FormField />
   <FormField />
 </div>
 ```
+
 **Breakpoints**: 1 col (mobile) → 2 cols (tablet+)
 
 ### Wallets Grid (1/2/3/4 columns)
+
 ```tsx
 <div className="card-grid-wallet">
   <WalletCard />
@@ -108,9 +117,11 @@ export default function MyPage() {
   <WalletCard />
 </div>
 ```
+
 **Breakpoints**: 1 col (mobile) → 2 cols (sm) → 3 cols (lg) → 4 cols (2xl)
 
 ### Auto Grid (1/2/3/4 columns)
+
 ```tsx
 <div className="responsive-grid-auto">
   <Item />
@@ -119,19 +130,21 @@ export default function MyPage() {
   <Item />
 </div>
 ```
+
 **Breakpoints**: 1 col (mobile) → 2 cols (sm) → 3 cols (lg) → 4 cols (xl)
 
 ---
 
 ## 🎨 Typography
 
-| Class | Mobile | Tablet | Desktop |
-|-------|--------|--------|---------|
-| `responsive-page-title` | text-xl | text-2xl | text-3xl |
-| `responsive-section-title` | text-lg | text-xl | text-2xl |
-| `responsive-card-title` | text-base | text-lg | text-lg |
+| Class                      | Mobile    | Tablet   | Desktop  |
+| -------------------------- | --------- | -------- | -------- |
+| `responsive-page-title`    | text-xl   | text-2xl | text-3xl |
+| `responsive-section-title` | text-lg   | text-xl  | text-2xl |
+| `responsive-card-title`    | text-base | text-lg  | text-lg  |
 
 **Example**:
+
 ```tsx
 <h1 className="responsive-page-title font-bold">Page Title</h1>
 <h2 className="responsive-section-title font-semibold">Section Title</h2>
@@ -143,21 +156,31 @@ export default function MyPage() {
 ## 📱 Visibility Controls
 
 ### Show/Hide by Breakpoint
+
 ```tsx
-{/* Mobile only */}
-<div className="mobile-only">Mobile Content</div>
+{
+  /* Mobile only */
+}
+<div className="mobile-only">Mobile Content</div>;
 
-{/* Hide on mobile */}
-<div className="mobile-hide">Desktop Content</div>
+{
+  /* Hide on mobile */
+}
+<div className="mobile-hide">Desktop Content</div>;
 
-{/* Tablet and up */}
-<div className="tablet-up">Tablet+ Content</div>
+{
+  /* Tablet and up */
+}
+<div className="tablet-up">Tablet+ Content</div>;
 
-{/* Desktop only */}
-<div className="desktop-only">Desktop Only</div>
+{
+  /* Desktop only */
+}
+<div className="desktop-only">Desktop Only</div>;
 ```
 
 ### Conditional Text
+
 ```tsx
 <Button>
   <Icon className="h-4 w-4 mr-2" />
@@ -171,28 +194,39 @@ export default function MyPage() {
 ## 🎛️ Component Patterns
 
 ### Tabs (Scrollable on Mobile)
+
 ```tsx
 <TabsList className="responsive-tabs-scroll lg:grid lg:grid-cols-5">
-  <TabsTrigger value="tab1" className="flex-shrink-0">Tab 1</TabsTrigger>
-  <TabsTrigger value="tab2" className="flex-shrink-0">Tab 2</TabsTrigger>
-  <TabsTrigger value="tab3" className="flex-shrink-0">Tab 3</TabsTrigger>
-  <TabsTrigger value="tab4" className="flex-shrink-0">Tab 4</TabsTrigger>
-  <TabsTrigger value="tab5" className="flex-shrink-0">Tab 5</TabsTrigger>
+  <TabsTrigger value="tab1" className="flex-shrink-0">
+    Tab 1
+  </TabsTrigger>
+  <TabsTrigger value="tab2" className="flex-shrink-0">
+    Tab 2
+  </TabsTrigger>
+  <TabsTrigger value="tab3" className="flex-shrink-0">
+    Tab 3
+  </TabsTrigger>
+  <TabsTrigger value="tab4" className="flex-shrink-0">
+    Tab 4
+  </TabsTrigger>
+  <TabsTrigger value="tab5" className="flex-shrink-0">
+    Tab 5
+  </TabsTrigger>
 </TabsList>
 ```
 
 ### Responsive Dialog
+
 ```tsx
 <Dialog>
   <DialogContent className="responsive-dialog">
-    <div className="responsive-dialog-content">
-      {/* Content */}
-    </div>
+    <div className="responsive-dialog-content">{/* Content */}</div>
   </DialogContent>
 </Dialog>
 ```
 
 ### Button Group
+
 ```tsx
 <div className="responsive-button-group">
   <Button>Action 1</Button>
@@ -202,6 +236,7 @@ export default function MyPage() {
 ```
 
 ### Flex Stack (Vertical → Horizontal)
+
 ```tsx
 <div className="responsive-flex-stack">
   <div>Item 1</div>
@@ -210,6 +245,7 @@ export default function MyPage() {
 ```
 
 ### Flex Between
+
 ```tsx
 <div className="responsive-flex-between">
   <div>Left Content</div>
@@ -221,13 +257,14 @@ export default function MyPage() {
 
 ## 🎯 Icon Sizing
 
-| Class | Mobile | Desktop |
-|-------|--------|---------|
+| Class                | Mobile      | Desktop |
+| -------------------- | ----------- | ------- |
 | `responsive-icon-sm` | h-3.5 w-3.5 | h-4 w-4 |
-| `responsive-icon` | h-4 w-4 | h-5 w-5 |
-| `responsive-icon-lg` | h-5 w-5 | h-6 w-6 |
+| `responsive-icon`    | h-4 w-4     | h-5 w-5 |
+| `responsive-icon-lg` | h-5 w-5     | h-6 w-6 |
 
 **Example**:
+
 ```tsx
 <Icon className="responsive-icon" />
 ```
@@ -237,16 +274,20 @@ export default function MyPage() {
 ## 👆 Touch Targets
 
 ### Auto-Enhanced (Mobile)
+
 All buttons, links, and interactive elements automatically get:
+
 - `min-height: 44px`
 - `min-width: 44px`
 
 To opt-out:
+
 ```tsx
 <button className="no-touch-enhance">Small Button</button>
 ```
 
 ### Manual Touch Target
+
 ```tsx
 <Button className="touch-target">Touch-Friendly Button</Button>
 ```
@@ -256,11 +297,13 @@ To opt-out:
 ## 🖼️ Images & Media
 
 ### Responsive Image
+
 ```tsx
 <img className="responsive-image" src="..." alt="..." />
 ```
 
 ### Responsive Avatar
+
 ```tsx
 <Avatar className="responsive-avatar">
   {/* h-8 w-8 on mobile, h-10 w-10 on desktop */}
@@ -272,21 +315,24 @@ To opt-out:
 ## 🏷️ Badges & Tags
 
 ### Responsive Badge
+
 ```tsx
 <Badge className="responsive-badge">Label</Badge>
 ```
+
 **Size**: text-xs px-2 py-0.5 (mobile) → text-sm px-2.5 py-1 (desktop)
 
 ---
 
 ## 🔘 Button Sizing
 
-| Class | Mobile | Desktop |
-|-------|--------|---------|
-| `responsive-button-sm` | h-8 text-xs | h-9 text-sm |
-| `responsive-button` | h-9 text-sm | h-10 text-base |
+| Class                  | Mobile      | Desktop        |
+| ---------------------- | ----------- | -------------- |
+| `responsive-button-sm` | h-8 text-xs | h-9 text-sm    |
+| `responsive-button`    | h-9 text-sm | h-10 text-base |
 
 **Example**:
+
 ```tsx
 <Button className="responsive-button">Responsive Button</Button>
 ```
@@ -296,6 +342,7 @@ To opt-out:
 ## 📦 Container Widths
 
 ### Responsive Container
+
 ```tsx
 <div className="container-responsive">
   {/* Constrained width with responsive padding */}
@@ -303,6 +350,7 @@ To opt-out:
 ```
 
 **Breakpoints**:
+
 - Mobile: 100% width, px-4
 - Tablet: max-w-screen-md, px-6
 - Desktop: max-w-screen-lg, px-8
@@ -313,6 +361,7 @@ To opt-out:
 ## ⚡ Common Recipes
 
 ### Page with Stats and Cards
+
 ```tsx
 <div className="app-content">
   <div className="page-titlebar">
@@ -347,6 +396,7 @@ To opt-out:
 ```
 
 ### Form Page
+
 ```tsx
 <div className="app-content">
   <div className="page-titlebar">
@@ -382,6 +432,7 @@ To opt-out:
 ## 🔍 Debugging Tips
 
 ### Check Current Breakpoint
+
 ```tsx
 <div className="fixed bottom-4 right-4 bg-black text-white px-2 py-1 text-xs z-50">
   <span className="sm:hidden">XS</span>
@@ -393,6 +444,7 @@ To opt-out:
 ```
 
 ### Inspect Mobile
+
 - Chrome DevTools: F12 → Toggle Device Toolbar (Ctrl+Shift+M)
 - Responsive mode: 375px, 768px, 1024px, 1440px
 
@@ -401,6 +453,7 @@ To opt-out:
 ## ✅ Checklist
 
 ### New Page/Component
+
 - [ ] Use `useIsMobile()` hook for sidebar
 - [ ] Apply `.page-titlebar-content` to header
 - [ ] Use responsive padding classes

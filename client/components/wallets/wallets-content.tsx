@@ -187,7 +187,12 @@ export function WalletsContent() {
                 <span className="sm:hidden">Wallet</span>
               </Link>
             </Button>
-            <Button variant="outline" asChild size="sm" className="sm:size-default">
+            <Button
+              variant="outline"
+              asChild
+              size="sm"
+              className="sm:size-default"
+            >
               <Link to="/wallet-ingestion">
                 <Plus className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Add Exchange</span>

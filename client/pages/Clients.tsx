@@ -2,10 +2,13 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { ClientsContent } from "@/components/clients/clients-content";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Clients() {
+  const isMobile = useIsMobile();
+
   return (
-    <SidebarProvider defaultOpen={true}>
+    <SidebarProvider defaultOpen={!isMobile}>
       <div className="flex min-h-screen w-full overflow-x-hidden">
         <DashboardSidebar activeItem="Clients" />
         <SidebarInset className="flex flex-col min-w-0 flex-1">

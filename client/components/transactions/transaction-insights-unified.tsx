@@ -59,10 +59,15 @@ const anomalyFlags = [
     severity: "high",
     icon: AlertTriangle,
     title: "Volume Spike",
-    description: "Aug 14, 2022",
+    subtitle: "Unusual Activity",
+    description: "15 transactions detected on Aug 14, 2022 exceed normal volume by 300%",
+    date: "Aug 14, 2022",
     count: 15,
+    metric: "+300%",
     iconBg: "bg-red-100",
     iconColor: "text-red-600",
+    borderColor: "border-red-200",
+    accentColor: "bg-red-500",
     actionLabel: "Investigate",
   },
   {
@@ -71,10 +76,15 @@ const anomalyFlags = [
     severity: "medium",
     icon: TrendingUp,
     title: "Missing FMV",
-    description: "Pricing data needed",
+    subtitle: "Pricing Required",
+    description: "3 transactions are missing Fair Market Value data needed for tax calculations",
+    date: "Multiple dates",
     count: 3,
+    metric: "Critical",
     iconBg: "bg-yellow-50",
     iconColor: "text-yellow-600",
+    borderColor: "border-yellow-200",
+    accentColor: "bg-yellow-500",
     actionLabel: "Fix Values",
   },
   {
@@ -83,10 +93,15 @@ const anomalyFlags = [
     severity: "low",
     icon: Users,
     title: "Rule Conflict",
-    description: "Conflicting rules",
+    subtitle: "Classification Issue",
+    description: "2 transactions have conflicting classification rules that need resolution",
+    date: "Pending review",
     count: 2,
+    metric: "Low Priority",
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
+    borderColor: "border-blue-200",
+    accentColor: "bg-blue-500",
     actionLabel: "Resolve",
   },
 ];
@@ -97,7 +112,7 @@ export function TransactionInsightsUnified() {
       {/* AI Classification Insights Card */}
       <section
         aria-labelledby="classification-heading"
-        className="flex flex-col border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
+        className="flex flex-col h-auto border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
       >
         {/* Card Header */}
         <div className="flex items-center justify-between mb-5 pb-4 border-b">
@@ -194,10 +209,10 @@ export function TransactionInsightsUnified() {
         </div>
       </section>
 
-      {/* Anomaly Flags Card */}
+      {/* Anomaly Flags Card - Now with 1x3 Grid */}
       <section
         aria-labelledby="anomaly-heading"
-        className="flex flex-col border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
+        className="flex flex-col h-auto border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
       >
         {/* Card Header */}
         <div className="flex items-center justify-between mb-5 pb-4 border-b">
@@ -229,9 +244,9 @@ export function TransactionInsightsUnified() {
           </Link>
         </div>
 
-        {/* Anomaly Grid */}
+        {/* 1x3 Grid of Anomaly Cards */}
         <div
-          className="space-y-3 flex-1"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1"
           role="list"
           aria-label="Transaction anomalies"
         >
@@ -240,50 +255,70 @@ export function TransactionInsightsUnified() {
             return (
               <div
                 key={flag.id}
-                className="group relative flex items-center gap-3 p-3 rounded-lg border bg-card hover:bg-accent/30 transition-all"
+                className={`group relative flex flex-col h-auto border-2 ${flag.borderColor} rounded-lg bg-card hover:shadow-lg transition-all`}
                 role="listitem"
               >
-                {/* Severity Indicator Dot */}
+                {/* Severity Accent Bar */}
                 <div
-                  className={`absolute top-2 right-2 w-1.5 h-1.5 rounded-full ${
-                    flag.severity === "high"
-                      ? "bg-red-500"
-                      : flag.severity === "medium"
-                        ? "bg-yellow-500"
-                        : "bg-blue-500"
-                  }`}
+                  className={`h-1 w-full rounded-t-md ${flag.accentColor}`}
                   aria-label={`Severity: ${flag.severity}`}
                 />
 
-                {/* Icon */}
-                <div className={`p-2 rounded-lg ${flag.iconBg} shrink-0`}>
-                  <IconComponent
-                    className={`h-5 w-5 ${flag.iconColor}`}
-                    aria-hidden="true"
-                  />
-                </div>
+                {/* Card Content */}
+                <div className="p-4 flex-1 flex flex-col">
+                  {/* Icon and Title */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className={`p-2.5 rounded-lg ${flag.iconBg} shrink-0`}>
+                      <IconComponent
+                        className={`h-6 w-6 ${flag.iconColor}`}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-foreground mb-0.5 leading-tight">
+                        {flag.title}
+                      </h4>
+                      <p className="text-xs font-medium text-muted-foreground leading-tight">
+                        {flag.subtitle}
+                      </p>
+                    </div>
+                  </div>
 
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-2 mb-0.5">
-                    <h4 className="text-sm font-semibold text-foreground truncate">
-                      {flag.title}
-                    </h4>
+                  {/* Metrics Display */}
+                  <div className="flex items-center justify-between mb-3 pb-3 border-b">
+                    <div className="flex flex-col">
+                      <span className="text-xs text-muted-foreground">
+                        Affected
+                      </span>
+                      <span className={`text-lg font-bold ${flag.iconColor} tabular-nums`}>
+                        {flag.count}
+                      </span>
+                    </div>
                     <Badge
                       variant="secondary"
-                      className="text-xs font-mono bg-muted shrink-0 h-5"
+                      className={`text-xs font-semibold ${flag.iconBg} ${flag.iconColor} border-0`}
                     >
-                      {flag.count}
+                      {flag.metric}
                     </Badge>
                   </div>
-                  <p className="text-xs text-muted-foreground truncate mb-2">
+
+                  {/* Description */}
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3 flex-1">
                     {flag.description}
                   </p>
-                  <Link to="/data-anomaly-detection">
+
+                  {/* Date Info */}
+                  <div className="text-xs text-muted-foreground mb-3 pb-3 border-b">
+                    <span className="font-medium">Date: </span>
+                    {flag.date}
+                  </div>
+
+                  {/* Action Button */}
+                  <Link to="/data-anomaly-detection" className="mt-auto">
                     <Button
                       size="sm"
-                      variant="link"
-                      className={`${flag.iconColor} p-0 h-auto text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity`}
+                      variant="outline"
+                      className={`w-full ${flag.iconColor} border-current hover:bg-current hover:text-white transition-all font-medium`}
                       aria-label={`${flag.actionLabel} ${flag.title.toLowerCase()}`}
                     >
                       {flag.actionLabel} →

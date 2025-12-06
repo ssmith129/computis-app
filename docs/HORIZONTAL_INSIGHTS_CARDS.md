@@ -53,12 +53,14 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ### 1. **Typography Optimizations**
 
 #### Card Headers
+
 - **Font Size**: `text-base` (16px) - Optimized for horizontal space
 - **Font Weight**: `font-semibold` (600) - Enhanced hierarchy
 - **Line Height**: `leading-none` - Tighter spacing for compact headers
 - **Subtitle**: `text-xs` (12px) - New descriptive subtitle added
 
 #### Content Text
+
 - **Primary Labels**: `text-sm` (14px) with `font-semibold`
 - **Secondary Text**: `text-xs` (12px) with `text-muted-foreground`
 - **Percentages**: `text-sm` (14px) with `font-bold` for emphasis
@@ -67,13 +69,15 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ### 2. **Icon Redesign**
 
 #### Header Icons
+
 - **Size**: `h-5 w-5` (20px) - Prominent yet balanced
 - **Container**: `p-2` rounded background with brand colors
-- **Colors**: 
+- **Colors**:
   - AI Classification: Blue (`bg-blue-100` / `text-blue-600`)
   - Anomaly Flags: Orange (`bg-orange-100` / `text-orange-600`)
 
 #### Content Icons
+
 - **Size**: `h-4 w-4` (16px) - Compact for inline display
 - **Container**: `p-1` rounded with confidence-based colors
 - **Spacing**: `gap-2` between icon and text
@@ -81,11 +85,13 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ### 3. **Padding & Spacing**
 
 #### Card Container
+
 - **Outer Padding**: `p-5` (20px) - Balanced whitespace
 - **Header Bottom Border**: `pb-4 border-b` - Clear section separation
 - **Item Spacing**: `space-y-4` (16px) - Comfortable reading rhythm
 
 #### Content Sections
+
 - **List Items**: `p-3` (12px) - Compact yet touchable
 - **Header Margin**: `mb-5` (20px) - Prominent separation
 - **Footer Padding**: `pt-4 mt-5` - Clear footer distinction
@@ -93,12 +99,14 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ### 4. **Card Dimensions**
 
 #### Desktop (≥1280px)
+
 - **Width**: 50% each (equal split with gap)
 - **Gap**: `gap-6` (24px) between cards
 - **Min-Height**: Auto-adjusted based on content
 - **Aspect Ratio**: Flexible, content-driven
 
 #### Mobile/Tablet (<1280px)
+
 - **Width**: 100% full-width stack
 - **Gap**: `gap-6` (24px) between stacked cards
 - **Layout**: Single column for optimal readability
@@ -106,8 +114,10 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ### 5. **Content Reorganization**
 
 #### AI Classification Card
+
 **Before**: Vertical list with full descriptions
 **After**: Horizontal-optimized layout with:
+
 - Icon + Label on left (min-width: 100px)
 - Progress bar in center (flexible width)
 - Percentage on right (min-width: 42px)
@@ -115,8 +125,10 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 - Compact footer summary
 
 #### Anomaly Flags Card
+
 **Before**: 3-column grid within card
 **After**: Vertical stacked list with:
+
 - Icon on left with severity indicator
 - Title and badge on same line
 - Description below
@@ -126,18 +138,21 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ## Responsive Breakpoints
 
 ### Desktop: ≥1280px (xl)
+
 - **Layout**: Horizontal 1x2 grid
 - **Card Width**: 50% each
 - **Display**: All content fully visible
 - **Interactions**: Hover states active
 
 ### Tablet: 768px - 1279px
+
 - **Layout**: Vertical stack
 - **Card Width**: 100%
 - **Display**: All content visible
 - **Interactions**: Touch-friendly hover states
 
 ### Mobile: <768px
+
 - **Layout**: Vertical stack
 - **Card Width**: 100%
 - **Display**: All content visible
@@ -147,6 +162,7 @@ The AI Classification Insights and Anomaly Flags cards have been redesigned into
 ## Visual Enhancements
 
 ### Card Styling
+
 ```css
 border: 1px solid border
 border-radius: 0.5rem (8px)
@@ -159,11 +175,13 @@ transition: shadow, background-color
 ### Interactive States
 
 #### Hover Effects
+
 - **Card**: `hover:shadow-md` - Subtle elevation
 - **List Items**: `hover:bg-accent/30` - Gentle background highlight
 - **Action Buttons**: `opacity-0 → opacity-100` - Reveal on hover
 
 #### Focus States
+
 - **Keyboard Navigation**: Full support maintained
 - **Focus Visible**: Ring indicators on all interactive elements
 - **Tab Order**: Logical left-to-right, top-to-bottom
@@ -171,11 +189,13 @@ transition: shadow, background-color
 ### Color System
 
 #### AI Classification
+
 - **High**: Green (`bg-green-100` / `text-green-600`)
 - **Medium**: Yellow (`bg-yellow-100` / `text-yellow-600`)
 - **Low**: Red (`bg-red-100` / `text-red-600`)
 
 #### Anomaly Severity
+
 - **High**: Red (`bg-red-500`)
 - **Medium**: Yellow (`bg-yellow-500`)
 - **Low**: Blue (`bg-blue-500`)
@@ -185,23 +205,27 @@ transition: shadow, background-color
 ### WCAG 2.1 Compliance
 
 #### Semantic HTML
+
 - ✅ `<section>` with `aria-labelledby`
 - ✅ `role="list"` and `role="listitem"`
 - ✅ Proper heading hierarchy (`<h3>`)
 
 #### Screen Reader Support
+
 - ✅ Descriptive ARIA labels for all interactive elements
 - ✅ Progress bars with `aria-label` descriptions
 - ✅ Icon elements marked with `aria-hidden="true"`
 - ✅ Status announcements for counts and percentages
 
 #### Keyboard Navigation
+
 - ✅ All buttons and links keyboard accessible
 - ✅ Logical tab order maintained
 - ✅ Focus visible indicators
 - ✅ Enter/Space key activation
 
 #### Color Contrast
+
 - ✅ Text meets WCAG AA standards (4.5:1)
 - ✅ Icons meet WCAG AA standards (3:1)
 - ✅ High contrast mode support
@@ -210,16 +234,19 @@ transition: shadow, background-color
 ## Performance Optimizations
 
 ### Layout Stability
+
 - Fixed-width elements prevent reflow
 - Flexbox for smooth responsive behavior
 - No cumulative layout shift (CLS)
 
 ### Rendering
+
 - Minimal re-renders with React optimization
 - CSS transitions for smooth interactions
 - Hardware-accelerated transforms
 
 ### Bundle Size
+
 - Shared component imports
 - Icon tree-shaking from lucide-react
 - No additional dependencies
@@ -237,6 +264,7 @@ transition: shadow, background-color
 ### From Vertical to Horizontal
 
 **Before**:
+
 ```tsx
 <Card className="p-6">
   <TransactionInsightsUnified />
@@ -244,6 +272,7 @@ transition: shadow, background-color
 ```
 
 **After**:
+
 ```tsx
 <div>
   <TransactionInsightsUnified />
@@ -255,6 +284,7 @@ The unified component now handles its own card styling and grid layout internall
 ## Testing Checklist
 
 ### Visual Testing
+
 - [ ] Cards display side-by-side on desktop (≥1280px)
 - [ ] Cards stack vertically on mobile/tablet (<1280px)
 - [ ] Equal height cards on desktop
@@ -264,6 +294,7 @@ The unified component now handles its own card styling and grid layout internall
 - [ ] Colors and badges visible
 
 ### Functional Testing
+
 - [ ] All links navigate correctly
 - [ ] Hover states work on desktop
 - [ ] Touch interactions work on mobile
@@ -272,6 +303,7 @@ The unified component now handles its own card styling and grid layout internall
 - [ ] Severity indicators visible
 
 ### Accessibility Testing
+
 - [ ] Screen reader announces all elements
 - [ ] Keyboard navigation works
 - [ ] Focus indicators visible
@@ -280,6 +312,7 @@ The unified component now handles its own card styling and grid layout internall
 - [ ] Semantic HTML structure
 
 ### Responsive Testing
+
 - [ ] Desktop (1920px, 1440px, 1280px)
 - [ ] Tablet (1024px, 768px)
 - [ ] Mobile (480px, 375px, 320px)
@@ -293,9 +326,7 @@ The unified component now handles its own card styling and grid layout internall
 To switch to horizontal layout at tablet size instead of desktop:
 
 ```tsx
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {/* Cards */}
-</div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">{/* Cards */}</div>
 ```
 
 ### Adjusting Card Proportions
@@ -304,12 +335,8 @@ For unequal width cards (e.g., 60/40 split):
 
 ```tsx
 <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
-  <section className="xl:col-span-3">
-    {/* AI Classification - 60% */}
-  </section>
-  <section className="xl:col-span-2">
-    {/* Anomaly Flags - 40% */}
-  </section>
+  <section className="xl:col-span-3">{/* AI Classification - 60% */}</section>
+  <section className="xl:col-span-2">{/* Anomaly Flags - 40% */}</section>
 </div>
 ```
 
@@ -328,20 +355,25 @@ To create a 1x3 grid:
 ## Common Issues & Solutions
 
 ### Issue: Cards have unequal heights
+
 **Solution**: Grid automatically equalizes heights. If content differs significantly, use `h-full` on card containers.
 
 ### Issue: Text overflows on smaller screens
+
 **Solution**: `truncate` and `line-clamp-2` classes handle overflow with ellipsis.
 
 ### Issue: Hover states not working on mobile
+
 **Solution**: Buttons have `opacity-0 group-hover:opacity-100` which won't trigger on touch devices. Consider showing buttons by default on mobile.
 
 ### Issue: Icons misaligned
+
 **Solution**: Use `shrink-0` on icon containers and proper flex alignment classes.
 
 ## Future Enhancements
 
 Potential improvements:
+
 1. **Drag-and-drop reordering** of cards
 2. **User preference** for layout (horizontal/vertical)
 3. **Expandable details** within cards

@@ -126,7 +126,10 @@ export function TransactionInsightsUnified() {
               </p>
             </div>
           </div>
-          <Badge variant="outline" className="text-xs font-semibold px-2.5 py-1">
+          <Badge
+            variant="outline"
+            className="text-xs font-semibold px-2.5 py-1"
+          >
             117
           </Badge>
         </div>
@@ -284,7 +287,9 @@ export function TransactionInsightsUnified() {
                       <span className="text-xs text-muted-foreground mb-0.5">
                         Count
                       </span>
-                      <span className={`text-xs font-bold ${flag.iconColor} tabular-nums`}>
+                      <span
+                        className={`text-xs font-bold ${flag.iconColor} tabular-nums`}
+                      >
                         {flag.count}
                       </span>
                     </div>

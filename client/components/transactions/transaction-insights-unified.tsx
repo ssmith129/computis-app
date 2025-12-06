@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import {
   CheckCircle,
@@ -16,10 +15,11 @@ import { Link } from "react-router-dom";
 
 const classificationData = [
   {
-    level: "High Confidence",
+    level: "High",
+    fullLevel: "High Confidence",
     count: 61,
     percentage: 55,
-    description: "Match known patterns with high confidence",
+    description: "Match known patterns",
     color: "text-green-600",
     bgColor: "bg-green-100",
     icon: CheckCircle,
@@ -27,10 +27,11 @@ const classificationData = [
     actionColor: "text-green-600",
   },
   {
-    level: "Medium Confidence",
+    level: "Medium",
+    fullLevel: "Medium Confidence",
     count: 42,
     percentage: 34,
-    description: "Somewhat reliable AI classifications",
+    description: "Somewhat reliable",
     color: "text-yellow-600",
     bgColor: "bg-yellow-100",
     icon: AlertCircle,
@@ -38,10 +39,11 @@ const classificationData = [
     actionColor: "text-yellow-600",
   },
   {
-    level: "Low Confidence",
+    level: "Low",
+    fullLevel: "Low Confidence",
     count: 14,
     percentage: 11,
-    description: "Need manual review due to uncertain patterns",
+    description: "Needs manual review",
     color: "text-red-600",
     bgColor: "bg-red-100",
     icon: XCircle,
@@ -58,7 +60,7 @@ const anomalyFlags = [
     icon: AlertTriangle,
     title: "Volume Spike",
     description: "Aug 14, 2022",
-    count: "15 txns",
+    count: 15,
     iconBg: "bg-red-100",
     iconColor: "text-red-600",
     actionLabel: "Investigate",
@@ -69,8 +71,8 @@ const anomalyFlags = [
     severity: "medium",
     icon: TrendingUp,
     title: "Missing FMV",
-    description: "3 transactions need pricing data",
-    count: "3 txns",
+    description: "Pricing data needed",
+    count: 3,
     iconBg: "bg-yellow-50",
     iconColor: "text-yellow-600",
     actionLabel: "Fix Values",
@@ -81,8 +83,8 @@ const anomalyFlags = [
     severity: "low",
     icon: Users,
     title: "Rule Conflict",
-    description: "2 transactions with conflicting rules",
-    count: "2 txns",
+    description: "Conflicting rules",
+    count: 2,
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
     actionLabel: "Resolve",
@@ -91,26 +93,38 @@ const anomalyFlags = [
 
 export function TransactionInsightsUnified() {
   return (
-    <div className="space-y-6">
-      {/* AI Classification Section */}
-      <section aria-labelledby="classification-heading">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-blue-600" aria-hidden="true" />
-            <h3
-              id="classification-heading"
-              className="text-lg font-semibold text-foreground"
-            >
-              AI Classification Insights
-            </h3>
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      {/* AI Classification Insights Card */}
+      <section
+        aria-labelledby="classification-heading"
+        className="flex flex-col border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        {/* Card Header */}
+        <div className="flex items-center justify-between mb-5 pb-4 border-b">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-lg bg-blue-100">
+              <Sparkles className="h-5 w-5 text-blue-600" aria-hidden="true" />
+            </div>
+            <div>
+              <h3
+                id="classification-heading"
+                className="text-base font-semibold text-foreground leading-none mb-1"
+              >
+                AI Classification
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Confidence distribution
+              </p>
+            </div>
           </div>
-          <Badge variant="outline" className="text-xs">
-            117 Total
+          <Badge variant="outline" className="text-xs font-semibold px-2.5 py-1">
+            117
           </Badge>
         </div>
 
+        {/* Classification List */}
         <div
-          className="space-y-3"
+          className="space-y-4 flex-1"
           role="list"
           aria-label="Classification levels"
         >
@@ -119,50 +133,48 @@ export function TransactionInsightsUnified() {
             return (
               <div
                 key={item.level}
-                className="group flex items-center gap-3 p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
+                className="group flex items-center gap-3"
                 role="listitem"
               >
                 {/* Icon and Label */}
-                <div className="flex items-center gap-2.5 min-w-[160px]">
-                  <div className={`p-1.5 rounded-full ${item.bgColor}`}>
+                <div className="flex items-center gap-2 min-w-[100px]">
+                  <div className={`p-1 rounded-md ${item.bgColor}`}>
                     <IconComponent
                       className={`h-4 w-4 ${item.color}`}
                       aria-hidden="true"
                     />
                   </div>
-                  <div>
-                    <span className="text-sm font-medium block">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-foreground leading-tight">
                       {item.level}
                     </span>
-                    <span className="text-xs text-muted-foreground">
-                      {item.count} transactions
+                    <span className="text-xs text-muted-foreground leading-tight">
+                      {item.count} txns
                     </span>
                   </div>
                 </div>
 
-                {/* Progress Bar */}
-                <div className="flex-1 min-w-[140px]">
-                  <div className="flex items-center gap-2">
-                    <Progress
-                      value={item.percentage}
-                      className="h-2 flex-1"
-                      aria-label={`${item.level}: ${item.percentage}% of transactions`}
-                    />
-                    <span
-                      className={`text-sm font-semibold tabular-nums ${item.color} min-w-[40px] text-right`}
-                      aria-label={`${item.percentage} percent`}
-                    >
-                      {item.percentage}%
-                    </span>
-                  </div>
+                {/* Progress Bar with Percentage */}
+                <div className="flex-1 flex items-center gap-2 min-w-0">
+                  <Progress
+                    value={item.percentage}
+                    className="h-2 flex-1"
+                    aria-label={`${item.fullLevel}: ${item.percentage}% of transactions`}
+                  />
+                  <span
+                    className={`text-sm font-bold tabular-nums ${item.color} min-w-[42px] text-right`}
+                    aria-label={`${item.percentage} percent`}
+                  >
+                    {item.percentage}%
+                  </span>
                 </div>
 
-                {/* Action */}
+                {/* Action Button */}
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`${item.actionColor} h-8 px-3 opacity-0 group-hover:opacity-100 transition-opacity`}
-                  aria-label={`Review ${item.level.toLowerCase()} transactions`}
+                  className={`${item.actionColor} h-7 px-2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity`}
+                  aria-label={`Review ${item.fullLevel.toLowerCase()} transactions`}
                 >
                   Review
                 </Button>
@@ -170,36 +182,56 @@ export function TransactionInsightsUnified() {
             );
           })}
         </div>
+
+        {/* Footer Summary */}
+        <div className="mt-5 pt-4 border-t flex items-center justify-between">
+          <span className="text-xs font-medium text-muted-foreground">
+            Total Classified
+          </span>
+          <span className="text-sm font-bold text-foreground tabular-nums">
+            117 transactions
+          </span>
+        </div>
       </section>
 
-      <Separator className="my-6" />
-
-      {/* Anomaly Flags Section */}
-      <section aria-labelledby="anomaly-heading">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Flag className="h-5 w-5 text-orange-600" aria-hidden="true" />
-            <h3
-              id="anomaly-heading"
-              className="text-lg font-semibold text-foreground"
-            >
-              Anomaly Flags
-            </h3>
+      {/* Anomaly Flags Card */}
+      <section
+        aria-labelledby="anomaly-heading"
+        className="flex flex-col border rounded-lg bg-card p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        {/* Card Header */}
+        <div className="flex items-center justify-between mb-5 pb-4 border-b">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-lg bg-orange-100">
+              <Flag className="h-5 w-5 text-orange-600" aria-hidden="true" />
+            </div>
+            <div>
+              <h3
+                id="anomaly-heading"
+                className="text-base font-semibold text-foreground leading-none mb-1"
+              >
+                Anomaly Flags
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Issues requiring attention
+              </p>
+            </div>
           </div>
           <Link to="/data-anomaly-detection">
             <Button
               variant="ghost"
               size="sm"
-              className="text-muted-foreground hover:text-foreground h-auto p-0 text-sm"
+              className="text-muted-foreground hover:text-foreground h-auto p-0 text-xs font-medium"
               aria-label="View all anomaly flags"
             >
-              View All
+              View All →
             </Button>
           </Link>
         </div>
 
+        {/* Anomaly Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-3"
+          className="space-y-3 flex-1"
           role="list"
           aria-label="Transaction anomalies"
         >
@@ -208,12 +240,12 @@ export function TransactionInsightsUnified() {
             return (
               <div
                 key={flag.id}
-                className="group relative flex flex-col gap-3 p-4 border rounded-lg bg-card hover:shadow-md transition-all"
+                className="group relative flex items-center gap-3 p-3 rounded-lg border bg-card hover:bg-accent/30 transition-all"
                 role="listitem"
               >
-                {/* Severity Indicator */}
+                {/* Severity Indicator Dot */}
                 <div
-                  className={`absolute top-0 right-0 w-2 h-2 rounded-bl-lg ${
+                  className={`absolute top-2 right-2 w-1.5 h-1.5 rounded-full ${
                     flag.severity === "high"
                       ? "bg-red-500"
                       : flag.severity === "medium"
@@ -223,35 +255,35 @@ export function TransactionInsightsUnified() {
                   aria-label={`Severity: ${flag.severity}`}
                 />
 
-                <div className="flex items-start gap-3">
-                  <div className={`p-2 rounded-lg ${flag.iconBg} shrink-0`}>
-                    <IconComponent
-                      className={`h-5 w-5 ${flag.iconColor}`}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold mb-0.5">
-                      {flag.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {flag.description}
-                    </p>
-                  </div>
+                {/* Icon */}
+                <div className={`p-2 rounded-lg ${flag.iconBg} shrink-0`}>
+                  <IconComponent
+                    className={`h-5 w-5 ${flag.iconColor}`}
+                    aria-hidden="true"
+                  />
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t">
-                  <Badge
-                    variant="secondary"
-                    className="text-xs font-mono bg-muted"
-                  >
-                    {flag.count}
-                  </Badge>
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-2 mb-0.5">
+                    <h4 className="text-sm font-semibold text-foreground truncate">
+                      {flag.title}
+                    </h4>
+                    <Badge
+                      variant="secondary"
+                      className="text-xs font-mono bg-muted shrink-0 h-5"
+                    >
+                      {flag.count}
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground truncate mb-2">
+                    {flag.description}
+                  </p>
                   <Link to="/data-anomaly-detection">
                     <Button
                       size="sm"
                       variant="link"
-                      className={`${flag.iconColor} p-0 h-auto text-xs font-medium`}
+                      className={`${flag.iconColor} p-0 h-auto text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity`}
                       aria-label={`${flag.actionLabel} ${flag.title.toLowerCase()}`}
                     >
                       {flag.actionLabel} →
@@ -263,16 +295,16 @@ export function TransactionInsightsUnified() {
           })}
         </div>
 
-        {/* Summary Stats */}
-        <div className="mt-4 p-3 rounded-lg bg-muted/50 border-l-4 border-orange-500">
-          <div className="flex items-center justify-between">
+        {/* Footer Summary */}
+        <div className="mt-5 pt-4 border-t">
+          <div className="flex items-center justify-between p-3 rounded-lg bg-orange-50 border-l-4 border-orange-500">
             <div className="flex items-center gap-2">
               <AlertTriangle
-                className="h-4 w-4 text-orange-600"
+                className="h-4 w-4 text-orange-600 shrink-0"
                 aria-hidden="true"
               />
-              <span className="text-sm font-medium">
-                Active Issues Requiring Attention
+              <span className="text-xs font-medium text-foreground">
+                Active Issues
               </span>
             </div>
             <span

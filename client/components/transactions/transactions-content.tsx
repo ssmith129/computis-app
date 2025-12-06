@@ -139,10 +139,10 @@ export function TransactionsContent() {
             </CardContent>
           </Card>
 
-          {/* Unified Insights Card */}
-          <Card className="p-6">
+          {/* Unified Insights Cards - Horizontal Grid */}
+          <div>
             <TransactionInsightsUnified />
-          </Card>
+          </div>
         </div>
       </div>
     </div>

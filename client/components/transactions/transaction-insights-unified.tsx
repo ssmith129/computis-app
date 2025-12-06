@@ -264,7 +264,7 @@ export function TransactionInsightsUnified() {
                   <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg ${flag.iconBg} shrink-0`}>
                       <IconComponent
-                        className={`h-5 w-5 ${flag.iconColor}`}
+                        className={`h-4 w-4 ${flag.iconColor}`}
                         aria-hidden="true"
                       />
                     </div>
@@ -284,7 +284,7 @@ export function TransactionInsightsUnified() {
                       <span className="text-xs text-muted-foreground mb-0.5">
                         Count
                       </span>
-                      <span className={`text-xl font-bold ${flag.iconColor} tabular-nums`}>
+                      <span className={`text-xs font-bold ${flag.iconColor} tabular-nums`}>
                         {flag.count}
                       </span>
                     </div>
@@ -302,17 +302,16 @@ export function TransactionInsightsUnified() {
                     </div>
                   </div>
 
-                  {/* Action Button */}
-                  <Link to="/data-anomaly-detection" className="mt-auto">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className={`w-full ${flag.iconColor} border-current hover:bg-current hover:text-white transition-all font-medium h-9`}
+                  {/* Action Link */}
+                  <div className="mt-auto pt-2 text-center">
+                    <Link
+                      to="/data-anomaly-detection"
+                      className={`text-sm font-medium ${flag.iconColor} hover:underline transition-all`}
                       aria-label={`${flag.actionLabel} ${flag.title.toLowerCase()}`}
                     >
                       {flag.actionLabel} →
-                    </Button>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

@@ -52,7 +52,7 @@ export function DashboardHeader() {
         Tablet: 384px (24rem) max-width
         Desktop: 448px (28rem) max-width
         Large: 512px (32rem) max-width
-        Height: 2rem (32px) - slimmed down
+        Height: 2.5rem (40px)
       */}
       <div
         className="
@@ -61,7 +61,7 @@ export function DashboardHeader() {
           bg-sidebar-accent
           rounded-md
           px-2 sm:px-2.5
-          py-1
+          py-1.5
           flex-1
           min-w-0
           max-w-[200px]
@@ -69,7 +69,7 @@ export function DashboardHeader() {
           md:max-w-sm
           lg:max-w-md
           xl:max-w-lg
-          h-8
+          h-10
           transition-all
           duration-200
         "

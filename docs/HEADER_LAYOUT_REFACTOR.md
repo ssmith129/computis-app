@@ -1,11 +1,13 @@
 # Header Layout Refactor Documentation
 
 ## Overview
+
 This document describes the header layout refactoring implemented to create a full-width, independent header container across all pages of the Computis web application.
 
 ## Architecture Changes
 
 ### Before Refactoring
+
 ```
 SidebarProvider (max-width: 1920px)
 └── Container
@@ -16,6 +18,7 @@ SidebarProvider (max-width: 1920px)
 ```
 
 ### After Refactoring
+
 ```
 Full-Width Container
 ├── Header Container (100% width)
@@ -30,6 +33,7 @@ Full-Width Container
 ## Key Components
 
 ### AppLayout Component
+
 **Location:** `client/components/layout/AppLayout.tsx`
 
 This new component serves as the main layout wrapper for all application pages. It provides:
@@ -45,10 +49,12 @@ This new component serves as the main layout wrapper for all application pages. 
    - Contains sidebar and page content
 
 **Props:**
+
 - `children`: Page content to render
 - `activeItem?`: Currently active navigation item (for sidebar highlighting)
 
 **Usage:**
+
 ```tsx
 import { AppLayout } from "@/components/layout/AppLayout";
 import { TransactionsContent } from "@/components/transactions/transactions-content";
@@ -63,6 +69,7 @@ export default function Transactions() {
 ```
 
 ### DashboardLayout Component
+
 **Location:** `client/components/dashboard/dashboard-layout.tsx`
 
 Updated to use the new `AppLayout` component. Now serves as a convenience wrapper for the dashboard page specifically.
@@ -70,7 +77,9 @@ Updated to use the new `AppLayout` component. Now serves as a convenience wrappe
 ## Implementation Details
 
 ### Header Styling
+
 The header container uses the following structure:
+
 ```tsx
 <div className="w-full bg-sidebar border-b border-sidebar-border flex-shrink-0">
   <div className="w-full max-w-[1920px] mx-auto">
@@ -80,6 +89,7 @@ The header container uses the following structure:
 ```
 
 **CSS Classes Breakdown:**
+
 - `w-full`: Header container spans full viewport width
 - `bg-sidebar`: Consistent background color
 - `border-b border-sidebar-border`: Bottom border for visual separation
@@ -88,6 +98,7 @@ The header container uses the following structure:
 - `mx-auto`: Centers header content on ultra-wide screens
 
 ### Content Area Styling
+
 ```tsx
 <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden">
   <DashboardSidebar activeItem={activeItem} />
@@ -98,6 +109,7 @@ The header container uses the following structure:
 ```
 
 **CSS Classes Breakdown:**
+
 - `flex flex-1`: Flexbox layout that grows to fill available space
 - `min-h-0`: Allows content to shrink below minimum content size
 - `w-full max-w-[1920px]`: Full width up to 1920px maximum
@@ -129,21 +141,25 @@ All application pages have been updated to use the new `AppLayout`:
 ## Benefits
 
 ### 1. Visual Impact
+
 - Header now spans full viewport width, providing better visual hierarchy
 - Creates a more cohesive, app-like experience
 - Better use of screen real estate on ultra-wide monitors
 
 ### 2. Consistency
+
 - Single source of truth for layout structure
 - All pages automatically inherit layout improvements
 - Easier to maintain and update
 
 ### 3. Flexibility
+
 - Header can now accommodate full-width elements if needed
 - Content area remains optimally constrained for readability
 - Easy to adjust max-width globally from one location
 
 ### 4. Code Quality
+
 - Reduced code duplication across pages
 - Cleaner page components (simple wrapper around content)
 - Easier to understand and modify
@@ -151,21 +167,25 @@ All application pages have been updated to use the new `AppLayout`:
 ## Responsive Behavior
 
 ### Mobile (< 768px)
+
 - Header spans full width of mobile screen
 - Sidebar becomes a mobile sheet overlay
 - Content fills available space
 
 ### Tablet (768px - 1024px)
+
 - Header spans full width
 - Sidebar visible but collapsible
 - Content optimally sized
 
 ### Desktop (1024px - 1920px)
+
 - Header spans full width
 - Sidebar always visible
 - Content grows with viewport
 
 ### Ultra-Wide (> 1920px)
+
 - Header spans full width with centered content (max 1920px)
 - Main content area centered and constrained to 1920px
 - Prevents content from stretching too wide
@@ -175,6 +195,7 @@ All application pages have been updated to use the new `AppLayout`:
 ### Converting Existing Pages
 
 **Before:**
+
 ```tsx
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
@@ -197,6 +218,7 @@ export default function Page() {
 ```
 
 **After:**
+
 ```tsx
 import { AppLayout } from "@/components/layout/AppLayout";
 import { PageContent } from "@/components/page/page-content";

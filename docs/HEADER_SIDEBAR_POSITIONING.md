@@ -44,9 +44,10 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 ✅ **No Manual Calculations**: No need for `calc(100% - 256px)` formulas  
 ✅ **Responsive by Nature**: Easy media query transitions  
 ✅ **Prevents Overlap**: Grid columns naturally don't overlap  
-✅ **Clean Code**: Minimal CSS required  
+✅ **Clean Code**: Minimal CSS required
 
 **Alternative approaches considered:**
+
 - ❌ **Flexbox**: Would require manual width calculations for header
 - ❌ **Absolute Positioning**: Brittle, hard to maintain, poor responsive behavior
 - ❌ **Float**: Outdated, poor browser support, complex clearing
@@ -63,20 +64,21 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 .app-layout-grid {
   /* Use CSS Grid for layout */
   display: grid;
-  
+
   /* Full viewport height */
   min-height: 100vh;
   width: 100%;
-  
+
   /* Prevent horizontal scrolling */
   overflow-x: hidden;
-  
+
   /* Relative positioning for absolute children */
   position: relative;
 }
 ```
 
 **Key Properties:**
+
 - `display: grid` - Enables grid layout
 - `min-height: 100vh` - Ensures full viewport height
 - `overflow-x: hidden` - Prevents horizontal scrollbar
@@ -90,7 +92,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
     /* Single column layout */
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    
+
     /* Define named grid areas */
     grid-template-areas:
       "header"
@@ -105,6 +107,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 ```
 
 **Explanation:**
+
 - **Single column** (`1fr`) - Header and content stack vertically
 - **Named areas** - Makes grid placement explicit and readable
 - **Sidebar hidden** - Replaced by mobile sheet overlay
@@ -121,10 +124,10 @@ We use **CSS Grid** for the most robust and maintainable solution because:
      * 2. Main: Fills remaining space (1fr)
      */
     grid-template-columns: var(--sidebar-width) 1fr;
-    
+
     /* Single row that spans full height */
     grid-template-rows: 1fr;
-    
+
     /* Named grid areas */
     grid-template-areas: "sidebar main";
   }
@@ -133,16 +136,16 @@ We use **CSS Grid** for the most robust and maintainable solution because:
   .app-layout-grid > [data-sidebar="sidebar"] {
     /* Place in sidebar area */
     grid-area: sidebar;
-    
+
     /* Sticky positioning for sidebar scroll */
     position: sticky;
     top: 0;
     height: 100vh;
-    
+
     /* Scrollable sidebar content */
     overflow-y: auto;
     overflow-x: hidden;
-    
+
     /* Z-index below header */
     z-index: 30;
   }
@@ -151,10 +154,10 @@ We use **CSS Grid** for the most robust and maintainable solution because:
   .app-layout-right-column {
     /* Place in main area */
     grid-area: main;
-    
+
     /* Prevent grid blowout */
     min-width: 0;
-    
+
     /* Vertical stack layout */
     display: flex;
     flex-direction: column;
@@ -163,6 +166,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 ```
 
 **Key Points:**
+
 - **Fixed Sidebar Width**: `var(--sidebar-width)` = 16rem (256px)
 - **Flexible Main Column**: `1fr` = fills all remaining space
 - **Automatic Width Calculation**: Grid handles header width automatically
@@ -174,17 +178,18 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 /* CSS Custom Properties for Sidebar Dimensions */
 :root {
   /* Desktop sidebar width */
-  --sidebar-width: 16rem;        /* 256px */
-  
+  --sidebar-width: 16rem; /* 256px */
+
   /* Mobile sidebar sheet width */
   --sidebar-width-mobile: 18rem; /* 288px */
-  
+
   /* Collapsed sidebar (icon-only) */
-  --sidebar-width-icon: 3rem;    /* 48px */
+  --sidebar-width-icon: 3rem; /* 48px */
 }
 ```
 
 **Benefits:**
+
 - Easy to adjust globally
 - Consistent across all components
 - Supports theming
@@ -201,22 +206,23 @@ We use **CSS Grid** for the most robust and maintainable solution because:
   position: sticky;
   top: 0;
   z-index: 50; /* Above sidebar (z-30) */
-  
+
   /* Full width of grid column */
   width: 100%;
-  
+
   /* Prevent shrinking */
   flex-shrink: 0;
-  
+
   /* Smooth transitions */
   transition: padding 200ms ease-in-out;
-  
+
   /* Prevent z-index conflicts */
   isolation: isolate;
 }
 ```
 
 **Mobile Header:**
+
 ```css
 @media (max-width: 767px) {
   .header-container {
@@ -228,6 +234,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 ```
 
 **Desktop Header:**
+
 ```css
 @media (min-width: 768px) {
   .header-container {
@@ -252,13 +259,13 @@ We use **CSS Grid** for the most robust and maintainable solution because:
   /* Flexbox for vertical stacking */
   display: flex;
   flex-direction: column;
-  
+
   /* Full height */
   min-height: 100vh;
-  
+
   /* Prevent flex/grid blowout */
   min-width: 0;
-  
+
   /* Positioning context */
   position: relative;
 }
@@ -267,7 +274,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 .app-layout-right-column > *:not(.header-container) {
   /* Fill remaining space */
   flex: 1;
-  
+
   /* Enable scrolling */
   min-height: 0;
   overflow: auto;
@@ -278,12 +285,12 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 
 ### Breakpoint Strategy
 
-| Screen Size | Sidebar | Header Position | Layout |
-|-------------|---------|----------------|---------|
-| < 768px (Mobile) | Overlay Sheet | Full-width, top | Stacked |
-| 768px - 1024px (Tablet) | 16rem column | Right of sidebar | Grid |
-| 1024px - 1920px (Desktop) | 16rem column | Right of sidebar | Grid |
-| > 1920px (Ultra-wide) | 16rem column | Right of sidebar, centered | Grid |
+| Screen Size               | Sidebar       | Header Position            | Layout  |
+| ------------------------- | ------------- | -------------------------- | ------- |
+| < 768px (Mobile)          | Overlay Sheet | Full-width, top            | Stacked |
+| 768px - 1024px (Tablet)   | 16rem column  | Right of sidebar           | Grid    |
+| 1024px - 1920px (Desktop) | 16rem column  | Right of sidebar           | Grid    |
+| > 1920px (Ultra-wide)     | 16rem column  | Right of sidebar, centered | Grid    |
 
 ### Handling Window Resize
 
@@ -292,7 +299,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 .app-layout-grid,
 .header-container,
 .app-layout-right-column {
-  transition: 
+  transition:
     grid-template-columns 200ms ease-in-out,
     width 200ms ease-in-out,
     margin 200ms ease-in-out;
@@ -300,6 +307,7 @@ We use **CSS Grid** for the most robust and maintainable solution because:
 ```
 
 **Benefits:**
+
 - Smooth visual transitions
 - No jarring jumps
 - Professional appearance
@@ -397,17 +405,15 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
     <SidebarProvider defaultOpen={true}>
       {/* Grid Container */}
       <div className="app-layout-grid min-h-screen w-full overflow-x-hidden">
-        
         {/* Sidebar - Left Column (Desktop) / Hidden (Mobile) */}
         <DashboardSidebar activeItem={activeItem} />
-        
+
         {/* Right Column - Header + Content */}
         <div className="app-layout-right-column flex flex-col min-h-screen min-w-0">
-          
           {/* Header - Sticky at top of right column */}
-          <div 
+          <div
             className="header-container bg-sidebar border-b border-sidebar-border flex-shrink-0 sticky top-0 z-50 w-full"
-            style={{ isolation: 'isolate' }}
+            style={{ isolation: "isolate" }}
           >
             <div className="w-full max-w-[1920px] mx-auto">
               <DashboardHeader />
@@ -420,7 +426,6 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
               {children}
             </SidebarInset>
           </div>
-          
         </div>
       </div>
     </SidebarProvider>
@@ -464,20 +469,32 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
 
 ```css
 /* Prevent grid blowout */
-.min-w-0 { min-width: 0; }
+.min-w-0 {
+  min-width: 0;
+}
 
 /* Full width */
-.w-full { width: 100%; }
+.w-full {
+  width: 100%;
+}
 
 /* Flex column */
-.flex-col { flex-direction: column; }
+.flex-col {
+  flex-direction: column;
+}
 
 /* Sticky positioning */
-.sticky { position: sticky; }
+.sticky {
+  position: sticky;
+}
 
 /* Z-index layers */
-.z-50 { z-index: 50; }
-.z-30 { z-index: 30; }
+.z-50 {
+  z-index: 50;
+}
+.z-30 {
+  z-index: 30;
+}
 ```
 
 ## Browser Support
@@ -487,7 +504,7 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
 ✅ Chrome 57+ (CSS Grid support)  
 ✅ Firefox 52+ (CSS Grid support)  
 ✅ Safari 10.1+ (CSS Grid support)  
-✅ Edge 16+ (CSS Grid support)  
+✅ Edge 16+ (CSS Grid support)
 
 ### Coverage
 
@@ -504,12 +521,12 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
   .app-layout-grid {
     display: flex;
   }
-  
+
   .app-layout-grid > [data-sidebar="sidebar"] {
     width: var(--sidebar-width);
     flex-shrink: 0;
   }
-  
+
   .app-layout-right-column {
     flex: 1;
   }
@@ -557,12 +574,12 @@ Simply change the CSS variable - **the grid automatically recalculates!**
   .app-layout-grid > [data-sidebar="sidebar"] {
     display: none;
   }
-  
+
   /* Header full-width */
   .app-layout-grid {
     grid-template-columns: 1fr;
   }
-  
+
   /* Show mobile menu button */
   .mobile-menu-trigger {
     display: block;
@@ -638,6 +655,7 @@ Simply change the CSS variable - **the grid automatically recalculates!**
 ### Issue: Header Still Overlaps Sidebar
 
 **Solution:**
+
 ```css
 /* Ensure grid is properly configured */
 @media (min-width: 768px) {
@@ -651,6 +669,7 @@ Simply change the CSS variable - **the grid automatically recalculates!**
 ### Issue: Header Too Narrow
 
 **Solution:**
+
 ```css
 /* Ensure min-width: 0 on right column */
 .app-layout-right-column {
@@ -661,6 +680,7 @@ Simply change the CSS variable - **the grid automatically recalculates!**
 ### Issue: Horizontal Scrollbar Appears
 
 **Solution:**
+
 ```css
 /* Prevent overflow on all grid children */
 .app-layout-grid > * {
@@ -672,6 +692,7 @@ Simply change the CSS variable - **the grid automatically recalculates!**
 ### Issue: Header Jumps During Resize
 
 **Solution:**
+
 ```css
 /* Add smooth transitions */
 .app-layout-grid {
@@ -689,17 +710,17 @@ Simply change the CSS variable - **the grid automatically recalculates!**
 ✅ **Maintainable**: Change sidebar width in one place  
 ✅ **Performant**: GPU-accelerated, no JavaScript needed  
 ✅ **Accessible**: Semantic HTML, proper heading hierarchy  
-✅ **Future-Proof**: Modern CSS, excellent browser support  
+✅ **Future-Proof**: Modern CSS, excellent browser support
 
 ### Grid vs Flexbox vs Positioning
 
-| Feature | Grid | Flexbox | Absolute |
-|---------|------|---------|----------|
-| Automatic width calculation | ✅ Yes | ❌ No | ❌ No |
-| No manual calc() needed | ✅ Yes | ❌ No | ❌ No |
-| Prevents overlap naturally | ✅ Yes | ⚠️ Partial | ❌ No |
-| Easy responsive behavior | ✅ Yes | ⚠️ Moderate | ❌ Hard |
-| Maintainability | ✅ Excellent | ⚠️ Good | ❌ Poor |
+| Feature                     | Grid         | Flexbox     | Absolute |
+| --------------------------- | ------------ | ----------- | -------- |
+| Automatic width calculation | ✅ Yes       | ❌ No       | ❌ No    |
+| No manual calc() needed     | ✅ Yes       | ❌ No       | ❌ No    |
+| Prevents overlap naturally  | ✅ Yes       | ⚠️ Partial  | ❌ No    |
+| Easy responsive behavior    | ✅ Yes       | ⚠️ Moderate | ❌ Hard  |
+| Maintainability             | ✅ Excellent | ⚠️ Good     | ❌ Poor  |
 
 **Recommendation:** CSS Grid is the best solution for this layout pattern.
 

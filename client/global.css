@@ -206,7 +206,9 @@
     /* Prevent content overflow */
     contain: layout style paint;
     /* Smooth transitions for responsive changes */
-    transition: padding 200ms ease-in-out, min-height 200ms ease-in-out;
+    transition:
+      padding 200ms ease-in-out,
+      min-height 200ms ease-in-out;
   }
 
   /* Fixed Header Container */
@@ -217,7 +219,9 @@
     /* Minimum height matches header component */
     min-height: 3.5rem; /* 56px */
     /* Ensure smooth transitions */
-    transition: left 200ms ease-in-out, width 200ms ease-in-out;
+    transition:
+      left 200ms ease-in-out,
+      width 200ms ease-in-out;
   }
 
   /* Mobile: Full-width header */

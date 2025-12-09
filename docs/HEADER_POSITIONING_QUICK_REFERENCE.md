@@ -132,30 +132,26 @@
 <div className="app-layout-grid">
   {/* Sidebar - Left column on desktop, hidden on mobile */}
   <Sidebar />
-  
+
   {/* Right column - Header + Content */}
   <div className="app-layout-right-column">
-    
     {/* Header - Sticky within right column */}
     <div className="header-container">
       <Header />
     </div>
-    
+
     {/* Content - Scrollable */}
-    <main>
-      {children}
-    </main>
-    
+    <main>{children}</main>
   </div>
 </div>
 ```
 
 ## Key Breakpoints
 
-| Screen Size | Grid Columns | Header Width | Sidebar |
-|-------------|-------------|--------------|---------|
-| < 768px | `1fr` | 100% | Hidden (sheet) |
-| ≥ 768px | `16rem 1fr` | Calc by grid | Visible |
+| Screen Size | Grid Columns | Header Width | Sidebar        |
+| ----------- | ------------ | ------------ | -------------- |
+| < 768px     | `1fr`        | 100%         | Hidden (sheet) |
+| ≥ 768px     | `16rem 1fr`  | Calc by grid | Visible        |
 
 ## Width Calculations
 
@@ -169,6 +165,7 @@ Content: Same as header width
 ```
 
 **Example at 1920px viewport:**
+
 - Sidebar: 256px
 - Header: 1664px (automatically calculated by grid)
 - Content: 1664px
@@ -328,20 +325,20 @@ Content: 100vw
 
 ```javascript
 // Check grid columns
-getComputedStyle(document.querySelector('.app-layout-grid'))
-  .gridTemplateColumns
+getComputedStyle(document.querySelector(".app-layout-grid"))
+  .gridTemplateColumns;
 // Expected: "256px 1fr" on desktop
 
 // Check header width
-document.querySelector('.header-container').offsetWidth
+document.querySelector(".header-container").offsetWidth;
 // Expected: viewport width - 256px on desktop
 
 // Check for overlap
-const sidebar = document.querySelector('.sidebar');
-const header = document.querySelector('.header-container');
+const sidebar = document.querySelector(".sidebar");
+const header = document.querySelector(".header-container");
 const sidebarRect = sidebar.getBoundingClientRect();
 const headerRect = header.getBoundingClientRect();
-console.log('Overlap:', sidebarRect.right > headerRect.left);
+console.log("Overlap:", sidebarRect.right > headerRect.left);
 // Expected: false
 ```
 

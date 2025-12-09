@@ -70,7 +70,7 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
           */}
           <div
             className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 w-full md:left-[var(--sidebar-width)] md:w-[calc(100%-var(--sidebar-width))]"
-            style={{ isolation: 'isolate' }}
+            style={{ isolation: "isolate" }}
           >
             <div className="w-full max-w-[1920px] mx-auto">
               <DashboardHeader />

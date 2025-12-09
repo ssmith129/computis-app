@@ -192,39 +192,57 @@
    * - Ultra-wide: 1920px+ (2xl+)
    */
 
+  /* ============================================
+   * FIXED HEADER - REMAINS AT TOP DURING SCROLL
+   * ============================================ */
+
   .app-header {
-    @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
+    /* Fixed height for consistent layout */
+    height: 3rem; /* 48px - reduced from 3.5rem (56px) */
+    /* Background and borders */
+    @apply bg-sidebar border-b border-sidebar;
     /* Ensure header stays above all content */
     isolation: isolate;
-    /* Minimum height to prevent collapse */
-    min-height: 3.5rem;
-    /* Smooth transitions for responsive changes */
-    transition: padding 200ms ease-in-out, min-height 200ms ease-in-out;
     /* Prevent content overflow */
     contain: layout style paint;
+    /* Smooth transitions for responsive changes */
+    transition: padding 200ms ease-in-out;
   }
 
-  /* Mobile-specific header adjustments */
-  @media (max-width: 639px) {
-    .app-header {
-      min-height: 3rem;
-      padding: 0.5rem;
+  /* Fixed Header Container */
+  .header-container-fixed {
+    /* Fixed positioning - doesn't scroll with page */
+    position: fixed;
+    top: 0;
+    /* Height matches header component */
+    height: 3rem; /* 48px */
+    /* Ensure smooth transitions */
+    transition: left 200ms ease-in-out, width 200ms ease-in-out;
+  }
+
+  /* Mobile: Full-width header */
+  @media (max-width: 767px) {
+    .header-container-fixed {
+      left: 0;
+      width: 100%;
     }
   }
 
-  /* Tablet-specific header adjustments */
-  @media (min-width: 640px) and (max-width: 1023px) {
-    .app-header {
-      min-height: 3.5rem;
-      padding: 0.75rem;
+  /* Desktop: Header positioned right of sidebar */
+  @media (min-width: 768px) {
+    .header-container-fixed {
+      /* Position to right of sidebar */
+      left: var(--sidebar-width);
+      /* Width fills remaining space */
+      width: calc(100% - var(--sidebar-width));
     }
   }
 
-  /* Desktop header adjustments */
-  @media (min-width: 1024px) {
-    .app-header {
-      min-height: 3.5rem;
-      padding: 0.75rem 1rem;
+  /* Collapsed sidebar state */
+  @media (min-width: 768px) {
+    .header-container-fixed[data-sidebar-collapsed="true"] {
+      left: var(--sidebar-width-icon);
+      width: calc(100% - var(--sidebar-width-icon));
     }
   }
 

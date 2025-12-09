@@ -14,8 +14,8 @@ import { Link } from "react-router-dom";
 /**
  * DashboardHeader Component
  *
- * Responsive header with:
- * - Search bar (responsive width)
+ * Fixed header with:
+ * - Compact search bar (reduced height)
  * - Notifications dropdown
  * - User profile dropdown
  *
@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
  * - Desktop (>1024px): Full layout with all elements
  *
  * Z-Index: Inherits from parent (z-50)
- * Height: Auto-adjusts based on content (min-height: 3.5rem)
+ * Height: Fixed at 3rem (48px) - reduced from 3.5rem for slimmer profile
  */
 export function DashboardHeader() {
   return (
@@ -36,10 +36,10 @@ export function DashboardHeader() {
         items-center
         justify-between
         gap-2 sm:gap-3
-        p-2 sm:p-3
+        px-2 sm:px-3
+        py-1.5 sm:py-2
         flex-shrink-0
-        h-auto
-        min-h-[3.5rem]
+        h-[3rem]
         overflow-x-hidden
         w-full
       "
@@ -47,20 +47,21 @@ export function DashboardHeader() {
       aria-label="Main navigation header"
     >
       {/*
-        Search Bar
+        Search Bar - Compact Design
         Mobile: 200px max-width
         Tablet: 384px (24rem) max-width
         Desktop: 448px (28rem) max-width
         Large: 512px (32rem) max-width
+        Height: 2rem (32px) - slimmed down
       */}
       <div
         className="
           flex
           items-center
           bg-sidebar-accent
-          rounded-lg
-          px-2 sm:px-3
-          py-2
+          rounded-md
+          px-2 sm:px-2.5
+          py-1
           flex-1
           min-w-0
           max-w-[200px]
@@ -68,7 +69,7 @@ export function DashboardHeader() {
           md:max-w-sm
           lg:max-w-md
           xl:max-w-lg
-          h-auto
+          h-8
           transition-all
           duration-200
         "

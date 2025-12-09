@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
  * DashboardHeader Component
  *
  * Fixed header with:
- * - Compact search bar (reduced height)
+ * - Compact search bar (40px height)
  * - Notifications dropdown
  * - User profile dropdown
  *
@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
  * - Desktop (>1024px): Full layout with all elements
  *
  * Z-Index: Inherits from parent (z-50)
- * Height: Fixed at 3rem (48px) - reduced from 3.5rem for slimmer profile
+ * Min Height: 3.5rem (56px)
  */
 export function DashboardHeader() {
   return (
@@ -37,9 +37,9 @@ export function DashboardHeader() {
         justify-between
         gap-2 sm:gap-3
         px-2 sm:px-3
-        py-1.5 sm:py-2
+        py-2
         flex-shrink-0
-        h-[3rem]
+        min-h-[3.5rem]
         overflow-x-hidden
         w-full
       "

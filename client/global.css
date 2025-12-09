@@ -197,8 +197,8 @@
    * ============================================ */
 
   .app-header {
-    /* Fixed height for consistent layout */
-    height: 3rem; /* 48px - reduced from 3.5rem (56px) */
+    /* Minimum height for consistent layout */
+    min-height: 3.5rem; /* 56px */
     /* Background and borders */
     @apply bg-sidebar border-b border-sidebar;
     /* Ensure header stays above all content */
@@ -206,7 +206,7 @@
     /* Prevent content overflow */
     contain: layout style paint;
     /* Smooth transitions for responsive changes */
-    transition: padding 200ms ease-in-out;
+    transition: padding 200ms ease-in-out, min-height 200ms ease-in-out;
   }
 
   /* Fixed Header Container */
@@ -214,8 +214,8 @@
     /* Fixed positioning - doesn't scroll with page */
     position: fixed;
     top: 0;
-    /* Height matches header component */
-    height: 3rem; /* 48px */
+    /* Minimum height matches header component */
+    min-height: 3.5rem; /* 56px */
     /* Ensure smooth transitions */
     transition: left 200ms ease-in-out, width 200ms ease-in-out;
   }

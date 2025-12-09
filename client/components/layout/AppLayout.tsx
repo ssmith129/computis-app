@@ -66,7 +66,7 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
             - Full-width on mobile, aligned right of sidebar on desktop
             - Fixed positioning - remains visible during scroll
             - z-index: 50 (above sidebar and content)
-            - Height: 3rem (48px) - reduced from 3.5rem
+            - Min Height: 3.5rem (56px)
           */}
           <div
             className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 w-full md:left-[var(--sidebar-width)] md:w-[calc(100%-var(--sidebar-width))]"
@@ -80,12 +80,12 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
           {/*
             Main Content Area
             - Flexbox column layout
-            - Top padding to account for fixed header (3rem = 48px)
+            - Top padding to account for fixed header (3.5rem = 56px)
             - Fills remaining vertical space
             - Scrollable
             - Max-width: 1920px for ultra-wide screens
           */}
-          <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-[3rem]">
+          <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-[3.5rem]">
             <SidebarInset className="flex flex-col min-w-0 flex-1 w-full">
               {children}
             </SidebarInset>

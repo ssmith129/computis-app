@@ -287,34 +287,201 @@
   }
 
   /* ============================================
-   * LAYOUT CONTAINER RESPONSIVE GRID
-   * ============================================ */
+   * APP LAYOUT GRID - SIDEBAR + HEADER POSITIONING
+   * ============================================
+   *
+   * Desktop Layout (≥768px):
+   * ┌────────────┬────────────────────────────┐
+   * │            │         HEADER             │
+   * │  SIDEBAR   ├────────────────────────────┤
+   * │  (16rem)   │                            │
+   * │            │         CONTENT            │
+   * └────────────┴────────────────────────────┘
+   *
+   * Mobile Layout (<768px):
+   * ┌──────────────────────────────────────────┐
+   * │              HEADER                      │
+   * ├──────────────────────────────────────────┤
+   * │                                          │
+   * │              CONTENT                     │
+   * └──────────────────────────────────────────┘
+   * (Sidebar as overlay sheet)
+   */
 
-  .responsive-layout-grid {
+  .app-layout-grid {
     display: grid;
     min-height: 100vh;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr;
+    width: 100%;
     overflow-x: hidden;
+    position: relative;
   }
 
-  /* Desktop grid with sidebar column */
-  @media (min-width: 768px) {
-    .responsive-layout-content-grid {
-      display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
-      min-height: calc(100vh - 3.5rem); /* Account for header height */
-      position: relative;
+  /*
+   * Mobile Layout (<768px)
+   * - Single column layout
+   * - Sidebar hidden (replaced by sheet overlay)
+   * - Header full-width at top
+   * - Content below header
+   */
+  @media (max-width: 767px) {
+    .app-layout-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "header"
+        "content";
+    }
+
+    /* Hide desktop sidebar on mobile */
+    .app-layout-grid > [data-sidebar="sidebar"] {
+      display: none;
+    }
+
+    /* Header full-width on mobile */
+    .app-layout-right-column {
+      grid-area: auto;
     }
   }
 
-  /* Mobile: Stack layout */
-  @media (max-width: 767px) {
-    .responsive-layout-content-grid {
+  /*
+   * Desktop Layout (≥768px)
+   * - Two column layout
+   * - Left: Sidebar (fixed 16rem width)
+   * - Right: Header + Content (fills remaining space)
+   */
+  @media (min-width: 768px) {
+    .app-layout-grid {
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "sidebar main";
+    }
+
+    /* Sidebar spans full height */
+    .app-layout-grid > [data-sidebar="sidebar"] {
+      grid-area: sidebar;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 30;
+    }
+
+    /* Right column (header + content) */
+    .app-layout-right-column {
+      grid-area: main;
+      min-width: 0; /* Prevent grid blowout */
       display: flex;
       flex-direction: column;
-      min-height: calc(100vh - 3rem);
     }
+  }
+
+  /*
+   * Collapsed Sidebar State (Desktop)
+   * When sidebar is collapsed to icon-only mode
+   */
+  @media (min-width: 768px) {
+    .app-layout-grid[data-sidebar-collapsed="true"] {
+      grid-template-columns: var(--sidebar-width-icon) 1fr;
+    }
+  }
+
+  /*
+   * Ultra-Wide Screens (≥1920px)
+   * - Center content with max-width
+   * - Maintain sidebar at left edge
+   */
+  @media (min-width: 1920px) {
+    .app-layout-grid {
+      margin: 0 auto;
+    }
+  }
+
+  /* ============================================
+   * HEADER CONTAINER - RIGHT OF SIDEBAR
+   * ============================================ */
+
+  .header-container {
+    /* Positioned at top of right column */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    /* Prevent layout shift */
+    flex-shrink: 0;
+    /* Smooth transitions */
+    transition: padding 200ms ease-in-out;
+  }
+
+  /* Mobile: Full-width header */
+  @media (max-width: 767px) {
+    .header-container {
+      /* Full viewport width on mobile */
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  /* Desktop: Header aligned to right of sidebar */
+  @media (min-width: 768px) {
+    .header-container {
+      /*
+       * Width is automatically constrained by grid column
+       * No need for calc() - grid handles it
+       */
+      width: 100%;
+    }
+  }
+
+  /* ============================================
+   * RIGHT COLUMN LAYOUT
+   * ============================================ */
+
+  .app-layout-right-column {
+    /* Flexbox column for header + content stacking */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 0; /* Prevent flex/grid blowout */
+    position: relative;
+  }
+
+  /* Ensure proper scrolling behavior */
+  .app-layout-right-column > *:not(.header-container) {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  /* ============================================
+   * RESPONSIVE LAYOUT UTILITIES
+   * ============================================ */
+
+  /* Prevent sidebar overlap on header */
+  @media (min-width: 768px) {
+    .header-container {
+      /* Header stays within its grid column */
+      margin-left: 0;
+      /* Ensure no overlap */
+      isolation: isolate;
+    }
+  }
+
+  /* Handle window resize smoothly */
+  .app-layout-grid,
+  .header-container,
+  .app-layout-right-column {
+    /* Smooth transitions during resize */
+    transition:
+      grid-template-columns 200ms ease-in-out,
+      width 200ms ease-in-out,
+      margin 200ms ease-in-out;
+  }
+
+  /* Prevent horizontal overflow during transitions */
+  .app-layout-grid > * {
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   .btn-no-gap {

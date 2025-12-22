@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TransactionsTable } from "./transactions-table";
-import { ClassificationInsights } from "./classification-insights";
-import { TransactionAnomalyFlags } from "./transaction-anomaly-flags";
+import { TransactionInsightsUnified } from "./transaction-insights-unified";
 import { Filter, Tag, AlertTriangle } from "lucide-react";
-import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
 export function TransactionsContent() {
@@ -16,6 +14,21 @@ export function TransactionsContent() {
 
   const confidenceFilters = ["All", "High", "Medium", "Low"];
   const statusFilters = ["All", "Confirmed", "Suggested", "Flagged"];
+
+  const getConfidenceButtonClass = (filter: string, isActive: boolean) => {
+    if (!isActive) return "h-8";
+
+    switch (filter) {
+      case "High":
+        return "h-8 bg-green-100 text-green-800 hover:bg-green-200 border-green-200";
+      case "Medium":
+        return "h-8 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200";
+      case "Low":
+        return "h-8 bg-red-100 text-red-800 hover:bg-red-200 border-red-200";
+      default:
+        return "h-8";
+    }
+  };
 
   return (
     <div className="app-content">
@@ -37,24 +50,25 @@ export function TransactionsContent() {
               <span className="text-sm text-muted-foreground whitespace-nowrap">
                 Confidence:
               </span>
-              {confidenceFilters.map((filter) => (
-                <Button
-                  key={filter}
-                  variant={
-                    activeFilters.confidence === filter ? "default" : "outline"
-                  }
-                  size="sm"
-                  onClick={() =>
-                    setActiveFilters((prev) => ({
-                      ...prev,
-                      confidence: filter,
-                    }))
-                  }
-                  className="h-8"
-                >
-                  {filter}
-                </Button>
-              ))}
+              {confidenceFilters.map((filter) => {
+                const isActive = activeFilters.confidence === filter;
+                return (
+                  <Button
+                    key={filter}
+                    variant={isActive ? "default" : "outline"}
+                    size="sm"
+                    onClick={() =>
+                      setActiveFilters((prev) => ({
+                        ...prev,
+                        confidence: filter,
+                      }))
+                    }
+                    className={getConfidenceButtonClass(filter, isActive)}
+                  >
+                    {filter}
+                  </Button>
+                );
+              })}
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -125,34 +139,9 @@ export function TransactionsContent() {
             </CardContent>
           </Card>
 
-          {/* Bottom Sections */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* AI Classification Insights */}
-            <Card className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">
-                  AI Classification Insights
-                </h3>
-              </div>
-              <ClassificationInsights />
-            </Card>
-
-            {/* Anomaly Flags */}
-            <Card className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">Anomaly Flags</h3>
-                <Link to="/data-anomaly-detection">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-muted-foreground hover:text-foreground h-auto p-0"
-                  >
-                    View All
-                  </Button>
-                </Link>
-              </div>
-              <TransactionAnomalyFlags />
-            </Card>
+          {/* Unified Insights Cards - Horizontal Grid */}
+          <div>
+            <TransactionInsightsUnified />
           </div>
         </div>
       </div>

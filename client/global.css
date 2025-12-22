@@ -179,21 +179,331 @@
    * Always use semantic classes instead of arbitrary z-index values
    */
 
+  /* ============================================
+   * RESPONSIVE NAVIGATION SYSTEM
+   * ============================================
+   * Comprehensive responsive layout for header and sidebar
+   * Prevents overlapping and maintains structure across all screen sizes
+   *
+   * Breakpoints:
+   * - Mobile: < 640px (sm)
+   * - Tablet: 640px - 1024px (md to lg)
+   * - Desktop: 1024px+ (lg+)
+   * - Ultra-wide: 1920px+ (2xl+)
+   */
+
+  /* ============================================
+   * FIXED HEADER - REMAINS AT TOP DURING SCROLL
+   * ============================================ */
+
   .app-header {
-    @apply sticky top-0 z-50 bg-sidebar border-b border-sidebar;
-    /* Ensure header stays above all content on tablets */
+    /* Minimum height for consistent layout */
+    min-height: 3.5rem; /* 56px */
+    /* Background and borders */
+    @apply bg-sidebar border-b border-sidebar;
+    /* Ensure header stays above all content */
     isolation: isolate;
+    /* Prevent content overflow */
+    contain: layout style paint;
+    /* Smooth transitions for responsive changes */
+    transition:
+      padding 200ms ease-in-out,
+      min-height 200ms ease-in-out;
   }
+
+  /* Fixed Header Container */
+  .header-container-fixed {
+    /* Fixed positioning - doesn't scroll with page */
+    position: fixed;
+    top: 0;
+    /* Minimum height matches header component */
+    min-height: 3.5rem; /* 56px */
+    /* Ensure smooth transitions */
+    transition:
+      left 200ms ease-in-out,
+      width 200ms ease-in-out;
+  }
+
+  /* Mobile: Full-width header */
+  @media (max-width: 767px) {
+    .header-container-fixed {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  /* Desktop: Header positioned right of sidebar */
+  @media (min-width: 768px) {
+    .header-container-fixed {
+      /* Position to right of sidebar */
+      left: var(--sidebar-width);
+      /* Width fills remaining space */
+      width: calc(100% - var(--sidebar-width));
+    }
+  }
+
+  /* Collapsed sidebar state */
+  @media (min-width: 768px) {
+    .header-container-fixed[data-sidebar-collapsed="true"] {
+      left: var(--sidebar-width-icon);
+      width: calc(100% - var(--sidebar-width-icon));
+    }
+  }
+
   .page-titlebar {
     @apply sticky top-0 z-40 bg-background border-b border-border;
     /* Prevent z-index inheritance issues */
     isolation: isolate;
+    /* Ensure proper stacking below header */
+    margin-top: 0;
   }
+
   .app-content {
     @apply flex-1 min-h-0 bg-background overflow-y-auto overflow-x-hidden max-w-full box-border;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
     overscroll-behavior-x: none;
+    /* Ensure content doesn't interfere with header/sidebar */
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ============================================
+   * SIDEBAR RESPONSIVE BEHAVIOR
+   * ============================================ */
+
+  .sidebar-container {
+    /* Mobile: Full height, positioned for sheet overlay */
+    @apply h-full;
+    /* Desktop: Fixed positioning with proper z-index */
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Desktop sidebar - Fixed positioning */
+  @media (min-width: 768px) {
+    .sidebar-container {
+      /* Ensure sidebar doesn't overlap header */
+      position: relative;
+      z-index: 30;
+      /* Prevent content shift when sidebar toggles */
+      flex-shrink: 0;
+    }
+  }
+
+  /* Mobile sidebar - Sheet overlay behavior */
+  @media (max-width: 767px) {
+    .sidebar-container {
+      /* Sidebar as overlay sheet on mobile */
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 40; /* Above content, below header */
+      /* Transform for slide-in animation */
+      transform: translateX(-100%);
+    }
+
+    .sidebar-container[data-state="open"] {
+      transform: translateX(0);
+    }
+  }
+
+  /* ============================================
+   * APP LAYOUT GRID - SIDEBAR + HEADER POSITIONING
+   * ============================================
+   *
+   * Desktop Layout (≥768px):
+   * ┌────────────┬────────────────────────────┐
+   * │            │         HEADER             │
+   * │  SIDEBAR   ├────────────────────────────┤
+   * │  (16rem)   │                            │
+   * │            │         CONTENT            │
+   * └────────────┴────────────────────────────┘
+   *
+   * Mobile Layout (<768px):
+   * ┌──────────────────────────────────────────┐
+   * │              HEADER                      │
+   * ├──────────────────────────────────────────┤
+   * │                                          │
+   * │              CONTENT                     │
+   * └──────────────────────────────────────────┘
+   * (Sidebar as overlay sheet)
+   */
+
+  .app-layout-grid {
+    display: grid;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /*
+   * Mobile Layout (<768px)
+   * - Single column layout
+   * - Sidebar hidden (replaced by sheet overlay)
+   * - Header full-width at top
+   * - Content below header
+   */
+  @media (max-width: 767px) {
+    .app-layout-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "header"
+        "content";
+    }
+
+    /* Hide desktop sidebar on mobile */
+    .app-layout-grid > [data-sidebar="sidebar"] {
+      display: none;
+    }
+
+    /* Header full-width on mobile */
+    .app-layout-right-column {
+      grid-area: auto;
+    }
+  }
+
+  /*
+   * Desktop Layout (≥768px)
+   * - Two column layout
+   * - Left: Sidebar (fixed 16rem width)
+   * - Right: Header + Content (fills remaining space)
+   */
+  @media (min-width: 768px) {
+    .app-layout-grid {
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "sidebar main";
+    }
+
+    /* Sidebar spans full height */
+    .app-layout-grid > [data-sidebar="sidebar"] {
+      grid-area: sidebar;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 30;
+    }
+
+    /* Right column (header + content) */
+    .app-layout-right-column {
+      grid-area: main;
+      min-width: 0; /* Prevent grid blowout */
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  /*
+   * Collapsed Sidebar State (Desktop)
+   * When sidebar is collapsed to icon-only mode
+   */
+  @media (min-width: 768px) {
+    .app-layout-grid[data-sidebar-collapsed="true"] {
+      grid-template-columns: var(--sidebar-width-icon) 1fr;
+    }
+  }
+
+  /*
+   * Ultra-Wide Screens (≥1920px)
+   * - Center content with max-width
+   * - Maintain sidebar at left edge
+   */
+  @media (min-width: 1920px) {
+    .app-layout-grid {
+      margin: 0 auto;
+    }
+  }
+
+  /* ============================================
+   * HEADER CONTAINER - RIGHT OF SIDEBAR
+   * ============================================ */
+
+  .header-container {
+    /* Positioned at top of right column */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    /* Prevent layout shift */
+    flex-shrink: 0;
+    /* Smooth transitions */
+    transition: padding 200ms ease-in-out;
+  }
+
+  /* Mobile: Full-width header */
+  @media (max-width: 767px) {
+    .header-container {
+      /* Full viewport width on mobile */
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  /* Desktop: Header aligned to right of sidebar */
+  @media (min-width: 768px) {
+    .header-container {
+      /*
+       * Width is automatically constrained by grid column
+       * No need for calc() - grid handles it
+       */
+      width: 100%;
+    }
+  }
+
+  /* ============================================
+   * RIGHT COLUMN LAYOUT
+   * ============================================ */
+
+  .app-layout-right-column {
+    /* Flexbox column for header + content stacking */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 0; /* Prevent flex/grid blowout */
+    position: relative;
+  }
+
+  /* Ensure proper scrolling behavior */
+  .app-layout-right-column > *:not(.header-container) {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  /* ============================================
+   * RESPONSIVE LAYOUT UTILITIES
+   * ============================================ */
+
+  /* Prevent sidebar overlap on header */
+  @media (min-width: 768px) {
+    .header-container {
+      /* Header stays within its grid column */
+      margin-left: 0;
+      /* Ensure no overlap */
+      isolation: isolate;
+    }
+  }
+
+  /* Handle window resize smoothly */
+  .app-layout-grid,
+  .header-container,
+  .app-layout-right-column {
+    /* Smooth transitions during resize */
+    transition:
+      grid-template-columns 200ms ease-in-out,
+      width 200ms ease-in-out,
+      margin 200ms ease-in-out;
+  }
+
+  /* Prevent horizontal overflow during transitions */
+  .app-layout-grid > * {
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   .btn-no-gap {
@@ -365,6 +675,35 @@
     }
   }
 
+  /* ============================================
+   * NAVIGATION SPACING UTILITIES
+   * ============================================ */
+
+  /* Prevent header/sidebar overlap with proper spacing */
+  .main-content-offset {
+    /* Mobile: Account for header only */
+    padding-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    .main-content-offset {
+      /* Desktop: No offset needed (sidebar is beside content) */
+      padding-top: 0;
+    }
+  }
+
+  /* Safe area for content to avoid navigation overlap */
+  .nav-safe-area {
+    /* Mobile: Top padding for header */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* ============================================
+   * RESPONSIVE BREAKPOINT UTILITIES
+   * ============================================ */
+
   /* Tablet-specific optimizations (768px-1024px) */
   @media (min-width: 768px) and (max-width: 1024px) {
     .tablet-stack {
@@ -381,6 +720,44 @@
       position: -webkit-sticky;
       position: sticky;
       will-change: transform;
+    }
+  }
+
+  /* ============================================
+   * ACCESSIBILITY - FOCUS MANAGEMENT
+   * ============================================ */
+
+  /* Skip to main content link for keyboard navigation */
+  .skip-to-main {
+    @apply absolute left-0 top-0 z-[100] bg-primary text-primary-foreground px-4 py-2 rounded-br-md;
+    transform: translateY(-100%);
+    transition: transform 200ms ease-in-out;
+  }
+
+  .skip-to-main:focus {
+    transform: translateY(0);
+  }
+
+  /* Ensure interactive elements in nav are keyboard accessible */
+  .nav-item-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    transition: all 150ms ease-in-out;
+  }
+
+  /* ============================================
+   * PREVENT LAYOUT SHIFT
+   * ============================================ */
+
+  /* Prevent cumulative layout shift when sidebar toggles */
+  .layout-stable {
+    contain: layout style;
+  }
+
+  /* Reserve space for sidebar on desktop */
+  @media (min-width: 768px) {
+    .sidebar-spacer {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
     }
   }
 
@@ -401,6 +778,282 @@
     }
     .tablet-landscape-spacing {
       padding: 1.5rem;
+    }
+  }
+
+  /* ============================================
+   * RESPONSIVE TRANSACTIONS TABLE
+   * ============================================
+   * Mobile-first approach with progressive enhancement
+   * Breakpoints: Mobile (≤767px), Tablet (768px-1023px), Desktop (≥1024px)
+   */
+
+  /* Table Container */
+  .responsive-table-container {
+    @apply relative overflow-x-auto overflow-y-hidden w-full rounded-lg border border-border bg-card;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+
+  .responsive-table-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .responsive-table-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .responsive-table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
+  }
+
+  .responsive-table-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+
+  /* Base Table Styles */
+  .responsive-transactions-table {
+    @apply min-w-full table-fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* Table Row Styles */
+  .table-row-responsive {
+    @apply h-auto;
+    min-height: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .table-row-responsive {
+      @apply h-12;
+    }
+  }
+
+  /* ============================================
+   * COLUMN DEFINITIONS
+   * Each column has specific width and visibility rules
+   * ============================================ */
+
+  /* Checkbox Column - Always visible, fixed width */
+  .checkbox-column {
+    @apply w-14 pl-4 pr-2 py-3 align-middle;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: hsl(var(--card));
+  }
+
+  @media (min-width: 768px) {
+    .checkbox-column {
+      @apply w-16 pl-10 pr-1.5 py-2;
+      position: static;
+    }
+  }
+
+  /* View Column - Always visible, fixed width */
+  .view-column {
+    @apply w-14 px-2 py-3 text-xs align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .view-column {
+      @apply w-10 px-1.5 py-2;
+    }
+  }
+
+  /* Date Column - Always visible, priority content */
+  .date-column {
+    @apply w-28 px-2 py-3 font-medium text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .date-column {
+      @apply w-24 px-1.5 py-2;
+    }
+  }
+
+  /* Type Column - Hidden on mobile, visible on tablet+ */
+  .type-column {
+    @apply hidden px-2 py-3 text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .type-column {
+      @apply table-cell w-20 px-1.5 py-2;
+    }
+  }
+
+  /* Asset Column - Always visible, priority content */
+  .asset-column {
+    @apply w-36 px-2 py-3 text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .asset-column {
+      @apply w-36 px-1.5 py-2;
+    }
+  }
+
+  /* Amount Column - Always visible, priority content */
+  .amount-column {
+    @apply w-28 px-2 py-3 font-mono text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .amount-column {
+      @apply w-24 px-1.5 py-2;
+    }
+  }
+
+  /* FMV Column - Hidden on mobile, visible on tablet+ */
+  .fmv-column {
+    @apply hidden px-2 py-3 font-mono text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .fmv-column {
+      @apply table-cell w-28 px-1.5 py-2;
+    }
+  }
+
+  /* AI Classification Column - Hidden on mobile, visible on tablet+ */
+  .classification-column {
+    @apply hidden px-2 py-3 text-xs align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .classification-column {
+      @apply table-cell w-32 px-1.5 py-2;
+    }
+  }
+
+  /* Confidence Column - Always visible, priority content */
+  .confidence-column {
+    @apply w-24 px-2 py-3 text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .confidence-column {
+      @apply w-24 px-1.5 py-2;
+    }
+  }
+
+  /* Status Column - Always visible, priority content */
+  .status-column {
+    @apply w-28 px-2 py-3 text-sm align-middle;
+  }
+
+  @media (min-width: 768px) {
+    .status-column {
+      @apply w-28 px-1.5 py-2;
+    }
+  }
+
+  /* Actions Column - Always visible, fixed width */
+  .actions-column {
+    @apply w-32 px-2 py-3 text-xs align-middle;
+    position: sticky;
+    right: 0;
+    z-index: 10;
+    background-color: hsl(var(--card));
+  }
+
+  @media (min-width: 768px) {
+    .actions-column {
+      @apply w-28 px-1.5 py-2;
+      position: static;
+    }
+  }
+
+  /* ============================================
+   * TEXT TRUNCATION & OVERFLOW HANDLING
+   * ============================================ */
+
+  .asset-column span.truncate,
+  .classification-column .truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+    display: inline-block;
+  }
+
+  /* ============================================
+   * TOUCH-FRIENDLY INTERACTIONS
+   * ============================================ */
+
+  /* Ensure minimum touch target size on mobile (44x44px per WCAG) */
+  @media (max-width: 767px) {
+    .responsive-transactions-table button,
+    .responsive-transactions-table [role="checkbox"] {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+
+  /* ============================================
+   * ACCESSIBILITY ENHANCEMENTS
+   * ============================================ */
+
+  /* Focus visible styles for keyboard navigation */
+  .responsive-transactions-table *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+
+  /* Ensure proper color contrast for WCAG AA compliance */
+  .responsive-transactions-table th {
+    @apply text-muted-foreground font-medium;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .responsive-transactions-table {
+      @apply border-2;
+    }
+    .responsive-transactions-table th,
+    .responsive-transactions-table td {
+      @apply border border-border;
+    }
+  }
+
+  /* ============================================
+   * REDUCED MOTION SUPPORT
+   * ============================================ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .responsive-table-container,
+    .responsive-transactions-table * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ============================================
+   * PRINT STYLES
+   * ============================================ */
+
+  @media print {
+    .responsive-table-container {
+      @apply overflow-visible border-0;
+    }
+
+    .responsive-transactions-table {
+      @apply table-auto;
+    }
+
+    /* Show all columns when printing */
+    .type-column,
+    .fmv-column,
+    .classification-column {
+      @apply table-cell;
+    }
+
+    /* Hide interactive elements */
+    .checkbox-column,
+    .view-column,
+    .actions-column {
+      @apply hidden;
     }
   }
 }

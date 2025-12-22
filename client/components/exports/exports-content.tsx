@@ -147,7 +147,7 @@ export function ExportsContent() {
         </Card>
       </div>
       <Dialog open={historyOpen} onOpenChange={setHistoryOpen}>
-        <DialogContent>
+        <DialogContent className="max-w-5xl w-full">
           <DialogHeader>
             <DialogTitle>Export History</DialogTitle>
           </DialogHeader>

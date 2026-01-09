@@ -22,9 +22,9 @@ export function DashboardContent() {
     <div className="app-content bg-gray-50">
       {/* Page Header */}
       <div className="page-titlebar">
-        <div className="flex flex-col p-6 text-left">
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-500 mt-1">
+        <div className="flex flex-col p-4 sm:p-6 text-left">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-sm sm:text-base text-gray-500 mt-1">
             View all your key metrics and data here
           </p>
 
@@ -68,7 +68,7 @@ export function DashboardContent() {
 
       {/* Main Content with Loading State */}
       <div
-        className={`p-6 space-y-6 no-h-scroll transition-opacity duration-300 ${isLoading ? "opacity-50" : "opacity-100"}`}
+        className={`p-4 sm:p-6 space-y-4 sm:space-y-6 no-h-scroll transition-opacity duration-300 w-full max-w-full overflow-hidden ${isLoading ? "opacity-50" : "opacity-100"}`}
       >
         <Tabs value={roleView} className="w-full">
           {/* Admin View */}

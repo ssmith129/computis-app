@@ -82,8 +82,8 @@ export function EnhancedDashboardCard({
   };
 
   const cardClassName = status
-    ? `${statusColors[status]} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer`
-    : "bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer";
+    ? `${statusColors[status]} transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer`
+    : "bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer";
 
   const cardContent = (
     <Card
@@ -91,16 +91,16 @@ export function EnhancedDashboardCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
+      <CardContent className="p-4 sm:p-6">
+        <div className="flex items-start justify-between mb-3 sm:mb-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <div
-              className={`p-3 rounded-xl ${iconBg} transition-transform duration-300 ${isHovered ? "scale-110" : ""}`}
+              className={`p-2 sm:p-3 rounded-xl ${iconBg} transition-transform duration-300 ${isHovered ? "scale-110" : ""} flex-shrink-0`}
             >
-              <Icon className={`h-6 w-6 ${iconColor}`} />
+              <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${iconColor}`} />
             </div>
-            <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+            <div className="min-w-0">
+              <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-1 truncate">
                 {title}
               </h3>
               {badge && (
@@ -133,24 +133,24 @@ export function EnhancedDashboardCard({
         <div className="space-y-3">
           <div className="space-y-1">
             <div
-              className={`text-3xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
+              className={`text-2xl sm:text-3xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
             >
               {typeof value === "number" ? value.toLocaleString() : value}
             </div>
             {subtitle && (
-              <div className="text-sm text-gray-500">{subtitle}</div>
+              <div className="text-xs sm:text-sm text-gray-500 truncate">{subtitle}</div>
             )}
             {change && (
               <div
-                className={`text-sm flex items-center gap-1 ${changeColorClass}`}
+                className={`text-xs sm:text-sm flex items-center gap-1 ${changeColorClass}`}
               >
                 {changeType === "positive" && (
-                  <TrendingUp className="h-3 w-3" />
+                  <TrendingUp className="h-3 w-3 flex-shrink-0" />
                 )}
                 {changeType === "negative" && (
-                  <TrendingDown className="h-3 w-3" />
+                  <TrendingDown className="h-3 w-3 flex-shrink-0" />
                 )}
-                {change}
+                <span className="truncate">{change}</span>
               </div>
             )}
           </div>
@@ -293,32 +293,32 @@ export function EnhancedDashboardCards() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-bold text-gray-900">
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-hidden">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 truncate">
             Key Metrics & Tools
           </h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500">
             Overview of your crypto tax preparation status
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <Badge variant="secondary" className="bg-green-100 text-green-700">
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
             <CheckCircle className="h-3 w-3 mr-1" />
             All Systems Operational
           </Badge>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {cardsData.map((card, index) => (
           <EnhancedDashboardCard key={index} {...card} />
         ))}
       </div>
 
       {/* Quick Action Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 sm:mt-8">
         <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-0">
             <div className="flex items-center justify-between">

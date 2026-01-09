@@ -138,7 +138,9 @@ export function EnhancedDashboardCard({
               {typeof value === "number" ? value.toLocaleString() : value}
             </div>
             {subtitle && (
-              <div className="text-xs sm:text-sm text-gray-500 truncate">{subtitle}</div>
+              <div className="text-xs sm:text-sm text-gray-500 truncate">
+                {subtitle}
+              </div>
             )}
             {change && (
               <div
@@ -304,7 +306,10 @@ export function EnhancedDashboardCards() {
           </p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
-          <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
+          <Badge
+            variant="secondary"
+            className="bg-green-100 text-green-700 text-xs"
+          >
             <CheckCircle className="h-3 w-3 mr-1" />
             All Systems Operational
           </Badge>

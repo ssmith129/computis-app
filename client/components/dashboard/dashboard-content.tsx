@@ -23,7 +23,9 @@ export function DashboardContent() {
       {/* Page Header */}
       <div className="page-titlebar">
         <div className="flex flex-col p-4 sm:p-6 text-left">
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+            Dashboard
+          </h1>
           <p className="text-sm sm:text-base text-gray-500 mt-1">
             View all your key metrics and data here
           </p>

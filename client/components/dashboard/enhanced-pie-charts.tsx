@@ -100,7 +100,12 @@ export function AnimatedPieChart({
   });
 
   return (
-    <div className={cn("relative flex items-center justify-center w-full", className)}>
+    <div
+      className={cn(
+        "relative flex items-center justify-center w-full",
+        className,
+      )}
+    >
       <svg
         width={size}
         height={size}
@@ -340,7 +345,11 @@ export function EnhancedPieChartSections() {
                 <TrendingUp className="h-3 w-3 mr-1" />
                 Net Positive
               </Badge>
-              <Button variant="ghost" size="icon" className="h-6 w-6 hidden sm:flex">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 hidden sm:flex"
+              >
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>
             </div>
@@ -382,13 +391,20 @@ export function EnhancedPieChartSections() {
               </p>
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
-              <Badge variant="secondary" className="bg-blue-100 text-blue-700 text-xs">
+              <Badge
+                variant="secondary"
+                className="bg-blue-100 text-blue-700 text-xs"
+              >
                 {Math.round(
                   (transactionStatusData[0].value / totalTransactions) * 100,
                 )}
                 % Complete
               </Badge>
-              <Button variant="ghost" size="icon" className="h-6 w-6 hidden sm:flex">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 hidden sm:flex"
+              >
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>
             </div>

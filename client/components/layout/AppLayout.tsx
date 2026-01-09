@@ -44,7 +44,7 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
         - Sidebar width: 16rem (256px)
         - Right column: Fills remaining space
       */}
-      <div className="app-layout-grid min-h-screen w-full overflow-x-hidden">
+      <div className="app-layout-grid min-h-screen w-full max-w-full overflow-x-hidden box-border">
         {/*
           Sidebar Navigation
           - Desktop (≥768px): Fixed width column, full height
@@ -59,7 +59,7 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
           - Header fixed at top (doesn't scroll)
           - Content scrolls independently with top padding for header
         */}
-        <div className="app-layout-right-column flex flex-col min-h-screen min-w-0">
+        <div className="app-layout-right-column flex flex-col min-h-screen min-w-0 max-w-full overflow-x-hidden">
           {/*
             Fixed Header Container
             - Positioned fixed at top of viewport (right of sidebar on desktop)
@@ -69,10 +69,10 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
             - Min Height: 3.5rem (56px)
           */}
           <div
-            className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 w-full md:left-[var(--sidebar-width)] md:w-[calc(100%-var(--sidebar-width))]"
+            className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 w-full md:left-[var(--sidebar-width)] md:w-[calc(100%-var(--sidebar-width))] overflow-hidden"
             style={{ isolation: "isolate" }}
           >
-            <div className="w-full max-w-[1920px] mx-auto">
+            <div className="w-full max-w-[1920px] mx-auto overflow-hidden">
               <DashboardHeader />
             </div>
           </div>
@@ -85,8 +85,8 @@ export function AppLayout({ children, activeItem }: AppLayoutProps) {
             - Scrollable
             - Max-width: 1920px for ultra-wide screens
           */}
-          <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-[3.5rem]">
-            <SidebarInset className="flex flex-col min-w-0 flex-1 w-full">
+          <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-[3.5rem] box-border">
+            <SidebarInset className="flex flex-col min-w-0 flex-1 w-full max-w-full overflow-x-hidden box-border">
               {children}
             </SidebarInset>
           </div>

@@ -161,6 +161,26 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Prevent horizontal scrolling */
+  .no-h-scroll {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  /* Ensure responsive images and media */
+  .responsive-media {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Responsive container with proper overflow */
+  .responsive-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 @layer components {

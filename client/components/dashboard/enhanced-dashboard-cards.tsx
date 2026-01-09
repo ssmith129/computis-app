@@ -132,38 +132,26 @@ export function EnhancedDashboardCard({
         </div>
 
         <div className="space-y-3">
-          <div className="flex items-end justify-between">
-            <div className="space-y-1">
-              <div
-                className={`text-3xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
-              >
-                {typeof value === "number" ? value.toLocaleString() : value}
-              </div>
-              {subtitle && (
-                <div className="text-sm text-gray-500">{subtitle}</div>
-              )}
-              {change && (
-                <div
-                  className={`text-sm flex items-center gap-1 ${changeColorClass}`}
-                >
-                  {changeType === "positive" && (
-                    <TrendingUp className="h-3 w-3" />
-                  )}
-                  {changeType === "negative" && (
-                    <TrendingDown className="h-3 w-3" />
-                  )}
-                  {change}
-                </div>
-              )}
+          <div className="space-y-1">
+            <div
+              className={`text-3xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
+            >
+              {typeof value === "number" ? value.toLocaleString() : value}
             </div>
-
-            {chartData && (
-              <div className="flex-shrink-0">
-                <AnimatedMiniChart
-                  data={chartData}
-                  color={chartColor}
-                  animate={isHovered}
-                />
+            {subtitle && (
+              <div className="text-sm text-gray-500">{subtitle}</div>
+            )}
+            {change && (
+              <div
+                className={`text-sm flex items-center gap-1 ${changeColorClass}`}
+              >
+                {changeType === "positive" && (
+                  <TrendingUp className="h-3 w-3" />
+                )}
+                {changeType === "negative" && (
+                  <TrendingDown className="h-3 w-3" />
+                )}
+                {change}
               </div>
             )}
           </div>

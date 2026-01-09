@@ -318,44 +318,45 @@ export function EnhancedPieChartSections() {
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       {/* Gain/Loss Breakdown */}
       <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6">
+            <div className="min-w-0">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 truncate">
                 Gain/Loss Breakdown
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500">
                 Current tax year performance
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0">
               <Badge
                 variant="secondary"
-                className="bg-green-100 text-green-700"
+                className="bg-green-100 text-green-700 text-xs"
               >
                 <TrendingUp className="h-3 w-3 mr-1" />
                 Net Positive
               </Badge>
-              <Button variant="ghost" size="icon" className="h-6 w-6">
+              <Button variant="ghost" size="icon" className="h-6 w-6 hidden sm:flex">
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="order-2 md:order-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 items-center">
+            <div className="order-2 sm:order-1">
               <EnhancedLegend data={gainLossData} />
             </div>
-            <div className="order-1 md:order-2 flex justify-center">
+            <div className="order-1 sm:order-2 flex justify-center py-4 sm:py-0">
               <AnimatedPieChart
                 data={gainLossData}
-                size={180}
+                size={160}
+                className="w-full max-w-[160px]"
                 centerContent={
                   <div className="text-center">
-                    <div className="text-xl font-bold text-green-600">
+                    <div className="text-lg sm:text-xl font-bold text-green-600">
                       ${totalGainLoss.toLocaleString()}
                     </div>
                     <div className="text-xs text-gray-500">Net Gain</div>
@@ -369,40 +370,41 @@ export function EnhancedPieChartSections() {
 
       {/* Transaction Status */}
       <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6">
+            <div className="min-w-0">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 truncate">
                 Transaction Status
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500">
                 Processing pipeline overview
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Badge variant="secondary" className="bg-blue-100 text-blue-700 text-xs">
                 {Math.round(
                   (transactionStatusData[0].value / totalTransactions) * 100,
                 )}
                 % Complete
               </Badge>
-              <Button variant="ghost" size="icon" className="h-6 w-6">
+              <Button variant="ghost" size="icon" className="h-6 w-6 hidden sm:flex">
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="order-2 md:order-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 items-center">
+            <div className="order-2 sm:order-1">
               <EnhancedLegend data={transactionStatusData} />
             </div>
-            <div className="order-1 md:order-2 flex justify-center">
+            <div className="order-1 sm:order-2 flex justify-center py-4 sm:py-0">
               <AnimatedPieChart
                 data={transactionStatusData}
-                size={180}
+                size={160}
+                className="w-full max-w-[160px]"
                 centerContent={
                   <div className="text-center">
-                    <div className="text-xl font-bold text-gray-900">
+                    <div className="text-lg sm:text-xl font-bold text-gray-900">
                       {totalTransactions.toLocaleString()}
                     </div>
                     <div className="text-xs text-gray-500">Total Txs</div>

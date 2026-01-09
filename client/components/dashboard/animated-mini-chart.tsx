@@ -73,7 +73,7 @@ export function AnimatedChartBar({
   return (
     <div
       className={cn(
-        "w-[4px] rounded-full transition-all duration-500 ease-out cursor-pointer relative",
+        "w-full min-w-[3px] max-w-[5px] rounded-full transition-all duration-500 ease-out cursor-pointer relative",
         colors.bg,
         isHovered && colors.hover,
         isActive && `shadow-lg ${colors.glow}`,
@@ -132,12 +132,12 @@ export function AnimatedMiniChart({
   }));
 
   return (
-    <div className={cn("relative", className)}>
-      <div className="flex items-end gap-1.5 h-14 p-1">
+    <div className={cn("relative w-full max-w-[120px]", className)}>
+      <div className="flex items-end gap-1 sm:gap-1.5 h-12 sm:h-14 p-1">
         {processedData.map((item, index) => (
           <div
             key={index}
-            className="relative group"
+            className="relative group flex-1 min-w-0"
             onMouseEnter={() => setActiveBar(index)}
             onMouseLeave={() => setActiveBar(null)}
           >
@@ -151,7 +151,7 @@ export function AnimatedMiniChart({
 
             {/* Tooltip */}
             {showTooltip && activeBar === index && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 animate-in fade-in-0 zoom-in-95 duration-200">
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10 animate-in fade-in-0 zoom-in-95 duration-200 pointer-events-none">
                 <div className="bg-gray-900 text-white text-xs rounded-lg px-2 py-1 whitespace-nowrap">
                   {item.value.toLocaleString()}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>

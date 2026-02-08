@@ -136,7 +136,7 @@
     --sidebar-accent: 0 0% 20%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 218 91% 48%;
+    --sidebar-ring: 218 91% 45%; /* #0B5ED7 - Vivid Blue */
 
     /* Sidebar dimensions */
     --sidebar-width: 16rem;
@@ -150,7 +150,7 @@
     --status-info: 201 96% 32%;
 
     /* Chart colors */
-    --chart-blue: 218 91% 48%;
+    --chart-blue: 218 91% 45%; /* #0B5ED7 - Vivid Blue */
     --chart-green: 142 76% 36%;
     --chart-orange: 32 95% 44%;
     --chart-yellow: 48 96% 53%;

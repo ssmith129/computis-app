@@ -232,6 +232,138 @@
 }
 
 @layer utilities {
+  /* ========================================
+   * TYPOGRAPHY UTILITIES
+   * ======================================== */
+
+  /* Display Typography */
+  .text-display-lg {
+    font-size: var(--font-size-display-lg);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-sm {
+    font-size: var(--font-size-display-sm);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Heading Typography */
+  .text-heading-lg {
+    font-size: var(--font-size-heading-lg);
+    line-height: 1.375;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .text-heading-md {
+    font-size: var(--font-size-heading-md);
+    line-height: 1.375;
+    font-weight: 600;
+  }
+
+  .text-heading-sm {
+    font-size: var(--font-size-heading-sm);
+    line-height: 1.375;
+    font-weight: 500;
+  }
+
+  /* Body Typography */
+  .text-body-lg {
+    font-size: var(--font-size-body-lg);
+    line-height: 1.5;
+  }
+
+  .text-body-md {
+    font-size: var(--font-size-body-md);
+    line-height: 1.5;
+  }
+
+  .text-body-sm {
+    font-size: var(--font-size-body-sm);
+    line-height: 1.5;
+  }
+
+  /* Caption & Labels */
+  .text-caption {
+    font-size: var(--font-size-caption);
+    line-height: 1.375;
+    letter-spacing: 0.01em;
+  }
+
+  .text-overline {
+    font-size: var(--font-size-overline);
+    line-height: 1.375;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ========================================
+   * SEMANTIC COLOR UTILITIES
+   * ======================================== */
+
+  /* Success */
+  .text-success { color: hsl(var(--success)); }
+  .bg-success { background-color: hsl(var(--success)); }
+  .bg-success-soft { background-color: hsl(var(--success-bg)); }
+  .border-success { border-color: hsl(var(--success)); }
+
+  /* Warning */
+  .text-warning { color: hsl(var(--warning)); }
+  .bg-warning { background-color: hsl(var(--warning)); }
+  .bg-warning-soft { background-color: hsl(var(--warning-bg)); }
+  .border-warning { border-color: hsl(var(--warning)); }
+
+  /* Error */
+  .text-error { color: hsl(var(--error)); }
+  .bg-error { background-color: hsl(var(--error)); }
+  .bg-error-soft { background-color: hsl(var(--error-bg)); }
+  .border-error { border-color: hsl(var(--error)); }
+
+  /* Info */
+  .text-info { color: hsl(var(--info)); }
+  .bg-info { background-color: hsl(var(--info)); }
+  .bg-info-soft { background-color: hsl(var(--info-bg)); }
+  .border-info { border-color: hsl(var(--info)); }
+
+  /* ========================================
+   * SPACING UTILITIES (Dense Scale)
+   * ======================================== */
+
+  .gap-dense { gap: var(--space-2); }      /* 8px */
+  .gap-comfortable { gap: var(--space-4); } /* 16px */
+  .gap-spacious { gap: var(--space-6); }   /* 24px */
+
+  .p-compact { padding: var(--card-padding-compact); }
+  .p-standard { padding: var(--card-padding-standard); }
+  .p-featured { padding: var(--card-padding-featured); }
+
+  /* ========================================
+   * COMPONENT SIZE UTILITIES
+   * ======================================== */
+
+  /* Button Heights */
+  .h-btn-sm { height: var(--button-height-sm); }
+  .h-btn-md { height: var(--button-height-md); }
+  .h-btn-lg { height: var(--button-height-lg); }
+
+  /* Input Heights */
+  .h-input-sm { height: var(--input-height-sm); }
+  .h-input-md { height: var(--input-height-md); }
+  .h-input-lg { height: var(--input-height-lg); }
+
+  /* Table Dimensions */
+  .h-table-row { height: var(--table-row-height); }
+  .h-table-header { height: var(--table-header-height); }
+
+  /* ========================================
+   * EXISTING UTILITIES (Preserved)
+   * ======================================== */
+
   .chart-bar {
     transition: all 0.2s ease-in-out;
   }

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { SidebarProvider, SidebarInset, useSidebar } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { DashboardHeader } from "@/components/dashboard/header";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -9,21 +10,25 @@ interface AppLayoutProps {
 }
 
 /**
- * Inner layout component that can access SidebarContext
- * Adjusts header width/offset based on sidebar collapsed vs expanded state
+ * Inner layout component that can access SidebarContext.
+ * Adjusts the fixed header width/offset based on sidebar collapsed vs expanded state.
  */
 function AppLayoutInner({ children, activeItem }: AppLayoutProps) {
   const { state } = useSidebar();
+  const isMobile = useIsMobile();
   const isCollapsed = state === "collapsed";
 
   /*
-   * Determine the CSS offset for the fixed header:
-   * - Expanded sidebar: left offset = --sidebar-width (16rem)
-   * - Collapsed sidebar: left offset = --sidebar-width-icon (3rem)
+   * Determine the CSS offset for the fixed header on desktop:
+   * - Expanded sidebar: 16rem (--sidebar-width)
+   * - Collapsed sidebar: 3rem  (--sidebar-width-icon)
+   * - Mobile: 0 (full width, no sidebar visible)
    */
-  const sidebarOffset = isCollapsed
-    ? "var(--sidebar-width-icon)"
-    : "var(--sidebar-width)";
+  const sidebarOffset = isMobile
+    ? "0px"
+    : isCollapsed
+      ? "var(--sidebar-width-icon)"
+      : "var(--sidebar-width)";
 
   return (
     <div className="app-layout-grid min-h-screen w-full max-w-full overflow-x-hidden box-border">
@@ -32,25 +37,13 @@ function AppLayoutInner({ children, activeItem }: AppLayoutProps) {
       <div className="app-layout-right-column flex flex-col min-h-screen min-w-0 max-w-full overflow-x-hidden">
         {/* Fixed Header - dynamically adjusts left/width based on sidebar state */}
         <div
-          className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 w-full overflow-hidden transition-[left,width] duration-200 ease-linear"
+          className="header-container-fixed bg-sidebar border-b border-sidebar-border fixed top-0 z-50 overflow-hidden transition-[left,width] duration-200 ease-linear"
           style={{
             isolation: "isolate",
-            left: `var(--header-left, 0px)`,
-            width: `var(--header-width, 100%)`,
-            // CSS custom properties set via media query override below
-            ["--header-left" as string]: undefined,
-            ["--header-width" as string]: undefined,
+            left: sidebarOffset,
+            width: `calc(100% - ${sidebarOffset})`,
           }}
         >
-          {/* Use inline style for the dynamic sidebar offset on md+ screens */}
-          <style>{`
-            @media (min-width: 768px) {
-              .header-container-fixed {
-                left: ${sidebarOffset} !important;
-                width: calc(100% - ${sidebarOffset}) !important;
-              }
-            }
-          `}</style>
           <div className="w-full max-w-[1920px] mx-auto overflow-hidden">
             <DashboardHeader />
           </div>
@@ -70,12 +63,12 @@ function AppLayoutInner({ children, activeItem }: AppLayoutProps) {
 /**
  * AppLayout Component
  *
- * Layout structure with collapsible sidebar:
+ * Layout with collapsible sidebar (icon mode):
  *
  * Expanded (Desktop):
  * ┌──────────┬─────────────────────┐
- * │  LOGO    │     HEADER          │
- * │  ☰      ├─────────────────────┤
+ * │  LOGO ☰  │     HEADER          │
+ * │          ├─────────────────────┤
  * │  NAV     │                     │
  * │  ITEMS   │     CONTENT         │
  * └──────────┴─────────────────────┘

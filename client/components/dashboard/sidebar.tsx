@@ -105,7 +105,10 @@ export function DashboardSidebar({
   const isCollapsed = state === "collapsed";
 
   return (
-    <Sidebar className="bg-sidebar border-r border-sidebar" collapsible="icon">
+    <Sidebar
+      className="bg-sidebar border-r border-sidebar"
+      collapsible="icon"
+    >
       <SidebarHeader className="p-3 bg-sidebar border-sidebar group-data-[collapsible=icon]:p-1.5">
         <div className="flex items-center justify-between gap-2 group-data-[collapsible=icon]:justify-center">
           {/* Logo - hidden when collapsed */}
@@ -113,7 +116,7 @@ export function DashboardSidebar({
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
               alt="Computis Logo"
-              className="h-10 w-auto"
+              className="h-[34px] w-auto"
             />
           </div>
           {/* Toggle button */}

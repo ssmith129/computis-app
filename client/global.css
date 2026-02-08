@@ -25,10 +25,10 @@
     --popover-foreground: 0 0% 10%;
 
     /* Primary Brand Colors */
-    --primary: 218 91% 48%; /* #2563EB - Computis Blue */
-    --primary-hover: 218 91% 42%; /* #1D4ED8 */
+    --primary: 218 91% 45%; /* #0B5ED7 - Vivid Blue */
+    --primary-hover: 218 91% 40%; /* Darker blue for hover */
     --primary-light: 213 97% 87%; /* #DBEAFE */
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - White */
 
     /* Secondary Colors */
     --secondary: 210 40% 96.1%;

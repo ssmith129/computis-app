@@ -29,7 +29,7 @@ import {
   Wallet,
   Activity,
 } from "lucide-react";
-import DashboardLayout from "@/components/dashboard/dashboard-layout";
+import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 
 export default function DesignSystemShowcase() {
   return (

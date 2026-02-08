@@ -105,10 +105,7 @@ export function DashboardSidebar({
   const isCollapsed = state === "collapsed";
 
   return (
-    <Sidebar
-      className="bg-sidebar border-r border-sidebar"
-      collapsible="icon"
-    >
+    <Sidebar className="bg-sidebar border-r border-sidebar" collapsible="icon">
       <SidebarHeader className="p-3 bg-sidebar border-sidebar group-data-[collapsible=icon]:p-1.5">
         <div className="flex items-center justify-between gap-2 group-data-[collapsible=icon]:justify-center">
           {/* Logo - hidden when collapsed */}

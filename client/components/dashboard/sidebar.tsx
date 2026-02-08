@@ -109,10 +109,10 @@ export function DashboardSidebar({
       className="bg-sidebar border-r border-sidebar"
       collapsible="icon"
     >
-      <SidebarHeader className="p-4 bg-sidebar border-sidebar">
-        <div className="flex items-center justify-between gap-2">
+      <SidebarHeader className="p-3 bg-sidebar border-sidebar group-data-[collapsible=icon]:p-1.5">
+        <div className="flex items-center justify-between gap-2 group-data-[collapsible=icon]:justify-center">
           {/* Logo - hidden when collapsed */}
-          <div className="flex items-center overflow-hidden group-data-[collapsible=icon]:hidden">
+          <div className="flex items-center overflow-hidden transition-all duration-200 group-data-[collapsible=icon]:w-0 group-data-[collapsible=icon]:opacity-0">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
               alt="Computis Logo"

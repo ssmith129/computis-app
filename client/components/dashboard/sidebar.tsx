@@ -25,6 +25,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import {
   Collapsible,
@@ -32,6 +33,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { helpAccountMenuItems } from "@/components/dashboard/menu-config";
+import { SidebarToggleButton } from "@/components/dashboard/sidebar-toggle-button";
 
 const mainNavItems = [
   {
@@ -99,19 +101,30 @@ interface DashboardSidebarProps {
 export function DashboardSidebar({
   activeItem = "Dashboard",
 }: DashboardSidebarProps) {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
   return (
-    <Sidebar className="bg-sidebar border-r border-sidebar">
+    <Sidebar
+      className="bg-sidebar border-r border-sidebar"
+      collapsible="icon"
+    >
       <SidebarHeader className="p-4 bg-sidebar border-sidebar">
-        <div className="flex items-center">
-          <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
-            alt="Computis Logo"
-            className="h-10 w-auto"
-          />
+        <div className="flex items-center justify-between gap-2">
+          {/* Logo - hidden when collapsed */}
+          <div className="flex items-center overflow-hidden group-data-[collapsible=icon]:hidden">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/b9597295463998a42a59ddadf868fade81af1f2b?width=364"
+              alt="Computis Logo"
+              className="h-10 w-auto"
+            />
+          </div>
+          {/* Toggle button */}
+          <SidebarToggleButton />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-4 bg-sidebar text-sidebar-foreground border-sidebar">
+      <SidebarContent className="px-4 bg-sidebar text-sidebar-foreground border-sidebar group-data-[collapsible=icon]:px-2">
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupContent>
@@ -123,6 +136,7 @@ export function DashboardSidebar({
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
+                      tooltip={item.title}
                       className={`${
                         isActive
                           ? "bg-sidebar-accent text-white"
@@ -162,6 +176,7 @@ export function DashboardSidebar({
                         <SidebarMenuButton
                           asChild
                           isActive={isActive}
+                          tooltip={item.title}
                           className={`${
                             isActive
                               ? "bg-sidebar-accent text-white"
@@ -203,6 +218,7 @@ export function DashboardSidebar({
                         <SidebarMenuButton
                           asChild
                           isActive={isActive}
+                          tooltip={item.title}
                           className={`${
                             isActive
                               ? "bg-sidebar-accent text-white"
@@ -241,6 +257,7 @@ export function DashboardSidebar({
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
                         asChild
+                        tooltip={item.title}
                         className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
                       >
                         <Link to={item.href}>

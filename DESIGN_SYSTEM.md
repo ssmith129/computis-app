@@ -1,7 +1,7 @@
 # Computis Design System v2.0
 
 **Comprehensive Design System Documentation**  
-*Optimized for density, usability, and WCAG 2.1 AA compliance*
+_Optimized for density, usability, and WCAG 2.1 AA compliance_
 
 ---
 
@@ -31,12 +31,12 @@ The Computis Design System v2.0 has been optimized to:
 
 ### Key Improvements
 
-| Aspect | Before | After | Impact |
-|--------|--------|-------|--------|
-| Button Height (Medium) | 44px | 36px | +18% vertical space |
-| Card Padding | 24px | 16px | +33% content area |
-| Typography | 16px base | 14px base | +12% content density |
-| Table Row Height | 48px | 40px | +16% rows per screen |
+| Aspect                 | Before    | After     | Impact               |
+| ---------------------- | --------- | --------- | -------------------- |
+| Button Height (Medium) | 44px      | 36px      | +18% vertical space  |
+| Card Padding           | 24px      | 16px      | +33% content area    |
+| Typography             | 16px base | 14px base | +12% content density |
+| Table Row Height       | 48px      | 40px      | +16% rows per screen |
 
 ---
 
@@ -57,9 +57,7 @@ All design tokens are defined as CSS custom properties in `global.css` and exten
 
 ```tsx
 /* Tailwind utility class */
-<div className="text-body-md text-primary p-4">
-  Content
-</div>
+<div className="text-body-md text-primary p-4">Content</div>
 ```
 
 ---
@@ -70,18 +68,18 @@ All design tokens are defined as CSS custom properties in `global.css` and exten
 
 The typography scale has been optimized for better data density while maintaining readability.
 
-| Name | Size | Use Case | Class |
-|------|------|----------|-------|
-| Display Large | 24px | Hero metrics, KPIs | `text-display-lg` |
-| Display Small | 20px | Large metrics | `text-display-sm` |
-| Heading Large | 18px | Page titles | `text-heading-lg` |
-| Heading Medium | 16px | Section headers | `text-heading-md` |
-| Heading Small | 14px | Card titles | `text-heading-sm` |
-| Body Large | 15px | Important content | `text-body-lg` |
-| **Body Medium** | **14px** | **Default body text** | `text-body-md` |
-| Body Small | 13px | Table cells, dense UI | `text-body-sm` |
-| Caption | 12px | Labels, hints | `text-caption` |
-| Overline | 11px | Category labels | `text-overline` |
+| Name            | Size     | Use Case              | Class             |
+| --------------- | -------- | --------------------- | ----------------- |
+| Display Large   | 24px     | Hero metrics, KPIs    | `text-display-lg` |
+| Display Small   | 20px     | Large metrics         | `text-display-sm` |
+| Heading Large   | 18px     | Page titles           | `text-heading-lg` |
+| Heading Medium  | 16px     | Section headers       | `text-heading-md` |
+| Heading Small   | 14px     | Card titles           | `text-heading-sm` |
+| Body Large      | 15px     | Important content     | `text-body-lg`    |
+| **Body Medium** | **14px** | **Default body text** | `text-body-md`    |
+| Body Small      | 13px     | Table cells, dense UI | `text-body-sm`    |
+| Caption         | 12px     | Labels, hints         | `text-caption`    |
+| Overline        | 11px     | Category labels       | `text-overline`   |
 
 ### Typography Examples
 
@@ -100,7 +98,9 @@ export function TypographyExample() {
       <CardContent>
         <div className="space-y-4">
           <div>
-            <span className="text-caption text-muted-foreground">Total Value</span>
+            <span className="text-caption text-muted-foreground">
+              Total Value
+            </span>
             <p className="text-display-lg font-bold">$1,234,567.89</p>
           </div>
           <div className="text-body-md">
@@ -160,14 +160,14 @@ export function StatusBadges() {
 
 ### Color Palette
 
-| Color | Variable | Hex | Use Case |
-|-------|----------|-----|----------|
-| Primary | `--color-primary` | #2563EB | Brand, CTAs |
-| Accent | `--color-accent` | #D4AF37 | Gold highlights |
+| Color   | Variable          | Hex     | Use Case         |
+| ------- | ----------------- | ------- | ---------------- |
+| Primary | `--color-primary` | #2563EB | Brand, CTAs      |
+| Accent  | `--color-accent`  | #D4AF37 | Gold highlights  |
 | Success | `--color-success` | #16A34A | Positive actions |
-| Warning | `--color-warning` | #B45309 | Caution states |
-| Error | `--color-error` | #DC2626 | Errors, alerts |
-| Info | `--color-info` | #0369A1 | Informational |
+| Warning | `--color-warning` | #B45309 | Caution states   |
+| Error   | `--color-error`   | #DC2626 | Errors, alerts   |
+| Info    | `--color-info`    | #0369A1 | Informational    |
 
 ### Background Utilities
 
@@ -189,16 +189,16 @@ export function StatusBadges() {
 
 Based on a 4px grid system for precise alignment.
 
-| Token | Value | Class | Use Case |
-|-------|-------|-------|----------|
-| `--space-0-5` | 2px | `p-0.5` | Fine adjustments |
-| `--space-1` | 4px | `p-1` | Tight spacing |
-| `--space-2` | 8px | `p-2` | Dense UI |
-| `--space-3` | 12px | `p-3` | Compact padding |
+| Token           | Value    | Class     | Use Case             |
+| --------------- | -------- | --------- | -------------------- |
+| `--space-0-5`   | 2px      | `p-0.5`   | Fine adjustments     |
+| `--space-1`     | 4px      | `p-1`     | Tight spacing        |
+| `--space-2`     | 8px      | `p-2`     | Dense UI             |
+| `--space-3`     | 12px     | `p-3`     | Compact padding      |
 | **`--space-4`** | **16px** | **`p-4`** | **Standard spacing** |
-| `--space-5` | 20px | `p-5` | Featured content |
-| `--space-6` | 24px | `p-6` | Generous spacing |
-| `--space-8` | 32px | `p-8` | Large spacing |
+| `--space-5`     | 20px     | `p-5`     | Featured content     |
+| `--space-6`     | 24px     | `p-6`     | Generous spacing     |
+| `--space-8`     | 32px     | `p-8`     | Large spacing        |
 
 ### Semantic Spacing
 
@@ -232,7 +232,7 @@ export function ButtonExamples() {
       <Button size="sm">Small (32px)</Button>
       <Button size="default">Medium (36px)</Button>
       <Button size="lg">Large (44px)</Button>
-      
+
       {/* Variants */}
       <Button variant="default">Primary</Button>
       <Button variant="secondary">Secondary</Button>
@@ -271,23 +271,29 @@ export function BadgeExamples() {
 Cards now use optimized padding for better content density.
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 
 export function CardExample() {
   return (
-    <Card className="p-standard"> {/* 16px padding */}
+    <Card className="p-standard">
+      {" "}
+      {/* 16px padding */}
       <CardHeader>
-        <CardTitle className="text-heading-lg">
-          Portfolio Overview
-        </CardTitle>
-        <CardDescription>
-          Current holdings and performance
-        </CardDescription>
+        <CardTitle className="text-heading-lg">Portfolio Overview</CardTitle>
+        <CardDescription>Current holdings and performance</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
           <div className="flex justify-between">
-            <span className="text-caption text-muted-foreground">Total Value</span>
+            <span className="text-caption text-muted-foreground">
+              Total Value
+            </span>
             <span className="text-body-md font-semibold">$123,456.78</span>
           </div>
         </div>
@@ -395,12 +401,10 @@ export function DataTableLayout() {
         <h2 className="text-heading-lg">Recent Transactions</h2>
         <Button size="sm">Export</Button>
       </div>
-      
+
       {/* Table Container */}
       <Card className="p-0">
-        <Table>
-          {/* Table content */}
-        </Table>
+        <Table>{/* Table content */}</Table>
       </Card>
     </div>
   );
@@ -455,11 +459,13 @@ Use semantic HTML and ARIA labels:
 ### 1. Consistent Spacing
 
 ✅ **Good**: Use design tokens
+
 ```tsx
 <div className="p-standard gap-comfortable">
 ```
 
 ❌ **Bad**: Arbitrary values
+
 ```tsx
 <div className="p-[17px] gap-[13px]">
 ```
@@ -467,6 +473,7 @@ Use semantic HTML and ARIA labels:
 ### 2. Typography Hierarchy
 
 ✅ **Good**: Semantic headings
+
 ```tsx
 <h1 className="text-heading-lg">Page Title</h1>
 <h2 className="text-heading-md">Section Title</h2>
@@ -474,6 +481,7 @@ Use semantic HTML and ARIA labels:
 ```
 
 ❌ **Bad**: Inconsistent sizes
+
 ```tsx
 <div className="text-xl">Page Title</div>
 <div className="text-lg">Section Title</div>
@@ -482,12 +490,14 @@ Use semantic HTML and ARIA labels:
 ### 3. Semantic Colors
 
 ✅ **Good**: Status-appropriate colors
+
 ```tsx
 <Badge variant="success">Verified</Badge>
 <Badge variant="warning">Pending</Badge>
 ```
 
 ❌ **Bad**: Generic colors for status
+
 ```tsx
 <Badge className="bg-green-500">Verified</Badge>
 <Badge className="bg-yellow-500">Pending</Badge>
@@ -496,6 +506,7 @@ Use semantic HTML and ARIA labels:
 ### 4. Component Density
 
 ✅ **Good**: Appropriate density for context
+
 ```tsx
 {/* Dashboard - use standard padding */}
 <Card className="p-standard">
@@ -507,6 +518,7 @@ Use semantic HTML and ARIA labels:
 ### 5. Responsive Design
 
 ✅ **Good**: Mobile-first approach
+
 ```tsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 ```
@@ -556,24 +568,24 @@ See `computis-design-tokens.json` and `computis-design-tokens.css` for the compl
 
 ```tsx
 // Typography
-className="text-heading-lg"
-className="text-body-md"
-className="text-caption"
+className = "text-heading-lg";
+className = "text-body-md";
+className = "text-caption";
 
 // Colors
-className="text-primary"
-className="bg-success-soft"
-className="border-warning"
+className = "text-primary";
+className = "bg-success-soft";
+className = "border-warning";
 
 // Spacing
-className="p-standard"
-className="gap-comfortable"
-className="m-4"
+className = "p-standard";
+className = "gap-comfortable";
+className = "m-4";
 
 // Sizing
-className="h-btn-md"
-className="h-input-md"
-className="h-table-row"
+className = "h-btn-md";
+className = "h-input-md";
+className = "h-table-row";
 ```
 
 ---
@@ -583,28 +595,31 @@ className="h-table-row"
 ### Updating Existing Components
 
 1. **Replace arbitrary sizes with tokens:**
+
    ```tsx
    // Before
    <Button className="h-11">Click me</Button>
-   
+
    // After
    <Button size="default">Click me</Button>
    ```
 
 2. **Use semantic badge variants:**
+
    ```tsx
    // Before
    <Badge className="bg-green-100 text-green-800">Success</Badge>
-   
+
    // After
    <Badge variant="success">Success</Badge>
    ```
 
 3. **Update card padding:**
+
    ```tsx
    // Before
    <CardHeader className="p-6">
-   
+
    // After
    <CardHeader> {/* Now uses p-standard by default */}
    ```

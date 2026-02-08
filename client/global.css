@@ -25,9 +25,9 @@
     --popover-foreground: 0 0% 10%;
 
     /* Primary Brand Colors */
-    --primary: 218 91% 48%;              /* #2563EB - Computis Blue */
-    --primary-hover: 218 91% 42%;        /* #1D4ED8 */
-    --primary-light: 213 97% 87%;        /* #DBEAFE */
+    --primary: 218 91% 48%; /* #2563EB - Computis Blue */
+    --primary-hover: 218 91% 42%; /* #1D4ED8 */
+    --primary-light: 213 97% 87%; /* #DBEAFE */
     --primary-foreground: 0 0% 100%;
 
     /* Secondary Colors */
@@ -36,26 +36,26 @@
     --secondary-foreground: 0 0% 10%;
 
     /* Accent - Computis Gold */
-    --accent: 45 90% 51%;                /* #D4AF37 */
-    --accent-light: 48 77% 86%;          /* #F5E6B8 */
+    --accent: 45 90% 51%; /* #D4AF37 */
+    --accent-light: 48 77% 86%; /* #F5E6B8 */
     --accent-foreground: 0 0% 10%;
 
     /* Semantic Status Colors (WCAG AA Compliant) */
-    --success: 142 76% 36%;              /* #16A34A */
-    --success-bg: 138 76% 87%;           /* #DCFCE7 */
-    --success-text: 142 71% 20%;         /* #166534 */
+    --success: 142 76% 36%; /* #16A34A */
+    --success-bg: 138 76% 87%; /* #DCFCE7 */
+    --success-text: 142 71% 20%; /* #166534 */
 
-    --warning: 32 95% 38%;               /* #B45309 - Improved contrast */
-    --warning-bg: 48 96% 89%;            /* #FEF3C7 */
-    --warning-text: 32 95% 27%;          /* #92400E */
+    --warning: 32 95% 38%; /* #B45309 - Improved contrast */
+    --warning-bg: 48 96% 89%; /* #FEF3C7 */
+    --warning-text: 32 95% 27%; /* #92400E */
 
-    --error: 0 84% 60%;                  /* #DC2626 */
-    --error-bg: 0 86% 93%;               /* #FEE2E2 */
-    --error-text: 0 71% 30%;             /* #991B1B */
+    --error: 0 84% 60%; /* #DC2626 */
+    --error-bg: 0 86% 93%; /* #FEE2E2 */
+    --error-text: 0 71% 30%; /* #991B1B */
 
-    --info: 201 96% 32%;                 /* #0369A1 */
-    --info-bg: 199 89% 94%;              /* #E0F2FE */
-    --info-text: 201 96% 26%;            /* #075985 */
+    --info: 201 96% 32%; /* #0369A1 */
+    --info-bg: 199 89% 94%; /* #E0F2FE */
+    --info-text: 201 96% 26%; /* #075985 */
 
     /* Neutral/Muted */
     --muted: 210 40% 96.1%;
@@ -79,52 +79,54 @@
     --radius-xl: 0.75rem;
 
     /* Typography Scale (Optimized for Density) */
-    --font-size-display-lg: 1.5rem;      /* 24px */
-    --font-size-display-sm: 1.25rem;     /* 20px */
-    --font-size-heading-lg: 1.125rem;    /* 18px - Page titles */
-    --font-size-heading-md: 1rem;        /* 16px - Section titles */
-    --font-size-heading-sm: 0.875rem;    /* 14px - Card titles */
-    --font-size-body-lg: 0.9375rem;      /* 15px */
-    --font-size-body-md: 0.875rem;       /* 14px - Default */
-    --font-size-body-sm: 0.8125rem;      /* 13px - Dense UI */
-    --font-size-caption: 0.75rem;        /* 12px */
-    --font-size-overline: 0.6875rem;     /* 11px */
+    --font-size-display-lg: 1.5rem; /* 24px */
+    --font-size-display-sm: 1.25rem; /* 20px */
+    --font-size-heading-lg: 1.125rem; /* 18px - Page titles */
+    --font-size-heading-md: 1rem; /* 16px - Section titles */
+    --font-size-heading-sm: 0.875rem; /* 14px - Card titles */
+    --font-size-body-lg: 0.9375rem; /* 15px */
+    --font-size-body-md: 0.875rem; /* 14px - Default */
+    --font-size-body-sm: 0.8125rem; /* 13px - Dense UI */
+    --font-size-caption: 0.75rem; /* 12px */
+    --font-size-overline: 0.6875rem; /* 11px */
 
     /* Spacing Scale (4px base unit) */
     --space-0: 0;
-    --space-0-5: 0.125rem;               /* 2px */
-    --space-1: 0.25rem;                  /* 4px */
-    --space-1-5: 0.375rem;               /* 6px */
-    --space-2: 0.5rem;                   /* 8px */
-    --space-2-5: 0.625rem;               /* 10px */
-    --space-3: 0.75rem;                  /* 12px */
-    --space-3-5: 0.875rem;               /* 14px */
-    --space-4: 1rem;                     /* 16px */
-    --space-5: 1.25rem;                  /* 20px */
-    --space-6: 1.5rem;                   /* 24px */
-    --space-8: 2rem;                     /* 32px */
+    --space-0-5: 0.125rem; /* 2px */
+    --space-1: 0.25rem; /* 4px */
+    --space-1-5: 0.375rem; /* 6px */
+    --space-2: 0.5rem; /* 8px */
+    --space-2-5: 0.625rem; /* 10px */
+    --space-3: 0.75rem; /* 12px */
+    --space-3-5: 0.875rem; /* 14px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.25rem; /* 20px */
+    --space-6: 1.5rem; /* 24px */
+    --space-8: 2rem; /* 32px */
 
     /* Component Sizing */
-    --button-height-sm: 2rem;            /* 32px */
-    --button-height-md: 2.25rem;         /* 36px */
-    --button-height-lg: 2.75rem;         /* 44px */
+    --button-height-sm: 2rem; /* 32px */
+    --button-height-md: 2.25rem; /* 36px */
+    --button-height-lg: 2.75rem; /* 44px */
 
-    --input-height-sm: 2rem;             /* 32px */
-    --input-height-md: 2.25rem;          /* 36px */
-    --input-height-lg: 2.75rem;          /* 44px */
+    --input-height-sm: 2rem; /* 32px */
+    --input-height-md: 2.25rem; /* 36px */
+    --input-height-lg: 2.75rem; /* 44px */
 
-    --table-row-height: 2.5rem;          /* 40px */
-    --table-header-height: 2.25rem;      /* 36px */
+    --table-row-height: 2.5rem; /* 40px */
+    --table-header-height: 2.25rem; /* 36px */
 
-    --card-padding-compact: 0.75rem;     /* 12px */
-    --card-padding-standard: 1rem;       /* 16px */
-    --card-padding-featured: 1.25rem;    /* 20px */
+    --card-padding-compact: 0.75rem; /* 12px */
+    --card-padding-standard: 1rem; /* 16px */
+    --card-padding-featured: 1.25rem; /* 20px */
 
     /* Shadows (Subtle elevations) */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-md:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
     /* Dashboard specific colors - Dark sidebar */
     --sidebar-background: 0 0% 10%;
@@ -307,58 +309,118 @@
    * ======================================== */
 
   /* Success */
-  .text-success { color: hsl(var(--success)); }
-  .bg-success { background-color: hsl(var(--success)); }
-  .bg-success-soft { background-color: hsl(var(--success-bg)); }
-  .border-success { border-color: hsl(var(--success)); }
+  .text-success {
+    color: hsl(var(--success));
+  }
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  .bg-success-soft {
+    background-color: hsl(var(--success-bg));
+  }
+  .border-success {
+    border-color: hsl(var(--success));
+  }
 
   /* Warning */
-  .text-warning { color: hsl(var(--warning)); }
-  .bg-warning { background-color: hsl(var(--warning)); }
-  .bg-warning-soft { background-color: hsl(var(--warning-bg)); }
-  .border-warning { border-color: hsl(var(--warning)); }
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+  .bg-warning-soft {
+    background-color: hsl(var(--warning-bg));
+  }
+  .border-warning {
+    border-color: hsl(var(--warning));
+  }
 
   /* Error */
-  .text-error { color: hsl(var(--error)); }
-  .bg-error { background-color: hsl(var(--error)); }
-  .bg-error-soft { background-color: hsl(var(--error-bg)); }
-  .border-error { border-color: hsl(var(--error)); }
+  .text-error {
+    color: hsl(var(--error));
+  }
+  .bg-error {
+    background-color: hsl(var(--error));
+  }
+  .bg-error-soft {
+    background-color: hsl(var(--error-bg));
+  }
+  .border-error {
+    border-color: hsl(var(--error));
+  }
 
   /* Info */
-  .text-info { color: hsl(var(--info)); }
-  .bg-info { background-color: hsl(var(--info)); }
-  .bg-info-soft { background-color: hsl(var(--info-bg)); }
-  .border-info { border-color: hsl(var(--info)); }
+  .text-info {
+    color: hsl(var(--info));
+  }
+  .bg-info {
+    background-color: hsl(var(--info));
+  }
+  .bg-info-soft {
+    background-color: hsl(var(--info-bg));
+  }
+  .border-info {
+    border-color: hsl(var(--info));
+  }
 
   /* ========================================
    * SPACING UTILITIES (Dense Scale)
    * ======================================== */
 
-  .gap-dense { gap: var(--space-2); }      /* 8px */
-  .gap-comfortable { gap: var(--space-4); } /* 16px */
-  .gap-spacious { gap: var(--space-6); }   /* 24px */
+  .gap-dense {
+    gap: var(--space-2);
+  } /* 8px */
+  .gap-comfortable {
+    gap: var(--space-4);
+  } /* 16px */
+  .gap-spacious {
+    gap: var(--space-6);
+  } /* 24px */
 
-  .p-compact { padding: var(--card-padding-compact); }
-  .p-standard { padding: var(--card-padding-standard); }
-  .p-featured { padding: var(--card-padding-featured); }
+  .p-compact {
+    padding: var(--card-padding-compact);
+  }
+  .p-standard {
+    padding: var(--card-padding-standard);
+  }
+  .p-featured {
+    padding: var(--card-padding-featured);
+  }
 
   /* ========================================
    * COMPONENT SIZE UTILITIES
    * ======================================== */
 
   /* Button Heights */
-  .h-btn-sm { height: var(--button-height-sm); }
-  .h-btn-md { height: var(--button-height-md); }
-  .h-btn-lg { height: var(--button-height-lg); }
+  .h-btn-sm {
+    height: var(--button-height-sm);
+  }
+  .h-btn-md {
+    height: var(--button-height-md);
+  }
+  .h-btn-lg {
+    height: var(--button-height-lg);
+  }
 
   /* Input Heights */
-  .h-input-sm { height: var(--input-height-sm); }
-  .h-input-md { height: var(--input-height-md); }
-  .h-input-lg { height: var(--input-height-lg); }
+  .h-input-sm {
+    height: var(--input-height-sm);
+  }
+  .h-input-md {
+    height: var(--input-height-md);
+  }
+  .h-input-lg {
+    height: var(--input-height-lg);
+  }
 
   /* Table Dimensions */
-  .h-table-row { height: var(--table-row-height); }
-  .h-table-header { height: var(--table-header-height); }
+  .h-table-row {
+    height: var(--table-row-height);
+  }
+  .h-table-header {
+    height: var(--table-header-height);
+  }
 
   /* ========================================
    * EXISTING UTILITIES (Preserved)

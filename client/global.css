@@ -668,26 +668,22 @@
 
   /*
    * Desktop Layout (≥768px)
-   * - Two column layout
-   * - Left: Sidebar (fixed 16rem width)
+   * - Two column layout using auto + 1fr
+   * - Left: Sidebar spacer (auto-sized by the sidebar component)
    * - Right: Header + Content (fills remaining space)
+   * - The sidebar component manages its own width transitions
+   *   between expanded (16rem) and collapsed (3rem) states.
    */
   @media (min-width: 768px) {
     .app-layout-grid {
-      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-columns: auto 1fr;
       grid-template-rows: 1fr;
       grid-template-areas: "sidebar main";
     }
 
-    /* Sidebar spans full height */
-    .app-layout-grid > [data-sidebar="sidebar"] {
+    /* Sidebar spacer div - the sidebar component handles its own width */
+    .app-layout-grid > .group.peer {
       grid-area: sidebar;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      overflow-x: hidden;
-      z-index: 30;
     }
 
     /* Right column (header + content) */
@@ -696,16 +692,6 @@
       min-width: 0; /* Prevent grid blowout */
       display: flex;
       flex-direction: column;
-    }
-  }
-
-  /*
-   * Collapsed Sidebar State (Desktop)
-   * When sidebar is collapsed to icon-only mode
-   */
-  @media (min-width: 768px) {
-    .app-layout-grid[data-sidebar-collapsed="true"] {
-      grid-template-columns: var(--sidebar-width-icon) 1fr;
     }
   }
 

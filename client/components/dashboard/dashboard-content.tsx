@@ -350,20 +350,6 @@ export function DashboardContent() {
 
           {/* Client View */}
           <TabsContent value="client" className="mt-0 space-y-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-              <div className="flex items-start gap-3">
-                <Users className="h-5 w-5 text-blue-600 mt-0.5" />
-                <div>
-                  <h4 className="font-medium text-blue-900">
-                    Client View Active
-                  </h4>
-                  <p className="text-sm text-blue-700 mt-1">
-                    Displaying data and features accessible to client users
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <RecentUploads />
 
             <div className="bg-white rounded-lg border border-gray-200">
@@ -498,20 +484,6 @@ export function DashboardContent() {
 
           {/* CPA View */}
           <TabsContent value="cpa" className="mt-0 space-y-6">
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-              <div className="flex items-start gap-3">
-                <Briefcase className="h-5 w-5 text-purple-600 mt-0.5" />
-                <div>
-                  <h4 className="font-medium text-purple-900">
-                    CPA View Active
-                  </h4>
-                  <p className="text-sm text-purple-700 mt-1">
-                    Tax preparer tools and expanded client management features
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <RecentUploads />
 
             <div className="bg-white rounded-lg border border-gray-200">

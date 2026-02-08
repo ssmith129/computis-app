@@ -45,9 +45,7 @@ export function SidebarToggleButton({ className }: { className?: string }) {
           )}
         />
         {/* Middle bar */}
-        <span
-          className="block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ease-in-out"
-        />
+        <span className="block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ease-in-out" />
         {/* Bottom bar */}
         <span
           className={cn(

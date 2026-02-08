@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
-import { SidebarProvider, SidebarInset, useSidebar } from "@/components/ui/sidebar";
+import {
+  SidebarProvider,
+  SidebarInset,
+  useSidebar,
+} from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -92,9 +96,7 @@ function AppLayoutInner({ children, activeItem }: AppLayoutProps) {
 export function AppLayout({ children, activeItem }: AppLayoutProps) {
   return (
     <SidebarProvider defaultOpen={true}>
-      <AppLayoutInner activeItem={activeItem}>
-        {children}
-      </AppLayoutInner>
+      <AppLayoutInner activeItem={activeItem}>{children}</AppLayoutInner>
     </SidebarProvider>
   );
 }

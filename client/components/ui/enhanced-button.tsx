@@ -10,9 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-blue-600 hover:bg-blue-700 text-white hover:shadow-md",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:shadow-md",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground/50",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-sm",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:shadow-md",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground/50",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-sm",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         success: "bg-green-600 text-white hover:bg-green-700 hover:shadow-md",
@@ -27,14 +30,14 @@ const buttonVariants = cva(
       loading: {
         true: "cursor-not-allowed",
         false: "",
-      }
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
       loading: false,
     },
-  }
+  },
 );
 
 export interface EnhancedButtonProps
@@ -50,21 +53,24 @@ export interface EnhancedButtonProps
 }
 
 const EnhancedButton = React.forwardRef<HTMLButtonElement, EnhancedButtonProps>(
-  ({ 
-    className, 
-    variant, 
-    size, 
-    asChild = false, 
-    loading = false,
-    loadingText,
-    tooltip,
-    badge,
-    leftIcon,
-    rightIcon,
-    children,
-    disabled,
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      loadingText,
+      tooltip,
+      badge,
+      leftIcon,
+      rightIcon,
+      children,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
     const isDisabled = disabled || loading;
 
@@ -112,7 +118,7 @@ const EnhancedButton = React.forwardRef<HTMLButtonElement, EnhancedButtonProps>(
     }
 
     return button;
-  }
+  },
 );
 
 EnhancedButton.displayName = "EnhancedButton";

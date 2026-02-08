@@ -27,7 +27,7 @@ export function SidebarToggleButton({ className }: { className?: string }) {
       type="button"
       onClick={handleClick}
       className={cn(
-        "inline-flex items-center justify-center rounded-md p-2 transition-colors",
+        "inline-flex items-center justify-center rounded-md w-9 h-9 transition-colors",
         "hover:bg-sidebar-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         "shrink-0",
         className,
@@ -36,7 +36,7 @@ export function SidebarToggleButton({ className }: { className?: string }) {
       aria-expanded={isExpanded}
     >
       {/* Animated hamburger icon using three bars */}
-      <div className="relative w-5 h-4 flex flex-col justify-between">
+      <div className="relative w-4 h-3.5 flex flex-col justify-between">
         {/* Top bar */}
         <span
           className={cn(

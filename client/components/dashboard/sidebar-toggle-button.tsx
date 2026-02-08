@@ -41,16 +41,16 @@ export function SidebarToggleButton({ className }: { className?: string }) {
         <span
           className={cn(
             "block h-[2px] rounded-full bg-white transition-all duration-300 ease-in-out",
-            isExpanded ? "w-5" : "w-3.5",
+            isExpanded ? "w-4" : "w-3",
           )}
         />
         {/* Middle bar */}
-        <span className="block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ease-in-out" />
+        <span className="block h-[2px] w-4 rounded-full bg-white transition-all duration-300 ease-in-out" />
         {/* Bottom bar */}
         <span
           className={cn(
             "block h-[2px] rounded-full bg-white transition-all duration-300 ease-in-out",
-            isExpanded ? "w-5" : "w-3.5",
+            isExpanded ? "w-4" : "w-3",
           )}
         />
       </div>

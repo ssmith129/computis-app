@@ -12,18 +12,18 @@ interface DashboardCardProps {
   chartColor: "blue" | "green" | "orange" | "yellow" | "cyan" | "red";
 }
 
-export function DashboardCard({ 
-  title, 
-  value, 
-  change, 
+export function DashboardCard({
+  title,
+  value,
+  change,
   changeType = "neutral",
-  chartData, 
-  chartColor 
+  chartData,
+  chartColor,
 }: DashboardCardProps) {
   const changeColorClass = {
     positive: "text-green-600",
-    negative: "text-red-600", 
-    neutral: "text-gray-500"
+    negative: "text-red-600",
+    neutral: "text-gray-500",
   }[changeType];
 
   return (
@@ -51,7 +51,7 @@ export function DashboardCards() {
   const cardsData = [
     {
       title: "Transactions",
-      value: "122,124", 
+      value: "122,124",
       change: "+ 2,122",
       changeType: "positive" as const,
       chartData: [9, 16, 9, 4, 8, 23, 29, 12, 16, 2],
@@ -60,13 +60,13 @@ export function DashboardCards() {
     {
       title: "Unmatched Txs",
       value: "125",
-      change: "- 14", 
+      change: "- 14",
       changeType: "positive" as const,
       chartData: [17, 25, 21, 17, 9, 17, 13, 27, 32, 25],
       chartColor: "green" as const,
     },
     {
-      title: "Commented Txs", 
+      title: "Commented Txs",
       value: "15",
       change: "+ 2",
       changeType: "positive" as const,
@@ -83,7 +83,7 @@ export function DashboardCards() {
     },
     {
       title: "Failed Txs",
-      value: "27", 
+      value: "27",
       change: "- 21",
       changeType: "positive" as const,
       chartData: [17, 9, 15, 17, 25, 28, 21, 27, 17, 21],

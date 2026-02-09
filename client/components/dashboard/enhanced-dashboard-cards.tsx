@@ -91,8 +91,8 @@ export function EnhancedDashboardCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <CardContent className="p-4 sm:p-6">
-        <div className="flex items-start justify-between mb-3 sm:mb-4">
+      <CardContent className="p-3 sm:p-4">
+        <div className="flex items-start justify-between mb-2 sm:mb-3">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <div
               className={`p-2 sm:p-3 rounded-xl ${iconBg} transition-transform duration-300 ${isHovered ? "scale-110" : ""} flex-shrink-0`}
@@ -100,7 +100,7 @@ export function EnhancedDashboardCard({
               <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${iconColor}`} />
             </div>
             <div className="min-w-0">
-              <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-1 truncate">
+              <h3 className="text-[11px] sm:text-xs font-medium text-gray-600 mb-1 truncate">
                 {title}
               </h3>
               {badge && (
@@ -130,21 +130,21 @@ export function EnhancedDashboardCard({
           </Button>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="space-y-1">
             <div
-              className={`text-2xl sm:text-3xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
+              className={`text-lg sm:text-xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
             >
               {typeof value === "number" ? value.toLocaleString() : value}
             </div>
             {subtitle && (
-              <div className="text-xs sm:text-sm text-gray-500 truncate">
+              <div className="text-[11px] sm:text-xs text-gray-500 truncate">
                 {subtitle}
               </div>
             )}
             {change && (
               <div
-                className={`text-xs sm:text-sm flex items-center gap-1 ${changeColorClass}`}
+                className={`text-[11px] sm:text-xs flex items-center gap-1 ${changeColorClass}`}
               >
                 {changeType === "positive" && (
                   <TrendingUp className="h-3 w-3 flex-shrink-0" />
@@ -298,7 +298,7 @@ export function EnhancedDashboardCards() {
     <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-hidden">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="min-w-0">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 truncate">
+          <h2 className="text-sm sm:text-base font-bold text-gray-900 truncate">
             Key Metrics & Tools
           </h2>
           <p className="text-xs sm:text-sm text-gray-500">

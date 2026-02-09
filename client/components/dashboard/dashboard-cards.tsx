@@ -37,8 +37,8 @@ export function DashboardCard({
 
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <div className="text-xl font-bold text-gray-900">{value}</div>
-          <div className={`text-sm ${changeColorClass}`}>{change}</div>
+          <div className="text-lg font-bold text-gray-900">{value}</div>
+          <div className={`text-xs ${changeColorClass}`}>{change}</div>
         </div>
 
         <MiniChart data={chartData} color={chartColor} />

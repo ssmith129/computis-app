@@ -42,7 +42,7 @@ export function TransactionsContent() {
           </div>
         </div>
       </div>
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         <div className="space-y-4">
           {/* Filters */}
           <div className="flex flex-wrap gap-4 mt-5">

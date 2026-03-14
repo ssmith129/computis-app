@@ -111,7 +111,7 @@ export function DashboardContent() {
 
                 <TabsContent
                   value="overview"
-                  className="p-6 space-y-8 mt-0 no-h-scroll"
+                  className="p-4 sm:p-6 space-y-8 mt-0 no-h-scroll"
                 >
                   <EnhancedDashboardCards />
                   <TouchZoomContainer className="rounded-lg">
@@ -378,7 +378,7 @@ export function DashboardContent() {
 
                 <TabsContent
                   value="overview"
-                  className="p-6 space-y-8 mt-0 no-h-scroll"
+                  className="p-4 sm:p-6 space-y-8 mt-0 no-h-scroll"
                 >
                   <EnhancedDashboardCards />
                   <TouchZoomContainer className="rounded-lg">
@@ -528,7 +528,7 @@ export function DashboardContent() {
 
                 <TabsContent
                   value="overview"
-                  className="p-6 space-y-8 mt-0 no-h-scroll"
+                  className="p-4 sm:p-6 space-y-8 mt-0 no-h-scroll"
                 >
                   <EnhancedDashboardCards />
                   <TouchZoomContainer className="rounded-lg">

@@ -106,7 +106,7 @@ export function ExportsContent() {
       </div>
 
       {/* Main content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Recent Exports */}
         <Card>
           <CardContent className="p-6">

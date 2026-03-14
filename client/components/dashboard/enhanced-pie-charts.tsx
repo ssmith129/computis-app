@@ -154,7 +154,7 @@ export function AnimatedPieChart({
       <div className="absolute inset-0 flex items-center justify-center">
         {centerContent || (
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold font-mono tabular-nums text-gray-900">
               {total.toLocaleString()}
             </div>
             <div className="text-xs text-gray-500">Total</div>

@@ -352,7 +352,7 @@ export function ClientsContent() {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsContent value="clients" className="space-y-6">
             {/* Search Bar */}

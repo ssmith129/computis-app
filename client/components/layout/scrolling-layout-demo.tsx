@@ -118,7 +118,7 @@ export function ScrollingLayoutDemo() {
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-8">
+        <div className="p-4 sm:p-6 space-y-8">
           {/* Section 1: Horizontally Scrollable Cards */}
           <section>
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
@@ -152,7 +152,7 @@ export function ScrollingLayoutDemo() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-gray-900 mb-1">
+                    <div className="text-2xl font-bold font-mono tabular-nums text-gray-900 mb-1">
                       {metric.value}
                     </div>
                     <div

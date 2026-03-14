@@ -925,7 +925,7 @@ export function TaxEntitiesManagement() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-muted-foreground">Wallets</p>
-                        <p className="text-2xl font-bold">
+                        <p className="text-2xl font-bold font-mono tabular-nums">
                           {selectedEntity.walletCount}
                         </p>
                       </div>
@@ -940,7 +940,7 @@ export function TaxEntitiesManagement() {
                         <p className="text-sm text-muted-foreground">
                           Transactions
                         </p>
-                        <p className="text-2xl font-bold">
+                        <p className="text-2xl font-bold font-mono tabular-nums">
                           {selectedEntity.transactionCount.toLocaleString()}
                         </p>
                       </div>

@@ -63,7 +63,7 @@ export function RuleEngineContent() {
       </div>
 
       {/* Main Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Active Rules Table */}
         <Card>
           <CardHeader>

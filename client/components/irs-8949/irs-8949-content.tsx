@@ -243,7 +243,7 @@ export function Irs8949Content() {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card>
@@ -251,7 +251,7 @@ export function Irs8949Content() {
               <div className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-blue-600" />
                 <div>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold font-mono tabular-nums">
                     ${totalProceeds.toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -266,7 +266,7 @@ export function Irs8949Content() {
               <div className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-orange-600" />
                 <div>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold font-mono tabular-nums">
                     ${totalCostBasis.toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -284,7 +284,7 @@ export function Irs8949Content() {
                 />
                 <div>
                   <div
-                    className={`text-2xl font-bold ${getGainLossColor(totalGainLoss)}`}
+                    className={`text-2xl font-bold font-mono tabular-nums ${getGainLossColor(totalGainLoss)}`}
                   >
                     ${totalGainLoss.toLocaleString()}
                   </div>
@@ -298,7 +298,7 @@ export function Irs8949Content() {
               <div className="flex items-center gap-2">
                 <FileText className="h-4 w-4 text-purple-600" />
                 <div>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold font-mono tabular-nums">
                     {filteredData.length}
                   </div>
                   <p className="text-sm text-muted-foreground">Transactions</p>

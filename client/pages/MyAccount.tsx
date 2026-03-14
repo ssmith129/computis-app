@@ -41,7 +41,7 @@ export default function MyAccount() {
         </div>
 
         {/* Main Content */}
-        <div className="p-6 space-y-6 no-h-scroll">
+        <div className="p-4 sm:p-6 space-y-6 no-h-scroll">
           {/* Profile Overview */}
           <Card>
             <CardHeader>

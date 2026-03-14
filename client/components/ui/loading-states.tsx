@@ -94,7 +94,7 @@ export function SpinnerLoading({
 export function PageLoading() {
   return (
     <div className="app-content">
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Header Skeleton */}
         <div className="space-y-2">
           <Skeleton className="h-8 w-64" />

@@ -373,6 +373,16 @@
     padding: var(--card-padding-featured);
   }
 
+  /* Standardized page content padding: 16px mobile, 24px tablet/desktop (directive 5.1, 6.1) */
+  .p-page {
+    padding: var(--space-4);
+  }
+  @media (min-width: 768px) {
+    .p-page {
+      padding: var(--space-6);
+    }
+  }
+
   /* ========================================
    * COMPONENT SIZE UTILITIES
    * ======================================== */

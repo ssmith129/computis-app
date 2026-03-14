@@ -171,21 +171,21 @@ export function ReviewImportStep({
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <div className="text-2xl font-bold text-green-600">1,247</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-green-600">1,247</div>
               <div className="text-sm text-muted-foreground">
                 Total Transactions
               </div>
             </div>
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600">8</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-blue-600">8</div>
               <div className="text-sm text-muted-foreground">Assets</div>
             </div>
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <div className="text-2xl font-bold text-purple-600">4</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-purple-600">4</div>
               <div className="text-sm text-muted-foreground">Exchanges</div>
             </div>
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <div className="text-2xl font-bold text-orange-600">365</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-orange-600">365</div>
               <div className="text-sm text-muted-foreground">Days Range</div>
             </div>
           </div>

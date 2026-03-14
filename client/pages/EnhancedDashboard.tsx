@@ -50,7 +50,7 @@ export function EnhancedDashboard() {
         </div>
 
         {/* Main Content */}
-        <div className="p-6 space-y-8 no-h-scroll">
+        <div className="p-4 sm:p-6 space-y-8 no-h-scroll">
           {/* Section 1: Horizontally Scrollable Portfolio Cards */}
           <section>
             <div className="flex items-center justify-between mb-4">
@@ -172,7 +172,7 @@ export function EnhancedDashboard() {
                       </div>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <div className="text-2xl font-bold text-gray-900 mb-2">
+                      <div className="text-2xl font-bold font-mono tabular-nums text-gray-900 mb-2">
                         {metric.value}
                       </div>
                       <div

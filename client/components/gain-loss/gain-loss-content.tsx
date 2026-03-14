@@ -205,7 +205,7 @@ export function GainLossContent() {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Key Metrics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card className={getGainLossBackground(netGainLoss)}>
@@ -213,7 +213,7 @@ export function GainLossContent() {
               <div className="flex items-center justify-between">
                 <div>
                   <div
-                    className={`text-2xl font-bold ${getGainLossColor(netGainLoss)}`}
+                    className={`text-2xl font-bold font-mono tabular-nums ${getGainLossColor(netGainLoss)}`}
                   >
                     ${Math.abs(netGainLoss).toLocaleString()}
                   </div>
@@ -228,7 +228,7 @@ export function GainLossContent() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold font-mono tabular-nums text-green-600">
                     ${totalGains.toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">Total Gains</p>
@@ -242,7 +242,7 @@ export function GainLossContent() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold text-red-600">
+                  <div className="text-2xl font-bold font-mono tabular-nums text-red-600">
                     ${Math.abs(totalLosses).toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">Total Losses</p>
@@ -256,7 +256,7 @@ export function GainLossContent() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold">{totalTransactions}</div>
+                  <div className="text-2xl font-bold font-mono tabular-nums">{totalTransactions}</div>
                   <p className="text-sm text-muted-foreground">Transactions</p>
                 </div>
                 <FileText className="h-5 w-5 text-blue-600" />

@@ -195,30 +195,30 @@ export function WalletsContent() {
           </div>
         </div>
       </div>
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="border-gray-200">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-gray-900">4</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-gray-900">4</div>
               <p className="text-sm text-gray-500">Connected Sources</p>
             </CardContent>
           </Card>
           <Card className="border-gray-200">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-gray-900">521</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-gray-900">521</div>
               <p className="text-sm text-gray-500">Total Transactions</p>
             </CardContent>
           </Card>
           <Card className="border-gray-200">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-gray-900">3</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-gray-900">3</div>
               <p className="text-sm text-gray-500">Active Syncing</p>
             </CardContent>
           </Card>
           <Card className="border-gray-200">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-gray-900">1h</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-gray-900">1h</div>
               <p className="text-sm text-gray-500">Last Sync</p>
             </CardContent>
           </Card>

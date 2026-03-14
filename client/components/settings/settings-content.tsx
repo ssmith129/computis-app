@@ -125,7 +125,7 @@ export function SettingsContent() {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsContent value="account" className="space-y-6">
             {/* Personal Information */}

@@ -111,7 +111,7 @@ export default function HelpPage() {
         </div>
 
         {/* Main Content */}
-        <div className="p-6 space-y-6 no-h-scroll">
+        <div className="p-4 sm:p-6 space-y-6 no-h-scroll">
           {/* Search Bar */}
           <Card>
             <CardContent className="p-6">

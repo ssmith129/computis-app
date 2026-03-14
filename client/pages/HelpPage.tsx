@@ -103,8 +103,8 @@ export default function HelpPage() {
         {/* Page Header */}
         <div className="page-titlebar">
           <div className="flex flex-col p-6 text-left">
-            <h1 className="text-2xl font-bold text-gray-900">Help Center</h1>
-            <p className="text-gray-500 mt-1">
+            <h1 className="text-heading-lg font-bold text-foreground">Help Center</h1>
+            <p className="text-body-md text-muted-foreground mt-1">
               Find answers, guides, and get support when you need it
             </p>
           </div>

@@ -6,6 +6,7 @@ import { EnhancedPieChartSections } from "./enhanced-pie-charts";
 import { AnomalyFlags } from "./anomaly-flags";
 import { TouchZoomContainer } from "@/components/ui/touch-zoom-container";
 import { Shield, Users, Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function DashboardContent() {
   const [roleView, setRoleView] = useState("admin");
@@ -23,10 +24,10 @@ export function DashboardContent() {
       {/* Page Header */}
       <div className="page-titlebar">
         <div className="flex flex-col p-4 sm:p-6 text-left">
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+          <h1 className="text-heading-lg font-bold text-foreground">
             Dashboard
           </h1>
-          <p className="text-sm sm:text-base text-gray-500 mt-1">
+          <p className="text-body-md text-muted-foreground mt-1">
             View all your key metrics and data here
           </p>
 
@@ -160,9 +161,9 @@ export function DashboardContent() {
                           <span className="font-medium">2 hours ago</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                      <Button className="w-full mt-4">
                         View Reports
-                      </button>
+                      </Button>
                     </div>
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
@@ -203,9 +204,9 @@ export function DashboardContent() {
                           <span className="font-medium">$25,491</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                      <Button variant="success" className="w-full mt-4">
                         View Analysis
-                      </button>
+                      </Button>
                     </div>
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
@@ -244,9 +245,9 @@ export function DashboardContent() {
                           <span className="font-medium">2.4 MB</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                      <Button className="w-full mt-4">
                         Download Package
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </TabsContent>
@@ -577,9 +578,9 @@ export function DashboardContent() {
                           <span className="font-medium">2 hours ago</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                      <Button className="w-full mt-4">
                         View Reports
-                      </button>
+                      </Button>
                     </div>
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
@@ -620,9 +621,9 @@ export function DashboardContent() {
                           <span className="font-medium">$25,491</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                      <Button variant="success" className="w-full mt-4">
                         View Analysis
-                      </button>
+                      </Button>
                     </div>
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
@@ -661,9 +662,9 @@ export function DashboardContent() {
                           <span className="font-medium">2.4 MB</span>
                         </div>
                       </div>
-                      <button className="w-full mt-4 bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                      <Button className="w-full mt-4">
                         Download Package
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </TabsContent>

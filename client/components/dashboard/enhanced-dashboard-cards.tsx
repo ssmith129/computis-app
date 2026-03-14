@@ -75,15 +75,15 @@ export function EnhancedDashboardCard({
   }[changeType];
 
   const statusColors = {
-    success: "border-green-200 bg-green-50",
-    warning: "border-yellow-200 bg-yellow-50",
-    error: "border-red-200 bg-red-50",
-    info: "border-blue-200 bg-blue-50",
+    success: "border-success/30 bg-success-bg",
+    warning: "border-warning/30 bg-warning-bg",
+    error: "border-error/30 bg-error-bg",
+    info: "border-info/30 bg-info-bg",
   };
 
   const cardClassName = status
     ? `${statusColors[status]} transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer`
-    : "bg-white transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer";
+    : "bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer";
 
   const cardContent = (
     <Card
@@ -100,7 +100,7 @@ export function EnhancedDashboardCard({
               <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${iconColor}`} />
             </div>
             <div className="min-w-0">
-              <h3 className="text-[11px] sm:text-xs font-medium text-gray-600 mb-1 truncate">
+              <h3 className="text-overline font-medium text-muted-foreground mb-1 truncate">
                 {title}
               </h3>
               {badge && (
@@ -108,12 +108,12 @@ export function EnhancedDashboardCard({
                   variant="secondary"
                   className={`text-xs ${
                     badge.variant === "success"
-                      ? "bg-green-100 text-green-700"
+                      ? "bg-success-bg text-success-text"
                       : badge.variant === "warning"
-                        ? "bg-yellow-100 text-yellow-700"
+                        ? "bg-warning-bg text-warning-text"
                         : badge.variant === "error"
-                          ? "bg-red-100 text-red-700"
-                          : "bg-blue-100 text-blue-700"
+                          ? "bg-error-bg text-error-text"
+                          : "bg-info-bg text-info-text"
                   }`}
                 >
                   {badge.text}
@@ -126,25 +126,25 @@ export function EnhancedDashboardCard({
             size="icon"
             className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <MoreHorizontal className="h-4 w-4 text-gray-400" />
+            <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
           </Button>
         </div>
 
         <div className="space-y-2">
           <div className="space-y-1">
             <div
-              className={`text-lg sm:text-xl font-bold text-gray-900 transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
+              className={`text-display-sm font-bold text-foreground transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
             >
               {typeof value === "number" ? value.toLocaleString() : value}
             </div>
             {subtitle && (
-              <div className="text-[11px] sm:text-xs text-gray-500 truncate">
+              <div className="text-caption text-muted-foreground truncate">
                 {subtitle}
               </div>
             )}
             {change && (
               <div
-                className={`text-[11px] sm:text-xs flex items-center gap-1 ${changeColorClass}`}
+                className={`text-caption flex items-center gap-1 ${changeColorClass}`}
               >
                 {changeType === "positive" && (
                   <TrendingUp className="h-3 w-3 flex-shrink-0" />
@@ -160,7 +160,7 @@ export function EnhancedDashboardCard({
           {progress !== undefined && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Progress</span>
+                <span className="text-muted-foreground">Progress</span>
                 <span className="font-medium">{progress}%</span>
               </div>
               <Progress
@@ -298,7 +298,7 @@ export function EnhancedDashboardCards() {
     <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-hidden">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="min-w-0">
-          <h2 className="text-sm sm:text-base font-bold text-gray-900 truncate">
+          <h2 className="text-heading-sm font-bold text-foreground truncate">
             Key Metrics & Tools
           </h2>
           <p className="text-xs sm:text-sm text-gray-500">

@@ -82,13 +82,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Dashboard specific colors
-        status: {
-          success: "hsl(var(--status-success))",
-          warning: "hsl(var(--status-warning))",
-          error: "hsl(var(--status-error))",
-          info: "hsl(var(--status-info))",
-        },
         chart: {
           blue: "hsl(var(--chart-blue))",
           green: "hsl(var(--chart-green))",
@@ -174,11 +167,6 @@ export default {
       fontFamily: {
         sans: ["Noto Sans", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
-      },
-      screens: {
-        ipad: "834px",
-        "ipad-landscape": "1194px",
-        desktop: "1920px",
       },
     },
   },

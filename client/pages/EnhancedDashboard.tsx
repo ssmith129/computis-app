@@ -39,10 +39,10 @@ export function EnhancedDashboard() {
         {/* Page Header - Fixed when scrolling */}
         <div className="page-titlebar">
           <div className="flex flex-col p-6 text-left">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-heading-lg font-bold text-foreground">
               Enhanced Dashboard
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="text-body-md text-muted-foreground mt-1">
               Demonstrating horizontal scrolling layout with fixed header and
               navigation
             </p>

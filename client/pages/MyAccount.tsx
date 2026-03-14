@@ -33,8 +33,8 @@ export default function MyAccount() {
         {/* Page Header */}
         <div className="page-titlebar">
           <div className="flex flex-col p-6 text-left">
-            <h1 className="text-2xl font-bold text-gray-900">My Account</h1>
-            <p className="text-gray-500 mt-1">
+            <h1 className="text-heading-lg font-bold text-foreground">My Account</h1>
+            <p className="text-body-md text-muted-foreground mt-1">
               Manage your profile, preferences, and security settings
             </p>
           </div>

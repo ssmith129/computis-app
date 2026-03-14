@@ -298,11 +298,11 @@ export default function KeyboardShortcuts() {
         {/* Page Header */}
         <div className="page-titlebar">
           <div className="flex flex-col p-6 text-left">
-            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              <Keyboard className="h-6 w-6" />
+            <h1 className="text-heading-lg font-bold text-foreground flex items-center gap-2">
+              <Keyboard className="h-5 w-5" />
               Keyboard Shortcuts
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="text-body-md text-muted-foreground mt-1">
               Master CryptoTax Pro with these time-saving keyboard shortcuts
             </p>
           </div>

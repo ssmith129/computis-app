@@ -172,10 +172,10 @@ export function WalletsContent() {
       <div className="page-titlebar">
         <div className="flex items-center justify-between p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-heading-lg font-bold text-foreground">
               Wallets and Exchanges
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="text-body-md text-muted-foreground mt-1">
               Connect and manage your crypto wallets and exchange accounts
             </p>
           </div>

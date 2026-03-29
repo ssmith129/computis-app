@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   MoreHorizontal,
   TrendingUp,
@@ -66,7 +65,6 @@ export function EnhancedDashboardCard({
   badge,
   animate = true,
 }: EnhancedDashboardCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
 
   const changeColorClass = {
     positive: "text-green-600",
@@ -82,20 +80,18 @@ export function EnhancedDashboardCard({
   };
 
   const cardClassName = status
-    ? `${statusColors[status]} transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer`
-    : "bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer";
+    ? `${statusColors[status]} transition-shadow duration-300 hover:shadow-lg cursor-pointer`
+    : "bg-card transition-shadow duration-300 hover:shadow-lg cursor-pointer";
 
   const cardContent = (
     <Card
       className={cardClassName}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <CardContent className="p-3 sm:p-4">
         <div className="flex items-start justify-between mb-2 sm:mb-3">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <div
-              className={`p-2 sm:p-3 rounded-xl ${iconBg} transition-transform duration-300 ${isHovered ? "scale-110" : ""} flex-shrink-0`}
+              className={`p-2 sm:p-3 rounded-xl ${iconBg} flex-shrink-0`}
             >
               <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${iconColor}`} />
             </div>
@@ -133,7 +129,7 @@ export function EnhancedDashboardCard({
         <div className="space-y-2">
           <div className="space-y-1">
             <div
-              className={`text-display-sm font-bold text-foreground transition-all duration-300 ${animate && isHovered ? "scale-105" : ""}`}
+              className="text-display-sm font-bold text-foreground"
             >
               {typeof value === "number" ? value.toLocaleString() : value}
             </div>

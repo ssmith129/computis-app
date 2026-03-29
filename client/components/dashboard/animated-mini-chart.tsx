@@ -132,7 +132,7 @@ export function AnimatedMiniChart({
   }));
 
   return (
-    <div className={cn("relative w-full max-w-[120px]", className)}>
+    <div className={cn("relative w-full max-w-chart-sm", className)}>
       <div className="flex items-end gap-1 sm:gap-1.5 h-12 sm:h-14 p-1">
         {processedData.map((item, index) => (
           <div

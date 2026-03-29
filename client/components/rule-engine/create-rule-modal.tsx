@@ -429,7 +429,7 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
 
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 overflow-x-auto">
               {/* Before */}
-              <Card className="flex-1 min-w-[280px]">
+              <Card className="flex-1 min-w-rule-card">
                 <CardHeader>
                   <CardTitle className="text-base">Before</CardTitle>
                 </CardHeader>
@@ -462,7 +462,7 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
               </div>
 
               {/* After */}
-              <Card className="flex-1 min-w-[280px]">
+              <Card className="flex-1 min-w-rule-card">
                 <CardHeader>
                   <CardTitle className="text-base">After</CardTitle>
                 </CardHeader>

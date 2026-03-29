@@ -441,7 +441,7 @@ export function TaxEntitiesManagement() {
         </div>
         <div className="flex gap-2">
           <Select value={filterType} onValueChange={setFilterType}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-select-default">
               <SelectValue placeholder="Entity Type" />
             </SelectTrigger>
             <SelectContent>
@@ -454,7 +454,7 @@ export function TaxEntitiesManagement() {
             </SelectContent>
           </Select>
           <Select value={filterStatus} onValueChange={setFilterStatus}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-select-default">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>

@@ -61,8 +61,8 @@ export function DashboardHeader() {
             py-1.5
             flex-1
             min-w-0
-            max-w-[200px]
-            sm:max-w-[280px]
+            max-w-header-sm
+            sm:max-w-header-md
             md:max-w-sm
             lg:max-w-md
             xl:max-w-lg

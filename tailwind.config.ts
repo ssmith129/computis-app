@@ -81,6 +81,7 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+          muted: "hsl(var(--sidebar-muted))",
         },
         chart: {
           blue: "hsl(var(--chart-blue))",
@@ -141,6 +142,34 @@ export default {
         "input-sm": "var(--input-height-sm)",
         "input-md": "var(--input-height-md)",
         "input-lg": "var(--input-height-lg)",
+      },
+      width: {
+        "table-sm": "100px",
+        "table-md": "120px",
+        "table-lg": "140px",
+        "select-default": "180px",
+      },
+      maxWidth: {
+        "header-sm": "200px",
+        "header-md": "280px",
+        "chart-sm": "120px",
+        "chart-md": "160px",
+        "content": "1920px",
+      },
+      minWidth: {
+        "rule-card": "280px",
+        "progress-bar": "120px",
+      },
+      zIndex: {
+        base: "var(--z-base)",
+        elevated: "var(--z-elevated)",
+        sticky: "var(--z-sticky)",
+        dropdown: "var(--z-dropdown)",
+        overlay: "var(--z-overlay)",
+        drawer: "var(--z-drawer)",
+        modal: "var(--z-modal)",
+        toast: "var(--z-toast)",
+        tooltip: "var(--z-tooltip)",
       },
       keyframes: {
         "accordion-down": {

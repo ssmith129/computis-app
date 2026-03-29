@@ -723,7 +723,7 @@ function UserTableSection({
         </div>
         <div className="flex gap-2">
           <Select value={filterRole} onValueChange={setFilterRole}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-select-default">
               <Filter className="h-4 w-4 mr-2" />
               <SelectValue />
             </SelectTrigger>

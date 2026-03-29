@@ -33,16 +33,19 @@
    * BRAND COLORS
    * ============================================ */
   
-  /* Primary - Blue (#1570EF) */
-  --primary: 218 91% 48%;
+  /* Primary - Blue (#0B5ED7) */
+  --primary: 218 91% 45%;
+  --primary-hover: 218 91% 40%;
+  --primary-light: 213 97% 87%;
   --primary-foreground: 0 0% 100%;
 
   /* Secondary */
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 0 0% 10%;
 
-  /* Accent */
-  --accent: 210 40% 96.1%;
+  /* Accent - Computis Gold */
+  --accent: 45 90% 51%; /* #D4AF37 */
+  --accent-light: 48 77% 86%; /* #F5E6B8 */
   --accent-foreground: 0 0% 10%;
 
   /* ============================================
@@ -63,7 +66,7 @@
   
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 218 91% 48%;
+  --ring: 218 91% 45%;
 
   /* ============================================
    * BORDER RADIUS
@@ -82,7 +85,7 @@
   --sidebar-accent: 0 0% 20%;
   --sidebar-accent-foreground: 0 0% 100%;
   --sidebar-border: 0 0% 20%;
-  --sidebar-ring: 218 91% 48%;
+  --sidebar-ring: 218 91% 45%;
 
   /* ============================================
    * SIDEBAR DIMENSIONS
@@ -93,19 +96,33 @@
   --sidebar-width-icon: 3rem;
 
   /* ============================================
-   * STATUS COLORS
+   * SEMANTIC STATUS COLORS (WCAG AA Compliant)
    * ============================================ */
-  
-  --status-success: 142 76% 36%;
-  --status-warning: 32 95% 44%;
-  --status-error: 0 84% 60%;
-  --status-info: 201 96% 32%;
+
+  --success: 142 76% 36%; /* #16A34A */
+  --success-bg: 138 76% 87%; /* #DCFCE7 */
+  --success-text: 142 71% 20%; /* #166534 */
+
+  --warning: 32 95% 38%; /* #B45309 - Improved contrast */
+  --warning-bg: 48 96% 89%; /* #FEF3C7 */
+  --warning-text: 32 95% 27%; /* #92400E */
+
+  --error: 0 84% 60%; /* #DC2626 */
+  --error-bg: 0 86% 93%; /* #FEE2E2 */
+  --error-text: 0 71% 30%; /* #991B1B */
+
+  --info: 201 96% 32%; /* #0369A1 */
+  --info-bg: 199 89% 94%; /* #E0F2FE */
+  --info-text: 201 96% 26%; /* #075985 */
+
+  /* Sidebar muted text */
+  --sidebar-muted: 0 0% 64%; /* #a3a3a3 */
 
   /* ============================================
    * CHART COLORS
    * ============================================ */
   
-  --chart-blue: 218 91% 48%;
+  --chart-blue: 218 91% 45%;
   --chart-green: 142 76% 36%;
   --chart-orange: 32 95% 44%;
   --chart-yellow: 48 96% 53%;

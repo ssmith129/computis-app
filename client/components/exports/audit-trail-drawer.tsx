@@ -199,7 +199,7 @@ export function AuditTrailDrawer({
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-[9998] transition-opacity duration-300"
+          className="fixed inset-0 bg-black/30 z-overlay transition-opacity duration-300"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -207,7 +207,7 @@ export function AuditTrailDrawer({
 
       {/* Drawer */}
       <div
-        className={`fixed right-0 top-0 h-full w-[450px] bg-background border-l border-border z-[9999] flex flex-col transition-transform duration-300 ease-in-out ${
+        className={`fixed right-0 top-0 h-full w-[450px] bg-background border-l border-border z-drawer flex flex-col transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"

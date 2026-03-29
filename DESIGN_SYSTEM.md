@@ -162,12 +162,23 @@ export function StatusBadges() {
 
 | Color   | Variable          | Hex     | Use Case         |
 | ------- | ----------------- | ------- | ---------------- |
-| Primary | `--color-primary` | #2563EB | Brand, CTAs      |
-| Accent  | `--color-accent`  | #D4AF37 | Gold highlights  |
-| Success | `--color-success` | #16A34A | Positive actions |
-| Warning | `--color-warning` | #B45309 | Caution states   |
-| Error   | `--color-error`   | #DC2626 | Errors, alerts   |
-| Info    | `--color-info`    | #0369A1 | Informational    |
+| Primary | `--primary`       | #0B5ED7 | Brand, CTAs      |
+| Accent  | `--accent`        | #D4AF37 | Gold highlights  |
+| Success | `--success`       | #16A34A | Positive actions |
+| Warning | `--warning`       | #B45309 | Caution states   |
+| Error   | `--error`         | #DC2626 | Errors, alerts   |
+| Info    | `--info`          | #0369A1 | Informational    |
+
+### Dark Mode Color Behavior
+
+In dark mode, several colors shift intentionally:
+
+| Token     | Light Mode                    | Dark Mode                          | Reason                                      |
+| --------- | ----------------------------- | ---------------------------------- | ------------------------------------------- |
+| `--accent` | Gold (`45 90% 51%`, #D4AF37) | Neutral gray (`217.2 32.6% 17.5%`) | Gold is too vibrant on dark backgrounds     |
+| `--primary`| Blue (`218 91% 45%`)         | Light (`210 40% 98%`)              | Inverted for contrast on dark backgrounds   |
+
+The accent color shift from gold to gray in dark mode is an intentional design decision to reduce visual noise and maintain readability.
 
 ### Background Utilities
 

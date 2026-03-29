@@ -137,7 +137,7 @@ export function DashboardSidebar({
                       className={`${
                         isActive
                           ? "bg-sidebar-accent text-white"
-                          : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
+                          : "text-sidebar-muted hover:bg-sidebar-accent hover:text-white"
                       }`}
                     >
                       <Link to={item.href}>
@@ -158,7 +158,7 @@ export function DashboardSidebar({
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between text-[#a3a3a3] hover:text-white font-semibold text-sm">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-muted hover:text-white font-semibold text-sm">
                 Reports
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -177,7 +177,7 @@ export function DashboardSidebar({
                           className={`${
                             isActive
                               ? "bg-sidebar-accent text-white"
-                              : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
+                              : "text-sidebar-muted hover:bg-sidebar-accent hover:text-white"
                           }`}
                         >
                           <Link to={item.href}>
@@ -200,7 +200,7 @@ export function DashboardSidebar({
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between text-[#a3a3a3] hover:text-white font-semibold text-sm">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-muted hover:text-white font-semibold text-sm">
                 Settings
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -219,7 +219,7 @@ export function DashboardSidebar({
                           className={`${
                             isActive
                               ? "bg-sidebar-accent text-white"
-                              : "text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
+                              : "text-sidebar-muted hover:bg-sidebar-accent hover:text-white"
                           }`}
                         >
                           <Link to={item.href}>
@@ -242,7 +242,7 @@ export function DashboardSidebar({
         <SidebarGroup>
           <Collapsible defaultOpen className="group/collapsible">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between text-[#a3a3a3] hover:text-white font-semibold text-sm">
+              <CollapsibleTrigger className="flex w-full items-center justify-between text-sidebar-muted hover:text-white font-semibold text-sm">
                 Help & Account
                 <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
@@ -255,7 +255,7 @@ export function DashboardSidebar({
                       <SidebarMenuButton
                         asChild
                         tooltip={item.title}
-                        className="text-[#a3a3a3] hover:bg-sidebar-accent hover:text-white"
+                        className="text-sidebar-muted hover:bg-sidebar-accent hover:text-white"
                       >
                         <Link to={item.href}>
                           <item.icon className="h-5 w-5" />

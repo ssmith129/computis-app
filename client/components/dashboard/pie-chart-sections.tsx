@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button";
 import { PieChart, ChartLegend } from "./pie-chart";
 
 const txsStatusData = [
-  { value: 65, color: "#0F65E5", label: "Processed" },
-  { value: 20, color: "#F5D462", label: "Source" }, 
-  { value: 10, color: "#F87700", label: "Archived" },
-  { value: 5, color: "#F24040", label: "Ignored" },
+  { value: 65, color: "var(--chart-processed)", label: "Processed" },
+  { value: 20, color: "var(--chart-source)", label: "Source" },
+  { value: 10, color: "var(--chart-archived)", label: "Archived" },
+  { value: 5, color: "var(--chart-ignored)", label: "Ignored" },
 ];
 
 const uploadStatusData = [
-  { value: 80, color: "#00A624", label: "Success" },
-  { value: 15, color: "#F87700", label: "Warning" },
-  { value: 5, color: "#F24040", label: "Failed" },
+  { value: 80, color: "var(--chart-success)", label: "Success" },
+  { value: 15, color: "var(--chart-warning-hex)", label: "Warning" },
+  { value: 5, color: "var(--chart-failed)", label: "Failed" },
 ];
 
 export function PieChartSections() {

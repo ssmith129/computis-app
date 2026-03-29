@@ -46,12 +46,25 @@
     
     "brand": {
       "primary": {
-        "value": "hsl(218, 91%, 48%)",
-        "hsl": "218 91% 48%",
-        "hex": "#1570EF",
-        "description": "Primary brand color - blue",
+        "value": "hsl(218, 91%, 45%)",
+        "hsl": "218 91% 45%",
+        "hex": "#0B5ED7",
+        "description": "Primary brand color - Vivid Blue",
         "cssVar": "--primary",
         "usage": "Primary buttons, links, active states"
+      },
+      "primaryHover": {
+        "value": "hsl(218, 91%, 40%)",
+        "hsl": "218 91% 40%",
+        "description": "Primary hover state",
+        "cssVar": "--primary-hover"
+      },
+      "primaryLight": {
+        "value": "hsl(213, 97%, 87%)",
+        "hsl": "213 97% 87%",
+        "hex": "#DBEAFE",
+        "description": "Light primary for backgrounds",
+        "cssVar": "--primary-light"
       },
       "primaryForeground": {
         "value": "hsl(0, 0%, 100%)",
@@ -72,10 +85,19 @@
         "cssVar": "--secondary-foreground"
       },
       "accent": {
-        "value": "hsl(210, 40%, 96.1%)",
-        "hsl": "210 40% 96.1%",
-        "description": "Accent/hover background",
-        "cssVar": "--accent"
+        "value": "hsl(45, 90%, 51%)",
+        "hsl": "45 90% 51%",
+        "hex": "#D4AF37",
+        "description": "Accent - Computis Gold",
+        "cssVar": "--accent",
+        "note": "In dark mode, shifts to a neutral gray (217.2 32.6% 17.5%) for reduced visual noise"
+      },
+      "accentLight": {
+        "value": "hsl(48, 77%, 86%)",
+        "hsl": "48 77% 86%",
+        "hex": "#F5E6B8",
+        "description": "Light accent for backgrounds",
+        "cssVar": "--accent-light"
       },
       "accentForeground": {
         "value": "hsl(0, 0%, 10%)",
@@ -127,8 +149,8 @@
         "cssVar": "--input"
       },
       "ring": {
-        "value": "hsl(218, 91%, 48%)",
-        "hsl": "218 91% 48%",
+        "value": "hsl(218, 91%, 45%)",
+        "hsl": "218 91% 45%",
         "description": "Focus ring color",
         "cssVar": "--ring"
       }
@@ -178,8 +200,8 @@
         "cssVar": "--sidebar-border"
       },
       "ring": {
-        "value": "hsl(218, 91%, 48%)",
-        "hsl": "218 91% 48%",
+        "value": "hsl(218, 91%, 45%)",
+        "hsl": "218 91% 45%",
         "description": "Sidebar focus ring",
         "cssVar": "--sidebar-ring"
       }
@@ -222,8 +244,8 @@
     
     "chart": {
       "blue": {
-        "value": "hsl(218, 91%, 48%)",
-        "hsl": "218 91% 48%",
+        "value": "hsl(218, 91%, 45%)",
+        "hsl": "218 91% 45%",
         "hex": "#3B82F6",
         "cssVar": "--chart-blue",
         "description": "Chart color - blue"

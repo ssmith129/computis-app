@@ -258,28 +258,28 @@ export function EnhancedPieChartSections() {
   const gainLossData = [
     {
       value: 89650,
-      color: "#10b981",
+      color: "var(--chart-long-term-gains)",
       label: "Long-term Gains",
       trend: "up" as const,
       trendValue: "+12.5%",
     },
     {
       value: 45200,
-      color: "#3b82f6",
+      color: "var(--chart-short-term-gains)",
       label: "Short-term Gains",
       trend: "up" as const,
       trendValue: "+8.3%",
     },
     {
       value: -15400,
-      color: "#ef4444",
+      color: "var(--chart-realized-losses)",
       label: "Realized Losses",
       trend: "down" as const,
       trendValue: "-3.2%",
     },
     {
       value: 8750,
-      color: "#f59e0b",
+      color: "var(--chart-pending)",
       label: "Pending Review",
       trend: "stable" as const,
       trendValue: "No change",
@@ -289,28 +289,28 @@ export function EnhancedPieChartSections() {
   const transactionStatusData = [
     {
       value: 8543,
-      color: "#10b981",
+      color: "var(--chart-classified)",
       label: "Classified",
       trend: "up" as const,
       trendValue: "+234 today",
     },
     {
       value: 1205,
-      color: "#f59e0b",
+      color: "var(--chart-pending)",
       label: "Pending Review",
       trend: "down" as const,
       trendValue: "-45 today",
     },
     {
       value: 156,
-      color: "#ef4444",
+      color: "var(--chart-realized-losses)",
       label: "Failed Validation",
       trend: "down" as const,
       trendValue: "-12 today",
     },
     {
       value: 89,
-      color: "#6b7280",
+      color: "var(--chart-neutral)",
       label: "Archived",
       trend: "stable" as const,
       trendValue: "No change",
@@ -363,7 +363,7 @@ export function EnhancedPieChartSections() {
               <AnimatedPieChart
                 data={gainLossData}
                 size={160}
-                className="w-full max-w-[160px]"
+                className="w-full max-w-chart-md"
                 centerContent={
                   <div className="text-center">
                     <div className="text-lg sm:text-xl font-bold text-green-600">
@@ -418,7 +418,7 @@ export function EnhancedPieChartSections() {
               <AnimatedPieChart
                 data={transactionStatusData}
                 size={160}
-                className="w-full max-w-[160px]"
+                className="w-full max-w-chart-md"
                 centerContent={
                   <div className="text-center">
                     <div className="text-lg sm:text-xl font-bold text-gray-900">

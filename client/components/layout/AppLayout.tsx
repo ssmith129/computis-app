@@ -48,13 +48,13 @@ function AppLayoutInner({ children, activeItem }: AppLayoutProps) {
             width: `calc(100% - ${sidebarOffset})`,
           }}
         >
-          <div className="w-full max-w-[1920px] mx-auto overflow-hidden">
+          <div className="w-full max-w-content mx-auto overflow-hidden">
             <DashboardHeader />
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className="flex flex-1 min-h-0 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-[3.5rem] box-border">
+        <div className="flex flex-1 min-h-0 w-full max-w-content mx-auto overflow-x-hidden pt-[3.5rem] box-border">
           <SidebarInset className="flex flex-col min-w-0 flex-1 w-full max-w-full overflow-x-hidden box-border">
             {children}
           </SidebarInset>

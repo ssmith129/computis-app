@@ -88,16 +88,16 @@
 
   "componentHeights": {
     "button": {
-      "sm": { "value": "2.25rem", "px": "36px", "cssClass": "h-9" },
-      "default": { "value": "2.75rem", "px": "44px", "cssClass": "h-11" },
-      "lg": { "value": "3rem", "px": "48px", "cssClass": "h-12" }
+      "sm": { "value": "2rem", "px": "32px", "cssVar": "--button-height-sm", "cssClass": "h-btn-sm" },
+      "default": { "value": "2.25rem", "px": "36px", "cssVar": "--button-height-md", "cssClass": "h-btn-md" },
+      "lg": { "value": "2.75rem", "px": "44px", "cssVar": "--button-height-lg", "cssClass": "h-btn-lg" }
     },
     "input": {
-      "sm": { "value": "2.25rem", "px": "36px", "cssClass": "h-9" },
-      "default": { "value": "2.75rem", "px": "44px", "cssClass": "h-11" },
-      "lg": { "value": "3rem", "px": "48px", "cssClass": "h-12" }
+      "sm": { "value": "2rem", "px": "32px", "cssVar": "--input-height-sm", "cssClass": "h-input-sm" },
+      "default": { "value": "2.25rem", "px": "36px", "cssVar": "--input-height-md", "cssClass": "h-input-md" },
+      "lg": { "value": "2.75rem", "px": "44px", "cssVar": "--input-height-lg", "cssClass": "h-input-lg" }
     },
-    "tableRow": { "value": "3rem", "px": "48px", "cssClass": "h-12" },
+    "tableRow": { "value": "2.5rem", "px": "40px", "cssVar": "--table-row-height" },
     "header": { "value": "3.5rem", "px": "56px", "description": "App header height" }
   },
 

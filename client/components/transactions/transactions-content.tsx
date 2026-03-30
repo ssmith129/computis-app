@@ -20,11 +20,11 @@ export function TransactionsContent() {
 
     switch (filter) {
       case "High":
-        return "h-8 bg-green-100 text-green-800 hover:bg-green-200 border-green-200";
+        return "h-8 bg-success-bg text-success-text hover:bg-success-bg/80 border-success/30";
       case "Medium":
-        return "h-8 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200";
+        return "h-8 bg-warning-bg text-warning-text hover:bg-warning-bg/80 border-warning/30";
       case "Low":
-        return "h-8 bg-red-100 text-red-800 hover:bg-red-200 border-red-200";
+        return "h-8 bg-error-bg text-error-text hover:bg-error-bg/80 border-error/30";
       default:
         return "h-8";
     }

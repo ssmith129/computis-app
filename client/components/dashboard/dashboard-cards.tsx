@@ -30,7 +30,7 @@ export function DashboardCard({
     <Card className="p-6 bg-white">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-medium text-gray-600">{title}</h3>
-        <Button variant="ghost" size="icon" className="h-6 w-6">
+        <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="Card options">
           <MoreHorizontal className="h-4 w-4 text-gray-400" />
         </Button>
       </div>

@@ -72,6 +72,7 @@ export default {
           bg: "hsl(var(--info-bg))",
           text: "hsl(var(--info-text))",
         },
+        overlay: "hsl(var(--overlay))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

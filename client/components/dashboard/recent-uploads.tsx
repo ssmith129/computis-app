@@ -117,6 +117,7 @@ export function RecentUploads() {
                       variant="ghost"
                       size="icon"
                       className="h-11 w-11 touch-target"
+                      aria-label="Preview upload"
                       {...previewLongPress}
                     >
                       <Eye className="h-4 w-4 text-gray-400" />
@@ -125,6 +126,7 @@ export function RecentUploads() {
                       variant="ghost"
                       size="icon"
                       className="h-11 w-11 touch-target"
+                      aria-label="Download upload"
                     >
                       <Download className="h-4 w-4 text-gray-400" />
                     </Button>
@@ -132,6 +134,7 @@ export function RecentUploads() {
                       variant="ghost"
                       size="icon"
                       className="h-11 w-11 touch-target"
+                      aria-label="More options"
                     >
                       <MoreHorizontal className="h-4 w-4 text-gray-400" />
                     </Button>

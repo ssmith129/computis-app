@@ -349,6 +349,7 @@ export function EnhancedPieChartSections() {
                 variant="ghost"
                 size="icon"
                 className="h-6 w-6 hidden sm:flex"
+                aria-label="Gain/loss chart options"
               >
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>
@@ -404,6 +405,7 @@ export function EnhancedPieChartSections() {
                 variant="ghost"
                 size="icon"
                 className="h-6 w-6 hidden sm:flex"
+                aria-label="Transaction status chart options"
               >
                 <MoreHorizontal className="h-4 w-4 text-gray-400" />
               </Button>

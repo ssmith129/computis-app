@@ -45,6 +45,7 @@ export function ScrollingLayoutDemo() {
               size="icon"
               onClick={() => setNavOpen(!navOpen)}
               className="lg:hidden text-white hover:bg-white/10"
+              aria-label="Toggle navigation"
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -64,6 +65,7 @@ export function ScrollingLayoutDemo() {
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/10"
+              aria-label="Notifications"
             >
               <Bell className="h-5 w-5" />
             </Button>
@@ -71,6 +73,7 @@ export function ScrollingLayoutDemo() {
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/10"
+              aria-label="User profile"
             >
               <User className="h-5 w-5" />
             </Button>

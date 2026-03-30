@@ -135,9 +135,9 @@ const mockTransactions: Transaction[] = [
 ];
 
 const getConfidenceColor = (confidence: number) => {
-  if (confidence >= 70) return "text-green-600";
-  if (confidence >= 40) return "text-yellow-600";
-  return "text-red-600";
+  if (confidence >= 70) return "text-success";
+  if (confidence >= 40) return "text-warning";
+  return "text-error";
 };
 
 const getStatusVariant = (
@@ -160,11 +160,11 @@ const getStatusVariant = (
 const getClassificationBadgeColor = (classification: string) => {
   switch (classification) {
     case "Income":
-      return "bg-green-100 text-green-800";
+      return "bg-success-bg text-success-text";
     case "Trade":
-      return "bg-blue-100 text-blue-800";
+      return "bg-info-bg text-info-text";
     case "Expense":
-      return "bg-red-100 text-red-800";
+      return "bg-error-bg text-error-text";
     case "Transfer":
       return "bg-purple-100 text-purple-800";
     case "Unclassified":

@@ -75,7 +75,7 @@ export function AnomalyIssuesTable({
   const handleMarkResolved = (issueId: string) => {
     onUpdateIssue(issueId, {
       status: "Resolved",
-      statusColor: "bg-green-100 text-green-700",
+      statusColor: "bg-success-bg text-success-text",
     });
   };
 

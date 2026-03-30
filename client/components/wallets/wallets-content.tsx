@@ -62,11 +62,11 @@ const mockWallets = [
 const getStatusIcon = (status: string) => {
   switch (status) {
     case "Connected":
-      return <CheckCircle className="h-3.5 w-3.5 text-green-600" />;
+      return <CheckCircle className="h-3.5 w-3.5 text-success" />;
     case "Syncing":
-      return <Clock className="h-3.5 w-3.5 text-blue-600 animate-pulse" />;
+      return <Clock className="h-3.5 w-3.5 text-info animate-pulse" />;
     case "Error":
-      return <AlertCircle className="h-3.5 w-3.5 text-red-600" />;
+      return <AlertCircle className="h-3.5 w-3.5 text-error" />;
     default:
       return <Clock className="h-3.5 w-3.5 text-gray-500" />;
   }
@@ -75,11 +75,11 @@ const getStatusIcon = (status: string) => {
 const getStatusColor = (status: string) => {
   switch (status) {
     case "Connected":
-      return "text-green-600 bg-green-50 border-green-200";
+      return "text-success bg-success-bg border-success/30";
     case "Syncing":
-      return "text-blue-600 bg-blue-50 border-blue-200";
+      return "text-info bg-info-bg border-info/30";
     case "Error":
-      return "text-red-600 bg-red-50 border-red-200";
+      return "text-error bg-error-bg border-error/30";
     default:
       return "text-gray-600 bg-gray-50 border-gray-200";
   }
@@ -264,8 +264,8 @@ export function WalletsContent() {
             <div className="space-y-3">
               <div className="flex items-center justify-between py-2 border-b border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="bg-green-50 rounded-full p-1.5">
-                    <CheckCircle className="h-3.5 w-3.5 text-green-600" />
+                  <div className="bg-success-bg rounded-full p-1.5">
+                    <CheckCircle className="h-3.5 w-3.5 text-success" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">
@@ -280,7 +280,7 @@ export function WalletsContent() {
               </div>
               <div className="flex items-center justify-between py-2 border-b border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="bg-blue-50 rounded-full p-1.5">
+                  <div className="bg-info-bg rounded-full p-1.5">
                     <Clock className="h-3.5 w-3.5 text-blue-600 animate-pulse" />
                   </div>
                   <div>
@@ -296,8 +296,8 @@ export function WalletsContent() {
               </div>
               <div className="flex items-center justify-between py-2">
                 <div className="flex items-center gap-3">
-                  <div className="bg-green-50 rounded-full p-1.5">
-                    <CheckCircle className="h-3.5 w-3.5 text-green-600" />
+                  <div className="bg-success-bg rounded-full p-1.5">
+                    <CheckCircle className="h-3.5 w-3.5 text-success" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">

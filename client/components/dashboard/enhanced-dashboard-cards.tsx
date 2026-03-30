@@ -67,8 +67,8 @@ export function EnhancedDashboardCard({
 }: EnhancedDashboardCardProps) {
 
   const changeColorClass = {
-    positive: "text-green-600",
-    negative: "text-red-600",
+    positive: "text-success",
+    negative: "text-error",
     neutral: "text-gray-500",
   }[changeType];
 
@@ -203,8 +203,8 @@ export function EnhancedDashboardCards() {
       change: "+$12,300 this month",
       changeType: "positive" as const,
       icon: DollarSign,
-      iconColor: "text-green-600",
-      iconBg: "bg-green-100",
+      iconColor: "text-success",
+      iconBg: "bg-success-bg",
       chartData: [45, 52, 38, 65, 42, 73, 58, 67, 89, 76],
       chartColor: "green" as const,
       actionLabel: "View Gain/Loss Report",
@@ -218,8 +218,8 @@ export function EnhancedDashboardCards() {
       change: "-3 resolved today",
       changeType: "positive" as const,
       icon: AlertTriangle,
-      iconColor: "text-yellow-600",
-      iconBg: "bg-yellow-100",
+      iconColor: "text-warning",
+      iconBg: "bg-warning-bg",
       status: "warning" as const,
       badge: {
         text: "Action Required",
@@ -236,8 +236,8 @@ export function EnhancedDashboardCards() {
       change: "Updated 2 hours ago",
       changeType: "neutral" as const,
       icon: FileText,
-      iconColor: "text-blue-600",
-      iconBg: "bg-blue-100",
+      iconColor: "text-info",
+      iconBg: "bg-info-bg",
       progress: 95,
       status: "success" as const,
       actionLabel: "Download Forms",
@@ -266,8 +266,8 @@ export function EnhancedDashboardCards() {
       change: "+2,134 today",
       changeType: "positive" as const,
       icon: Activity,
-      iconColor: "text-blue-600",
-      iconBg: "bg-blue-100",
+      iconColor: "text-info",
+      iconBg: "bg-info-bg",
       chartData: [890, 920, 1100, 980, 1200, 1350, 1180, 1400, 1250, 1380],
       chartColor: "blue" as const,
       actionLabel: "View Transactions",
@@ -304,7 +304,7 @@ export function EnhancedDashboardCards() {
         <div className="flex items-center gap-2 flex-shrink-0">
           <Badge
             variant="secondary"
-            className="bg-green-100 text-green-700 text-xs"
+            className="bg-success-bg text-success-text text-xs"
           >
             <CheckCircle className="h-3 w-3 mr-1" />
             All Systems Operational
@@ -320,7 +320,7 @@ export function EnhancedDashboardCards() {
 
       {/* Quick Action Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 sm:mt-8">
-        <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 hover:shadow-lg transition-all duration-300">
+        <Card className="p-6 bg-gradient-to-r from-info-bg to-indigo-50 border-info/30 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-0">
             <div className="flex items-center justify-between">
               <div>
@@ -331,7 +331,7 @@ export function EnhancedDashboardCards() {
                   All transactions classified and forms generated
                 </p>
                 <Link to="/exports">
-                  <Button className="bg-blue-600 hover:bg-blue-700">
+                  <Button className="bg-primary hover:bg-primary-hover">
                     Generate Tax Package
                     <ArrowUpRight className="h-4 w-4 ml-2" />
                   </Button>
@@ -342,7 +342,7 @@ export function EnhancedDashboardCards() {
           </CardContent>
         </Card>
 
-        <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 hover:shadow-lg transition-all duration-300">
+        <Card className="p-6 bg-gradient-to-r from-success-bg to-emerald-50 border-success/30 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-0">
             <div className="flex items-center justify-between">
               <div>
@@ -355,7 +355,7 @@ export function EnhancedDashboardCards() {
                 <Link to="/wallet-ingestion">
                   <Button
                     variant="outline"
-                    className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                    className="border-success text-success hover:bg-success hover:text-white"
                   >
                     Upload Transactions
                     <ArrowUpRight className="h-4 w-4 ml-2" />

@@ -131,7 +131,7 @@ export default function HelpPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
-                <Book className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <Book className="h-8 w-8 text-info mx-auto mb-3" />
                 <h3 className="font-semibold text-gray-900 mb-2">
                   User Guides
                 </h3>
@@ -141,7 +141,7 @@ export default function HelpPage() {
 
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
-                <Video className="h-8 w-8 text-green-600 mx-auto mb-3" />
+                <Video className="h-8 w-8 text-success mx-auto mb-3" />
                 <h3 className="font-semibold text-gray-900 mb-2">
                   Video Tutorials
                 </h3>
@@ -159,7 +159,7 @@ export default function HelpPage() {
 
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
-                <MessageCircle className="h-8 w-8 text-orange-600 mx-auto mb-3" />
+                <MessageCircle className="h-8 w-8 text-warning mx-auto mb-3" />
                 <h3 className="font-semibold text-gray-900 mb-2">
                   Contact Support
                 </h3>
@@ -256,7 +256,7 @@ export default function HelpPage() {
                   Get instant help from our support team during business hours.
                 </p>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-success" />
                   <span>Average response time: 2 minutes</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -283,7 +283,7 @@ export default function HelpPage() {
                   hours.
                 </p>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-success" />
                   <span>Average response time: 4 hours</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -306,7 +306,7 @@ export default function HelpPage() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <Video className="h-5 w-5 text-blue-600" />
+                  <Video className="h-5 w-5 text-info" />
                   <div>
                     <p className="font-medium text-sm">Video Library</p>
                     <p className="text-xs text-gray-500">Watch tutorials</p>
@@ -314,7 +314,7 @@ export default function HelpPage() {
                 </div>
 
                 <div className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                  <Book className="h-5 w-5 text-green-600" />
+                  <Book className="h-5 w-5 text-success" />
                   <div>
                     <p className="font-medium text-sm">Knowledge Base</p>
                     <p className="text-xs text-gray-500">Browse articles</p>

@@ -145,27 +145,27 @@ export function EnhancedDashboard() {
                         <div
                           className={`p-2 rounded-lg ${
                             metric.color === "blue"
-                              ? "bg-blue-100"
+                              ? "bg-info-bg"
                               : metric.color === "green"
-                                ? "bg-green-100"
+                                ? "bg-success-bg"
                                 : metric.color === "red"
-                                  ? "bg-red-100"
+                                  ? "bg-error-bg"
                                   : metric.color === "purple"
                                     ? "bg-purple-100"
-                                    : "bg-gray-100"
+                                    : "bg-muted"
                           }`}
                         >
                           <IconComponent
                             className={`h-4 w-4 ${
                               metric.color === "blue"
-                                ? "text-blue-600"
+                                ? "text-info"
                                 : metric.color === "green"
-                                  ? "text-green-600"
+                                  ? "text-success"
                                   : metric.color === "red"
-                                    ? "text-red-600"
+                                    ? "text-error"
                                     : metric.color === "purple"
                                       ? "text-purple-600"
-                                      : "text-gray-600"
+                                      : "text-muted-foreground"
                             }`}
                           />
                         </div>
@@ -178,10 +178,10 @@ export function EnhancedDashboard() {
                       <div
                         className={`text-sm flex items-center gap-1 ${
                           metric.trend === "up"
-                            ? "text-green-600"
+                            ? "text-success"
                             : metric.trend === "down"
-                              ? "text-red-600"
-                              : "text-gray-600"
+                              ? "text-error"
+                              : "text-muted-foreground"
                         }`}
                       >
                         {metric.trend === "up" && (
@@ -249,23 +249,23 @@ export function EnhancedDashboard() {
                         <div
                           className={`p-2 rounded-lg transition-colors group-hover:scale-110 ${
                             action.color === "blue"
-                              ? "bg-blue-100 group-hover:bg-blue-200"
+                              ? "bg-info-bg group-hover:bg-info-bg/80"
                               : action.color === "green"
-                                ? "bg-green-100 group-hover:bg-green-200"
+                                ? "bg-success-bg group-hover:bg-success-bg/80"
                                 : action.color === "purple"
                                   ? "bg-purple-100 group-hover:bg-purple-200"
-                                  : "bg-orange-100 group-hover:bg-orange-200"
+                                  : "bg-warning-bg group-hover:bg-warning-bg/80"
                           }`}
                         >
                           <IconComponent
                             className={`h-5 w-5 ${
                               action.color === "blue"
-                                ? "text-blue-600"
+                                ? "text-info"
                                 : action.color === "green"
-                                  ? "text-green-600"
+                                  ? "text-success"
                                   : action.color === "purple"
                                     ? "text-purple-600"
-                                    : "text-orange-600"
+                                    : "text-warning"
                             }`}
                           />
                         </div>

@@ -11,7 +11,7 @@ const mockUploads = [
     exchange: "Coinbase",
     uploaded: "2023-10-24",
     status: "Imported",
-    statusColor: "bg-green-100 text-green-800",
+    statusColor: "bg-success-bg text-success-text",
     transactions: 124
   },
   {
@@ -20,7 +20,7 @@ const mockUploads = [
     exchange: "Binance",
     uploaded: "2023-10-15",
     status: "Mapping Required",
-    statusColor: "bg-yellow-100 text-yellow-800",
+    statusColor: "bg-warning-bg text-warning-text",
     transactions: 87
   },
   {
@@ -29,7 +29,7 @@ const mockUploads = [
     exchange: "Kraken",
     uploaded: "2023-09-30",
     status: "Validation Failed",
-    statusColor: "bg-red-100 text-red-800",
+    statusColor: "bg-error-bg text-error-text",
     transactions: 63
   }
 ];

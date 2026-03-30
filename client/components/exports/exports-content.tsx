@@ -73,7 +73,7 @@ export function ExportsContent() {
               <Button
                 variant="link"
                 size="sm"
-                className="text-blue-600 hover:text-blue-700 px-2"
+                className="text-primary hover:text-primary-hover px-2"
                 onClick={() => setAuditDrawerOpen(true)}
                 aria-expanded={auditDrawerOpen}
                 aria-controls="audit-drawer"

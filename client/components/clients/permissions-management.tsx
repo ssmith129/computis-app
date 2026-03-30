@@ -328,22 +328,22 @@ const mockAuditTrail: AuditEntry[] = [
 
 const getPermissionIcon = (allowed: boolean) => {
   return allowed ? (
-    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-100">
-      <Check className="h-4 w-4 text-green-600" />
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-success-bg">
+      <Check className="h-4 w-4 text-success" />
     </div>
   ) : (
-    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100">
-      <X className="h-4 w-4 text-red-600" />
+    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-error-bg">
+      <X className="h-4 w-4 text-error" />
     </div>
   );
 };
 
 const getRoleColor = (color: string) => {
   const colors: Record<string, string> = {
-    blue: "bg-blue-100 text-blue-700",
+    blue: "bg-info-bg text-info-text",
     purple: "bg-purple-100 text-purple-700",
-    green: "bg-green-100 text-green-700",
-    orange: "bg-orange-100 text-orange-700",
+    green: "bg-success-bg text-success-text",
+    orange: "bg-warning-bg text-warning-text",
   };
   return colors[color] || "bg-gray-100 text-gray-700";
 };
@@ -548,7 +548,7 @@ export function PermissionsManagement() {
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
-                          className="text-red-600"
+                          className="text-error"
                           onClick={() => {
                             setSelectedRole(role);
                             setDeleteDialogOpen(true);
@@ -1040,9 +1040,9 @@ export function PermissionsManagement() {
                 )}
               </div>
             </div>
-            <div className="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-200">
-              <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5" />
-              <div className="text-sm text-blue-900">
+            <div className="flex items-start gap-2 p-3 rounded-lg bg-info-bg border border-info/30">
+              <AlertCircle className="h-5 w-5 text-info mt-0.5" />
+              <div className="text-sm text-info-text">
                 <p className="font-medium">Note:</p>
                 <p>
                   Bulk role assignment will override existing roles for selected

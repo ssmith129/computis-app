@@ -90,13 +90,13 @@ const quickActions = [
     title: "Bulk Classify",
     description: "Apply classification to all",
     icon: Plus,
-    color: "text-green-600 bg-green-50 hover:bg-green-100",
+    color: "text-success bg-success-bg hover:bg-success-bg/80",
   },
   {
     title: "Create Rule",
     description: "Avoid future issues",
     icon: Plus,
-    color: "text-blue-600 bg-blue-50 hover:bg-blue-100",
+    color: "text-info bg-info-bg hover:bg-info-bg/80",
   },
   {
     title: "Update FMV",
@@ -115,11 +115,11 @@ const quickActions = [
 const getPriorityStyles = (priority: string) => {
   switch (priority) {
     case "High":
-      return "bg-red-50 text-red-700 border-red-200";
+      return "bg-error-bg text-error-text border-error/30";
     case "Medium":
       return "bg-amber-50 text-amber-700 border-amber-200";
     case "Low":
-      return "bg-blue-50 text-blue-700 border-blue-200";
+      return "bg-info-bg text-info-text border-info/30";
     default:
       return "bg-gray-50 text-gray-700 border-gray-200";
   }
@@ -128,11 +128,11 @@ const getPriorityStyles = (priority: string) => {
 const getStatusStyles = (status: string) => {
   switch (status) {
     case "Open":
-      return "bg-yellow-50 text-yellow-700 border-yellow-200";
+      return "bg-warning-bg text-warning-text border-warning/30";
     case "In Progress":
-      return "bg-blue-50 text-blue-700 border-blue-200";
+      return "bg-info-bg text-info-text border-info/30";
     case "Resolved":
-      return "bg-green-50 text-green-700 border-green-200";
+      return "bg-success-bg text-success-text border-success/30";
     default:
       return "bg-gray-50 text-gray-700 border-gray-200";
   }
@@ -189,8 +189,8 @@ export function AnomalyIssueDetails({
               <ArrowLeft className="h-4 w-4 mr-2" />
             </Button>
             <div className="flex items-center gap-3">
-              <div className="bg-red-50 rounded-lg p-2">
-                <TrendingUp className="h-5 w-5 text-red-600" />
+              <div className="bg-error-bg rounded-lg p-2">
+                <TrendingUp className="h-5 w-5 text-error" />
               </div>
               <div>
                 <h1 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
@@ -218,7 +218,7 @@ export function AnomalyIssueDetails({
               variant="default"
               size="sm"
               onClick={handleApplyRecommendation}
-              className="h-9 w-fit bg-blue-600 hover:bg-blue-700 text-white"
+              className="h-9 w-fit bg-primary hover:bg-primary-hover text-white"
               aria-label="Apply AI recommendation"
             >
               <Sparkles className="h-4 w-4 mr-2" />
@@ -227,7 +227,7 @@ export function AnomalyIssueDetails({
             <Button
               size="sm"
               onClick={handleResolve}
-              className="h-9 bg-green-600 hover:bg-green-700 text-white"
+              className="h-9 bg-success hover:bg-success/90 text-white"
             >
               <CheckCircle2 className="h-4 w-4 mr-2" />
               Mark as Resolved
@@ -305,7 +305,7 @@ export function AnomalyIssueDetails({
           <Card className="border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-white hover:shadow-md transition-shadow">
             <CardHeader className="pb-4 px-5 pt-5">
               <CardTitle className="text-base font-semibold text-gray-900 flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-blue-600" />
+                <Sparkles className="h-4 w-4 text-primary" />
                 AI Recommendation
               </CardTitle>
             </CardHeader>
@@ -334,7 +334,7 @@ export function AnomalyIssueDetails({
                   <div className="flex items-center gap-2">
                     <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-green-500 rounded-full transition-all"
+                        className="h-full bg-success rounded-full transition-all"
                         style={{ width: `${issueData.confidence}%` }}
                       />
                     </div>
@@ -440,7 +440,7 @@ export function AnomalyIssueDetails({
                         {transaction.date}
                       </TableCell>
                       <TableCell>
-                        <Badge className="bg-blue-50 text-blue-700 border-blue-200 border text-xs">
+                        <Badge className="bg-info-bg text-info-text border-info/30 border text-xs">
                           {transaction.type}
                         </Badge>
                       </TableCell>
@@ -448,12 +448,12 @@ export function AnomalyIssueDetails({
                         {transaction.amount}
                       </TableCell>
                       <TableCell>
-                        <Badge className="bg-green-50 text-green-700 border-green-200 border text-xs">
+                        <Badge className="bg-success-bg text-success-text border-success/30 border text-xs">
                           {transaction.fmv}
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <Badge className="bg-orange-50 text-orange-700 border-orange-200 border text-xs">
+                        <Badge className="bg-warning-bg text-warning-text border-warning/30 border text-xs">
                           {transaction.classification}
                         </Badge>
                       </TableCell>

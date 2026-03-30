@@ -59,7 +59,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 23,
     status: "Active",
-    typeColor: "bg-green-100 text-green-800",
+    typeColor: "bg-success-bg text-success-text",
   },
   {
     id: "2",
@@ -69,7 +69,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 8,
     status: "Active",
-    typeColor: "bg-blue-100 text-blue-800",
+    typeColor: "bg-info-bg text-info-text",
   },
   {
     id: "3",
@@ -89,7 +89,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 16,
     status: "Paused",
-    typeColor: "bg-red-100 text-red-800",
+    typeColor: "bg-error-bg text-error-text",
   },
   {
     id: "5",
@@ -99,7 +99,7 @@ const initialRules = [
     lastRun: "2023-10-24",
     affectedTransactions: 7,
     status: "Active",
-    typeColor: "bg-yellow-100 text-yellow-800",
+    typeColor: "bg-warning-bg text-warning-text",
   },
 ];
 
@@ -308,7 +308,7 @@ export function RuleEngineTable({ activeTab }: RuleEngineTableProps) {
                           Run Now
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          className="text-red-600"
+                          className="text-error"
                           onClick={() => confirmDelete(rule.id)}
                         >
                           <Trash2 className="mr-2 h-4 w-4" />

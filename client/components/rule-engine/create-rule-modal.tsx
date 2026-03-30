@@ -333,20 +333,20 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
 
                     <div className="flex items-center gap-2">
                       {action.classification && (
-                        <Badge className="bg-blue-100 text-blue-800">
+                        <Badge className="bg-info-bg text-info-text">
                           {action.classification}
                         </Badge>
                       )}
                       {action.tags?.map((tag) => (
                         <Badge
                           key={tag}
-                          className="bg-green-100 text-green-800"
+                          className="bg-success-bg text-success-text"
                         >
                           {tag}
                         </Badge>
                       ))}
                       {action.status && (
-                        <Badge className="bg-yellow-100 text-yellow-800">
+                        <Badge className="bg-warning-bg text-warning-text">
                           {action.status}
                         </Badge>
                       )}
@@ -471,17 +471,17 @@ export function CreateRuleModal({ open, onOpenChange }: CreateRuleModalProps) {
                     <div className="text-sm text-muted-foreground">
                       Classification:
                     </div>
-                    <div className="text-sm text-green-600">Income (23)</div>
+                    <div className="text-sm text-success">Income (23)</div>
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Tags:</div>
-                    <div className="text-sm text-green-600">
+                    <div className="text-sm text-success">
                       Mining, Income (23)
                     </div>
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Status:</div>
-                    <div className="text-sm text-green-600">Confirmed (23)</div>
+                    <div className="text-sm text-success">Confirmed (23)</div>
                   </div>
                 </CardContent>
               </Card>

@@ -43,15 +43,15 @@ const anomalyFlags: AnomalyFlag[] = [
 ];
 
 const iconBgColors = {
-  error: "bg-red-100",
-  warning: "bg-yellow-50",
-  info: "bg-blue-50",
+  error: "bg-error-bg",
+  warning: "bg-warning-bg",
+  info: "bg-info-bg",
 };
 
 const iconColors = {
-  error: "text-red-600",
-  warning: "text-yellow-600", 
-  info: "text-blue-600",
+  error: "text-error",
+  warning: "text-warning",
+  info: "text-info",
 };
 
 export function AnomalyFlags() {
@@ -59,7 +59,7 @@ export function AnomalyFlags() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-gray-900">Anomaly Flags</h2>
-        <Button variant="link" className="text-blue-600 p-0 h-auto">
+        <Button variant="link" className="text-primary p-0 h-auto">
           View All
         </Button>
       </div>
@@ -84,7 +84,7 @@ export function AnomalyFlags() {
 
               {/* Actions */}
               <div className="flex items-center justify-between pt-1">
-                <Button variant="link" className="text-blue-600 p-0 h-auto text-sm">
+                <Button variant="link" className="text-primary p-0 h-auto text-sm">
                   {flag.primaryAction}
                 </Button>
                 {flag.secondaryAction && (

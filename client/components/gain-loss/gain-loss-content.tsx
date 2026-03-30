@@ -99,21 +99,21 @@ const monthlyData = [
 ];
 
 const getGainLossColor = (amount: number) => {
-  if (amount > 0) return "text-green-600";
-  if (amount < 0) return "text-red-600";
-  return "text-gray-600";
+  if (amount > 0) return "text-success";
+  if (amount < 0) return "text-error";
+  return "text-muted-foreground";
 };
 
 const getGainLossIcon = (amount: number) => {
-  if (amount > 0) return <ArrowUpRight className="h-4 w-4 text-green-600" />;
-  if (amount < 0) return <ArrowDownRight className="h-4 w-4 text-red-600" />;
-  return <Equal className="h-4 w-4 text-gray-600" />;
+  if (amount > 0) return <ArrowUpRight className="h-4 w-4 text-success" />;
+  if (amount < 0) return <ArrowDownRight className="h-4 w-4 text-error" />;
+  return <Equal className="h-4 w-4 text-muted-foreground" />;
 };
 
 const getGainLossBackground = (amount: number) => {
-  if (amount > 0) return "bg-green-50 border-green-200";
-  if (amount < 0) return "bg-red-50 border-red-200";
-  return "bg-gray-50 border-gray-200";
+  if (amount > 0) return "bg-success-bg border-success/30";
+  if (amount < 0) return "bg-error-bg border-error/30";
+  return "bg-muted border-border";
 };
 
 export function GainLossContent() {
@@ -224,30 +224,30 @@ export function GainLossContent() {
             </CardContent>
           </Card>
 
-          <Card className="bg-green-50 border-green-200">
+          <Card className="bg-success-bg border-success/30">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold font-mono tabular-nums text-green-600">
+                  <div className="text-2xl font-bold font-mono tabular-nums text-success">
                     ${totalGains.toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">Total Gains</p>
                 </div>
-                <TrendingUp className="h-5 w-5 text-green-600" />
+                <TrendingUp className="h-5 w-5 text-success" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-red-50 border-red-200">
+          <Card className="bg-error-bg border-error/30">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold font-mono tabular-nums text-red-600">
+                  <div className="text-2xl font-bold font-mono tabular-nums text-error">
                     ${Math.abs(totalLosses).toLocaleString()}
                   </div>
                   <p className="text-sm text-muted-foreground">Total Losses</p>
                 </div>
-                <TrendingDown className="h-5 w-5 text-red-600" />
+                <TrendingDown className="h-5 w-5 text-error" />
               </div>
             </CardContent>
           </Card>
@@ -259,7 +259,7 @@ export function GainLossContent() {
                   <div className="text-2xl font-bold font-mono tabular-nums">{totalTransactions}</div>
                   <p className="text-sm text-muted-foreground">Transactions</p>
                 </div>
-                <FileText className="h-5 w-5 text-blue-600" />
+                <FileText className="h-5 w-5 text-info" />
               </div>
             </CardContent>
           </Card>
@@ -358,8 +358,8 @@ export function GainLossContent() {
                       <TableRow key={item.symbol}>
                         <TableCell>
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                              <span className="text-xs font-bold text-blue-600">
+                            <div className="w-8 h-8 rounded-full bg-info-bg flex items-center justify-center">
+                              <span className="text-xs font-bold text-info">
                                 {item.symbol}
                               </span>
                             </div>
@@ -371,16 +371,16 @@ export function GainLossContent() {
                             </div>
                           </div>
                         </TableCell>
-                        <TableCell className="text-green-600">
+                        <TableCell className="text-success">
                           ${item.shortTermGain.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-red-600">
+                        <TableCell className="text-error">
                           ${item.shortTermLoss.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-green-600">
+                        <TableCell className="text-success">
                           ${item.longTermGain.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-red-600">
+                        <TableCell className="text-error">
                           ${item.longTermLoss.toLocaleString()}
                         </TableCell>
                         <TableCell
@@ -430,10 +430,10 @@ export function GainLossContent() {
                         <TableCell className="font-medium">
                           {month.month}
                         </TableCell>
-                        <TableCell className="text-green-600">
+                        <TableCell className="text-success">
                           ${month.gains.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-red-600">
+                        <TableCell className="text-error">
                           ${month.losses.toLocaleString()}
                         </TableCell>
                         <TableCell
@@ -444,7 +444,7 @@ export function GainLossContent() {
                         <TableCell className="w-24">
                           <Progress
                             value={(Math.abs(month.net) / 20000) * 100}
-                            className={`h-2 ${month.net >= 0 ? "text-green-600" : "text-red-600"}`}
+                            className={`h-2 ${month.net >= 0 ? "text-success" : "text-error"}`}
                           />
                         </TableCell>
                       </TableRow>
@@ -474,21 +474,21 @@ export function GainLossContent() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h4 className="font-medium text-blue-900">
+              <div className="p-4 bg-info-bg rounded-lg border border-info/30">
+                <h4 className="font-medium text-info-text">
                   Short-term Tax Rate
                 </h4>
-                <p className="text-2xl font-bold text-blue-600">22-37%</p>
-                <p className="text-sm text-blue-700">
+                <p className="text-2xl font-bold text-info">22-37%</p>
+                <p className="text-sm text-info-text">
                   Taxed as ordinary income
                 </p>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                <h4 className="font-medium text-green-900">
+              <div className="p-4 bg-success-bg rounded-lg border border-success/30">
+                <h4 className="font-medium text-success-text">
                   Long-term Tax Rate
                 </h4>
-                <p className="text-2xl font-bold text-green-600">0-20%</p>
-                <p className="text-sm text-green-700">Preferential tax rates</p>
+                <p className="text-2xl font-bold text-success">0-20%</p>
+                <p className="text-sm text-success-text">Preferential tax rates</p>
               </div>
               <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
                 <h4 className="font-medium text-purple-900">

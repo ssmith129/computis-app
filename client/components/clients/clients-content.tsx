@@ -67,7 +67,7 @@ const mockClients = [
     status: "Active",
     lastActivity: "Today, 10:25 AM",
     icon: Building2,
-    color: "text-blue-600",
+    color: "text-info",
   },
   {
     id: "2",
@@ -89,7 +89,7 @@ const mockClients = [
     status: "Active",
     lastActivity: "Oct 25, 2023",
     icon: User,
-    color: "text-green-600",
+    color: "text-success",
   },
   {
     id: "4",
@@ -100,7 +100,7 @@ const mockClients = [
     status: "Pending",
     lastActivity: "Oct 22, 2023",
     icon: Building2,
-    color: "text-orange-600",
+    color: "text-warning",
   },
   {
     id: "5",
@@ -111,7 +111,7 @@ const mockClients = [
     status: "Archived",
     lastActivity: "Oct 15, 2023",
     icon: User,
-    color: "text-red-600",
+    color: "text-error",
   },
 ];
 
@@ -188,11 +188,11 @@ const getStatusBadge = (status: string) => {
   switch (status) {
     case "Active":
       return (
-        <Badge className="bg-green-100 text-green-700 border-0">{status}</Badge>
+        <Badge className="bg-success-bg text-success-text border-0">{status}</Badge>
       );
     case "Pending":
       return (
-        <Badge className="bg-yellow-100 text-yellow-700 border-0">
+        <Badge className="bg-warning-bg text-warning-text border-0">
           {status}
         </Badge>
       );
@@ -202,7 +202,7 @@ const getStatusBadge = (status: string) => {
       );
     case "In Progress":
       return (
-        <Badge className="bg-blue-100 text-blue-700 border-0">{status}</Badge>
+        <Badge className="bg-info-bg text-info-text border-0">{status}</Badge>
       );
     default:
       return <Badge variant="outline">{status}</Badge>;
@@ -211,14 +211,14 @@ const getStatusBadge = (status: string) => {
 
 const getPermissionIcon = (allowed: boolean) => {
   return allowed ? (
-    <Check className="h-4 w-4 text-green-500" />
+    <Check className="h-4 w-4 text-success" />
   ) : (
-    <X className="h-4 w-4 text-red-500" />
+    <X className="h-4 w-4 text-error" />
   );
 };
 
 const getPermissionColor = (allowed: boolean) => {
-  return allowed ? "text-green-500" : "text-red-400";
+  return allowed ? "text-success" : "text-error";
 };
 
 export function ClientsContent() {
@@ -462,7 +462,7 @@ export function ClientsContent() {
                           <TableCell>
                             <div className="flex items-center gap-3">
                               <div
-                                className={`p-2 rounded-lg ${client.type === "Firm" ? "bg-blue-100" : "bg-green-100"}`}
+                                className={`p-2 rounded-lg ${client.type === "Firm" ? "bg-info-bg" : "bg-success-bg"}`}
                               >
                                 <IconComponent
                                   className={`h-4 w-4 ${client.color}`}
@@ -476,8 +476,8 @@ export function ClientsContent() {
                               variant="secondary"
                               className={
                                 client.type === "Firm"
-                                  ? "bg-blue-100 text-blue-700"
-                                  : "bg-green-100 text-green-700"
+                                  ? "bg-info-bg text-info-text"
+                                  : "bg-success-bg text-success-text"
                               }
                             >
                               {client.type}
@@ -658,7 +658,7 @@ export function ClientsContent() {
                               <Users className="mr-2 h-4 w-4" />
                               View Activity
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-600">
+                            <DropdownMenuItem className="text-error">
                               <X className="mr-2 h-4 w-4" />
                               Remove Access
                             </DropdownMenuItem>
@@ -713,7 +713,7 @@ export function ClientsContent() {
                               <Users className="mr-2 h-4 w-4" />
                               View Activity
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-600">
+                            <DropdownMenuItem className="text-error">
                               <X className="mr-2 h-4 w-4" />
                               Remove Access
                             </DropdownMenuItem>
@@ -744,7 +744,7 @@ export function ClientsContent() {
                         3 days ago
                       </TableCell>
                       <TableCell>
-                        <Badge className="bg-yellow-100 text-yellow-700 border-0">
+                        <Badge className="bg-warning-bg text-warning-text border-0">
                           View Only
                         </Badge>
                       </TableCell>
@@ -768,7 +768,7 @@ export function ClientsContent() {
                               <Users className="mr-2 h-4 w-4" />
                               View Activity
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-600">
+                            <DropdownMenuItem className="text-error">
                               <X className="mr-2 h-4 w-4" />
                               Remove Access
                             </DropdownMenuItem>
@@ -788,24 +788,24 @@ export function ClientsContent() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-lg border bg-blue-50 dark:bg-blue-950/30">
-                    <div className="text-2xl font-semibold text-blue-600 dark:text-blue-400">
+                  <div className="p-4 rounded-lg border bg-info-bg dark:bg-info-bg/30">
+                    <div className="text-2xl font-semibold text-info dark:text-info">
                       2
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">
                       Full Access Members
                     </div>
                   </div>
-                  <div className="p-4 rounded-lg border bg-yellow-50 dark:bg-yellow-950/30">
-                    <div className="text-2xl font-semibold text-yellow-600 dark:text-yellow-400">
+                  <div className="p-4 rounded-lg border bg-warning-bg dark:bg-warning-bg/30">
+                    <div className="text-2xl font-semibold text-warning dark:text-warning">
                       1
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">
                       Limited Access Members
                     </div>
                   </div>
-                  <div className="p-4 rounded-lg border bg-green-50 dark:bg-green-950/30">
-                    <div className="text-2xl font-semibold text-green-600 dark:text-green-400">
+                  <div className="p-4 rounded-lg border bg-success-bg dark:bg-success-bg/30">
+                    <div className="text-2xl font-semibold text-success dark:text-success">
                       3
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">
@@ -956,9 +956,9 @@ export function ClientsContent() {
             </Card>
 
             {/* Danger Zone */}
-            <Card className="border-red-200 dark:border-red-900">
+            <Card className="border-error/30 dark:border-error/30">
               <CardHeader>
-                <CardTitle className="text-red-600 dark:text-red-400">
+                <CardTitle className="text-error dark:text-error">
                   Danger Zone
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -1013,18 +1013,18 @@ export function ClientsContent() {
                       <div
                         className={`p-2 rounded-lg ${
                           role.color === "blue"
-                            ? "bg-blue-100"
+                            ? "bg-info-bg"
                             : role.color === "green"
-                              ? "bg-green-100"
+                              ? "bg-success-bg"
                               : "bg-purple-100"
                         }`}
                       >
                         <UserCheck
                           className={`h-5 w-5 ${
                             role.color === "blue"
-                              ? "text-blue-600"
+                              ? "text-info"
                               : role.color === "green"
-                                ? "text-green-600"
+                                ? "text-success"
                                 : "text-purple-600"
                           }`}
                         />
@@ -1107,7 +1107,7 @@ export function ClientsContent() {
                   <TableRow key={index}>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <Building className="h-4 w-4 text-blue-600" />
+                        <Building className="h-4 w-4 text-info" />
                         <span className="font-medium">{entity.name}</span>
                       </div>
                     </TableCell>
@@ -1115,7 +1115,7 @@ export function ClientsContent() {
                     <TableCell>
                       <Badge
                         variant="secondary"
-                        className="bg-blue-100 text-blue-700 border-0"
+                        className="bg-info-bg text-info-text border-0"
                       >
                         {entity.type}
                       </Badge>

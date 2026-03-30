@@ -52,8 +52,8 @@ export default function MyAccount() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center gap-6">
-                <Avatar className="h-20 w-20 bg-blue-100">
-                  <AvatarFallback className="bg-blue-100 text-blue-600 text-2xl">
+                <Avatar className="h-20 w-20 bg-info-bg">
+                  <AvatarFallback className="bg-info-bg text-info text-2xl">
                     JS
                   </AvatarFallback>
                 </Avatar>
@@ -268,10 +268,10 @@ export default function MyAccount() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-info-bg rounded-lg">
                 <div>
-                  <h4 className="font-medium text-blue-900">Pro Plan</h4>
-                  <p className="text-sm text-blue-700">
+                  <h4 className="font-medium text-info-text">Pro Plan</h4>
+                  <p className="text-sm text-info-text">
                     $29.99/month • Next billing: Feb 15, 2024
                   </p>
                 </div>

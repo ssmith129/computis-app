@@ -43,8 +43,8 @@ export function UploadArea() {
         <div className="text-center space-y-6">
           {/* Icon */}
           <div className="flex justify-center">
-            <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center">
-              <FileSpreadsheet className="w-8 h-8 text-yellow-600" />
+            <div className="w-20 h-20 bg-warning-bg rounded-full flex items-center justify-center">
+              <FileSpreadsheet className="w-8 h-8 text-warning" />
             </div>
           </div>
 

@@ -9,8 +9,8 @@ const anomalyFlags = [
     icon: AlertTriangle,
     title: "Volume Spike",
     description: "Aug 14, 2022",
-    iconBg: "bg-red-100",
-    iconColor: "text-red-600",
+    iconBg: "bg-error-bg",
+    iconColor: "text-error",
     actionLabel: "Investigate",
   },
   {
@@ -19,8 +19,8 @@ const anomalyFlags = [
     icon: TrendingUp,
     title: "Missing FMV",
     description: "3 transactions",
-    iconBg: "bg-yellow-50",
-    iconColor: "text-yellow-600",
+    iconBg: "bg-warning-bg",
+    iconColor: "text-warning",
     actionLabel: "Fix Values",
   },
   {
@@ -29,8 +29,8 @@ const anomalyFlags = [
     icon: Users,
     title: "Rule Conflict",
     description: "2 transactions",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
+    iconBg: "bg-info-bg",
+    iconColor: "text-info",
     actionLabel: "Resolve",
   },
 ];
@@ -58,7 +58,7 @@ export function TransactionAnomalyFlags() {
               <Button
                 size="sm"
                 variant="link"
-                className="text-blue-600 p-0 h-auto text-sm shrink-0"
+                className="text-primary p-0 h-auto text-sm shrink-0"
               >
                 {flag.actionLabel}
               </Button>

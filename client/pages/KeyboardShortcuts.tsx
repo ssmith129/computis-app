@@ -363,31 +363,31 @@ export default function KeyboardShortcuts() {
                       <div
                         className={`p-2 rounded-lg ${
                           category.color === "blue"
-                            ? "bg-blue-100"
+                            ? "bg-info-bg"
                             : category.color === "green"
-                              ? "bg-green-100"
+                              ? "bg-success-bg"
                               : category.color === "purple"
                                 ? "bg-purple-100"
                                 : category.color === "orange"
-                                  ? "bg-orange-100"
+                                  ? "bg-warning-bg"
                                   : category.color === "red"
-                                    ? "bg-red-100"
-                                    : "bg-gray-100"
+                                    ? "bg-error-bg"
+                                    : "bg-muted"
                         }`}
                       >
                         <IconComponent
                           className={`h-4 w-4 ${
                             category.color === "blue"
-                              ? "text-blue-600"
+                              ? "text-info"
                               : category.color === "green"
-                                ? "text-green-600"
+                                ? "text-success"
                                 : category.color === "purple"
                                   ? "text-purple-600"
                                   : category.color === "orange"
-                                    ? "text-orange-600"
+                                    ? "text-warning"
                                     : category.color === "red"
-                                      ? "text-red-600"
-                                      : "text-gray-600"
+                                      ? "text-error"
+                                      : "text-muted-foreground"
                           }`}
                         />
                       </div>

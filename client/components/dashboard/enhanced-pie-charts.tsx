@@ -226,8 +226,8 @@ export function EnhancedLegend({
                   <span
                     className={cn(
                       "text-xs truncate",
-                      item.trend === "up" && "text-green-600",
-                      item.trend === "down" && "text-red-600",
+                      item.trend === "up" && "text-success",
+                      item.trend === "down" && "text-error",
                       item.trend === "stable" && "text-gray-500",
                     )}
                   >
@@ -340,7 +340,7 @@ export function EnhancedPieChartSections() {
             <div className="flex items-center gap-2 flex-shrink-0">
               <Badge
                 variant="secondary"
-                className="bg-green-100 text-green-700 text-xs"
+                className="bg-success-bg text-success-text text-xs"
               >
                 <TrendingUp className="h-3 w-3 mr-1" />
                 Net Positive
@@ -393,7 +393,7 @@ export function EnhancedPieChartSections() {
             <div className="flex items-center gap-2 flex-shrink-0">
               <Badge
                 variant="secondary"
-                className="bg-blue-100 text-blue-700 text-xs"
+                className="bg-info-bg text-info-text text-xs"
               >
                 {Math.round(
                   (transactionStatusData[0].value / totalTransactions) * 100,

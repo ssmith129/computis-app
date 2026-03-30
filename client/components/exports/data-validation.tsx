@@ -8,8 +8,8 @@ const validationItems = [
     title: "Transaction Classification",
     status: "Passed",
     value: 100,
-    color: "text-green-600",
-    bgColor: "bg-green-500",
+    color: "text-success",
+    bgColor: "bg-success",
     icon: CheckCircle,
     description: "All classifications validated"
   },
@@ -18,8 +18,8 @@ const validationItems = [
     title: "FMV Data Accuracy",
     status: "Warning",
     value: 85,
-    color: "text-yellow-600",
-    bgColor: "bg-yellow-500",
+    color: "text-warning",
+    bgColor: "bg-warning",
     icon: AlertTriangle,
     description: "Some pricing data missing"
   },
@@ -28,8 +28,8 @@ const validationItems = [
     title: "AI Classification Confidence", 
     status: "Passed",
     value: 92,
-    color: "text-green-600",
-    bgColor: "bg-green-500",
+    color: "text-success",
+    bgColor: "bg-success",
     icon: CheckCircle,
     description: "High confidence scores"
   }
@@ -38,11 +38,11 @@ const validationItems = [
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "Passed":
-      return <Badge className="bg-green-100 text-green-800">{status}</Badge>;
+      return <Badge className="bg-success-bg text-success-text">{status}</Badge>;
     case "Warning":
-      return <Badge className="bg-yellow-100 text-yellow-800">{status}</Badge>;
+      return <Badge className="bg-warning-bg text-warning-text">{status}</Badge>;
     case "Error":
-      return <Badge className="bg-red-100 text-red-800">{status}</Badge>;
+      return <Badge className="bg-error-bg text-error-text">{status}</Badge>;
     default:
       return <Badge variant="outline">{status}</Badge>;
   }
@@ -56,7 +56,7 @@ export function DataValidation() {
         <div>
           <h3 className="text-lg font-semibold mb-1">Data Validation</h3>
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-green-500" />
+            <CheckCircle className="h-4 w-4 text-success" />
             <p className="text-sm text-muted-foreground">Your data has been validated for export</p>
           </div>
         </div>
@@ -96,8 +96,8 @@ export function DataValidation() {
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">Overall Status:</span>
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-green-500" />
-            <span className="font-medium text-green-600">Ready for Export</span>
+            <CheckCircle className="h-4 w-4 text-success" />
+            <span className="font-medium text-success">Ready for Export</span>
           </div>
         </div>
       </div>

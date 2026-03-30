@@ -616,7 +616,7 @@ export function SettingsContent() {
                     </Button>
                     <Button
                       variant="outline"
-                      className="text-red-600 hover:text-red-700"
+                      className="text-error hover:text-error/80"
                     >
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Delete All Data

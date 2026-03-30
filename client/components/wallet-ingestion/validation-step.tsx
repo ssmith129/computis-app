@@ -21,7 +21,7 @@ const validationChecks = [
     title: "File Format Validation",
     status: "Passed",
     value: 100,
-    color: "text-green-600",
+    color: "text-success",
     icon: CheckCircle,
     description: "CSV format is valid and readable",
   },
@@ -30,7 +30,7 @@ const validationChecks = [
     title: "Data Structure Check",
     status: "Warning",
     value: 85,
-    color: "text-yellow-600",
+    color: "text-warning",
     icon: AlertTriangle,
     description: "3 rows have formatting issues",
   },
@@ -39,7 +39,7 @@ const validationChecks = [
     title: "Required Fields",
     status: "Passed",
     value: 100,
-    color: "text-green-600",
+    color: "text-success",
     icon: CheckCircle,
     description: "All required columns present",
   },
@@ -48,7 +48,7 @@ const validationChecks = [
     title: "Data Quality Assessment",
     status: "Passed",
     value: 95,
-    color: "text-green-600",
+    color: "text-success",
     icon: CheckCircle,
     description: "High quality transaction data detected",
   },
@@ -57,11 +57,11 @@ const validationChecks = [
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "Passed":
-      return <Badge className="bg-green-100 text-green-800">{status}</Badge>;
+      return <Badge className="bg-success-bg text-success-text">{status}</Badge>;
     case "Warning":
-      return <Badge className="bg-yellow-100 text-yellow-800">{status}</Badge>;
+      return <Badge className="bg-warning-bg text-warning-text">{status}</Badge>;
     case "Failed":
-      return <Badge className="bg-red-100 text-red-800">{status}</Badge>;
+      return <Badge className="bg-error-bg text-error-text">{status}</Badge>;
     default:
       return <Badge variant="outline">{status}</Badge>;
   }

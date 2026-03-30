@@ -152,9 +152,9 @@ type SortDirection = "asc" | "desc";
 
 const getStatusBadge = (status: User["status"]) => {
   const variants = {
-    Active: "bg-green-100 text-green-700 border-0",
+    Active: "bg-success-bg text-success-text border-0",
     Inactive: "bg-gray-100 text-gray-700 border-0",
-    Pending: "bg-yellow-100 text-yellow-700 border-0",
+    Pending: "bg-warning-bg text-warning-text border-0",
   };
   const icons = {
     Active: <UserCheck className="h-3 w-3 mr-1" />,
@@ -173,7 +173,7 @@ const getStatusBadge = (status: User["status"]) => {
 
 const getRoleBadge = (role: string) => {
   const variants: Record<string, string> = {
-    Administrator: "bg-blue-100 text-blue-700 border-0",
+    Administrator: "bg-info-bg text-info-text border-0",
     "Tax Preparer": "bg-purple-100 text-purple-700 border-0",
     "Client User": "bg-cyan-100 text-cyan-700 border-0",
   };
@@ -300,12 +300,12 @@ export function UsersManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Active Users
                 </p>
-                <p className="text-3xl font-bold text-green-600">
+                <p className="text-3xl font-bold text-success">
                   {activeCount}
                 </p>
               </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <UserCheck className="h-6 w-6 text-green-600" />
+              <div className="p-3 bg-success-bg rounded-lg">
+                <UserCheck className="h-6 w-6 text-success" />
               </div>
             </div>
           </CardContent>
@@ -334,12 +334,12 @@ export function UsersManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Pending Approvals
                 </p>
-                <p className="text-3xl font-bold text-yellow-600">
+                <p className="text-3xl font-bold text-warning">
                   {pendingCount}
                 </p>
               </div>
-              <div className="p-3 bg-yellow-100 rounded-lg">
-                <Clock className="h-6 w-6 text-yellow-600" />
+              <div className="p-3 bg-warning-bg rounded-lg">
+                <Clock className="h-6 w-6 text-warning" />
               </div>
             </div>
           </CardContent>
@@ -880,7 +880,7 @@ function UserTableSection({
                             Manage Permissions
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem className="text-red-600">
+                          <DropdownMenuItem className="text-error">
                             <Trash2 className="mr-2 h-4 w-4" />
                             Delete User
                           </DropdownMenuItem>

@@ -52,11 +52,11 @@ const issues = [
 const getSeverityBadge = (severity: string) => {
   switch (severity) {
     case "High":
-      return <Badge className="bg-red-100 text-red-800">{severity}</Badge>;
+      return <Badge className="bg-error-bg text-error-text">{severity}</Badge>;
     case "Medium":
-      return <Badge className="bg-yellow-100 text-yellow-800">{severity}</Badge>;
+      return <Badge className="bg-warning-bg text-warning-text">{severity}</Badge>;
     case "Low":
-      return <Badge className="bg-blue-100 text-blue-800">{severity}</Badge>;
+      return <Badge className="bg-info-bg text-info-text">{severity}</Badge>;
     default:
       return <Badge variant="outline">{severity}</Badge>;
   }

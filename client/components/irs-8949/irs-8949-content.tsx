@@ -124,17 +124,17 @@ const getStatusBadge = (status: string) => {
   switch (status) {
     case "Verified":
       return (
-        <Badge className="bg-green-100 text-green-700 border-0">{status}</Badge>
+        <Badge className="bg-success-bg text-success-text border-0">{status}</Badge>
       );
     case "Pending Review":
       return (
-        <Badge className="bg-yellow-100 text-yellow-700 border-0">
+        <Badge className="bg-warning-bg text-warning-text border-0">
           {status}
         </Badge>
       );
     case "Error":
       return (
-        <Badge className="bg-red-100 text-red-700 border-0">{status}</Badge>
+        <Badge className="bg-error-bg text-error-text border-0">{status}</Badge>
       );
     default:
       return <Badge variant="outline">{status}</Badge>;
@@ -142,7 +142,7 @@ const getStatusBadge = (status: string) => {
 };
 
 const getGainLossColor = (amount: number) => {
-  return amount >= 0 ? "text-green-600" : "text-red-600";
+  return amount >= 0 ? "text-success" : "text-error";
 };
 
 export function Irs8949Content() {
@@ -249,7 +249,7 @@ export function Irs8949Content() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-blue-600" />
+                <DollarSign className="h-4 w-4 text-info" />
                 <div>
                   <div className="text-2xl font-bold font-mono tabular-nums">
                     ${totalProceeds.toLocaleString()}
@@ -264,7 +264,7 @@ export function Irs8949Content() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-orange-600" />
+                <DollarSign className="h-4 w-4 text-warning" />
                 <div>
                   <div className="text-2xl font-bold font-mono tabular-nums">
                     ${totalCostBasis.toLocaleString()}
@@ -446,7 +446,7 @@ export function Irs8949Content() {
                                   Edit Transaction
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="text-red-600"
+                                  className="text-error"
                                   onClick={() => setDeleteId(transaction.id)}
                                 >
                                   <Trash2 className="mr-2 h-4 w-4" />
@@ -560,7 +560,7 @@ export function Irs8949Content() {
                                   Edit Transaction
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="text-red-600"
+                                  className="text-error"
                                   onClick={() => setDeleteId(transaction.id)}
                                 >
                                   <Trash2 className="mr-2 h-4 w-4" />
@@ -604,14 +604,14 @@ export function Irs8949Content() {
                 Schedule E-filing
               </Button>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="p-4 bg-info-bg rounded-lg border border-info/30">
               <div className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+                <CheckCircle className="h-5 w-5 text-info mt-0.5" />
                 <div>
-                  <h4 className="font-medium text-blue-900">
+                  <h4 className="font-medium text-info-text">
                     Ready for Filing
                   </h4>
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-info-text">
                     All transactions have been verified and are ready for tax
                     filing. Total net gain: ${totalGainLoss.toLocaleString()}
                   </p>

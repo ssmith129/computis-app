@@ -127,9 +127,9 @@ export function DashboardContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-blue-100 rounded-lg">
+                        <div className="p-2 bg-info-bg rounded-lg">
                           <svg
-                            className="h-6 w-6 text-blue-600"
+                            className="h-6 w-6 text-info"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -168,9 +168,9 @@ export function DashboardContent() {
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-green-100 rounded-lg">
+                        <div className="p-2 bg-success-bg rounded-lg">
                           <svg
-                            className="h-6 w-6 text-green-600"
+                            className="h-6 w-6 text-success"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -195,7 +195,7 @@ export function DashboardContent() {
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Net Gain/Loss:</span>
-                          <span className="font-medium text-green-600">
+                          <span className="font-medium text-success">
                             +$127,456
                           </span>
                         </div>
@@ -321,7 +321,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Unrealized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-green-600">
+                          <span className="text-lg font-bold text-success">
                             +$127,456 (32.4%)
                           </span>
                         </div>
@@ -329,7 +329,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Realized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-blue-600">
+                          <span className="text-lg font-bold text-info">
                             +$45,234 (11.8%)
                           </span>
                         </div>
@@ -455,7 +455,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Unrealized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-green-600">
+                          <span className="text-lg font-bold text-success">
                             +$127,456 (32.4%)
                           </span>
                         </div>
@@ -463,7 +463,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Realized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-blue-600">
+                          <span className="text-lg font-bold text-info">
                             +$45,234 (11.8%)
                           </span>
                         </div>
@@ -544,9 +544,9 @@ export function DashboardContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-blue-100 rounded-lg">
+                        <div className="p-2 bg-info-bg rounded-lg">
                           <svg
-                            className="h-6 w-6 text-blue-600"
+                            className="h-6 w-6 text-info"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -585,9 +585,9 @@ export function DashboardContent() {
 
                     <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-green-100 rounded-lg">
+                        <div className="p-2 bg-success-bg rounded-lg">
                           <svg
-                            className="h-6 w-6 text-green-600"
+                            className="h-6 w-6 text-success"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -612,7 +612,7 @@ export function DashboardContent() {
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Net Gain/Loss:</span>
-                          <span className="font-medium text-green-600">
+                          <span className="font-medium text-success">
                             +$127,456
                           </span>
                         </div>
@@ -738,7 +738,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Unrealized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-green-600">
+                          <span className="text-lg font-bold text-success">
                             +$127,456 (32.4%)
                           </span>
                         </div>
@@ -746,7 +746,7 @@ export function DashboardContent() {
                           <span className="text-sm text-gray-600">
                             Realized Gain/Loss
                           </span>
-                          <span className="text-lg font-bold text-blue-600">
+                          <span className="text-lg font-bold text-info">
                             +$45,234 (11.8%)
                           </span>
                         </div>
@@ -765,26 +765,26 @@ export function DashboardContent() {
 
                 <TabsContent value="clients" className="p-6 mt-0 space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+                    <div className="bg-gradient-to-br from-info-bg to-info-bg/80 p-6 rounded-lg border border-info/30">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-sm font-medium text-blue-900">
+                        <h4 className="text-sm font-medium text-info-text">
                           Total Clients
                         </h4>
-                        <Users className="h-4 w-4 text-blue-600" />
+                        <Users className="h-4 w-4 text-info" />
                       </div>
-                      <p className="text-2xl font-bold text-blue-900">47</p>
-                      <p className="text-xs text-blue-700 mt-1">
+                      <p className="text-2xl font-bold text-info-text">47</p>
+                      <p className="text-xs text-info-text mt-1">
                         +3 this month
                       </p>
                     </div>
 
-                    <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+                    <div className="bg-gradient-to-br from-success-bg to-success-bg/80 p-6 rounded-lg border border-success/30">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-sm font-medium text-green-900">
+                        <h4 className="text-sm font-medium text-success-text">
                           Active Returns
                         </h4>
                         <svg
-                          className="h-4 w-4 text-green-600"
+                          className="h-4 w-4 text-success"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -797,7 +797,7 @@ export function DashboardContent() {
                           />
                         </svg>
                       </div>
-                      <p className="text-2xl font-bold text-green-900">23</p>
+                      <p className="text-2xl font-bold text-success-text">23</p>
                       <p className="text-xs text-green-700 mt-1">In progress</p>
                     </div>
 
@@ -828,11 +828,11 @@ export function DashboardContent() {
 
                     <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg border border-orange-200">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-sm font-medium text-orange-900">
+                        <h4 className="text-sm font-medium text-warning-text">
                           Completed
                         </h4>
                         <svg
-                          className="h-4 w-4 text-orange-600"
+                          className="h-4 w-4 text-warning"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -845,8 +845,8 @@ export function DashboardContent() {
                           />
                         </svg>
                       </div>
-                      <p className="text-2xl font-bold text-orange-900">16</p>
-                      <p className="text-xs text-orange-700 mt-1">
+                      <p className="text-2xl font-bold text-warning-text">16</p>
+                      <p className="text-xs text-warning-text mt-1">
                         This tax year
                       </p>
                     </div>
@@ -859,8 +859,8 @@ export function DashboardContent() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                            <span className="text-sm font-semibold text-blue-900">
+                          <div className="w-10 h-10 bg-info-bg rounded-full flex items-center justify-center">
+                            <span className="text-sm font-semibold text-info-text">
                               JD
                             </span>
                           </div>
@@ -882,8 +882,8 @@ export function DashboardContent() {
 
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                            <span className="text-sm font-semibold text-green-900">
+                          <div className="w-10 h-10 bg-success-bg rounded-full flex items-center justify-center">
+                            <span className="text-sm font-semibold text-success-text">
                               AS
                             </span>
                           </div>
@@ -897,7 +897,7 @@ export function DashboardContent() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">
+                          <span className="px-2 py-1 bg-success-bg text-green-800 text-xs font-medium rounded">
                             Complete
                           </span>
                         </div>
@@ -920,7 +920,7 @@ export function DashboardContent() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">
+                          <span className="px-2 py-1 bg-info-bg text-blue-800 text-xs font-medium rounded">
                             In Progress
                           </span>
                         </div>

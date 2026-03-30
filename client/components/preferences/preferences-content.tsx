@@ -615,19 +615,19 @@ export function PreferencesContent() {
                   <div className="space-y-2 text-sm text-blue-800">
                     <div className="flex justify-between">
                       <span>Open search</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                      <kbd className="px-2 py-1 bg-info-bg rounded">
                         Ctrl + K
                       </kbd>
                     </div>
                     <div className="flex justify-between">
                       <span>Navigate tabs</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                      <kbd className="px-2 py-1 bg-info-bg rounded">
                         Ctrl + 1-9
                       </kbd>
                     </div>
                     <div className="flex justify-between">
                       <span>Save</span>
-                      <kbd className="px-2 py-1 bg-blue-100 rounded">
+                      <kbd className="px-2 py-1 bg-info-bg rounded">
                         Ctrl + S
                       </kbd>
                     </div>

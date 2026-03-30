@@ -7,10 +7,10 @@ interface StatusBadgeProps {
 }
 
 const variantStyles = {
-  success: "bg-green-100 text-green-800 border-green-200",
-  warning: "bg-yellow-100 text-yellow-800 border-yellow-200", 
-  error: "bg-red-100 text-red-800 border-red-200",
-  pending: "bg-blue-50 text-blue-800 border-blue-200",
+  success: "bg-success-bg text-success-text border-success/30",
+  warning: "bg-warning-bg text-warning-text border-warning/30",
+  error: "bg-error-bg text-error-text border-error/30",
+  pending: "bg-info-bg text-info-text border-info/30",
 };
 
 export function StatusBadge({ variant, children, className }: StatusBadgeProps) {

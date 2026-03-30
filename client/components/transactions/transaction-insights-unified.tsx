@@ -20,11 +20,11 @@ const classificationData = [
     count: 61,
     percentage: 55,
     description: "Match known patterns",
-    color: "text-green-600",
-    bgColor: "bg-green-100",
+    color: "text-success",
+    bgColor: "bg-success-bg",
     icon: CheckCircle,
-    progressColor: "bg-green-500",
-    actionColor: "text-green-600",
+    progressColor: "bg-success",
+    actionColor: "text-success",
   },
   {
     level: "Medium",
@@ -32,11 +32,11 @@ const classificationData = [
     count: 42,
     percentage: 34,
     description: "Somewhat reliable",
-    color: "text-yellow-600",
-    bgColor: "bg-yellow-100",
+    color: "text-warning",
+    bgColor: "bg-warning-bg",
     icon: AlertCircle,
-    progressColor: "bg-yellow-500",
-    actionColor: "text-yellow-600",
+    progressColor: "bg-warning",
+    actionColor: "text-warning",
   },
   {
     level: "Low",
@@ -44,11 +44,11 @@ const classificationData = [
     count: 14,
     percentage: 11,
     description: "Needs manual review",
-    color: "text-red-600",
-    bgColor: "bg-red-100",
+    color: "text-error",
+    bgColor: "bg-error-bg",
     icon: XCircle,
-    progressColor: "bg-red-500",
-    actionColor: "text-red-600",
+    progressColor: "bg-error",
+    actionColor: "text-error",
   },
 ];
 
@@ -62,10 +62,10 @@ const anomalyFlags = [
     subtitle: "Unusual Activity",
     count: 15,
     metric: "+300%",
-    iconBg: "bg-red-100",
-    iconColor: "text-red-600",
-    borderColor: "border-red-200",
-    accentColor: "bg-red-500",
+    iconBg: "bg-error-bg",
+    iconColor: "text-error",
+    borderColor: "border-error/30",
+    accentColor: "bg-error",
     actionLabel: "Investigate",
   },
   {
@@ -77,10 +77,10 @@ const anomalyFlags = [
     subtitle: "Pricing Required",
     count: 3,
     metric: "Critical",
-    iconBg: "bg-yellow-50",
-    iconColor: "text-yellow-600",
-    borderColor: "border-yellow-200",
-    accentColor: "bg-yellow-500",
+    iconBg: "bg-warning-bg",
+    iconColor: "text-warning",
+    borderColor: "border-warning/30",
+    accentColor: "bg-warning",
     actionLabel: "Fix Values",
   },
   {
@@ -92,10 +92,10 @@ const anomalyFlags = [
     subtitle: "Classification Issue",
     count: 2,
     metric: "Low Priority",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-    borderColor: "border-blue-200",
-    accentColor: "bg-blue-500",
+    iconBg: "bg-info-bg",
+    iconColor: "text-info",
+    borderColor: "border-info/30",
+    accentColor: "bg-info",
     actionLabel: "Resolve",
   },
 ];
@@ -111,8 +111,8 @@ export function TransactionInsightsUnified() {
         {/* Card Header */}
         <div className="flex items-center justify-between mb-5 pb-4 border-b">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-blue-100">
-              <Sparkles className="h-5 w-5 text-blue-600" aria-hidden="true" />
+            <div className="p-2 rounded-lg bg-info-bg">
+              <Sparkles className="h-5 w-5 text-info" aria-hidden="true" />
             </div>
             <div>
               <h3
@@ -214,7 +214,7 @@ export function TransactionInsightsUnified() {
         {/* Card Header */}
         <div className="flex items-center justify-between mb-5 pb-4 border-b">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-orange-100">
+            <div className="p-2 rounded-lg bg-warning-bg">
               <Flag className="h-5 w-5 text-orange-600" aria-hidden="true" />
             </div>
             <div>

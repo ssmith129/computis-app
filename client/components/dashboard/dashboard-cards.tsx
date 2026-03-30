@@ -21,8 +21,8 @@ export function DashboardCard({
   chartColor,
 }: DashboardCardProps) {
   const changeColorClass = {
-    positive: "text-green-600",
-    negative: "text-red-600",
+    positive: "text-success",
+    negative: "text-error",
     neutral: "text-gray-500",
   }[changeType];
 

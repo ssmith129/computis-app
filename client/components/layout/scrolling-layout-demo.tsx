@@ -158,10 +158,10 @@ export function ScrollingLayoutDemo() {
                     <div
                       className={`text-sm ${
                         metric.change.startsWith("+")
-                          ? "text-green-600"
+                          ? "text-success"
                           : metric.change.startsWith("-")
-                            ? "text-red-600"
-                            : "text-gray-600"
+                            ? "text-error"
+                            : "text-muted-foreground"
                       }`}
                     >
                       {metric.change} from last month

@@ -189,10 +189,10 @@ const jurisdictions = [
 
 const getStatusBadge = (status: TaxEntity["status"]) => {
   const variants = {
-    Active: "bg-green-100 text-green-700 border-0",
+    Active: "bg-success-bg text-success-text border-0",
     Inactive: "bg-gray-100 text-gray-700 border-0",
-    Archived: "bg-orange-100 text-orange-700 border-0",
-    "In Progress": "bg-blue-100 text-blue-700 border-0",
+    Archived: "bg-warning-bg text-warning-text border-0",
+    "In Progress": "bg-info-bg text-info-text border-0",
   };
   const icons = {
     Active: <CheckCircle2 className="h-3 w-3 mr-1" />,
@@ -365,12 +365,12 @@ export function TaxEntitiesManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Total Entities
                 </p>
-                <p className="text-3xl font-bold text-blue-600">
+                <p className="text-3xl font-bold text-info">
                   {mockTaxEntities.length}
                 </p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <Building2 className="h-6 w-6 text-blue-600" />
+              <div className="p-3 bg-info-bg rounded-lg">
+                <Building2 className="h-6 w-6 text-info" />
               </div>
             </div>
           </CardContent>
@@ -382,12 +382,12 @@ export function TaxEntitiesManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Active
                 </p>
-                <p className="text-3xl font-bold text-green-600">
+                <p className="text-3xl font-bold text-success">
                   {activeCount}
                 </p>
               </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <CheckCircle2 className="h-6 w-6 text-green-600" />
+              <div className="p-3 bg-success-bg rounded-lg">
+                <CheckCircle2 className="h-6 w-6 text-success" />
               </div>
             </div>
           </CardContent>
@@ -399,12 +399,12 @@ export function TaxEntitiesManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   In Progress
                 </p>
-                <p className="text-3xl font-bold text-blue-600">
+                <p className="text-3xl font-bold text-info">
                   {inProgressCount}
                 </p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <TrendingUp className="h-6 w-6 text-blue-600" />
+              <div className="p-3 bg-info-bg rounded-lg">
+                <TrendingUp className="h-6 w-6 text-info" />
               </div>
             </div>
           </CardContent>
@@ -416,12 +416,12 @@ export function TaxEntitiesManagement() {
                 <p className="text-sm font-medium text-muted-foreground">
                   Archived
                 </p>
-                <p className="text-3xl font-bold text-orange-600">
+                <p className="text-3xl font-bold text-warning">
                   {archivedCount}
                 </p>
               </div>
-              <div className="p-3 bg-orange-100 rounded-lg">
-                <Archive className="h-6 w-6 text-orange-600" />
+              <div className="p-3 bg-warning-bg rounded-lg">
+                <Archive className="h-6 w-6 text-warning" />
               </div>
             </div>
           </CardContent>
@@ -549,8 +549,8 @@ export function TaxEntitiesManagement() {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-blue-100 rounded-lg">
-                          <Building2 className="h-4 w-4 text-blue-600" />
+                        <div className="p-2 bg-info-bg rounded-lg">
+                          <Building2 className="h-4 w-4 text-info" />
                         </div>
                         <div>
                           <div className="font-medium">{entity.entityName}</div>
@@ -615,7 +615,7 @@ export function TaxEntitiesManagement() {
                             <Archive className="mr-2 h-4 w-4" />
                             Archive
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="text-red-600">
+                          <DropdownMenuItem className="text-error">
                             <Trash2 className="mr-2 h-4 w-4" />
                             Delete
                           </DropdownMenuItem>
@@ -644,7 +644,7 @@ export function TaxEntitiesManagement() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="entityName">
-                  Entity Name <span className="text-red-500">*</span>
+                  Entity Name <span className="text-error">*</span>
                 </Label>
                 <Input
                   id="entityName"
@@ -658,14 +658,14 @@ export function TaxEntitiesManagement() {
                   }
                 />
                 {validationErrors.entityName && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-error">
                     {validationErrors.entityName}
                   </p>
                 )}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="taxId">
-                  Tax ID <span className="text-red-500">*</span>
+                  Tax ID <span className="text-error">*</span>
                 </Label>
                 <Input
                   id="taxId"
@@ -677,7 +677,7 @@ export function TaxEntitiesManagement() {
                   className={validationErrors.taxId ? "border-red-500" : ""}
                 />
                 {validationErrors.taxId && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-error">
                     {validationErrors.taxId}
                   </p>
                 )}
@@ -728,7 +728,7 @@ export function TaxEntitiesManagement() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="client">
-                  Client <span className="text-red-500">*</span>
+                  Client <span className="text-error">*</span>
                 </Label>
                 <Input
                   id="client"
@@ -740,7 +740,7 @@ export function TaxEntitiesManagement() {
                   className={validationErrors.client ? "border-red-500" : ""}
                 />
                 {validationErrors.client && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-error">
                     {validationErrors.client}
                   </p>
                 )}
@@ -786,7 +786,7 @@ export function TaxEntitiesManagement() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="edit-entityName">
-                  Entity Name <span className="text-red-500">*</span>
+                  Entity Name <span className="text-error">*</span>
                 </Label>
                 <Input
                   id="edit-entityName"
@@ -801,7 +801,7 @@ export function TaxEntitiesManagement() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="edit-taxId">
-                  Tax ID <span className="text-red-500">*</span>
+                  Tax ID <span className="text-error">*</span>
                 </Label>
                 <Input
                   id="edit-taxId"
@@ -879,8 +879,8 @@ export function TaxEntitiesManagement() {
           {selectedEntity && (
             <div className="space-y-6 py-4">
               <div className="flex items-center gap-4">
-                <div className="p-4 bg-blue-100 rounded-lg">
-                  <Building2 className="h-8 w-8 text-blue-600" />
+                <div className="p-4 bg-info-bg rounded-lg">
+                  <Building2 className="h-8 w-8 text-info" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold">
@@ -929,7 +929,7 @@ export function TaxEntitiesManagement() {
                           {selectedEntity.walletCount}
                         </p>
                       </div>
-                      <Wallet className="h-6 w-6 text-blue-600" />
+                      <Wallet className="h-6 w-6 text-info" />
                     </div>
                   </CardContent>
                 </Card>

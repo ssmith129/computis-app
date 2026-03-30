@@ -35,9 +35,9 @@ interface TransactionDetailsModalProps {
 }
 
 const getConfidenceColor = (confidence: number) => {
-  if (confidence >= 70) return "text-green-600";
-  if (confidence >= 40) return "text-yellow-600";
-  return "text-red-600";
+  if (confidence >= 70) return "text-success";
+  if (confidence >= 40) return "text-warning";
+  return "text-error";
 };
 
 const getStatusVariant = (
@@ -60,11 +60,11 @@ const getStatusVariant = (
 const getClassificationBadgeColor = (classification: string) => {
   switch (classification) {
     case "Income":
-      return "bg-green-100 text-green-800 border-green-200";
+      return "bg-success-bg text-success-text border-success/30";
     case "Trade":
-      return "bg-blue-100 text-blue-800 border-blue-200";
+      return "bg-info-bg text-info-text border-info/30";
     case "Expense":
-      return "bg-red-100 text-red-800 border-red-200";
+      return "bg-error-bg text-error-text border-error/30";
     case "Transfer":
       return "bg-purple-100 text-purple-800 border-purple-200";
     case "Unclassified":
@@ -77,12 +77,12 @@ const getClassificationBadgeColor = (classification: string) => {
 const getTransactionTypeIcon = (type: string) => {
   switch (type.toLowerCase()) {
     case "receive":
-      return <ArrowDownLeft className="h-5 w-5 text-green-600" />;
+      return <ArrowDownLeft className="h-5 w-5 text-success" />;
     case "send":
-      return <ArrowUpRight className="h-5 w-5 text-red-600" />;
+      return <ArrowUpRight className="h-5 w-5 text-error" />;
     case "swap":
     case "merge":
-      return <RefreshCw className="h-5 w-5 text-blue-600" />;
+      return <RefreshCw className="h-5 w-5 text-info" />;
     default:
       return <RefreshCw className="h-5 w-5 text-gray-600" />;
   }
@@ -174,7 +174,7 @@ export function TransactionDetailsModal({
                   <p
                     className={cn(
                       "font-mono text-lg font-bold",
-                      txIsDebit ? "text-red-600" : "text-green-600",
+                      txIsDebit ? "text-error" : "text-success",
                     )}
                   >
                     {txIsDebit ? "-" : "+"} {transaction.amount}
@@ -190,7 +190,7 @@ export function TransactionDetailsModal({
                   <p
                     className={cn(
                       "font-mono text-xl font-bold",
-                      txIsDebit ? "text-red-600" : "text-green-600",
+                      txIsDebit ? "text-error" : "text-success",
                     )}
                   >
                     {txIsDebit ? "-" : "+"} {transaction.fmvUsd}
@@ -242,7 +242,7 @@ export function TransactionDetailsModal({
                       {transaction.confidence}%
                     </span>
                     {transaction.confidence < 40 && (
-                      <AlertTriangle className="h-5 w-5 text-red-500" />
+                      <AlertTriangle className="h-5 w-5 text-error" />
                     )}
                   </div>
                 </div>
@@ -260,10 +260,10 @@ export function TransactionDetailsModal({
                     className={cn(
                       "h-full rounded-full transition-all",
                       transaction.confidence >= 70
-                        ? "bg-green-600"
+                        ? "bg-success"
                         : transaction.confidence >= 40
-                          ? "bg-yellow-600"
-                          : "bg-red-600",
+                          ? "bg-warning"
+                          : "bg-error",
                     )}
                     style={{ width: `${transaction.confidence}%` }}
                     role="progressbar"
@@ -276,16 +276,16 @@ export function TransactionDetailsModal({
               </div>
 
               {transaction.confidence < 70 && (
-                <div className="p-3 rounded-lg bg-yellow-50 border border-yellow-200">
+                <div className="p-3 rounded-lg bg-warning-bg border border-warning/30">
                   <div className="flex gap-2">
-                    <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="h-5 w-5 text-warning flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-yellow-900">
+                      <p className="text-sm font-medium text-warning-text">
                         {transaction.confidence < 40
                           ? "Low Confidence Detection"
                           : "Medium Confidence Detection"}
                       </p>
-                      <p className="text-xs text-yellow-700 mt-1">
+                      <p className="text-xs text-warning-text mt-1">
                         This transaction may require manual review to ensure
                         accurate classification.
                       </p>

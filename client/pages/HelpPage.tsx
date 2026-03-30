@@ -132,9 +132,9 @@ export default function HelpPage() {
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
                 <Book className="h-8 w-8 text-info mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h2 className="font-semibold text-gray-900 mb-2">
                   User Guides
-                </h3>
+                </h2>
                 <p className="text-sm text-gray-600">Step-by-step tutorials</p>
               </CardContent>
             </Card>
@@ -142,9 +142,9 @@ export default function HelpPage() {
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
                 <Video className="h-8 w-8 text-success mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h2 className="font-semibold text-gray-900 mb-2">
                   Video Tutorials
-                </h3>
+                </h2>
                 <p className="text-sm text-gray-600">Watch and learn</p>
               </CardContent>
             </Card>
@@ -152,7 +152,7 @@ export default function HelpPage() {
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
                 <HelpCircle className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">FAQ</h3>
+                <h2 className="font-semibold text-gray-900 mb-2">FAQ</h2>
                 <p className="text-sm text-gray-600">Common questions</p>
               </CardContent>
             </Card>
@@ -160,9 +160,9 @@ export default function HelpPage() {
             <Card className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardContent className="p-6 text-center">
                 <MessageCircle className="h-8 w-8 text-warning mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h2 className="font-semibold text-gray-900 mb-2">
                   Contact Support
-                </h3>
+                </h2>
                 <p className="text-sm text-gray-600">Get personalized help</p>
               </CardContent>
             </Card>

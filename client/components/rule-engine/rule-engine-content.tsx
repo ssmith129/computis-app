@@ -77,7 +77,7 @@ export function RuleEngineContent() {
         {/* Rule Conflicts */}
         <Card className="p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-lg font-semibold">Rule Conflicts</h3>
+            <h2 className="text-lg font-semibold">Rule Conflicts</h2>
             <Button
               variant="ghost"
               size="sm"
